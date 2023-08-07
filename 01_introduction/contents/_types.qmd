@@ -1,0 +1,75 @@
+<!-- # Types of Problems {visibility="uncounted"} -->
+# Types of Problems
+
+## Linear Programming {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+* Linear programming (LP) is the most natural mechanism for formulating a vast 
+array of problems with modest effort.
+
+* LPs are characterized by linear functions of the unknowns:
+  - objective is linear in the unknowns,
+  - constraints are linear (in)equalities in the unknowns.
+
+* LP formulations are popular because
+  - mathematics is nicer,
+  - the theory is richer,
+  - the computation is simpler.
+
+:::
+
+::: {.column width="50%"}
+
+* Consider a budget problem:
+  - Total amount of money is to be allocated among two different commodities:
+  $$ 
+  x_1 + x_2 \leq B
+  $$
+  - Objective is to maximize the weight:
+  $$
+  w_1 x_1 + w_2 x_2
+  $$
+  where $w_j, \, j=1,2$ is the unit weight of commodity $j$.
+
+:::
+
+::::
+
+## Good-old days
+
+:::: {.columns}
+
+::: {.column width="30%" fig-align="center"}
+![](contents/assets/vaucanson_duck.png){width=80%}
+![](contents/assets/jacquard_loom.png){width=80%}
+:::
+
+::: {.column width="70%"}
+- $18^{th}$ century Europe was fascinated by automata such as Vaucanson's 
+duck, which was complex by the standards of the day.
+
+<br>
+
+- Jacquard extended these ideas and developed a loom, which was essentially a 
+programmable weaving machine.
+:::
+
+::::
+
+## Good-old days
+
+- The term __robot__ was first introduced by the Czech playwright Karel 
+&Ccaron;apek in his $1920$ play Rossum's Universal Robots.
+- The word __robota__ is the Czech word for worker.
+
+<center><img src="contents/assets/unimation.png"
+             style="max-width: 50%;"/></center>
+
+- The first patent for what we would now consider a robot was filed in $1954$ 
+by George C. Devol.
+
+- The device comprised a mechanical arm with a gripper that was mounted on a 
+track.

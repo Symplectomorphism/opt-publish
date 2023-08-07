@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "01_introduction.html#optimization-theory-and-practice",
+    "href": "01_introduction.html#optimization-theory-and-practice",
+    "title": "01_introduction",
+    "section": "Optimization Theory and Practice",
+    "text": "Optimization Theory and Practice\n\n\nWelcome and Introduction\n\n\n\n\nInstructor: Aykut Satici, Ph.D.   Mechanical and Biomedical Engineering  Electrical and Computer Engineering  Boise State University, Boise, ID, USA\n\n\nTopics:  Optimization  Types of Problems  Algorithms  Examples"
+  },
+  {
+    "objectID": "01_introduction.html#what-is-mathematical-optimization",
+    "href": "01_introduction.html#what-is-mathematical-optimization",
+    "title": "01_introduction",
+    "section": "What is mathematical optimization?",
+    "text": "What is mathematical optimization?\nWe have a complex decision problem to solve.\n\nRunning a business: maximize profit, minimize loss, maximize efficiency, or minimize risk.\nDesign: minimize the weight of a bridge/truss and maximize the strength within the design constraints.\nPlanning: select a flight route to minimize time or fuel consumption of an airplane.\n\n\n\n\n\n\n\n\nPhilosophy\n\n\nApproach the problem, involving the selection of values for a number of interrelated variables, by focusing attention on a single objective designed to quantify performance and measure the quality of the decision.\n\n\n\n\n\n\n\n\n\nImportant\n\n\nThis one objective is maximized subject to the constraints that may limit the selection of decision variable values."
+  },
+  {
+    "objectID": "01_introduction.html#problem-formulation",
+    "href": "01_introduction.html#problem-formulation",
+    "title": "01_introduction",
+    "section": "Problem formulation",
+    "text": "Problem formulation\n \n\nAlways involves a tradeoff between conflicting objectives:\n\nbuilding a mathematical model suffiently complex to accurately capture the problem description,\nbuilding a model that is tractable.\n\nThe expert model builder is facile with both aspects of this tradeoff.\nOne aspiring to become such an expert must learn to identify and capture the important issues of a problem mainly through example and experience.\nOne must learn to distinguish tractable models from nontractable ones\n\nstudy of available theory\nnurturing the capability to extend existing theory to new situations."
+  },
+  {
+    "objectID": "01_introduction.html#linear-programming",
+    "href": "01_introduction.html#linear-programming",
+    "title": "01_introduction",
+    "section": "Linear Programming",
+    "text": "Linear Programming\n\n\n\nLinear programming (LP) is the most natural mechanism for formulating a vast array of problems with modest effort.\nLPs are characterized by linear functions of the unknowns:\n\nobjective is linear in the unknowns,\nconstraints are linear (in)equalities in the unknowns.\n\nLP formulations are popular because\n\nmathematics is nicer,\nthe theory is richer,\nthe computation is simpler.\n\n\n\n\nConsider a budget problem:\n\nTotal amount of money is to be allocated among two different commodities: x1+x2≤B \nx_1 + x_2 \\leq B\n\nObjective is to maximize the weight: w1x1+w2x2\nw_1 x_1 + w_2 x_2\n where wj,j=1,2w_j, \\, j=1,2 is the unit weight of commodity jj."
+  },
+  {
+    "objectID": "01_introduction.html#good-old-days",
+    "href": "01_introduction.html#good-old-days",
+    "title": "01_introduction",
+    "section": "Good-old days",
+    "text": "Good-old days\n\n\n \n\n\n18th18^{th} century Europe was fascinated by automata such as Vaucanson’s duck, which was complex by the standards of the day.\n\n\n\nJacquard extended these ideas and developed a loom, which was essentially a programmable weaving machine."
+  },
+  {
+    "objectID": "01_introduction.html#good-old-days-1",
+    "href": "01_introduction.html#good-old-days-1",
+    "title": "01_introduction",
+    "section": "Good-old days",
+    "text": "Good-old days\n\nThe term robot was first introduced by the Czech playwright Karel Čapek in his 19201920 play Rossum’s Universal Robots.\nThe word robota is the Czech word for worker.\n\n\n\n\n\nThe first patent for what we would now consider a robot was filed in 19541954 by George C. Devol.\nThe device comprised a mechanical arm with a gripper that was mounted on a track."
+  },
+  {
+    "objectID": "01_introduction.html#lets-get-started",
+    "href": "01_introduction.html#lets-get-started",
+    "title": "01_introduction",
+    "section": "Let’s get started!",
+    "text": "Let’s get started!\n\n\n\n\n\nRobots are still far behind what many people expect them to be from movies.\n\n\n\nOne thing is certain: robotics will be an important technology in this century.\n\nVacuum cleaning robots have already been with us for over a decade.\nSelf driving cars are coming."
+  },
+  {
+    "objectID": "01_introduction.html#good-old-days-2",
+    "href": "01_introduction.html#good-old-days-2",
+    "title": "01_introduction",
+    "section": "Good-old days",
+    "text": "Good-old days\n\n\n \n\n\n18th18^{th} century Europe was fascinated by automata such as Vaucanson’s duck, which was complex by the standards of the day.\n\n\n\nJacquard extended these ideas and developed a loom, which was essentially a programmable weaving machine."
+  },
+  {
+    "objectID": "01_introduction.html#good-old-days-3",
+    "href": "01_introduction.html#good-old-days-3",
+    "title": "01_introduction",
+    "section": "Good-old days",
+    "text": "Good-old days\n\nThe term robot was first introduced by the Czech playwright Karel Čapek in his 19201920 play Rossum’s Universal Robots.\nThe word robota is the Czech word for worker.\n\n\n\n\n\nThe first patent for what we would now consider a robot was filed in 19541954 by George C. Devol.\nThe device comprised a mechanical arm with a gripper that was mounted on a track."
+  },
+  {
+    "objectID": "01_introduction.html#lets-get-started-1",
+    "href": "01_introduction.html#lets-get-started-1",
+    "title": "01_introduction",
+    "section": "Let’s get started!",
+    "text": "Let’s get started!\n\n\n\n\n\nRobots are still far behind what many people expect them to be from movies.\n\n\n\nOne thing is certain: robotics will be an important technology in this century.\n\nVacuum cleaning robots have already been with us for over a decade.\nSelf driving cars are coming."
+  },
+  {
+    "objectID": "01_introduction.html#good-old-days-4",
+    "href": "01_introduction.html#good-old-days-4",
+    "title": "01_introduction",
+    "section": "Good-old days",
+    "text": "Good-old days\n\n\n \n\n\n18th18^{th} century Europe was fascinated by automata such as Vaucanson’s duck, which was complex by the standards of the day.\n\n\n\nJacquard extended these ideas and developed a loom, which was essentially a programmable weaving machine."
+  },
+  {
+    "objectID": "01_introduction.html#good-old-days-5",
+    "href": "01_introduction.html#good-old-days-5",
+    "title": "01_introduction",
+    "section": "Good-old days",
+    "text": "Good-old days\n\nThe term robot was first introduced by the Czech playwright Karel Čapek in his 19201920 play Rossum’s Universal Robots.\nThe word robota is the Czech word for worker.\n\n\n\n\n\nThe first patent for what we would now consider a robot was filed in 19541954 by George C. Devol.\nThe device comprised a mechanical arm with a gripper that was mounted on a track.\n\n\n\nOptimization Theory and Practice • Aykut C. Satici"
+  }
+]
