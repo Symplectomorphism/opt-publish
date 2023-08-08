@@ -51,7 +51,7 @@ Conic Linear Programming, (CLP), is a natural extension of linear programming.
 
 * In LP, variables form a vector or point that is subjected to be componentwise
 nonnegative.
-* IN CLP, they form a point in a general pointed convex cone such as a vector or
+* In CLP, they form a point in a general pointed convex cone such as a vector or
 a matrix.
 
 :::: {.columns}
