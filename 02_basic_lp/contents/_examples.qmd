@@ -1,0 +1,3 @@
+# Examples of Linear Programming Problems
+
+## Example 1 &#8211; The Diet Problem {.smaller}

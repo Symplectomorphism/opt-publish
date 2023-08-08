@@ -1,9 +1,9 @@
-## Robotics and Automated Systems {.center .smaller}
+## Optimization Theory and Practice {.center .smaller}
 <!-- ###################################################################### -->
 
 <hr>
 
-### Rigid Motions
+### Basic Properties of Linear Programs
 
 <br/>
 
@@ -15,8 +15,10 @@ Electrical and Computer Engineering <br>
 Boise State University, Boise, ID, USA
 
 __Topics__: <br>
-Representing Position <br>
-Representing Rotations <br>
-Representing Pose <br>
-Algebra of Rigid Motions <br>
+Introduction <br>
+Examples <br>
+Basic Feasible Solutions <br>
+Fundamental Theorem <br>
+Convex Geometry <br>
+Farkas's Lemma <br>
 :::

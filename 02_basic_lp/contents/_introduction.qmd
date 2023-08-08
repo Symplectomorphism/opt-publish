@@ -1,223 +1,182 @@
-# Coordinate Frames
+# Introduction
 
-## Coordinate frames {.smaller}
+## Standard Form
+
+::: {.callout-note}
+## Linear Program (LP)
+An LP is an optimization problem in which the objective
+function is linear in the unknowns and the constraints consist of linear
+(in)equalities.
+:::
+
+::: {.callout-tip}
+## Standard form
+$$
+\begin{align}
+\operatorname{minimize} & \bm{c}^\top \bm{x} = c_1x_1 + c_2x_2 + \cdots + c_nx_n
+\\
+\text{subject to} & \bm{A}\bm{x} = \bm{b} \quad \text{and} \quad \bm{x} \geq
+\bm{0}.
+\end{align}
+$$
+
+* $\bm{c}, \bm{x} \in \mathbb{R}^n$ are column vectors, $\bm{A} \in
+\mathbb{R}^{m \times n}$ a fat matrix ($m < n$), $\bm{b} \in \mathbb{R}^m$ a column vector.
+* $b_i$'s, $c_i$'s and $a_{ij}$'s are fixed real constants, and the $x_i$'s are
+real numbers to be determined.
+* We assume that each equation has been multiplied by minus unity, if necessary,
+so that each $b_i \geq 0$.
+
+:::
+
+## Slack Variables
 
 :::: {.columns}
 
-::: {.column width="60%"}
+::: {.column width="68%"}
 
-::: {.fragment}
-* A point is described by a *coordinate vector*.
-  - The vector represents the displacement of a point w.r.t. some reference
-    frame -- we call this a _bound_ vector.
-  - Notice that a point is __not__ the same as a vector!
-:::
-::: {.fragment}
-* A _coordinate frame_, is a triad of orthogonal axes which intersect at a
-point, known as the origin.
-
-* A real object comprises infinitely many points.
-  - An object, unlike a point, has an orientation.
-  - Attaching a coordinate frame to an object, every point within it can be
-    described by a constant vector w.r.t. that frame.
-* This allows us to describe the position and orientation, the __pose__, of that 
-object's fixed frame w.r.t. a reference coordinate frame.
+::: {.callout-tip appearance="minimal"}
+$$
+\begin{align}
+\operatorname{maximize} & c_1x_2 + c_2x_2 + \cdots + c_nx_n \\
+\text{subject to} & a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n &\leq b_1, \\
+& a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n &\leq b_2, \\
+& \vdots & \vdots \\
+& a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n &\leq b_m, \\
+& x_1, x_2, \ldots, x_n \geq 0.
+\end{align}
+$$
 :::
 
-:::
+This problem may be alternatively expressed as
 
-
-::: {.column width="40%"}
-::: {layout="[1,1]" layout-valign="center"}
-<img src="contents/assets/fig2_1a.svg" width="250" heigth="250" />
-
-<img src="contents/assets/fig2_1b.svg" width="250" heigth="250" />
-:::
-
-::: {.callout-tip}
-## Left
-Point $P$ is described by a coordinate vector w.r.t. an absolute coordinate
-frame.
-:::
-
-::: {.callout-tip}
-## Right
-The points are described w.r.t. object's coordinate frame {B}, which in turn is
-described by a relative pose $\xi_B$.
+::: {.callout-tip appearance="minimal"}
+$$
+\begin{align}
+\operatorname{minimize} & -c_1x_2 - c_2x_2 - \cdots - c_nx_n \\
+\text{subject to} & a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n + x_{n+1} &= b_1, \\
+& a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n \phantom{12} + x_{n+2} &= b_2, \\
+& \vdots & \vdots \\
+& a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n \phantom{12345} + x_{n+m} &= b_m, \\
+& x_1, x_2, \ldots, x_{n+1}, \ldots, x_{n+m} \geq 0.
+\end{align}
+$$
 :::
 
 :::
 
-::::
-
-
-## Coordinate frames {.smaller}
-
-:::: {.columns}
-
-::: {.column width="65%"}
-<br>
-
-* We think of ${^A}\xi_B$ as describing some motion: pick up $\{A\}$ 
-  - Apply a displacement and a rotation,
-  - Now $\{A\}$ is transformed to $\{B\}$.
-* If the initial superscript is missing, we assume that the pose is w.r.t. 
-the world coordinate frame.
-* The point $\boldsymbol{P}$ can be described w.r.t. _either_ coordinate frame:
-$$ {^A}\bm{p} = {^A}\xi_B \bullet {^B}\bm{p}. $$
-  - The operator $\bullet$ _transforms_ the vector.
-  - The new vector describes the _same_ point but w.r.t. a different coordinate 
-  frame.
-:::
-
-::: {.column width="35%"}
-<img src="contents/assets/fig2_2.svg" width="500" heigth="500" />
-
-::: {.callout-tip}
-## Relative pose
-The point $\boldsymbol{P}$ can be descrbied by coordinate vectors relative to 
-either frame $\{A\}$ or $\{B\}$. The pose of $\{B\}$ relative to $\{A\}$ is 
-${^A}\xi_B$.
-:::
-
-:::
-
-::::
-
-
-## Coordinate frames {.smaller}
+::: {.column width="32%"}
+* The new nonnegative variables $x_{n+i}$, $i=1, \ldots, m$ convert inequalities
+to equalities are called _slack variables_.
 
 &nbsp;
 
-:::: {.columns}
-
-::: {.column width="65%"}
-* Relative poses can be _composed_ or _compounded_.
-  $$ {^A}\xi_C = {^A}\xi_B \oplus {^B}\xi_C. $$
-
-::: {.callout-note}
-### Sub/super-script cancellation
-If the subscript and superscript on each side of the $\oplus$ operator match, 
-then we can _cancel out_ the intermediate sub/super-scripts.
-  $$ {^X}\xi_Z = {^X}\xi_Y \oplus {^Y}\xi_Z. $$
-:::
-
-* For this case, the point $\bm{P}$ can be described by
-  $$ {^A}\bm{p} = \left({^A}\xi_B \oplus {^B}\xi_C\right) \bullet {^C}\bm{p}. $$
-
-* Later, we will convert these abstract notions of $\xi$, $\bullet$ and $\oplus$ 
-into concrete mathematical objects and operators.
-:::
-
-::: {.column width="35%"}
-<img src="contents/assets/fig2_3.svg" width="500" heigth="500" />
-
-::: {.callout-tip}
-## Relative pose
-The point $\boldsymbol{P}$ can be descrbied by coordinate vectors relative to 
-either frame $\{A\}$, $\{B\}$ or $\{C\}$. The frames are described by relative 
-poses.
-:::
-
+* The constrant matrix now is transformed to $\bm{A} \rightarrow \begin{bmatrix}
+\bm{A} & \bm{I} \end{bmatrix}$.
 :::
 
 ::::
 
 
-## Coordinate frames: more complex example  {.smaller}
+## Surplus Variables
+
+* If the linear equalities are reversed so that a typical inequality is 
+
+$$ a_{i1}x_1 + a_{i2}x_2 + \cdots + a_{in} x_n \geq b_i, $$
+
+it is clear that this is equivalent to 
+
+$$ a_{i1}x_1 + a_{i2}x_2 + \cdots + a_{in} x_n - y_i = b_i, $$
+
+with $y_i \geq 0$.
+
+* Variables, such as $y_i$, adjoined in this fashion to convert a "greater than
+or equal to" inequality to equality are called _surplus variables_.
+
+* By suitably multiplying by minus unity, and adjoining slack and surplus
+variables, any set of linear inequalities can be converted to standard form.
+
+
+
+## Free variables &#8211; first method
+
+::: {.callout-important appearance="minimal"}
+Suppose one or more of the unknown variables is not required to be nonnegative,
+say, $x_1 \geq 0$ is not present so that $x_1$ is free to take on either
+positive or negative values.
+:::
+
+* We then write $x_1 = u_1 - v_1$, and require that $u_1, v_1 \geq 0$.
+* We substitute $u_1 - v_1$ for $x_1$ everwhere.
+* The problem is then expressed in terms of the $n+1$ variables $u_1, v_1, x_2,
+x_3, \ldots, x_n$.
+* There is a certaind egree of redundancy introduced in this technique since a
+constant added to $u_1$ and $v_1$ does not change $x_1$.
+* Nevertheless, the simplex method can still be used to find the solution.
+
+
+## Free variables &#8211; second method {.smaller}
+
+* Take the same free variable situation, i.e, $x_1$ is free to take on positive
+or negative values.
+* One can take any one of the $m$ equality constraints which has a nonzero
+coefficient for $x_1$, say, for example,
+
+$$ a_{i1}x_1 + a_{i2}x_2 + \cdots + a_{in}x_n = b_i, $$ 
+
+where $a_{i1} \neq 0$.
+
+* Then $x_1$ can be expressed as a linear combination of the other variables,
+plus a constant.
+* This expression can be substituted everywhere for $x_1$ and we are led to a
+new problem of exacly the same form but expressed in terms of the variables
+$x_2, x_3, \ldots, x_n$ only.
+* Furthermore, the $i^{\text{th}}$ equation, used to determine $x_1$ is now
+identically zero and it too can be eliminated.
+* We obtain a linear program having $n_1$ variables and $m-1$ constraint
+equations.
+
+## Example &#8211; specific case {.smaller}
 
 :::: {.columns}
 
 ::: {.column width="50%"}
-* The fixed camera observes the object and estimates the object's pose 
-${^F}\xi_B$.
 
-* The other camera is not fixed, it is attached to the robot at some constant 
-relative pose and estimates the object's pose ${^C}\xi_B$.
+::: {.callout-note appearance="minimal"}
+$$
+\begin{align}
+\operatorname{minimize} & x_1 + 3x_2 + 4x_3 \\
+\text{subject to} & x_1 + 2x_2 + 3x_3 = 5, \\
+& 2x_1 + 3x_2 + x_3 = 6, \\
+& x_2, x_3 \geq 0.
+\end{align}
+$$
+:::
 
-* An alternative representation of the spatial representation is a directed 
-graph.
-  - Each node represents a frame and each edge represents a relative pose.
-  - Recall: we can compose relative poses, e.g.:
-  $$
-  \begin{aligned}
-    \xi_F \oplus {^F}\xi_B &= \xi_R \oplus {^R}\xi_C \oplus {^C}\xi_B, \\
-    \xi_F \oplus {^F}\xi_R &= \xi_R.
-  \end{aligned}
-  $$
-  - Each equation represents a loop in the graph with each side of the equation 
-  starting and ending at the same node.
 :::
 
 ::: {.column width="50%"}
-<center><img src="contents/assets/fig2_4.svg" width="500" heigth="500" /></center>
 
-<center><img src="contents/assets/fig2_5.svg" width="300" heigth="300" /></center>
+$x_1$ is free, so we can solve for it from the first constraint, obtaining
+
+$$ x_1 = 5 - 2x_2 - x_3.$$ {#eq-a}
 
 :::
 
 ::::
 
-
-## Algebraic rules of relative poses {.smaller}
-
-::: {.callout-tip}
-## Group properties
-There are just a few algebraic rules:
+Substituting this into the objective and the second constraint, we obtain the
+equivalent problem 
 
 $$
-\begin{aligned}
-\xi \oplus 0 = \xi, \quad &\xi \ominus 0 = \xi, \\
-\xi \ominus \xi = 0, \quad &\ominus \xi \oplus \xi = 0,
-\end{aligned}
+\begin{align}
+\operatorname{minimize} & x_2 + 3x_3 \\
+\text{subject to}& x_2 + x_3 = 4, \\
+& x_2, x_3 \geq 0.
+\end{align}
 $$
 
-where $0$ represents a zero relative pose. A pose has an inverse
+which is a problem in standard form.
 
-$$ \ominus {^X}\xi_Y = {^Y}\xi_X, $$
-
-which is represented graphically by an arrow from $\{Y\}$ to $\{X\}$. Relative 
-poses can also be composed or compounded
-
-$$ {^X}\xi_Y \oplus {^Y}\xi_Z = {^X}\xi_Z. $$
-
-A relative pose can transform a point expressed as a vector relative to one 
-frame to a vector relative to another
-$$ {^X}\bm{p} = {^X}\xi_Y \bullet {^Y}\bm{p}. $$
-:::
-
-::: {.callout-warning}
-## Composition is __NOT__ commutative
-$$ \xi_1 \oplus \xi_2 \neq \xi_2 \oplus \xi_1, $$
-
-with the exception being the case where $\xi_1 \oplus \xi_2 = 0$.
-:::
-
-
-## Algebraic manipulation of poses {.smaller}
-
-* The second loop eqn. in our example says that the pose of the robot is the 
-same as composing two relative poses:
-  - from the world frame to the fixed camera,
-  - from the fixed camera to the robot.
-
-$$
-\begin{aligned}
-\ominus \xi_F \oplus \xi_F \oplus {^F}\xi_R &= \ominus \xi_F \oplus \xi_R \\
-{^F}\xi_R &= \ominus \xi_F \oplus \xi_R,
-\end{aligned}
-$$
-
-which is the pose of the robot relative to the fixed camera, shown as the 
-dashed line in the directed graph.
-
-::: {.callout-tip}
-## Writing these expressions by inspection
-
-To find the pose of node $X$ w.r.t. node $Y$:
-
-* find a path from $\{Y\}$ to $\{X\}$ and write down the relative poses on the 
-edges in a left-to-right order,
-* if you traverse the edge in the direction of its arrow, precede it with the 
-$\oplus$ operator, otherwise use $\ominus$.
-:::
+After the smaller problem is solved (what is the answer?) the value for $x_1 =
+-3$ can be found from @eq-a.
