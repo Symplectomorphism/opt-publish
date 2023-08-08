@@ -33,43 +33,165 @@ array of problems with modest effort.
   w_1 x_1 + w_2 x_2
   $$
   where $w_j, \, j=1,2$ is the unit weight of commodity $j$.
-
+  - The overall problem would be expressed as
+  $$
+  \begin{align}
+    \operatorname{maximize} &w_1x_1 + w_2x_2 \\
+    \text{subject to} &x_1 + x_2 \leq B, \\
+     &x_1, x_2 \geq 0.
+  \end{align}
+  $$
 :::
 
 ::::
 
-## Good-old days
+## Conic Linear Programming {.smaller}
+
+Conic Linear Programming, (CLP), is a natural extension of linear programming.
+
+* In LP, variables form a vector or point that is subjected to be componentwise
+nonnegative.
+* IN CLP, they form a point in a general pointed convex cone such as a vector or
+a matrix.
 
 :::: {.columns}
 
-::: {.column width="30%" fig-align="center"}
-![](contents/assets/vaucanson_duck.png){width=80%}
-![](contents/assets/jacquard_loom.png){width=80%}
+::: {.column width="33%"}
+$$
+\begin{align}
+\operatorname{min} &2x_1+x_2+x_3 \\
+\text{subject to} &x_1 + x_2 + x_3 = 1, \\
+& x_1, x_2, x_3 \geq \bm{0},
+\end{align}
+$$
 :::
 
-::: {.column width="70%"}
-- $18^{th}$ century Europe was fascinated by automata such as Vaucanson's 
-duck, which was complex by the standards of the day.
 
-<br>
+::: {.column width="33%"}
+$$
+\begin{align}
+\operatorname{min} &2x_1+x_2+x_3 \\
+\text{subject to} &x_1 + x_2 + x_3 = 1, \\
+& \sqrt{x_2^2 + x_3^2} \leq x_1,
+\end{align}
+$$
+:::
 
-- Jacquard extended these ideas and developed a loom, which was essentially a 
-programmable weaving machine.
+::: {.column width="33%"}
+$$
+\begin{align}
+\operatorname{min} &2x_1+x_2+x_3 \\
+\text{subject to} &x_1 + x_2 + x_3 = 1, \\
+& \begin{pmatrix} x_1 & x_2 \\ x_2 & x_3 \end{pmatrix}\succeq \bm{0}.
+\end{align}
+$$
 :::
 
 ::::
 
-## Good-old days
+:::: {.columns}
 
-- The term __robot__ was first introduced by the Czech playwright Karel 
-&Ccaron;apek in his $1920$ play Rossum's Universal Robots.
-- The word __robota__ is the Czech word for worker.
+::: {.column width="33%"}
 
-<center><img src="contents/assets/unimation.png"
-             style="max-width: 50%;"/></center>
+::: {.callout-tip appearance="minimal"}
+Constraints form a vector in the nonnegative orthant cone.
+:::
 
-- The first patent for what we would now consider a robot was filed in $1954$ 
-by George C. Devol.
+:::
 
-- The device comprised a mechanical arm with a gripper that was mounted on a 
-track.
+
+::: {.column width="33%"}
+
+::: {.callout-tip appearance="minimal"}
+Constraints form a vector in a cone shaped like an ice-cream cone, called a
+second-order cone.
+:::
+
+:::
+
+::: {.column width="33%"}
+
+::: {.callout-tip appearance="minimal"}
+Constraints form a $2$-dimensional symmetric matrix required to be positive
+semidefinite or to be in a semidefinite cone.
+:::
+
+:::
+
+::::
+
+
+
+## Unconstrained Problems {.smaller}
+
+::: {.r-stack}
+
+::: {.fragment fragment-index=0 .fade-out}
+Are unconstrained optimization problems are so devoid of structural
+properties as to preclude their applicability as useful models of meaningful
+problems?
+:::
+
+::: {.fragment fragment-index=1}
+Are unconstrained optimization problems are so devoid of structural
+properties as to preclude their applicability as useful models of meaningful
+problems? ... __No!__
+
+* Constraints may often be relaxes and built into the cost/objective function.
+* Sometimes (equality) constraints may be solved and these degrees of freedom
+may be eliminated.
+  - $x_1 + x_2 = B$ may be eliminated by substituting $x_2 = B - x_1$.
+
+* The study of unconstrained problems provides a _stepping stone_ toward the
+more general case of constrained problems.
+  - Many aspects of both theory and algorithms are most naturally motivated and
+    verified for the unconstrained case before progressing to the constrained
+    case.
+:::
+
+:::
+
+
+## Constrained Problems {.smaller}
+
+Many problems met in practice are consrained problems that cannot be represented
+or massaged ino unconstrained ones.
+
+* General mathematical programming problem is
+
+$$
+\begin{align}
+\operatorname{minimize} & f(\bm{x}) \\
+\text{subject to} & h_i(\bm{x}) = 0, \; i=1, 2, \ldots, m \\
+ & g_i(\bm{x}) \geq 0, \; i=1, 2, \ldots, p \\
+ &\bm{s} \in S.
+\end{align}
+$$
+
+* We do not discuss discrete programming in this course; i.e., our variables
+$\bm{x}$ live in a space that is continuous (for example $\bm{x} \in \mathbb{R}^n$).
+
+
+## Size of Problems {.smaller}
+
+Size: \# of unknown variables and/or \# of constraints.
+
+* small-scale problems: $\leq 5$ unknowns and constraints,
+* intermediate-scale problems: $5 - 100/1000$ variables and constraints,
+* large-scale problems: $1000 - 10^6$ variables and constraints.
+
+:::{.callout-tip appearance="minimal"}
+Complexity theory studies how fast the computation time increases as a function
+of the increases in the number of variables and constraints ($P \neq NP$?).
+:::
+
+:::{.callout-important appearance="default"}
+## Necessary and Sufficient Optimality Conditions
+Much of the basic theory associated with optimization is directed towards
+obtaining these conditions as a set of equations or inequalities.
+
+* Typically, one cannot solve the necessary conditions (as complex as solving the
+original optimization problem).
+* Instead, a more direct approach is used: search through the space for
+ever-improving points.
+:::

@@ -1,57 +1,27 @@
-# History {visibility="uncounted"}
+# Iterative Algorithms and Convergence
 
-## Let's get started!
+## Algorithms {.smaller}
 
-:::: {.columns}
-
-::: {.column width="30%" fig-align="center"}
-![](contents/assets/toyrobot.png){width=80%}
+::: {.callout-tip appearance="minimal"}
+Computers perform repetitive operations efficiently - algorithms are iterative
+in nature.
 :::
 
-::: {.column width="70%"}
-- Robots are still far behind what many people expect them to be from movies. 
+* An initial vector $\bm{x}_0$ is selected and the algorithm generates an
+improved vector $\bm{x}_1$.
 
-<br>
+* This is repeated to get a still better vector $\bm{x}_2$.
+* Continuing in this fashion, a sequence of ever-improving vectors $\bm{x}_0, 
+\bm{x}_1, \ldots, \bm{x}_k, \ldots$ is found that approaches a solution point
+$\bm{x}^\ast$.
 
-- One thing is certain: robotics will be an important technology in this century.
-  - Vacuum cleaning robots have already been with us for over a decade.
-  - Self driving cars are coming.
-:::
+* For linear programming this sequence may be made finite: __simplex method__.
 
-::::
-
-## Good-old days
-
-:::: {.columns}
-
-::: {.column width="30%" fig-align="center"}
-![](contents/assets/vaucanson_duck.png){width=80%}
-![](contents/assets/jacquard_loom.png){width=80%}
-:::
-
-::: {.column width="70%"}
-- $18^{th}$ century Europe was fascinated by automata such as Vaucanson's 
-duck, which was complex by the standards of the day.
-
-<br>
-
-- Jacquard extended these ideas and developed a loom, which was essentially a 
-programmable weaving machine.
-:::
-
-::::
-
-## Good-old days
-
-- The term __robot__ was first introduced by the Czech playwright Karel 
-&Ccaron;apek in his $1920$ play Rossum's Universal Robots.
-- The word __robota__ is the Czech word for worker.
-
-<center><img src="contents/assets/unimation.png"
-             style="max-width: 50%;"/></center>
-
-- The first patent for what we would now consider a robot was filed in $1954$ 
-by George C. Devol.
-
-- The device comprised a mechanical arm with a gripper that was mounted on a 
-track.
+* Algorithms must be analyzed to check if they will converge to a solution
+point.
+  - The rate at which they converge (if they do) are also analyzed: complexity
+    analysis.
+  - One cannot regard a problem as solved simply b/c an algorithm is known which
+    will converge to the solution.
+  - It may require an exorbitant amount of time to reduce the error to an
+    acceptable tolerance.

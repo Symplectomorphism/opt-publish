@@ -1,57 +1,100 @@
-# History {visibility="uncounted"}
+# Examples
 
-## Let's get started!
+## Convex Problems {.smaller}
 
 :::: {.columns}
 
-::: {.column width="30%" fig-align="center"}
-![](contents/assets/toyrobot.png){width=80%}
+::: {.column width="40%"}
+
+::: {.callout-tip .fragment fragment-index=1}
+## A quadratic program (QP)
+
+$$
+\begin{align}
+\operatorname{minimize} & f(x) = (x_1 - 1)^2 + (x_2 - 1)^2
+\end{align}
+$$
 :::
 
-::: {.column width="70%"}
-- Robots are still far behind what many people expect them to be from movies. 
+:::
 
-<br>
+::: {.column width="60%"}
 
-- One thing is certain: robotics will be an important technology in this century.
-  - Vacuum cleaning robots have already been with us for over a decade.
-  - Self driving cars are coming.
+::: {.callout-tip .fragment fragment-index=2}
+## A linearly constrained quadratic program (QP)
+
+$$
+\begin{align}
+\operatorname{minimize} & f(x) = (x_1 - 1)^2 + (x_2 - 1)^2 \\
+\text{subject to} & x_1 + x_2 = 3.
+\end{align}
+$$
+:::
+
 :::
 
 ::::
 
-## Good-old days
 
 :::: {.columns}
 
-::: {.column width="30%" fig-align="center"}
-![](contents/assets/vaucanson_duck.png){width=80%}
-![](contents/assets/jacquard_loom.png){width=80%}
+::: {.column width="40%"}
+
+::: {.callout-tip .fragment fragment-index=1}
+## A linear program (LP)
+
+$$
+\begin{align}
+\operatorname{maximize} & f(x) = 2x_1 + x_2\\
+\text{subject to} & x_1 + x_2 \leq 1, \\
+& x_1, x_2 \geq 0.
+\end{align}
+$$
+
+* The optimal solution is $\bm{x}^\ast = (1, 0)$.
 :::
 
-::: {.column width="70%"}
-- $18^{th}$ century Europe was fascinated by automata such as Vaucanson's 
-duck, which was complex by the standards of the day.
+:::
 
-<br>
-
-- Jacquard extended these ideas and developed a loom, which was essentially a 
-programmable weaving machine.
+::: {.column width="60%"}
+![](contents/assets/linear_program_feasible_set.png){fig-align="center" width=60%}
 :::
 
 ::::
 
-## Good-old days
 
-- The term __robot__ was first introduced by the Czech playwright Karel 
-&Ccaron;apek in his $1920$ play Rossum's Universal Robots.
-- The word __robota__ is the Czech word for worker.
+## Nonlinear Program (NLP) {.smaller}
 
-<center><img src="contents/assets/unimation.png"
-             style="max-width: 50%;"/></center>
+:::: {.columns}
 
-- The first patent for what we would now consider a robot was filed in $1954$ 
-by George C. Devol.
+::: {.column width="50%"}
 
-- The device comprised a mechanical arm with a gripper that was mounted on a 
-track.
+::: {.callout-tip .fragment fragment-index=1}
+## A nonlinear program (NLP)
+
+$$
+\begin{align}
+\operatorname{maximize} & f(x) = -(x_1+x_2)^2\\
+\text{subject to} & x_1x_2 \geq 0, \\
+& -2 \leq x_1 \leq 1, \\
+& -2 \leq x_2 \leq 1.
+\end{align}
+$$
+
+:::
+
+:::
+
+::: {.column width="50%"}
+![](contents/assets/nonlinear_program.png){fig-align="center" width=80%}
+:::
+
+::::
+
+
+* The point $\bm{x}_c = (1,1)$ has an objective value $f(\bm{x}_c) = 4$, which
+is higher than any of its "nearby" feasible points (_local optimizer_).
+
+* In contrast, the point $\bm{x}^\ast = (-2, -2)$ has an objective value
+$f(\bm{x}^\ast) = 16$, which is the best among all feasible points (_global
+optimizer_).
