@@ -53,6 +53,20 @@
     "href": "02_basic_lp.html#example-1-the-diet-problem",
     "title": "02_basic_lp",
     "section": "Example 1 – The Diet Problem",
-    "text": "Example 1 – The Diet Problem"
+    "text": "Example 1 – The Diet Problem\n\n\n\nDetermine the most economical die that satisfies the basic minimum nutritional requirements for good health\n\n\n\n\n\n\n\n\n\nThere are available nn different foods.\nThere are mm basic nutritional ingredients,\nEach unit of food jj contains aija_{ij} units of the ithi^{\\text{th}} nutrient.\n\n\n\njthj^{\\text{th}} food sells at a price cjc_j per unit.\nEach individual must receive at least bib_i units of the ithi^{\\text{th}} nutrient per day.\n\n\n\n\nIf we denote by xjx_j the number of units of food jj in the diet, the problem is to select xjx_j’s to minimize the total cost c1x1+c2x2+⋯+cnxn c_1x_1 + c_2x_2 + \\cdots + c_nx_n \n\n\nsubject to the nutritional constraints ai1x1+ai2x2+⋯+ainxn≥bi,i=1,…,m, a_{i1}x_1 + a_{i2}x_2 + \\cdots + a_{in}x_n \\geq b_i, \\; i=1, \\ldots, m, \n\n\nand the nonnegative constraints x1≥0,x2≥0,…,xn≥0, x_1 \\geq 0, x_2 \\geq 0, \\ldots, x_n \\geq 0,  on the food quantities.\n\n\n\n\n\nThis problem can be converted to standard form by subtrating a nonnegative surplus variable from the left side of each of the mm linear inequalities."
+  },
+  {
+    "objectID": "02_basic_lp.html#example-2-the-resource-allocation-problem",
+    "href": "02_basic_lp.html#example-2-the-resource-allocation-problem",
+    "title": "02_basic_lp",
+    "section": "Example 2– The Resource-Allocation Problem",
+    "text": "Example 2– The Resource-Allocation Problem\n\n\n\nA facility is capable of manufacturing nn different products.\nEach product can be produced at any level xj≥0x_j \\geq 0, j=1,2,…,nj=1, 2, \\ldots, n.\nEach unit of the jthj^{\\text{th}} product needs aija_{ij} units of the ithi^{\\text{th}} resource, i=1,2,…,mi = 1, 2, \\ldots, m.\n\n\n\nEach product may require various amounts of mm different resources.\nEach unit of the jthj^{\\text{th}} product can sell for πj\\pi_j dollars.\nEach bib_i, i=1,2,…,mi = 1, 2, \\ldots, m describe the available quantities of the mm resources.\n\n\n\n\nWe wish to manufacture products at maximum revenue\nmaximizeπ1x1+π2x2+⋯+πnxn\n\\begin{align}\n\\operatorname{maximize} & \\pi_1x_1 + \\pi_2x_2 + \\cdots + \\pi_nx_n\n\\end{align}\n\n\n\nsubject to the resource constraints\nsubject toai1x1+ai2x2+⋯+ainxn≤bi,i=1,…,m\n\\begin{align}\n\\text{subject to} & a_{i1}x_1 + a_{i2}x_2 + \\cdots + a_{in}x_n \\leq b_i, \\; i=1,\n\\ldots, m\n\\end{align}\n\nand the nonnegativity consraints on all production variables.\n\n\n\nThe problem can also be interpreted as\n\nfund nn different activities, where\nπj\\pi_j is the full reward from the jthj^{\\text{th}} activity,\nxjx_j is restricted to 0≤xj≤10 \\leq x_j \\leq 1, representing the funding level from 0%0\\% to 100%100\\%."
+  },
+  {
+    "objectID": "02_basic_lp.html#example-3-the-transportation-problem",
+    "href": "02_basic_lp.html#example-3-the-transportation-problem",
+    "title": "02_basic_lp",
+    "section": "Example 3 – The Transportation Problem",
+    "text": "Example 3 – The Transportation Problem\n\n\n\nQuantities a1,a2,…,ama_1, a_2, \\ldots, a_m of a certain product are to be shipped from mm locations.\nShipping a unit of product from origin ii to destination jj costs cijc_{ij}.\n\n\n\nThese products will be received in amounts of b1,b2,…,bnb_1, b_2, \\ldots, b_n at each of nn destinations.\nWe want to deermine the amounts xijx_{ij} to be shipped between each origin-destination pair i=1,2,…,mi = 1, 2, \\ldots, m; j=1,2,…,nj=1, 2, \\ldots, n.\n\n\n\n\n\n\n\nx11x_{11}\nx12x_{12}\n⋯\\cdots\nx1nx_{1n}\n|\na1a_1\n\n\nx21x_{21}\nx22x_{22}\n⋯\\cdots\nx2nx_{2n}\n|\na2a_2\n\n\n⋮\\vdots\n⋮\\vdots\n⋮\\vdots\n⋮\\vdots\n|\n⋮\\vdots\n\n\nxm1x_{m1}\nxm2x_{m2}\n⋯\\cdots\nxmnx_{mn}\n|\nama_m\n\n\n——\n——\n——\n——\n\n\n\n\nb1b_{1}\nb2b_{2}\n⋯\\cdots\nbnb_{n}"
   }
 ]

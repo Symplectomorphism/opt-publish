@@ -1,3 +1,135 @@
 # Examples of Linear Programming Problems
 
 ## Example 1 &#8211; The Diet Problem {.smaller}
+
+::: {.callout-tip appearance="minimal"}
+## Determine the most economical die that satisfies the basic minimum nutritional requirements for good health
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* There are available $n$ different foods.
+* There are $m$ basic nutritional ingredients,
+* Each unit of food $j$ contains $a_{ij}$ units of the $i^{\text{th}}$ nutrient.
+:::
+
+::: {.column width="50%"}
+* $j^{\text{th}}$ food sells at a price $c_j$ per unit.
+* Each individual must receive at least $b_i$ units of the $i^{\text{th}}$
+nutrient per day.
+:::
+::::
+
+::: {.fragment fragment-index=1}
+If we denote by $x_j$ the number of units of food $j$ in the diet, the problem
+is to select $x_j$'s to minimize the total cost
+$$ c_1x_1 + c_2x_2 + \cdots + c_nx_n $$
+:::
+
+::: {.fragment fragment-index=2}
+subject to the nutritional constraints
+$$ a_{i1}x_1 + a_{i2}x_2 + \cdots + a_{in}x_n \geq b_i, \; i=1, \ldots, m, $$
+:::
+
+::: {.fragment fragment-index=3}
+and the nonnegative constraints
+$$ x_1 \geq 0, x_2 \geq 0, \ldots, x_n \geq 0, $$
+on the food quantities.
+:::
+
+::: {.fragment fragment-index=4}
+
+::: {.callout-note appearance="minimal"}
+This problem can be converted to standard form by subtrating a nonnegative
+surplus variable from the left side of each of the $m$ linear inequalities.
+:::
+
+:::
+
+
+## Example 2&#8211; The Resource-Allocation Problem {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* A facility is capable of manufacturing $n$ different products.
+* Each product can be produced at any level $x_j \geq 0$, $j=1, 2, \ldots, n$.
+* Each unit of the $j^{\text{th}}$ product needs $a_{ij}$ units of the
+$i^{\text{th}}$ resource, $i = 1, 2, \ldots, m$.
+:::
+
+::: {.column width="50%"}
+* Each product may require various amounts of $m$ different resources.
+* Each unit of the $j^{\text{th}}$ product can sell for $\pi_j$ dollars.
+* Each $b_i$, $i = 1, 2, \ldots, m$ describe the available quantities of the
+$m$ resources.
+:::
+::::
+
+:::{.fragment fragment-index=1}
+We wish to manufacture products at maximum revenue
+
+$$
+\begin{align}
+\operatorname{maximize} & \pi_1x_1 + \pi_2x_2 + \cdots + \pi_nx_n
+\end{align}
+$$
+:::
+
+:::{.fragment fragment-index=2}
+subject to the resource constraints
+
+$$
+\begin{align}
+\text{subject to} & a_{i1}x_1 + a_{i2}x_2 + \cdots + a_{in}x_n \leq b_i, \; i=1,
+\ldots, m
+\end{align}
+$$
+
+and the nonnegativity consraints on all production variables.
+:::
+
+::: {.fragment fragment-index=3}
+* The problem can also be interpreted as 
+  - fund $n$ different activities, where
+  - $\pi_j$ is the full reward from the $j^{\text{th}}$ activity,
+  - $x_j$ is restricted to $0 \leq x_j \leq 1$, representing the funding level
+    from $0\%$ to $100\%$.
+:::
+
+
+
+## Example 3 &#8211; The Transportation Problem {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* Quantities $a_1, a_2, \ldots, a_m$ of a certain product are to be shipped from
+$m$ locations.
+* Shipping a unit of product from origin $i$ to destination $j$ costs $c_{ij}$.
+:::
+
+::: {.column width="50%"}
+* These products will be received in amounts of $b_1, b_2, \ldots, b_n$ at each
+of $n$ destinations.
+* We want to deermine the amounts $x_{ij}$ to be shipped between each
+origin-destination pair $i = 1, 2, \ldots, m$; $j=1, 2, \ldots, n$.
+:::
+::::
+
+<style>
+td, th {
+   border: none!important;
+}
+</style>
+
+|
+|--------|--------|--------|--------|--------|--------|
+|$x_{11}$|$x_{12}$|$\cdots$|$x_{1n}$|\||$a_1$|
+|$x_{21}$|$x_{22}$|$\cdots$|$x_{2n}$|\||$a_2$|
+|$\vdots$|$\vdots$|$\vdots$|$\vdots$|\||$\vdots$|
+|$x_{m1}$|$x_{m2}$|$\cdots$|$x_{mn}$|\||$a_m$|
+|------|------|------|------|||
+|$b_{1}$|$b_{2}$|$\cdots$|$b_{n}$|||
+
