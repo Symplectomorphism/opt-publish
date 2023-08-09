@@ -31,5 +31,6 @@ revealjs-plugins:
 {{< include contents/_introduction.qmd >}}
 {{< include contents/_examples.qmd >}}
 {{< include contents/_bfs.qmd >}}
+{{< include contents/_fundamental.qmd >}}
 {{< include contents/_convex.qmd >}}
 {{< include contents/_farkas.qmd >}}

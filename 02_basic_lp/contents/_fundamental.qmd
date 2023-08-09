@@ -1,0 +1,34 @@
+# The Fundamental Theorem of Linear Programming
+
+## The Fundamental Theorem of LP  {.smaller}
+
+::: {.fragment fragment-index=1}
+Corresponding to a linear program in standard form
+
+$$
+\begin{align}
+\operatorname{minimize} & \bm{c}^\top \bm{x}  \\
+\text{subject to} & \bm{Ax} = \bm{b}, \;\; \bm{x} \geq 0
+\end{align} 
+$$ {#eq-lp}
+
+a feasible solution to the constraints that achieves the minimum value of the
+objective function subject to those constraints is said to be an _optimal
+feasible solution_. If this solution is basic, it is an _optimal basic feasible
+solution_.
+:::
+
+::: {.fragment fragment-index=2}
+
+::: {.callout-tip icon=false}
+## Fundamental Theorem
+Given a linear program in standard form @eq-lp where $\bm{A}$ is an $m \times
+n$ matrix of rank $m$,
+
+1. if there is a feasible solution, there is a basic feasible solution;
+2. if there is an optimal feasible solution, there is an optimal basic feasible
+solution.
+
+:::
+
+:::
