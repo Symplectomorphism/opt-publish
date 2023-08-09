@@ -1,0 +1,427 @@
+# Examples of Linear Programming Problems
+
+## Example 1 &#8211; The Diet Problem {.smaller}
+
+::: {.callout-tip appearance="minimal"}
+## Determine the most economical die that satisfies the basic minimum nutritional requirements for good health
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* There are available $n$ different foods.
+* There are $m$ basic nutritional ingredients,
+* Each unit of food $j$ contains $a_{ij}$ units of the $i^{\text{th}}$ nutrient.
+:::
+
+::: {.column width="50%"}
+* $j^{\text{th}}$ food sells at a price $c_j$ per unit.
+* Each individual must receive at least $b_i$ units of the $i^{\text{th}}$
+nutrient per day.
+:::
+::::
+
+::: {.fragment fragment-index=1}
+If we denote by $x_j$ the number of units of food $j$ in the diet, the problem
+is to select $x_j$'s to minimize the total cost
+$$ c_1x_1 + c_2x_2 + \cdots + c_nx_n $$
+:::
+
+::: {.fragment fragment-index=2}
+subject to the nutritional constraints
+$$ a_{i1}x_1 + a_{i2}x_2 + \cdots + a_{in}x_n \geq b_i, \; i=1, \ldots, m, $$
+:::
+
+::: {.fragment fragment-index=3}
+and the nonnegative constraints
+$$ x_1 \geq 0, x_2 \geq 0, \ldots, x_n \geq 0, $$
+on the food quantities.
+:::
+
+::: {.fragment fragment-index=4}
+
+::: {.callout-note appearance="minimal"}
+This problem can be converted to standard form by subtrating a nonnegative
+surplus variable from the left side of each of the $m$ linear inequalities.
+:::
+
+:::
+
+
+## Example 2&#8211; The Resource-Allocation Problem {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* A facility is capable of manufacturing $n$ different products.
+* Each product can be produced at any level $x_j \geq 0$, $j=1, 2, \ldots, n$.
+* Each unit of the $j^{\text{th}}$ product needs $a_{ij}$ units of the
+$i^{\text{th}}$ resource, $i = 1, 2, \ldots, m$.
+:::
+
+::: {.column width="50%"}
+* Each product may require various amounts of $m$ different resources.
+* Each unit of the $j^{\text{th}}$ product can sell for $\pi_j$ dollars.
+* Each $b_i$, $i = 1, 2, \ldots, m$ describe the available quantities of the
+$m$ resources.
+:::
+::::
+
+:::{.fragment fragment-index=1}
+We wish to manufacture products at maximum revenue
+
+$$
+\begin{align}
+\operatorname{maximize} & \pi_1x_1 + \pi_2x_2 + \cdots + \pi_nx_n
+\end{align}
+$$
+:::
+
+:::{.fragment fragment-index=2}
+subject to the resource constraints
+
+$$
+\begin{align}
+\text{subject to} & a_{i1}x_1 + a_{i2}x_2 + \cdots + a_{in}x_n \leq b_i, \; i=1,
+\ldots, m
+\end{align}
+$$
+
+and the nonnegativity consraints on all production variables.
+:::
+
+::: {.fragment fragment-index=3}
+* The problem can also be interpreted as 
+  - fund $n$ different activities, where
+  - $\pi_j$ is the full reward from the $j^{\text{th}}$ activity,
+  - $x_j$ is restricted to $0 \leq x_j \leq 1$, representing the funding level
+    from $0\%$ to $100\%$.
+:::
+
+
+
+## Example 3 &#8211; The Transportation Problem {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* Quantities $a_1, a_2, \ldots, a_m$ of a certain product are to be shipped from
+$m$ locations.
+* Shipping a unit of product from origin $i$ to destination $j$ costs $c_{ij}$.
+:::
+
+::: {.column width="50%"}
+* These products will be received in amounts of $b_1, b_2, \ldots, b_n$ at each
+of $n$ destinations.
+* We want to determine the amounts $x_{ij}$ to be shipped between each
+origin-destination pair $i = 1, 2, \ldots, m$; $j=1, 2, \ldots, n$.
+:::
+::::
+
+<style>
+td, th {
+   border: none!important;
+}
+</style>
+
+|
+|--------|--------|--------|--------|--------|--------|
+|$x_{11}$|$x_{12}$|$\cdots$|$x_{1n}$|\||$a_1$|
+|$x_{21}$|$x_{22}$|$\cdots$|$x_{2n}$|\||$a_2$|
+|$\vdots$|$\vdots$|$\vdots$|$\vdots$|\||$\vdots$|
+|$x_{m1}$|$x_{m2}$|$\cdots$|$x_{mn}$|\||$a_m$|
+|------|------|------|------|||
+|$b_{1}$|$b_{2}$|$\cdots$|$b_{n}$|||
+
+:::{.fragment}
+* The $i^{\text{th}}$ row in this array defines the variables assoc. w/ the
+$i^{\text{th}}$ origin.
+* The $j^{\text{th}}$ column defines the variables assoc. w/ the $j^{\text{th}}$
+destination.
+* _Problem_: find the nonnegative variables $x_{ij}$ so that the sum across the
+$i^{\text{th}}$ row is $a_j$, the sum down the $j^{\text{th}}$ column is $b_j$,
+and the weighted sum $\sum_{j=1}^n\sum_{i=1}^m c_{ij}x_{ij}$ is minimized.
+:::
+
+
+## Example 4 &#8211; The Maximal Flow Problem {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-note icon=false}
+## Maximal flow problem
+Determine the maximal flow that can be established in such a network.
+:::
+
+$$
+\begin{align}
+\operatorname{maximize} & f \\
+\text{subject to} & \sum_{j=1}^n x_{1j} - \sum_{j=1}^n x_{j1} - f = 0, \\
+& \sum_{j=1}^n x_{ij} - \sum_{j=1}^n x_{ji}  = 0, \quad i \neq 1, m, \\
+& \sum_{j=1}^n x_{mj} - \sum_{j=1}^n x_{jm} + f = 0, \\
+& 0 \leq x_{ij} \leq k_{ij}, \quad \forall i, j,
+\end{align}
+$$
+
+where $k_{ij} = 0$ for those no-arc pairs $(i,j)$.
+
+
+:::
+
+::: {.column width="50%"}
+<center><img src=contents/assets/network.png width="75%" /></center>
+
+::: {.callout-tip appearance="minimal"}
+* Capacitated network in which two special nodes, called the _source_ (node 1); and
+the _sink_ (node $m$) are distinguished.
+* All other nodes must satisfy the conservation requirement: net flow into these
+nodes must be zero.
+  - the source may have a net outflow,
+  - the sink may have a net inflow.
+* The outlow $f$ of the source will equal the inflow of the sink.
+:::
+
+:::
+
+::::
+
+
+## Example 5 &#8211; A Supply-Chain Problem {.smaller}
+
+::: {.callout-note appearance="minimal"}
+A warehouse is buying and selling stock of a certain commodity in order to
+maximize profit over a certain length of time.
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* Warehouse has a fixed capacity $C$.
+* The price, $p_i$, of the commodity is known to fluctuate over a number of time
+periods, say months, indexed by $i$.
+* The warehouse is originally empty and is required to be empty at the end of
+the last period.
+:::
+
+
+::: {.column width="50%"}
+* There is a cost $r$ per unit of holding stock for one period.
+* In any period the same price holds for both purchase and sale.
+* $x_i$: level of stock in the warehouse at the beginning of period
+$i$, $u_i$: amount bought during this period, $s_i$: amount sold
+during this period.
+:::
+
+::::
+
+$$
+\begin{align}
+\operatorname{maximize} & \sum_{i=1}^n \left(p_i(s_i - u_i) - rx_i \right) \\
+\text{subject to} & x_{i+1} = x_i + u_i - s_i, \quad i = 1, 2, \ldots, n-1, \\
+& 0 = x_n + u_n - s_n, \\
+& x_i + z_i = C, \quad i = 2, \ldots, n, \\
+& x_1 = 0, x_i \geq 0, u_i \geq 0, s_i \geq 0, z_i \geq 0,
+\end{align}
+$$
+
+where $z_i$ is a slack variable.
+
+## <span style="font-size: 78%">Example 6 &#8211; Linear Classifier and Support Vector Machine</span> {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-note appearance="minimal"}
+$d$-dimensional data points are to be classified into two distinct classes.
+:::
+
+* In general, we have vectors $\bm{a}_i \in \mathbb{R}^d$ for $i=1, 2, \ldots,
+n_1$ and vector $\bm{b}_j \in \mathbb{R}^d$ for $j = 1, 2, \ldots, n_2$.
+* We wish to find a hyperplane that separates $\bm{a}_i$'s from the
+$\bm{b}_j$'s, i.e., find a _slope-vector_ $y \in \mathbb{R}^d$ and an intercept
+$\beta$ such that
+
+$$
+\begin{align}
+  \bm{a}_i^\top \bm{y} + \beta &\geq 1, \quad \forall i, \\
+  \bm{b}_j^\top \bm{y} + \beta &\leq 1, \quad \forall j, \\
+\end{align}
+$$
+
+where $\{\bm{x}: \bm{x}^\bm{y} + \beta = 0\}$ is the desired hyperplane.
+
+* The separation is defined by the fixed margins $+1$ and $-1$, which could be
+made soft or variable later.
+
+
+:::
+
+::: {.column width="50%"}
+<center><img src=contents/assets/svm.png width="70%" /></center>
+
+::: {.callout-tip icon=false}
+## Example
+* Two-dimensional data points may be grade averages in science and
+humanities for different students.
+* We also know the academic major of each student, as being science or
+humanities, which serves as the classification.
+:::
+
+:::
+
+::::
+
+
+
+## Example 7 &#8211; Markov Decision Process (MDP) {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-note icon=false}
+## Markov Decision Process
+An MDP problem is defined by a finite number of states, indexed by $i = 1,
+\ldots, m$, where each state has a set of a finite number of actions,
+$\mathcal{A}_i$, to take.
+:::
+
+* Each action, say $j \in \mathcal{A}_i$, is associated with 
+  - an immediate cost $c_j$ of taking,
+  - a probability distribution $\bm{p}_j \in \mathbb{R}^m$ to transfer to all
+    possible states at the next time period.
+
+* A _stationary_ policy for the decision maker is a function $\pi = \{\pi_1,
+\pi_2, \cdots, \pi_m\}$ that specifies a single action in every state, $\pi_i
+\in \mathcal{A}_i$.
+
+:::
+
+::: {.column width="50%"}
+<center><img src=contents/assets/mazerunner.png width="99%" /></center>
+
+::: {.callout-tip icon=false}
+## MDP Problem
+Find a stationary policy to minimize or maximize the discounted sum of expected
+costs or rewards over the _infinite time horizon_ with a discount factor $0 \leq
+\gamma < 1$, when the process starts from state $i^0$:
+
+$$
+\sum_{t=0}^\infty \gamma^t \mathbb{E}[c_{\pi_{i^t}}]
+$$
+
+:::
+
+:::
+
+::::
+
+
+## Example 7 &#8211; Markov Decision Process (MDP) {.smaller}
+
+:::: {.columns}
+
+::: {.column width="55%"}
+
+::: {.callout-note icon=false}
+## Maze Runner Game
+Each square represents a state, where each of states $\{1, 2, 3, 4\}$ has two
+possible actions to take:
+
+* red action: moves to the next state at the next time period,
+* blue action: shortcut move, with a probability distribution, to a state at the
+next time period.
+
+Each state of $\{5, 6\}$ has only one action
+
+- moving to state $6$ (Exit state),
+- moving to state $1$ (Start state).
+
+All actions have zero cost, except state $5$'s (Trap state) action, which has a
+$1$-unit cost to get out.
+
+Suppose that the game is played infinitely, what is the optimal policy? That is,
+which action is best to take for every state at any time, to minimize the
+present-expected total cost?
+:::
+
+
+:::
+
+::: {.column width="45%"}
+<center><img src=contents/assets/mazerunner.png width="99%" /></center>
+
+::: {.callout-tip icon=false}
+## MDP Problem
+Two constraints for the two actions of State $1$
+
+$$
+y_1 - \gamma y_2 \leq 0, \;\; y_1 - \gamma(\frac{1}{4}y_3 +
+\frac{1}{4}y_5 + \frac{1}{4}y_6) \leq 0.
+$$
+
+Only constraint for the single action of State $5$
+
+$$
+y_5 - \gamma y_6 \leq 1.
+$$
+
+:::
+
+:::
+
+::::
+
+
+## Example 7 &#8211; Markov Decision Process (MDP) {.smaller}
+
+* Let $y_i^\ast$, $i = 1, \ldots, m$ represent the optimal present-expected cost
+when the process starts at state $i$ and time $0$
+  - also called the _cost-to_go_ value of state $i$.
+  - The $y_i^\ast$'s follow Bellman's principle of optimality:
+
+$$
+y_i^\ast = \operatorname{min}_{j \in \mathcal{A}_i} (c_j + \gamma \bm{p}_j^\top
+\bm{y}^\ast),
+$$
+
+where $c_j$ is the immediate cost of taking action $j \in \mathcal{A}_i$ at the
+current time period, and $\bm{p}_j^\top \bm{y}^\ast$ is the optimal expected
+cost from the next time period, and then on.
+
+* When $y_i^\ast$ is known for every state, the optimal action in each state
+would be
+
+$$
+\pi_i^\ast = \operatorname{arg min}_{j \in \mathcal{A}_i} (c_j + \gamma
+\bm{p}_j^\top \bm{y}^\ast), \quad \forall i.
+$$
+
+
+
+## Example 7 &#8211; Markov Decision Process (MDP) {.smaller}
+
+* One observes that $\bm{y}^\ast \in \mathbb{R}^m$ is a fixed-point of the
+Bellman operator, and it can be computed by the following linear program.
+
+$$
+\begin{align}
+\operatorname{maximize} & \sum_{i=1}^m y_i \\
+\text{subject to} & y_1 - \gamma \bm{p}_j^\top \bm{y} \leq c_j \quad \forall j \in \mathcal{A}_1, \\
+& \vdots \\
+& y_i - \gamma \bm{p}_j^\top \bm{y} \leq c_j \quad \forall j \in \mathcal{A}_i, \\
+& \vdots \\
+& y_m - \gamma \bm{p}_j^\top \bm{y} \leq c_j \quad \forall j \in \mathcal{A}_m. \\
+\end{align}
+$$
+
+* Basically, we relax the "$\operatorname{min}$" operator to "$\leq$" from
+Bellman's principle and make them into the constraints and then maximize the
+sum of $y_i$'s as the objective.
+
+* When the objective is maximized, at least one ineqality constraint in
+$\mathcal{A}_i$ must become equal for every state $i$ so that $\bm{y}$ is a
+fixed point solution of the Bellman operator.

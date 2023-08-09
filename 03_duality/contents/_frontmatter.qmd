@@ -1,0 +1,23 @@
+## Optimization Theory and Practice {.center .smaller}
+<!-- ###################################################################### -->
+
+<hr>
+
+### Duality and Complementarity
+
+<br/>
+
+::: {layout="[120, 60]"}
+__Instructor__: Aykut Satici, Ph.D. <br>
+<br>
+Mechanical and Biomedical Engineering <br>
+Electrical and Computer Engineering <br>
+Boise State University, Boise, ID, USA
+
+__Topics__: <br>
+Dual Linear Programs <br>
+The Duality Theorem <br>
+Interpretations <br>
+Sensitivty and CS <br>
+Selected Applications <br>
+:::
