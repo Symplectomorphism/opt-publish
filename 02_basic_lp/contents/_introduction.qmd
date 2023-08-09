@@ -98,7 +98,7 @@ variables, any set of linear inequalities can be converted to standard form.
 
 
 
-## Free variables &#8211; first method
+## Free variables &#8211; First Method
 
 ::: {.callout-important appearance="minimal"}
 Suppose one or more of the unknown variables is not required to be nonnegative,
@@ -115,7 +115,7 @@ constant added to $u_1$ and $v_1$ does not change $x_1$.
 * Nevertheless, the simplex method can still be used to find the solution.
 
 
-## Free variables &#8211; second method {.smaller}
+## Free variables &#8211; Second Method {.smaller}
 
 * Take the same free variable situation, i.e, $x_1$ is free to take on positive
 or negative values.
@@ -136,7 +136,7 @@ identically zero and it too can be eliminated.
 * We obtain a linear program having $n_1$ variables and $m-1$ constraint
 equations.
 
-## Example &#8211; specific case {.smaller}
+## Example &#8211; Specific Case {.smaller}
 
 :::: {.columns}
 

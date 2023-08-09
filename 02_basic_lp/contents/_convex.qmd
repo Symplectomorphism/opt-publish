@@ -81,3 +81,195 @@ We then have $\bm{x} = \frac{1}{2}(\bm{x}+\varepsilon\bm{y}) +
 combination of two distinct vectors in $K$. <img src="contents/assets/66x71.png"
 width=25mm style="vertical-align:middle" />
 :::
+
+
+## Extreme Points {.smaller}
+
+::: {.callout-tip icon=false}
+## Corollary
+If the convex set $K$ corresponding to @eq-p6 is nonempty, it has at least one
+extreme point.
+:::
+
+::: {.callout-tip icon=false}
+## Corollary
+If there is a finite optimal solution to a linear programming problem, there is
+a finite optimal solution which is an extreme point of the constraint set.
+:::
+
+::: {.callout-tip icon=false}
+## Corollary
+The constraint set $K$ corresponding to @eq-p6 possesses at most a finite number
+of extreme points and each of them is finite.
+:::
+
+::: {.callout-tip icon=false}
+## Corollary
+If the convex polytope $K$ corresponding to @eq-p6 is bounded, then $K$ is a
+convex polyhedron, that is, $K$ consists of points that are convex combinations
+of a finite number of points.
+:::
+
+## Convex Geometry &#8211; Examples {.smaller}
+
+::: {.r-stack}
+
+:::: {.columns .fragment .fade-out}
+
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal"}
+Consider the constraint set in $\mathbb{R}^3$ defined by
+
+$$
+\begin{align}
+x_1 + x_2 + x_3 &= 1, \\
+x_1, x_2, x_3 &\geq 0.
+\end{align}
+$$
+
+* This set is illustrated in the figure.
+* It has three extreme points, corresponding to the three basic solutions to
+$x_1 + x_2 + x_3 = 1$.
+:::
+
+:::
+
+::: {.column width="50%"}
+<center><img src="contents/assets/ex1_feasible.png" width="75%" /></center>
+:::
+
+::::
+
+
+:::: {.columns .fragment .fade-in}
+
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal"}
+Consider the constraint set in $\mathbb{R}^3$ defined by
+
+$$
+\begin{align}
+x_1 + x_2 + x_3 &= 1, \\
+2x_1 + 3x_2 &= 1, \\
+x_1, x_2, x_3 &\geq 0.
+\end{align}
+$$
+
+* This set is illustrated in the figure.
+* It has two extreme points, corresponding to the two basic feasible solutions.
+* Note that the system of equations itself has three basic solutions:
+$$ (2, -1, 0), (\frac{1}{2}, 0, \frac{1}{2}), (0, \frac{1}{3}, \frac{2}{3}), $$
+the first of which is not feasible.
+:::
+
+:::
+
+::: {.column width="50%"}
+<center><img src="contents/assets/ex2_feasible.png" width="75%" /></center>
+:::
+
+::::
+
+:::
+
+
+## Convex Geometry &#8211; Examples {.smaller}
+
+::: {.r-stack}
+
+:::: {.columns .fragment .fade-out}
+
+::: {.column width="50%"}
+
+
+
+::: {.callout-important appearance="minimal"}
+Consider the constraint set in $\mathbb{R}^2$ defined by
+
+$$
+\begin{align}
+x_1 + \frac{8}{3}x_2 &\leq 4, \\
+x_1 + x_2 &\leq 2, \\
+2x_1 &\leq 3, \\
+x_1, x_2 &\geq 0.
+\end{align}
+$$
+
+* The set has five extreme points.
+* In order to compare this example, we must introduce slack variables to yield
+the equivalent set in $\mathbb{R}^5$.
+
+$$
+\begin{align}
+x_1 + \frac{8}{3}x_2 + x_3 &= 4, \\
+x_1 + x_2 + x_4 &= 2, \\
+2_x1 + x_5 &= 3 \\
+x_1, x_2, x_3, x_4, x_5 \geq 0.
+\end{align}
+$$
+:::
+
+::: {.callout-important appearance="minimal"}
+
+* A basic solution for this system is obtained by setting any two variables to
+zero and solving for the remaining three.
+:::
+
+
+:::
+
+
+::: {.column width="50%"}
+<center><img src="contents/assets/ex3_feasible1.png" width="50%" /></center>
+
+<center><img src="contents/assets/ex3_feasible2.png" width="50%" /></center>
+:::
+
+::::
+
+
+:::: {.columns .fragment}
+
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal"}
+
+* A basic solution for this system is obtained by setting any two variables to
+zero and solving for the remaining three.
+
+* As indicated in the figure, each edge of the figure corresponds to one
+variable being zero, and the extreme points are the points where two variables
+are zero.
+:::
+
+::: {.callout-warning appearance="minimal"}
+* Even when not expressed in the standard form, the extreme points of the set
+defined by the constraints of a lienar program correspond to the possible
+solution points.
+
+* The level sets of an objective function $-2x_1 - x_2$ is included in the
+bottom figure.
+  - As the level varies, different aparallel lines are obtained.
+  - The optimal value of the linear program is the smallest value of this level
+    for which the corresponding line has a point in common with the feasible
+    set.
+  - In the figure, this occurs at the point $(\frac{3}{2}, \frac{1}{2})$ with
+    the level $z = -\frac{7}{2}$.
+:::
+
+
+:::
+
+
+::: {.column width="50%"}
+<center><img src="contents/assets/ex3_feasible1.png" width="55%" /></center>
+
+<center><img src="contents/assets/ex3_feasible2.png" width="55%" /></center>
+:::
+
+::::
+
+
+:::
