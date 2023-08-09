@@ -159,5 +159,12 @@
     "title": "02_basic_lp",
     "section": "The Fundamental Theorem of LP",
     "text": "The Fundamental Theorem of LP\n\nPart (1) of the theorem is commonly referred to as Carathéodory’s theorem.\nPart (2) of the theorem reduces the task of solving a linear program to that of searching over basic feasible solutions.\nSince for a problem having nn variables and mm constraints there are at most\n\n(nm)=n!m!(n−m)!\n\\binom{n}{m} = \\frac{n!}{m!(n-m)!}\n\nbasic solutions (corresponding to the number of ways of selecting mm of nn columns), there are only a finite number of possibilities.\n\nThus the fundamental theorem yields an obvious, but terribly inefficient, finite search technique.\nBy expanding upon the technique of proof as well as the statement of the fundamental theorem, the efficient simplex procedure is derived."
+  },
+  {
+    "objectID": "02_basic_lp.html#extreme-points",
+    "href": "02_basic_lp.html#extreme-points",
+    "title": "02_basic_lp",
+    "section": "Extreme Points",
+    "text": "Extreme Points\n\n\n\nDefinition\n\n\nA point 𝐱\\bm{x} in a convex set CC is said to be an extreme point of CC if there are no two distinct points 𝐱1\\bm{x}_1 and 𝐱2\\bm{x}_2 in CC such that 𝐱=α𝐱1+(1−α)𝐱2\\bm{x} = \\alpha \\bm{x}_1 + (1-\\alpha)\\bm{x}_2 for some α\\alpha, 0&lt;α&lt;10 &lt; \\alpha &lt; 1.\n\n\n\n\nAn extreme point is thus a point that does not lie strictly within a line segment connecting two other points of the set.\n\n\n\n\nTheorem (Equivalence of Extreme Points and Basic Solutions).\n\n\nLet 𝐀\\bm{A} be an m×nm \\times n matrix of rank mm and 𝐛\\bm{b} an mm-vector. Let KK be the convex polytope consisting of all nn-vectors 𝐱\\bm{x} satisfying\n𝐀𝐱=𝐛,𝐱≥𝟎.(11) \\bm{Ax} = \\bm{b}, \\;\\; \\bm{x} \\geq \\bm{0}.  \\qquad(11)\nA vector 𝐱\\bm{x} is an extreme point of KK if and only if 𝐱\\bm{x} is a basic feasible solution to Equation 11.\n\n\n\n\n\n\nProof\n\n\nSuppose first that 𝐱=(x1,x2,…,xm,0,0,…,0)\\bm{x} = (x_1, x_2, \\ldots, x_m, 0, 0, \\ldots, 0) is a basic feasible solution to Equation 11. Then\nx1𝐚1+x2𝐚2+⋯+xm𝐚m=𝐛, x_1 \\bm{a}_1 + x_2\\bm{a}_2 + \\cdots + x_m\\bm{a}_m = \\bm{b}, \nwhere 𝐚1,𝐚2,…,𝐚m\\bm{a}_1, \\bm{a}_2, \\ldots, \\bm{a}_m, the first mm columns of 𝐀\\bm{A} are linearly independent. Suppose that 𝐱\\bm{x} could be expressed as a convex combination of two other points in K; say,"
   }
 ]

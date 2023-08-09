@@ -1184,11 +1184,51 @@ y_i^\ast = \operatorname{min}_{j \in \mathcal{A}_i} (c_j + \gamma \bm{p}_j^\top
 <li><p>By expanding upon the technique of proof as well as the statement of the fundamental theorem, the efficient simplex procedure is derived.</p></li>
 </ul>
 </section></section>
+<section>
 <section id="relations-to-convex-geometry" class="title-slide slide level1 center">
 <h1>Relations to Convex Geometry</h1>
 
 </section>
-
+<section id="extreme-points" class="slide level2 smaller">
+<h2>Extreme Points</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definition</strong></p>
+</div>
+<div class="callout-content">
+<p>A point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> in a convex set <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math> is said to be an <em>extreme point</em> of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math> if there are no two distinct points <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\bm{x}_1</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\bm{x}_2</annotation></semantics></math> in <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math> such that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>=</mo><mi>α</mi><msub><mi>𝐱</mi><mn>1</mn></msub><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>𝐱</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\bm{x} = \alpha \bm{x}_1 + (1-\alpha)\bm{x}_2</annotation></semantics></math> for some <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>α</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 &lt; \alpha &lt; 1</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+<ul>
+<li>An extreme point is thus a point that does not lie strictly within a line segment connecting two other points of the set.</li>
+</ul>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem (Equivalence of Extreme Points and Basic Solutions).</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> be an <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m \times n</annotation></semantics></math> matrix of rank <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐛</mi><annotation encoding="application/x-tex">\bm{b}</annotation></semantics></math> an <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>-vector. Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math> be the convex polytope consisting of all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-vectors <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> satisfying</p>
+<p><span id="eq-p6"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>𝐀</mi><mi>𝐱</mi></mrow><mo>=</mo><mi>𝐛</mi><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mi>𝐱</mi><mo>≥</mo><mn>𝟎</mn><mi>.</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>11</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \bm{Ax} = \bm{b}, \;\; \bm{x} \geq \bm{0}.  \qquad(11)</annotation></semantics></math></span></p>
+<p>A vector <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> is an extreme point of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math> if and only if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> is a basic feasible solution to <a href="#/extreme-points">Equation&nbsp;11</a>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Proof</strong></p>
+</div>
+<div class="callout-content">
+<p>Suppose first that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>m</mi></msub><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mi>…</mi><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x} = (x_1, x_2, \ldots, x_m, 0, 0, \ldots, 0)</annotation></semantics></math> is a basic feasible solution to <a href="#/extreme-points">Equation&nbsp;11</a>. Then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><msub><mi>𝐚</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><msub><mi>𝐚</mi><mn>2</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>x</mi><mi>m</mi></msub><msub><mi>𝐚</mi><mi>m</mi></msub><mo>=</mo><mi>𝐛</mi><mo>,</mo></mrow><annotation encoding="application/x-tex"> x_1 \bm{a}_1 + x_2\bm{a}_2 + \cdots + x_m\bm{a}_m = \bm{b}, </annotation></semantics></math></p>
+<p>where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐚</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐚</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐚</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">\bm{a}_1, \bm{a}_2, \ldots, \bm{a}_m</annotation></semantics></math>, the first <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math> columns of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> are linearly independent. Suppose that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> could be expressed as a convex combination of two other points in K; say,</p>
+</div>
+</div>
+</div>
+</section></section>
 <section id="farkass-lemma-and-alternative-systems" class="title-slide slide level1 center">
 <h1>Farkas’s Lemma and Alternative Systems</h1>
 

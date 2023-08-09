@@ -1,2 +1,37 @@
 # Relations to Convex Geometry
 
+## Extreme Points {.smaller}
+
+::: {.callout-tip icon=false}
+## Definition
+A point $\bm{x}$ in a convex set $C$ is said to be an _extreme point_ of $C$ if
+there are no two distinct points $\bm{x}_1$ and $\bm{x}_2$ in $C$ such that
+$\bm{x} = \alpha \bm{x}_1 + (1-\alpha)\bm{x}_2$ for some $\alpha$, $0 < \alpha <
+1$.
+:::
+
+* An extreme point is thus a point that does not lie strictly within a line
+segment connecting two other points of the set.
+
+::: {.callout-tip icon=false}
+## Theorem (Equivalence of Extreme Points and Basic Solutions).
+Let $\bm{A}$ be an $m \times n$ matrix of rank $m$ and $\bm{b}$ an $m$-vector.
+Let $K$ be the convex polytope consisting of all $n$-vectors $\bm{x}$ satisfying 
+
+$$ \bm{Ax} = \bm{b}, \;\; \bm{x} \geq \bm{0}. $$ {#eq-p6}
+
+A vector $\bm{x}$ is an extreme point of $K$ if and only if $\bm{x}$ is a basic
+feasible solution to @eq-p6.
+:::
+
+::: {.callout-note icon=false}
+## Proof
+Suppose first that $\bm{x} = (x_1, x_2, \ldots, x_m, 0, 0, \ldots, 0)$ is a
+basic feasible solution to @eq-p6. Then 
+
+$$ x_1 \bm{a}_1 + x_2\bm{a}_2 + \cdots + x_m\bm{a}_m = \bm{b}, $$ 
+
+where $\bm{a}_1, \bm{a}_2, \ldots, \bm{a}_m$, the first $m$ columns of $\bm{A}$
+are linearly independent. Suppose that $\bm{x}$ could be expressed as a convex
+combination of two other points in K; say,
+:::
