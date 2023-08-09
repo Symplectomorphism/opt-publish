@@ -28,7 +28,164 @@ n$ matrix of rank $m$,
 1. if there is a feasible solution, there is a basic feasible solution;
 2. if there is an optimal feasible solution, there is an optimal basic feasible
 solution.
+:::
+
+:::
+
+::: {.fragment fragment-index=3}
+
+::: {.callout-note icon=false}
+## Proof (1)
+Denote the columns of $\bm{A}$ by $\bm{a}_1, \bm{a}_2, \ldots, \bm{a}_n$.
+Suppose $\bm{x} = (x_1, x_2, \ldots, x_n)$ is a feasible solution. Then, in
+terms of the columns of $\bm{A}$, this solution satisfies
+
+$$ x_1\bm{a}_1 + x_2\bm{a}_2 + \cdots + x_n\bm{a}_n = \bm{b}. $$
+:::
+
+:::
+
+## The Fundamental Theorem of LP {.smaller}
+
+::: {.callout-note icon=false}
+## Proof (1) - Continued -
+Assume that exactly $p$ of the variables $x_i$ are greater than zero, and wlog,
+that they are the first $p$ variables. Thus
+
+$$ x_1 \bm{a}_1 + x_2 \bm{a}_2 + \cdots + x_p \bm{a}_p = \bm{b}. $$ {#eq-p1}
+
+There are now two cases, corresponding as to whether the set $\bm{a}_1,
+\bm{a}_2, \ldots, \bm{a}_p$ is linearly independent or linearly dependent.
+
+__<font style="font-variant: small-caps">Case 1</font>__:
+Assume $\bm{a}_1, \bm{a}_2, \ldots, \bm{a}_p$ are linearly independent. Then
+clearly, $p \leq m$. If $p = m$, the solution is basic and the proof is
+complete. If $p < m$, then, since $\bm{A}$ has rank $m$, $m-p$ vectors can be
+found from the remaining $n-p$ vectors so that the resulting set of $m$ vectors
+is lienarly independent. Assigning the value zero to the corresponding $m-p$
+variables yields a (degenerate) basic feasible solution.
+
+
+__<font style="font-variant: small-caps">Case 2</font>__:
+Assume $\bm{a}_1, \bm{a}_2, \ldots, \bm{a}_p$ are linearly dependent. Then there
+is a nontrivial linear combination of these vectors that is zero. Thus there are
+constants $y_1, y_2, \ldots, y_p$, at least one of which can be assumed to be
+positive, such that
+
+$$ y_1\bm{a}_1 + y_2\bm{a}_2 + \cdots + y_p\bm{a}_p = \bm{0}. $$ {#eq-p2}
+
+Multiplying this equation by a scalar $\varepsilon$ and subtracting it from
+@eq-p1, we obtain
+
+$$ (x_1 - \varepsilon y_1)\bm{a}_1 + (x_2 - \varepsilon y_2)\bm{a}_2 + \cdots + 
+   (x_p - \varepsilon y_p)\bm{a}_p = \bm{b}. $$ {#eq-p3}
+
+This equation hods for every $\varepsilon$, and for each $\varepsilon$ the
+components $x_j - \varepsilon y_j$ correspond to a solution of the linear
+equalities &#8212; although they may violate $x_i - \varepsilon y_i \geq 0$.
+Denoting $\bm{y} = (y_1, y_2, \ldots, y_p, 0, 0, \ldots, 0)$, we see that for
+any $\varepsilon$
+
+$$ \bm{x} - \varepsilon \bm{y} $$ {#eq-p4}
+
+is a solution to the equalities. For $\varepsilon = 0$, this reduces to the
+original feasible solution.
+:::
+
+
+## The Fundamental Theorem of LP {.smaller}
+
+::: {.callout-note icon=false}
+## Proof (1) - Continued -
+
+As $\varepsilon$ is increased from zero, the various components increase,
+decrease, or remain constant, depending upon whether the correspoding $y_i$ is
+negative, positive, or zero. Since we assume at least one $y_i$ is positive, at
+least one component will decrease as $\varepsilon$ is increased. we increase
+$\varepsilon$ to the first point where one or more components become zero.
+Specifically, we set 
+
+$$ \varepsilon = \operatorname{min}\left\{\frac{x_i}{y_i}: y_i > 0 \right\}. $$
+
+For this value of $\varepsilon$, the solution given by @eq-p4 is feasible and
+has at most $p-1$ positive variables. Repeating this process as necessary, we
+can eliminate positive variables until we have a feasible solution with
+corresponding columns that are linearly independent. At that point Case 1
+applies.
+:::
+
+::: {.r-stack}
+
+::: {.fragment fragment-index=1 .fade-out}
+
+::: {.callout-note icon=false}
+## Proof (2)
+Let $\bm{x} = (x_1, x_2, \ldots, x_n)$ be an optimal feasible solution and, as
+in the proof of (1) above, suppose there are exactly $p$ positive variables
+$x_1, x_2, \ldots, x_p$. Agan, there are two cases; and Case 1, corresponding to
+the linear independence is exactly the same as before.
+
+Case 2 also goes exactly the same as before, but it must be shown that for any
+$\varepsilon$ the solution @eq-p4 is optimal. To show this, note that the value
+of the solution $\bm{x} - \varepsilon\bm{y}$ is 
+
+$$ \bm{c}^\top \bm{x} - \varepsilon \bm{c}^\top \bm{y}. $$ {#eq-p5}
+
+For $\varepsilon$ sufficiently small in magnitude, $\bm{x} - \varepsilon \bm{y}$
+is a feasible solution for positive or negative values of $\varepsilon$. Thus,
+we conclude that $\bm{c}^\top \bm{y} = \bm{0}$ (why?). 
+:::
+
+:::
+
+::: {.fragment fragment-index=2 .fade-in}
+
+::: {.callout-note icon=false}
+## Proof (2)
+Let $\bm{x} = (x_1, x_2, \ldots, x_n)$ be an optimal feasible solution and, as
+in the proof of (1) above, suppose there are exactly $p$ positive variables
+$x_1, x_2, \ldots, x_p$. Agan, there are two cases; and Case 1, corresponding to
+the linear independence is exactly the same as before.
+
+Case 2 also goes exactly the same as before, but it must be shown that for any
+$\varepsilon$ the solution @eq-p4 is optimal. To show this, note that the value
+of the solution $\bm{x} - \varepsilon\bm{y}$ is 
+
+$$ \bm{c}^\top \bm{x} - \varepsilon \bm{c}^\top \bm{y}. $$ {#eq-p5}
+
+For $\varepsilon$ sufficiently small in magnitude, $\bm{x} - \varepsilon \bm{y}$
+is a feasible solution for positive or negative values of $\varepsilon$. Thus,
+we conclude that $\bm{c}^\top \bm{y} = \bm{0}$. For, if $\bm{c}^\top
+\bm{y} \neq \bm{0}$, an $\varepsilon$ of small magnitude and proper sign could
+be determined so as to render @eq-p5 smaller than $\bm{c}^\top \bm{y}$ while
+maintaining feasibility.
 
 :::
 
 :::
+
+:::
+
+
+## The Fundamental Theorem of LP {.smaller}
+
+* Part (1) of the theorem is commonly referred to as Carath&#233;odory's
+theorem.
+
+* Part (2) of the theorem reduces the task of solving a linear program to that
+of searching over basic feasible solutions.
+
+* Since for a problem having $n$ variables and $m$ constraints there are at most
+
+$$
+\binom{n}{m} = \frac{n!}{m!(n-m)!}
+$$
+
+basic solutions (corresponding to the number of ways of selecting $m$ of $n$
+columns), there are only a finite number of possibilities.
+
+* Thus the fundamental theorem yields an obvious, but terribly inefficient,
+finite search technique.
+
+* By expanding upon the technique of proof as well as the statement of the
+fundamental theorem, the efficient simplex procedure is derived.
