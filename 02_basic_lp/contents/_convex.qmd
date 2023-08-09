@@ -33,5 +33,51 @@ $$ x_1 \bm{a}_1 + x_2\bm{a}_2 + \cdots + x_m\bm{a}_m = \bm{b}, $$
 
 where $\bm{a}_1, \bm{a}_2, \ldots, \bm{a}_m$, the first $m$ columns of $\bm{A}$
 are linearly independent. Suppose that $\bm{x}$ could be expressed as a convex
-combination of two other points in K; say,
+combination of two other points in K; say, $\bm{x} = \alpha \bm{y} +
+(1-\alpha)\bm{z}$, $0 < \alpha < 1$, $\bm{y} \neq \bm{z}$.
+:::
+
+
+## Extreme Points {.smaller}
+
+::: {.callout-note icon=false}
+## Proof
+Since all components of $\bm{x}$, $\bm{y}$, $\bm{z}$ are nonnegative and since
+$0 < \alpha < 1$, it follows immediately that the last $n-m$ components of
+$\bm{y}$ and $\bm{z}$ are zero. Thus, in particular, we have 
+
+$$ y_1\bm{a}_1 + y_2\bm{a}_2 + \cdots + y_m\bm{a}_m = \bm{b} $$
+
+and 
+
+$$ z_1\bm{a}_1 + z_2\bm{a}_2 + \cdots + z_m\bm{a}_m = \bm{b}. $$
+
+Since the vectors $\bm{a}_1, \bm{a}_2, \ldots, \bm{a}_m$ are linearly
+independent, however, it follows that $\bm{x} = \bm{y} = \bm{z}$ and hence $x$
+is an extreme point of $K$.
+
+Conversely, assume that $\bm{x}$ is an extreme point of $K$. Let us assume that
+the nonzero components of $\bm{x}$ are the first $k$ components. Then
+
+$$ x_1\bm{a}_1 + x_2\bm{a}_2 + \cdots + x_k\bm{a}_k = \bm{b}, \quad x_i > 0,
+\quad i = 1, 2, \ldots, k. $$
+
+To show that $\bm{x}$ is a bsic feasible solution (BFS) it must be shown that
+the vectors $\bm{a}_1, \bm{a}_2, \ldots, \bm{a}_k$ are linearly independent. We
+do this by contradiction. Suppose they are linearly dependent. Then there is a
+nontrivial linear combination that is zero: 
+
+$$ y_1\bm{a}_1 + y_2\bm{a}_2 + \cdots y_k\bm{a}_k = \bm{0}. $$
+
+Define the $n$-vector $\bm{y} = (y_1, y_2, \ldots, y_k, 0, 0, \ldots, 0)$. Since
+$x_i > 0$, $1 \leq i \leq k$, it is possible to select $\varepsilon$ such that 
+
+$$ \bm{x} + \varepsilon \bm{y} \geq \bm{0}, \quad \bm{x} - \varepsilon \bm{y}
+\geq \bm{0}. $$
+
+
+We then have $\bm{x} = \frac{1}{2}(\bm{x}+\varepsilon\bm{y}) +
+\frac{1}{2}(\bm{x}-\varepsilon\bm{y})$ which expresses $\bm{x}$ as a convex
+combination of two distinct vectors in $K$. <img src="contents/assets/66x71.png"
+width=25mm style="vertical-align:middle" />
 :::
