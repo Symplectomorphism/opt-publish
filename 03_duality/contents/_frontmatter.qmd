@@ -18,6 +18,6 @@ __Topics__: <br>
 Dual Linear Programs <br>
 The Duality Theorem <br>
 Interpretations <br>
-Sensitivty and CS <br>
+Sensitivity and CS <br>
 Selected Applications <br>
 :::
