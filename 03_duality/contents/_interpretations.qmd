@@ -1,2 +1,180 @@
 # Geometric and Economic Interpretations
 
+## Primal-Dual Optimal Solutions {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* Suppose that for the LP in the standard primal form
+$$
+\begin{align}
+\operatorname{minimize} & \bm{c}^\top \bm{x} \\
+\text{subject to} & \bm{Ax} = \bm{b}, \quad \bm{x} \geq \bm{0},
+\end{align}
+$$ {#eq-primal}
+we have the optimal basic feasible solution $\bm{x} = (\bm{x}_B, \bm{0})$ with
+the corresponding basis $\bm{B}$.
+
+&nbsp;
+
+* Partition $\bm{A} = \begin{bmatrix} \bm{B} & \bm{D} \end{bmatrix}$, where the
+primal basic feasible solution $\bm{x}_{\bm{B}} = \bm{B}^{-1}\bm{b}$ is optimal.
+:::
+
+::: {.column width="50%"}
+* We shall determine a solution of the dual program
+
+$$
+\begin{align}
+\operatorname{maximize} & \bm{y}^\top \bm{b} \\
+\text{subject to} & \bm{y}^\top\bm{A} \leq \bm{c}^\top,
+\end{align}
+$$ {#eq-dual}
+in terms of $\bm{B}$.
+
+* Define $\bm{y}^\top = \bm{c}_{\bm{B}}^\top \bm{B}^{-1}$, which i s adual basic
+solution (The components of $\bm{c}_{\bm{B}}$ are those of $\bm{c}$ assoc. w/
+the columns of the submatrix $\bm{B}$ according to the same index order.).
+:::
+
+::::
+
+* If, in addition, $\bm{y}^\top\bm{A} \leq \bm{c}^\top$, then $\bm{y}$ is
+feasible and a basic feasible solution for the dual &mdash; an extreme point of
+the dual feasible region. On the other hand
+
+$$
+\bm{y}^\top\bm{b} = \bm{c}_{\bm{B}}^\top \bm{B}^{-1}\bm{b} =
+\bm{c}_{\bm{B}}^\top\bm{x}_{\bm{B}},
+$$
+
+and thus the value of the dual objective function for the $\bm{y}$ is equal to
+the value of the primal problem. Hence $\bm{y}$ is optimal for the dual!
+
+
+## Primal-Dual Optimal Solution &ndash; Example {.smaller}
+
+::: {.callout-tip icon=false}
+## Theorem
+Let the linear program @eq-primal have an optimal basic feasible solution
+corresponding to the basis $\bm{B}$. Then the vector $\bm{y}$ satisfying
+$\bm{y}^\top = \bm{c}_{\bm{B}}^\top \bm{B}^{-1}$ is an optimal soluion to the
+dual program @eq-dual if it is dual feasible. The optimal values of both
+problems are equal.
+:::
+
+::: {.r-stack}
+
+:::: {.columns .fragment .fade-out}
+
+::: {.column width="60%"}
+<center> **Primal** </center>
+$$
+\begin{align}
+\operatorname{minimize} & 18x_1 + 12x_2 + 2x_3 + 6x_4 \\
+\text{subject to} & 3x_1 + x_2 - 2x_3 + x_4 = 2 \\
+& x_1 + 3x_2 - x_4 = 2 \\
+& x_1, x_2, x_3, x_4 \geq 0.
+\end{align}
+$$
+
+::: {.callout-note appearance="minimal"}
+* Columns of $\bm{A}$ and $\bm{b}$ are represented in the requirement space.
+* A basic solution represents construction of $\bm{b}$ with positive weights,
+$x_j$'s, on two of the $\bm{a}_j$'s.
+* Primal problem: find weights for the conic combination of $\bm{b}$ by these
+columns such that the weighted sum (by $c_j$'s) of the weights is minimized.
+:::
+
+
+:::
+
+::: {.column width="40%"}
+<center><img src="contents/assets/fig3_2_left.png" width="75%" /img></center>
+:::
+
+::::
+
+:::: {.columns .fragment}
+
+::: {.column width="60%"}
+<center> **Dual** </center>
+$$
+\begin{align}
+\operatorname{maximize} & 2\lambda_1 + 2\lambda_2 & \\
+\text{subject to} & 3\lambda_1 + \lambda_2 \leq 18, & \lambda_1 + 3\lambda_2 \leq 12 \\
+& -2\lambda_1 \leq 2, & \lambda_1 - \lambda_2 \leq 6.
+\end{align}
+$$
+
+::: {.callout-note appearance="minimal"}
+* Each column $\bm{a}_j$ of the primal defines a constraint of the dual as a
+half-space whose boundary is $\perp$ to that column vector and is located at a
+point determined by $c_j$.
+* Dual obj. is maximized at an extreme point of the dual feasible region. 
+  - At this point exactly two dual constraints are active.
+  - These active constraints also correspond to an optimal basis of the primal.
+* The vector defining the dual objective is a conic combination of the active
+constraint vectors: $\bm{b} = x_1\bm{a}_1 + x_2\bm{a}_2$, with $x_i$'s being the
+optimal solution of the primal!
+:::
+
+
+:::
+
+::: {.column width="40%"}
+<center><img src="contents/assets/fig3_2_right.png" width="75%" /img></center>
+:::
+
+::::
+
+:::
+
+
+## Dual Multipliers &mdash; Shadow Prices {.smaller}
+
+* $\bm{y}^\top = \bm{c}_{\bm{B}}^\top \bm{B}^{-1}$ is not a solution to the dual
+unless $\bm{B}$ is an optimal basis for the primal.
+  - The vector $\bm{y}$ may be used at every step to calculate the relative cost
+    coefficients or reduced gradients (to be introduced later).
+  - $\bm{y}^\top = \bm{c}_{\bm{B}}^\top \bm{B}^{-1}$ is called the vector of
+    _simplex multipliers_ or _shadow prices_.
+* The components of the $\bm{a}_j$'s and $\bm{b}$ tells us how to construct
+these vectors from the $\bm{e}_i$'s.
+* Given any basis $\bm{B}$, any other vector can be constructed (synthetically)
+as a linear combination of these basis vectors.
+  - If there is a unit cost $c_j$ associated with each basis vector $\bm{a}_j$,
+    then the cost of a (synthetic) vector constructed from the basis can be
+    calculated as the corresponding linear combination of the $c_j$'s associated
+    with the basis.
+  - In particular, the cost of $\bm{e}_i$, when constructed from the basis
+    $\bm{B}$, is $y_i$.
+  - Thus the $y_i$'s can be interpreted as synthetic prices of the unit vectors.
+
+
+## Dual Multipliers &mdash; Shadow Prices {.smaller}
+
+* Any vector can be expressed in terms of the basis $\bm{B}$ in two steps:
+  1. express the unit vector $\bm{e}_i$ in terms of the basis,
+  2. express the desired vector as a linear combination of the $\bm{e}_i$'s.
+* The corresponding synthetic cost of a vector constructed from the basis
+$\bm{B}$ can be correspondingly computed directly by:
+  1. find the synthetic price of the $\bm{a}_i$'s.
+  2. use these prices to evaluate the cost of the linear combination of
+  $\bm{e}_i$'s.
+* Thus, the simplex multipliers can be used to quickly evaluate the synthetic
+cost of any vector that is expressed in terms of the unit vectors $\bm{e}_i$'s.
+* The difference between the true cost of this vector and the synthetic cost is
+the relative cost.
+  - The process of calculating the syntheic cost of a vector w.r.t. a given
+    basis by using the simplex multipliers is sometimes referred to as _pricing
+    out_ the vector.
+
+::: {.callout-important appearance="minimal"}
+Optimality of the primal corresponds to the situation where every vector
+$\bm{a}_1, \bm{a}_2, \ldots, \bm{a}_n$ is cheaper when constructed from the
+basis than when purchased directly at its own price. Thus, we have 
+
+$$ \bm{y}^\top \bm{a}_j \leq c_j \;\; \text{ for }  j = 1, 2 , \ldots, n \quad
+\text{or} \quad \bm{y}^\top \bm{A} \leq \bm{c}^\top. $$
+:::

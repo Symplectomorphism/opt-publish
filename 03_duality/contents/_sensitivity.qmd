@@ -1,2 +1,263 @@
 # Sensitivity and Complementary Slackness
 
+## Sensitivity {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+$$
+\begin{align}
+z(\bm{b}) := & \operatorname{minimize} &\bm{c}^\top \bm{x} & \\
+& \text{subject to} &\bm{Ax} = \bm{b}, & \bm{x} \geq \bm{0}.
+\end{align} 
+$$ {#eq-sens}
+
+* Let the optimal basis be $\bm{B}$ with the corresponding solution
+$\bm{x} = (\bm{x}_{\bm{B}}, \bm{0})$, where $\bm{x}_{\bm{B}} = \bm{B}^{-1}\bm{b}$.
+* A solution to the corresponding dual is $\bm{y}^\top = \bm{c}_{\bm{B}}^\top
+\bm{B}^{-1}$.
+:::
+
+::: {.column width="50%"}
+* Let's make a small change in the vector $\bm{b}$, which will not change the
+optimal basis. Thus for $\bm{b} + \Delta\bm{b}$, the optimal solution is
+$$ \bm{x} = (\bm{x} + \Delta\bm{x}_{\bm{B}}, \bm{0}), $$ where
+$\Delta\bm{x}_{\bm{B}} = \bm{B}^{-1}\Delta\bm{b}$.
+
+* Thus the corresponding increment in the cost function is
+
+$$ z(\bm{b} + \Delta\bm{b}) - z(\bm{b}) = \bm{c}_{\bm{B}}^\top
+\Delta\bm{x}_{\bm{B}} = \bm{y}^\top\Delta\bm{b}. $$ {#eq-inc}
+:::
+
+::::
+
+::: {.callout-important icon=false}
+## Sensitivity of the optimal cost
+$\bm{y}$ gives the sensitivity of the optimal cost wih respect to changes in the
+vector $\bm{b}$. 
+If a new program were solved with $\bm{b}$ changed to $\bm{b} + \Delta\bm{b}$,
+the change in the optimal value of the objective function would be $\bm{y}^\top
+\Delta\bm{b}$.
+:::
+
+* This interpretation of the dual vector $\bm{y}$ is intimately related to its
+interpretation as a vector of simplex multipliers.
+  - Since $y_i$ is the price of the unit vector $\bm{e}_i$ when constructed from
+    the basis $\bm{B}$, it directly measures the change in cost due to a change
+    in the $i^{\text{th}}$ component of the rhs vector $\bm{b}$.
+
+## Sensitivity &ndash; Examples {.smaller}
+
+* Hence $y_i$ may equivalently be considered as a _marginal price_ of the
+component of $b_i$, since if $b_i$ is changed to $b_i + \Delta b_i$, the value
+of the optimal solution changes by $y_i\Delta b_i$.
+
+::: {.callout-note icon=false}
+## Diet Problem
+* $y_i$ is the maximum price per unit that the dietitian would be willing to pay
+for a small amount of the $i^{\text{th}}$ nutrient.
+* Decreasing the amount of the nutrient that must be supplied by food will
+  reduce the food bill by $y_i$ dollars per unit.
+:::
+
+::: {.callout-note icon=false}
+## Production Problem
+* Manufacturer must select levels $x_1, x_2, \ldots, x_n$ of $n$ production
+activites in order to meet certain required levels of output $b_1, b_2,
+\ldots, b_m$ while minimizing production costs.
+* $y_i$'s are the marginal prices of the outputs.
+* They show directly how much the production cost varies if a small change is
+made in the output levels.
+:::
+
+::: {.callout-tip icon=false}
+## Theorem
+The minimal value function $z(\bm{b})$ of the linear program @eq-sens is a
+convex function, and the optimal dual solution $\bm{y}^\ast$ is a subgradient
+vector of the function at $\bm{b}$, written as $\nabla z(\bm{b}) =
+\bm{y}^\ast$.
+:::
+
+## Sensitivity &mdash; Subgradient Theorem {.smaller}
+
+::: {.callout-tip icon=false}
+## Theorem
+The minimal value function $z(\bm{b})$ of the linear program @eq-sens is a
+convex function, and the optimal dual solution $\bm{y}^\ast$ is a subgradient
+vector of the function at $\bm{b}$, written as $\nabla z(\bm{b}) =
+\bm{y}^\ast$.
+:::
+
+::: {.callout-note icon=false}
+## Proof
+Let $\bm{x}^1$ and $\bm{x}^2$ be two optimal solutions of @eq-sens corresponding
+to two right-hand-side vectors $\bm{b}^1$ and $\bm{b}^2$, resp. Then, for any
+scalar $0 \leq \alpha \leq 1$, $\alpha \bm{x}^1 + (1-\alpha)\bm{x}^2$ is a
+feasible solution of @eq-sens with $\bm{b} = \alpha \bm{b}^1 +
+(1-\alpha)\bm{b}^2$ so that the minimal value is
+
+$$
+z(\alpha \bm{b}^1 + (1-\alpha)\bm{b}^2) \leq \bm{c}^\top (\alpha \bm{x}^1 +
+(1-\alpha)\bm{x}^2) = \alpha \bm{c}^\top \bm{x}^1 + (1-\alpha)\bm{c}^\top
+\bm{x}^2 = \alpha z(\bm{b}^1) + (1-\alpha)z(\bm{b}^2)
+$$
+
+which implies the first claim.
+
+Furthermore, let $\bm{y}^1$ be the optimal dual solution with $\bm{b} =
+\bm{b}^1$. Note that $\bm{y}^1$ remains feasible for the dual of primal with
+$\bm{b} = \bm{b}^2$ because the dual feasible region is independent of changes
+in $\bm{b}$. Thus
+
+$$
+\begin{align}
+z(\bm{b}^2) - z(\bm{b}^1) &= \bm{c}^\top \bm{x}^2 - (\bm{y}^1) &
+\text{(zero-duality gap theorem)} \\
+&\geq (\bm{y}^1)^\top \bm{b}^2 - (\bm{y}^1)^\top \bm{b}^1 & \text{(weak
+duality)} \\
+&= (\bm{y}^1)^\top (\bm{b}^2 - \bm{b}^1),
+\end{align}
+$$
+
+which proves the second claim.
+:::
+
+
+## Complementary Slackness {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## Theorem (Complementary slackness &mdash; asymmetric form).
+Let $\bm{x}$ and $\bm{y}$ be feasible solutions for the primal and dual
+programs, respectively, in the pair
+
+::: {layout="[90, 90]"}
+$$
+\begin{align}
+\operatorname{minimize} & \bm{c}^\top \bm{x} \\
+\text{subject to} & \bm{Ax} = \bm{b}, \quad \bm{x} \geq \bm{0}.
+\end{align}
+$$
+
+$$
+\begin{align}
+\operatorname{minimize} & \bm{y}^\top \bm{b} \\
+\text{subject to} & \bm{y}^\top \bm{A} \leq \bm{c}^\top.
+\end{align}
+$$
+:::
+
+A necessary and sufficient condition that they both be optimal solutions is that
+for all $j$
+
+<center>
+1. $x_j > 0 \; \Rightarrow \; \bm{y}^\top \bm{a}_j = c_j$,
+2. $x_j = 0 \; \Leftarrow \; \bm{y}^\top \bm{a}_j < c_j$.
+</center>
+:::
+
+
+:::
+
+
+::: {.column width="50%"}
+
+::: {.callout-note icon=false}
+## Proof (of Complementary Slackness)
+If the stated conditions hold, then clearly $(\bm{y}^\top \bm{A} -
+\bm{c}^\top)\bm{x} = 0$. Thus $\bm{y}^\top\bm{b} = \bm{c}^\top\bm{x}$, and by
+strong duality, the two solutions are optimal.
+
+Conversely, if the two solutions are optimal, it must hold, by strong duality,
+that $\bm{y}^\top \bm{b} = \bm{c}^\top \bm{x}$ and hence that $(\bm{y}^\top
+\bm{A} - \bm{c}^\top)\bm{x} = 0$. Since each component of $\bm{x}$ is
+nonnegative and each component of $\bm{y}^\top\bm{A} - \bm{c}^\top$ is
+nonpositive, the conditions $1.$ and $2$. must hold.
+:::
+
+:::
+
+::::
+
+
+::: {.callout-tip icon=false}
+## Theorem (Strict complementary slackness &mdash; asymmetric form)
+Let both the primal and dual problems be feasible. Then there is an optimal
+solution pair $\bm{x}$ and $\bm{y}$ such that for all $j$
+<center>
+1. $x_j > 0 \; \Leftrightarrow \; \bm{y}^\top \bm{a}_j = c_j$,
+2. $x_j = 0 \; \Leftrightarrow \; \bm{y}^\top \bm{a}_j < c_j$.
+</center>
+:::
+
+
+## Complementary Slackness {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## Corollary (Complementary slackness &mdash; symmetric form)
+Let $\bm{x}$ and $\bm{y}$ be feasible solutions for the primal and dual programs
+respectively in the pair
+
+::: {layout="[90, 90]"}
+$$
+\begin{align}
+\operatorname{minimize} & \bm{c}^\top \bm{x} \\
+\text{subject to} & \bm{Ax} \geq \bm{b}, \\ 
+& \bm{x} \geq \bm{0}.
+\end{align}
+$$
+
+$$
+\begin{align}
+\operatorname{minimize} & \bm{y}^\top \bm{b} \\
+\text{subject to} & \bm{y}^\top \bm{A} \leq \bm{c}^\top, \\
+& \bm{y} \geq \bm{0}.
+\end{align}
+$$
+:::
+
+A necessary and sufficient condition that they both be optimal solutions is that
+for all $i$ and $j$
+
+<center>
+1. $x_j > 0 \;\; \Rightarrow \;\; \bm{y}^\top\bm{a}_j = c_j$,
+2. $x_j = 0 \;\; \Leftarrow \;\; \bm{y}^\top\bm{a}_j < c_j$,
+3. $y_i > 0 \;\; \Rightarrow \;\; \bm{a}^i \, \bm{x} = b_i$,
+4. $y_i = 0 \;\; \Leftarrow \;\; \bm{a}^i \, \bm{x} > b_i$,
+</center>
+
+where $\bm{a}^i$ is the $i^{\text{th}}$ row of $\bm{A}$.
+:::
+
+:::
+
+::: {.column width="50%"}
+
+&nbsp;
+
+&nbsp;
+
+::: {.callout-important icon=false}
+## Economic interpretation
+* Let us think in terms of the diet problem, which is the primal part of a
+symmetric pair of dual problems.
+* Suppose that the optimal diet supplies more than $b_j$ units of the
+$j^{\text{th}}$ nutrient.
+  - This means that the dietitian would be unwilling to pay anything for small
+    quantities of that nutrient since the availability of it would not reduce
+    the cost of the optimal diet.
+* This, in view of our previous interpretation of $y_j$ as a marginal price,
+implies $y_j = 0$ which is $4.$ of the Corollary.
+:::
+
+:::
+
+::::

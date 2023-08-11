@@ -32,4 +32,4 @@ revealjs-plugins:
 {{< include contents/_dualitythm.qmd >}}
 {{< include contents/_interpretations.qmd >}}
 {{< include contents/_sensitivity.qmd >}}
-{{< include contents/_applications.qmd >}}
+<!-- {{< include contents/_applications.qmd >}} -->

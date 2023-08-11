@@ -19,5 +19,5 @@ Dual Linear Programs <br>
 The Duality Theorem <br>
 Interpretations <br>
 Sensitivity and CS <br>
-Selected Applications <br>
+<!-- Selected Applications <br> -->
 :::
