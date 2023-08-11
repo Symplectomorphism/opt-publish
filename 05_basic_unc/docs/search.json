@@ -1,8 +1,8 @@
 [
   {
-    "objectID": "07_basic_unc.html#optimization-theory-and-practice",
-    "href": "07_basic_unc.html#optimization-theory-and-practice",
-    "title": "07_basic_unc",
+    "objectID": "05_basic_unc.html#optimization-theory-and-practice",
+    "href": "05_basic_unc.html#optimization-theory-and-practice",
+    "title": "05_basic_unc",
     "section": "Optimization Theory and Practice",
     "text": "Optimization Theory and Practice\n\n\nBasic Properties of Solutions and Algorithms\n\n\n\n\nInstructor: Aykut Satici, Ph.D.   Mechanical and Biomedical Engineering  Electrical and Computer Engineering  Boise State University, Boise, ID, USA\n\n\nTopics:  First-Order Necessary Conditions  Examples  Second-Order Conditions  Convex and Concave Functions  Minimization and Maximization of Convex Functions  Global Convergence of Descent Algorithms"
   }
