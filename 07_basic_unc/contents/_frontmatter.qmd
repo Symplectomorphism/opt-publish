@@ -1,0 +1,24 @@
+## Optimization Theory and Practice {.center .smaller}
+<!-- ###################################################################### -->
+
+<hr>
+
+### Basic Properties of Solutions and Algorithms
+
+<br/>
+
+::: {layout="[120, 150]"}
+__Instructor__: Aykut Satici, Ph.D. <br>
+<br>
+Mechanical and Biomedical Engineering <br>
+Electrical and Computer Engineering <br>
+Boise State University, Boise, ID, USA
+
+__Topics__: <br>
+First-Order Necessary Conditions <br>
+Examples <br>
+Second-Order Conditions <br>
+Convex and Concave Functions <br>
+Minimization and Maximization of Convex Functions <br>
+Global Convergence of Descent Algorithms <br>
+:::
