@@ -346,11 +346,202 @@
 </div>
 </div>
 </section>
+<section>
 <section id="adjacent-basic-feasible-solutions-extreme-points" class="title-slide slide level1 center">
 <h1>Adjacent Basic Feasible Solutions (Extreme Points)</h1>
 
 </section>
-
+<section id="adjacent-solutions" class="slide level2 smaller">
+<h2>Adjacent Solutions</h2>
+<ul>
+<li><p>We know that it is only necessary to consider basic feasible solutions to the system <span id="eq-pc"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>𝐀</mi><mi>𝐱</mi></mrow><mo>=</mo><mi>𝐛</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>𝐱</mi><mo>≥</mo><mn>𝟎</mn><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \bm{Ax} = \bm{b}, \quad \bm{x} \geq \bm{0}  \qquad(1)</annotation></semantics></math></span> when solving a linear program.</p></li>
+<li><p>The idea of the simplex method is to move from a basic feasible solution (extreme point) to an adjacent one with an improved objective value.</p></li>
+</ul>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definition</strong></p>
+</div>
+<div class="callout-content">
+<p>Two basic feasible solutions are said to be <em>adjacent</em> if and only if they differ by one basic variable.</p>
+</div>
+</div>
+</div>
+<ul>
+<li>A new basic solution can be generated from an old one by replacing one current basic variable by a current nonbasic one.
+<ul>
+<li>It is <em>impossible</em> to arbitrarily specify a pair of variables whose roles are to be interchanged and expect to maintain the nonnegativity condition.</li>
+<li>However, it is <strong>possible</strong> to arbitrarily specify which current nonbasic (entering or incoming) variable is to become basic and then determine which current basic (leaving or outgoing) variable should become nonbasic.</li>
+</ul></li>
+</ul>
+</section>
+<section id="determination-of-a-vector-to-leave-the-basis" class="slide level2 smaller">
+<h2>Determination of a Vector to Leave the Basis</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Let the BFS be partitioned as <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mi>𝐁</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>m</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}_{\bm{B}} = (x_1, x_2, \ldots, x_m)</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mi>𝐃</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>x</mi><mrow><mi>m</mi><mo>+</mo><mn>2</mn></mrow></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}_{\bm{D}} = (x_{m+1}, x_{m+2}, \ldots, x_n)</annotation></semantics></math>.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐛</mi><annotation encoding="application/x-tex">\bm{b}</annotation></semantics></math> is a linear combination of columns of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐁</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>𝐚</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>𝐚</mi><mn>2</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>𝐚</mi><mi>m</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{B} = \begin{bmatrix} \bm{a}_1 &amp; \bm{a}_2 &amp; \cdots &amp; \bm{a}_m \end{bmatrix}</annotation></semantics></math> with the positive multipliers <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>m</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x_1, x_2, \ldots, x_m)</annotation></semantics></math>.</li>
+</ul>
+</div>
+</div>
+<p><span id="eq-plc1"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐛</mi><mo>=</mo><mi>𝐁</mi><msub><mi>𝐱</mi><mi>𝐁</mi></msub><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><msub><mi>𝐚</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><msub><mi>𝐚</mi><mn>2</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>x</mi><mi>m</mi></msub><msub><mi>𝐚</mi><mi>m</mi></msub><mo>,</mo><mspace width="1.0em"></mspace><mtext mathvariant="normal">where</mtext><mspace width="1.0em"></mspace><msub><mi>𝐱</mi><mi>𝐁</mi></msub><mo>=</mo><msub><mover><mi>𝐚</mi><mo accent="true">‾</mo></mover><mn>0</mn></msub><mo>:=</mo><msup><mi>𝐁</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>𝐛</mi><mo>≥</mo><mn>𝟎</mn><mi>.</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \bm{b} = \bm{B}\bm{x}_{\bm{B}} = x_1\bm{a}_1 + x_2 \bm{a}_2 + \cdots +
+x_m\bm{a}_m, \quad \text{where} \quad \bm{x}_{\bm{B}} = \bar{\bm{a}}_0 :=
+\bm{B}^{-1}\bm{b} \geq \bm{0}.  \qquad(2)</annotation></semantics></math></span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Suppose we decided to bring into representation the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">e^{\text{th}}</annotation></semantics></math> (entering) column vector of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mi>e</mi></msub><annotation encoding="application/x-tex">\bm{a}_e</annotation></semantics></math> (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>&gt;</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">e &gt; m</annotation></semantics></math>), while keeping all others nonbasic.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>A new representation of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐛</mi><annotation encoding="application/x-tex">\bm{b}</annotation></semantics></math> as a linear combination of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m+1</annotation></semantics></math> vectors (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mi>e</mi></msub><annotation encoding="application/x-tex">\bm{a}_e</annotation></semantics></math> added to the current basis <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐁</mi><annotation encoding="application/x-tex">\bm{B}</annotation></semantics></math>) for any nonnegative multiplier <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>e</mi></msub><annotation encoding="application/x-tex">x_e</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>𝐁</mi></msub><annotation encoding="application/x-tex">\bm{x}_{\bm{B}}</annotation></semantics></math>:</li>
+</ul>
+</div>
+</div>
+<p><span id="eq-plc2"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐛</mi><mo>=</mo><mrow><mi>𝐁</mi><msub><mi>𝐱</mi><mi>𝐁</mi></msub></mrow><mo>+</mo><msub><mi>𝐚</mi><mi>e</mi></msub><msub><mi>x</mi><mi>e</mi></msub><mo>,</mo><mspace width="1.0em"></mspace><mtext mathvariant="normal">or</mtext><mspace width="1.0em"></mspace><msub><mover><mi>𝐚</mi><mo accent="true">‾</mo></mover><mn>0</mn></msub><mo>=</mo><msup><mi>𝐁</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>𝐛</mi><mo>=</mo><msub><mi>𝐱</mi><mi>𝐁</mi></msub><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐁</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>𝐚</mi><mi>e</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>x</mi><mi>e</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \bm{b} = \bm{Bx_B} + \bm{a}_ex_e, \quad \text{or} \quad \bar{\bm{a}}_0 =
+\bm{B}^{-1}\bm{b} = \bm{x}_{\bm{B}} + (\bm{B}^{-1}\bm{a}_e)x_e.  \qquad(3)</annotation></semantics></math></span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Since <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>e</mi></msub><annotation encoding="application/x-tex">x_e</annotation></semantics></math> is the incoming variable, its value needs to be increased from the current <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math> to a positive value, say <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varepsilon \geq 0</annotation></semantics></math>.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>As <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>e</mi></msub><annotation encoding="application/x-tex">x_e</annotation></semantics></math> value increases, the current basic variable <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>𝐁</mi></msub><annotation encoding="application/x-tex">\bm{x}_{\bm{B}}</annotation></semantics></math> needs to be adjusted accordingly ot keep the feasibility.</li>
+</ul>
+</div>
+</div>
+<p><span id="eq-plc3"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mi>𝐁</mi></msub><mo>=</mo><msub><mover><mi>𝐚</mi><mo accent="true">‾</mo></mover><mn>0</mn></msub><mo>−</mo><mi>ε</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐁</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>𝐚</mi><mi>e</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mover><mi>𝐚</mi><mo accent="true">‾</mo></mover><mn>0</mn></msub><mo>−</mo><mi>ε</mi><msub><mover><mi>𝐚</mi><mo accent="true">‾</mo></mover><mi>e</mi></msub><mo>≥</mo><mn>𝟎</mn><mo>,</mo><mspace width="1.0em"></mspace><mtext mathvariant="normal">where</mtext><mspace width="1.0em"></mspace><msub><mover><mi>𝐚</mi><mo accent="true">‾</mo></mover><mi>e</mi></msub><mo>=</mo><msup><mi>𝐁</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>𝐚</mi><mi>e</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+\bm{x}_{\bm{B}} = \bar{\bm{a}}_0 - \varepsilon(\bm{B}^{-1}\bm{a}_e) =
+\bar{\bm{a}}_0 - \varepsilon\bar{\bm{a}}_e \geq \bm{0}, \quad \text{where} \quad
+\bar{\bm{a}}_e = \bm{B}^{-1}\bm{a}_e.
+ \qquad(4)</annotation></semantics></math></span></p>
+</section>
+<section id="determination-of-a-vector-to-leave-the-basis-1" class="slide level2 smaller">
+<h2>Determination of a Vector to Leave the Basis</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>For <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varepsilon = 0</annotation></semantics></math>, we have the old basic feasible solution <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mi>𝐁</mi></msub><mo>=</mo><msub><mover><mi>𝐚</mi><mo accent="true">‾</mo></mover><mn>0</mn></msub><mo>&gt;</mo><mn>𝟎</mn></mrow><annotation encoding="application/x-tex">\bm{x}_{\bm{B}} = \bar{\bm{a}}_0 &gt; \bm{0}</annotation></semantics></math>.</li>
+<li>The values of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>𝐁</mi></msub><annotation encoding="application/x-tex">\bm{x}_{\bm{B}}</annotation></semantics></math> will either increase or remain unchanged if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>a</mi><mo accent="true">‾</mo></mover><mrow><mi>i</mi><mi>e</mi></mrow></msub><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\bar{a}_{ie} \leq 0</annotation></semantics></math>; or decrease linearly as <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math> is increased if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>a</mi><mo accent="true">‾</mo></mover><mrow><mi>i</mi><mi>e</mi></mrow></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\bar{a}_{ie} &gt; 0</annotation></semantics></math>.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>For small enough <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>, <a href="#/determination-of-a-vector-to-leave-the-basis">Equation&nbsp;3</a> gives a feasible but nonbasic solution.</li>
+<li>If any decrease, we may set <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math> equal to the value corresponding to the first place where one (or more) of the value vanishes</li>
+</ul>
+</div>
+</div>
+<p><span id="eq-eps"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>=</mo><munder><mo>min</mo><mi>i</mi></munder><mrow><mo stretchy="true" form="prefix">{</mo><mfrac><msub><mover><mi>a</mi><mo accent="true">‾</mo></mover><mrow><mi>i</mi><mn>0</mn></mrow></msub><msub><mover><mi>a</mi><mo accent="true">‾</mo></mover><mrow><mi>i</mi><mi>e</mi></mrow></msub></mfrac><mo>:</mo><msub><mover><mi>a</mi><mo accent="true">‾</mo></mover><mrow><mi>i</mi><mi>e</mi></mrow></msub><mo>&gt;</mo><mn>0</mn><mo stretchy="true" form="postfix">}</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>5</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \varepsilon = \operatorname{min}_i \left\{\frac{\bar{a}_{i0}}{\bar{a}_{ie}}:
+\bar{a}_{ie} &gt; 0 \right\}.  \qquad(5)</annotation></semantics></math></span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>We have a new BFS, with the vector <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mi>e</mi></msub><annotation encoding="application/x-tex">\bm{a}_e</annotation></semantics></math> replacing (outgoing) column <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mi>o</mi></msub><annotation encoding="application/x-tex">\bm{a}_o</annotation></semantics></math>, where index <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>o</mi><mo>≤</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">o \leq m</annotation></semantics></math> correspondes to the minimizing-ratio in <a href="#/determination-of-a-vector-to-leave-the-basis-1">Equation&nbsp;5</a> <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>o</mi><mo>=</mo><msub><mo>arg min</mo><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">{</mo><mfrac><msub><mover><mi>a</mi><mo accent="true">‾</mo></mover><mrow><mi>i</mi><mn>0</mn></mrow></msub><msub><mover><mi>a</mi><mo accent="true">‾</mo></mover><mrow><mi>i</mi><mi>e</mi></mrow></msub></mfrac><mo>:</mo><msub><mover><mi>a</mi><mo accent="true">‾</mo></mover><mrow><mi>i</mi><mi>e</mi></mrow></msub><mo>&gt;</mo><mn>0</mn><mo stretchy="true" form="postfix">}</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> o = \operatorname{arg \, min}_i \left\{\frac{\bar{a}_{i0}}{\bar{a}_{ie}}:
+\bar{a}_{ie} &gt; 0 \right\}.</annotation></semantics></math></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>If none of the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>a</mi><mo accent="true">‾</mo></mover><mrow><mi>i</mi><mi>e</mi></mrow></msub><annotation encoding="application/x-tex">\bar{a}_{ie}</annotation></semantics></math>’s are positive, then all coefficients in <a href="#/determination-of-a-vector-to-leave-the-basis">Equation&nbsp;3</a> increase (or remain constant) as <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math> is increased, and no new basic feasible solution is obtained.</p></li>
+<li><p>In this case the set <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math> of feasible solutions to <a href="#/adjacent-solutions">Equation&nbsp;1</a> is unbounded.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="conic-combination-interpretations" class="slide level2 smaller">
+<h2>Conic Combination Interpretations</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<ul>
+<li>The basis transformation can be represented in the <em>requirements space</em>, the space where columns of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐛</mi><annotation encoding="application/x-tex">\bm{b}</annotation></semantics></math> are represented.</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐚</mi><mn>1</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>𝐚</mi><mn>2</mn></msub><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>𝐚</mi><mi>n</mi></msub><msub><mi>x</mi><mi>n</mi></msub><mo>=</mo><mi>𝐛</mi><mi>.</mi></mrow><annotation encoding="application/x-tex"> \bm{a}_1x_1 + \bm{a}_2x_2 + \cdots + \bm{a}_nx_n = \bm{b}. </annotation></semantics></math></p>
+<ul>
+<li>A feasible solution defines a representation of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐛</mi><annotation encoding="application/x-tex">\bm{b}</annotation></semantics></math> as a conic combination of the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\bm{a}_i</annotation></semantics></math>’s.</li>
+<li>A BFS will only use <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math> psoitive weights.</li>
+<li>Suppose we start with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\bm{a}_1</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\bm{a}_2</annotation></semantics></math> as the initial basis.
+<ul>
+<li>Then an adjacent basis is found by bringing in some other vector.</li>
+<li>If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>3</mn></msub><annotation encoding="application/x-tex">\bm{a}_3</annotation></semantics></math> is brought in, then clearly <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\bm{a}_2</annotation></semantics></math> must go out (why?).</li>
+<li>On the other hand, if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>4</mn></msub><annotation encoding="application/x-tex">\bm{a}_4</annotation></semantics></math> is brought in, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\bm{a}_1</annotation></semantics></math> must go out (why?).</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:30%;">
+<center>
+<img src="contents/assets/fig3_2_left.png" width="90%" img="">
+</center>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>A BFS can be constructed with positive weights on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\bm{a}_1</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\bm{a}_2</annotation></semantics></math> because <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐛</mi><annotation encoding="application/x-tex">\bm{b}</annotation></semantics></math> lies between them.</li>
+<li>A BFS cannot be constructed with positive weights on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\bm{a}_1</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>4</mn></msub><annotation encoding="application/x-tex">\bm{a}_4</annotation></semantics></math>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Another interpretation is in the <em>activity space</em>, the space where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> lives.
+<ul>
+<li>Here, the feasible region is shown directly as a convex set, and BFS are extreme points.</li>
+<li>Adjacent extreme points are points that lie on a common edge.</li>
+</ul></li>
+</ul>
+</section>
+<section id="conic-combination-interpretations-example" class="slide level2 smaller">
+<h2><span style="font-size:99%">Conic Combination Interpretations – Example</span></h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Example (Basis Change Illustration)</strong></p>
+</div>
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mn>3</mn><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><mn>2</mn><msub><mi>x</mi><mn>3</mn></msub><mo>+</mo><msub><mi>x</mi><mn>4</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>2</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mn>3</mn><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>4</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mn>2</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+3x_1 + x_2 - 2x_3 + x_4 &amp;= 2, \\
+x_1 + 3x_2 - x_4 &amp;= 2.
+\end{align}
+</annotation></semantics></math></p>
+</div>
+</div>
+</div>
+<ul>
+<li><span style="font-size:98%">Suppose we start with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\bm{a}_1</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\bm{a}_2</annotation></semantics></math> as the initial basis and select <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>3</mn></msub><annotation encoding="application/x-tex">\bm{a}_3</annotation></semantics></math> as the incoming column. Then </span></li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐁</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>3</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>3</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><msup><mi>𝐁</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>3</mn><mn>8</mn></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><mn>8</mn></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>−</mo><mfrac><mn>1</mn><mn>8</mn></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mfrac><mn>3</mn><mn>8</mn></mfrac></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><msub><mover><mi>𝐚</mi><mo accent="true">‾</mo></mover><mn>0</mn></msub><mo>=</mo><msup><mi>𝐁</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>𝐛</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><mn>2</mn></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mn>1</mn><mn>2</mn></mfrac></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><msub><mover><mi>𝐚</mi><mo accent="true">‾</mo></mover><mn>3</mn></msub><mo>=</mo><msup><mi>𝐁</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>𝐚</mi><mn>3</mn></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mo>−</mo><mfrac><mn>3</mn><mn>4</mn></mfrac></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>−</mo><mfrac><mn>1</mn><mn>4</mn></mfrac></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\begin{equation}
+\bm{B} = \begin{pmatrix} 3 &amp; 1 \\ 1 &amp; 3 \end{pmatrix}, \quad \bm{B}^{-1} =
+\begin{pmatrix} \frac{3}{8} &amp; \frac{1}{8} \\ -\frac{1}{8} &amp; \frac{3}{8}
+\end{pmatrix}, \quad \bar{\bm{a}}_0 = \bm{B}^{-1}\bm{b} = \begin{pmatrix}
+\frac{1}{2} \\ \frac{1}{2} \end{pmatrix}, \quad \bar{\bm{a}}_3 =
+\bm{B}^{-1}\bm{a}_3 = \begin{pmatrix} -\frac{3}{4} \\ -\frac{1}{4}
+\end{pmatrix}.
+\end{equation}
+</annotation></semantics></math></p>
+<ul>
+<li><p><span style="font-size:95%">From <a href="#/determination-of-a-vector-to-leave-the-basis-1">Equation&nbsp;5</a>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\varepsilon = 2</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\bm{a}_2</annotation></semantics></math> is the outgoing column so that the new basis is formed by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\bm{a}_1</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>3</mn></msub><annotation encoding="application/x-tex">\bm{a}_3</annotation></semantics></math>. </span></p></li>
+<li><p>Now, suppose we start with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\bm{a}_1</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>3</mn></msub><annotation encoding="application/x-tex">\bm{a}_3</annotation></semantics></math> as the initial basis and select <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐚</mi><mn>4</mn></msub><annotation encoding="application/x-tex">\bm{a}_4</annotation></semantics></math> as the incoming column. Then</p></li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐁</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>3</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>−</mo><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><msup><mi>𝐁</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mfrac><mn>3</mn><mn>2</mn></mfrac></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><msub><mover><mi>𝐚</mi><mo accent="true">‾</mo></mover><mn>0</mn></msub><mo>=</mo><msup><mi>𝐁</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>𝐛</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><msub><mover><mi>𝐚</mi><mo accent="true">‾</mo></mover><mn>4</mn></msub><mo>=</mo><msup><mi>𝐁</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msub><mi>𝐚</mi><mn>4</mn></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mo>−</mo><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>−</mo><mn>2</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\begin{equation}
+\bm{B} = \begin{pmatrix} 3 &amp; 1 \\ -2 &amp; 0 \end{pmatrix}, \quad \bm{B}^{-1} =
+\begin{pmatrix} 0 &amp; 1 \\ -\frac{1}{2} &amp; \frac{3}{2}
+\end{pmatrix}, \quad \bar{\bm{a}}_0 = \bm{B}^{-1}\bm{b} = \begin{pmatrix}
+2 \\ 2 \end{pmatrix}, \quad \bar{\bm{a}}_4 =
+\bm{B}^{-1}\bm{a}_4 = \begin{pmatrix} -1 \\ -2
+\end{pmatrix}.
+\end{equation}
+</annotation></semantics></math></p>
+<ul>
+<li>Since the entries of the incoming column <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>𝐚</mi><mo accent="true">‾</mo></mover><mn>4</mn></msub><annotation encoding="application/x-tex">\bar{\bm{a}}_4</annotation></semantics></math> are all negative, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math> in <a href="#/determination-of-a-vector-to-leave-the-basis-1">Equation&nbsp;5</a> can go to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>∞</mi><annotation encoding="application/x-tex">\infty</annotation></semantics></math>, indicating that the feasible region is unbounded.</li>
+</ul>
+</section></section>
 <section id="the-primal-simplex-method" class="title-slide slide level1 center">
 <h1>The Primal Simplex Method</h1>
 
