@@ -1,0 +1,33 @@
+---
+pagetitle: "Optimization Theory and Practice"
+author-meta: "Aykut C. Satici"
+institute: "Boise State University"
+from: markdown+emoji
+format:
+  revealjs:
+    css: styles.css
+    html-math-method: mathml
+    controls: true
+    smaller: false
+    slide-number: true
+    footer: "Optimization Theory and Practice • Aykut C. Satici"
+    chalkboard:
+      buttons: false
+    preview-links: auto
+    pdf-separate-fragments: true
+    theme: [white, custom.scss]
+    standalone: false
+    self-contained: false
+    embed-reseources: true
+    pointer:
+      pointerSize: 18
+      color: '#32cd32'
+revealjs-plugins:
+  - pointer
+---
+
+
+{{< include contents/_frontmatter.qmd >}}
+{{< include contents/_extreme.qmd >}}
+{{< include contents/_primalsimplex.qmd >}}
+{{< include contents/_dualsimplex.qmd >}}
