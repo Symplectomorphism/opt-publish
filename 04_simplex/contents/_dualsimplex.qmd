@@ -1,2 +1,362 @@
 # The Dual Simplex Method
 
+## Motivations {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+&nbsp;
+
+* Often there is a basis to an LP that is not feasible for the primal problem,
+but its simplex multiplier vector is feasible for the dual.
+  - That is $\bm{y}^\top = \bm{c}_{\bm{B}}^\top \bm{B}^{-1}$ and
+    $\bm{r}_{\bm{D}} = \bm{c}_{\bm{D}}^\top - \bm{y}^\top\bm{D} \geq \bm{0}$.
+* Then we can apply the dual simplex method moving from the current solution to
+a new BFS with a better objective value.
+:::
+
+
+::: {.column width="50%"}
+* Assume $\bm{B}$ consists of the first $m$ columns of $A$.
+
+
+::: {layout="[90, 5, 90]"}
+$$
+\begin{align}
+\operatorname{maximize} & \bm{y}^\top \bm{b} \\
+\text{subject to} & \bm{y}^\top \bm{A} \leq \bm{c}^\top
+\end{align}
+$$
+
+&nbsp;
+$$
+\Leftrightarrow
+$$
+
+$$
+\begin{align}
+\operatorname{maximize} & \bm{y}^\top \bm{b} \\
+\text{subject to} & \bm{y}^\top \bm{B} \leq \bm{c}_{\bm{B}}^\top, \\
+& \bm{y}^\top \bm{D} \leq \bm{c}_{\bm{D}}^\top.
+\end{align}
+$$
+:::
+
+
+* Define a new dual variable vector $\bm{y}^\prime$ via an affine transformation
+$$ {\bm{y}^\prime}^\top  = \bm{y}^\top \bm{B} - \bm{c}_{\bm{B}}^\top, \quad
+\text{or} \quad \bm{y}^\top = (\bm{y}^\prime + \bm{c}_{\bm{B}})^\top\bm{B}^{-1} $$ {#eq-trans}
+
+and substitute $\bm{y}$ in the dual by $\bm{y}^\prime$
+:::
+
+::::
+
+
+::: {layout="[90, 5, 90]"}
+$$
+\begin{align}
+\operatorname{maximize} & {\bm{y}^\prime}^\top \bm{B}^{-1}\bm{b} +
+\bm{c}_{\bm{B}}^\top \bm{B}^{-1}\bm{b} \\
+\text{subject to} & {\bm{y}^\prime}^\top \leq 0, \\
+& {\bm{y}^\prime}^\top\bm{B}^{-1}\bm{D} \leq \bm{c}_{\bm{D}}^\top -
+\bm{c}_{\bm{B}}^\top \bm{B}^{-1}\bm{D}.
+\end{align}
+$$
+
+&nbsp;
+&nbsp;
+$$
+\Leftrightarrow
+$$
+
+$$
+\begin{align}
+\operatorname{maximize} & {\bm{y}^\prime}^\top \bar{\bm{a}}_0 + z_0 \\
+\text{subject to} & {\bm{y}^\prime}^\top \leq \bm{0}, \\
+& {\bm{y}^\prime}^\top \bm{B}^{-1}\bm{D} \leq \bm{r}_{\bm{D}}^\top,
+\end{align}
+$$ {#eq-trdl}
+
+:::
+
+
+## Transformed Dual &ndash; Variable $\bm{y}^\prime$ {.smaller}
+
+:::: {.columns}
+
+::: {.column width="52%"}
+* $\bm{y}^\prime = \bm{0}$ is a BFS.
+* If $\bar{\bm{a}}_0 \geq \bm{0}$, i.e., the primal basic solution is also
+feasible, then ${\bm{y}^\prime}^\top = \bm{0}$ is optimal.
+* This implies $\bm{y}^\top = \bm{c}_{\bm{B}}^\top\bm{B}^{-1}$ is optimal to the
+original dual.
+* The vector $\bar{\bm{a}}_0$ can be viewed as the _scaled gradient vector_ of
+the dual objective function at basis $\bm{B}$.
+  - If one entry of $\bar{\bm{a}}_{o0} < 0$, then one can decrease the variable
+    $\bm{y}_o^\prime$ to some $-\varepsilon$ while keeping others at $0$'s.
+  - The new $\bm{y}^\prime$ reamins feasible, but its objective value would
+    decrease linearly in $\varepsilon$.
+  - The second block of constraints in @eq-trdl becomes
+  $$ \varepsilon \bm{e}_o^\top\bm{B}^{-1}\bm{D} \leq \bm{r}_{\bm{D}}^\top \quad
+  \text{or} \quad -\varepsilon \bar{\bm{a}}^o \leq \bm{r}_{\bm{D}}^\top. $$ {#eq-con}
+:::
+
+::: {.column width="48%"}
+* To keep dual feasibility, we need to choose $\varepsilon$ such that this
+vector constraint is satisfied componentwise.
+  - If all entries in $\bar{\bm{a}}^o$ are nonnegative, then $\varepsilon$ may
+    be chosen arbitrarily large so the dual objective is unbounded.
+  - If some are negative we can increase $\varepsilon$ until one of the
+    inequality constraints @eq-con become equal.
+  - Say the $e^{\text{th}}$ becomes equal. This indicates that the current
+    nonbasic column $\bm{a}_e$ replaces $\bm{a}_o$ in the new basis $\bm{B}$.
+* The determination can be done by calculating the componentwise ratios
+$\frac{(\bm{r_D})_j}{(-\bar{\bm{a}}^o)_j}$ for $(\bar{\bm{a}}^o)_j < 0$ and
+$j = m+1, \ldots, n$ (incoming col $\bar{a}_e$).
+:::
+
+::::
+
+
+## Dual Simplex Method {.smaller}
+
+* In each cycle we find a new feasible dual solution such that one of the
+equalities becomes inequality and one of the inequalities becomes equality.
+  - At the same time we increase the value of the dual objective function.
+* The $m$ equalities in the new solution then determine a new basis.
+
+::: {.callout-warning appearance="minimal"}
+One difference, in contrast to the primal simplex method, is that here the
+outgoing column is selected first and the incoming one is chosen later.
+:::
+
+::: {.callout-important appearance="minimal"}
+_Step 0_. Given the inverse $\bm{B}^{-1}$ of a dual feasible basis $\bm{B}$,
+primal solution $\bar{\bm{a}}_0 = \bm{B}^{-1}\bm{b}$, dual feasible solution
+$\bm{y}^\top = \bm{c}_{\bm{B}}^\top\bm{B}^{-1}$, and reduced cost vectors
+$\bm{r}_{\bm{D}}^\top = \bm{c}_{\bm{D}}^\top - \bm{y}^\top\bm{D} \geq \bm{0}$.
+
+_Step 1_. If $\bar{\bm{a}}_0 \geq \bm{0}$, stop; the current solution pair is
+optimal. Otherwise, determine which column $\bm{a}_o$ is to leave the basis by
+selecting the most negative entry, the $o^{\text{th}}$ entry (break ties
+arbitrarily), in $\bar{\bm{a}}_0$. Now calculate $\bar{\bm{y}}^\top =
+\bm{e}_o^\top \bm{B}^{-1}$ and then calculate $\bar{\bm{a}}^o =
+\bar{\bm{y}}^\top\bm{D}$.
+
+_Step 2_. If $\bar{\bm{a}}^o \geq \bm{0}$, stop; the problem is unbounded.
+Otherwise, calculate the ratios $\frac{(\bm{r}_D)_j}{(-\bar{\bm{a}}^o)_j}$ for
+($\bar{\bm{a}}^o)_j < 0$ to determine the current nonbasic column, $\bm{a}_e$,
+$e$ corresponding to the minimum ratio index, to become basic.
+
+_Step 3_. Update the basis $\bm{B}^{-1}$ (or its factorization), and update
+primal solution $\bar{\bm{a}}_0$, dual feasible solution $\bm{y}$, and reduced
+cost vector $\bm{r}_{\bm{D}}$ accordingly. Return to _Step 1_.
+
+:::
+
+
+## <span style="font-size:97%">Example &ndash; Dual Simplex Procedure Illustration </span> {.smaller}
+
+* We start with the initial basis $\bm{B} = \begin{bmatrix} \bm{a}_2 & \bm{a}_3
+\end{bmatrix}$ and $\bm{D} = \begin{bmatrix} \bm{a}_1 & \bm{a}_4 \end{bmatrix}$.
+
+_Step 0_. Initialization
+
+$$
+\begin{equation}
+\bm{B} = \begin{bmatrix} 1 & -2 \\ 3 & 0 \end{bmatrix}, \quad \bm{B}^{-1} =
+\begin{bmatrix} 0 & \frac{1}{3} \\ -\frac{1}{2} & \frac{1}{6} \end{bmatrix},
+\quad \bar{\bm{a}}_0 = \begin{bmatrix} 0 & \frac{1}{3} \\ -\frac{1}{2} &
+\frac{1}{6} \end{bmatrix}\begin{bmatrix} 2 \\ 2 \end{bmatrix} = \begin{bmatrix}
+\frac{2}{3} \\ -\frac{2}{3} \end{bmatrix}, \quad \bm{y}^\top = \begin{bmatrix}
+12& 2 \end{bmatrix} \begin{bmatrix} 0 & \frac{1}{3} \\ -\frac{1}{2} &
+\frac{1}{6} \end{bmatrix} = \begin{bmatrix} -1 & \frac{13}{3} \end{bmatrix},
+\end{equation}
+$$
+
+and
+
+$$
+\bm{r}_{\bm{D}}^\top = \begin{bmatrix} 18 & 6 \end{bmatrix} - \begin{bmatrix} -1
+& \frac{13}{3} \end{bmatrix}\begin{bmatrix} 3 & 1 \\ 1 & -1 \end{bmatrix} =
+\begin{bmatrix} \frac{50}{3} & \frac{34}{3} \end{bmatrix}.
+$$
+
+_Step 1_. We see that only the second component of $\bar{\bm{a}}_0$ is negative
+so that $o=2$ (which corr. to column $\bm{a}_3$). Now, we compute
+
+$$
+\bar{\bm{y}}^\top = \bm{e}_2^\top \bm{B}^{-1} = \begin{bmatrix} 0 & 1
+\end{bmatrix}\begin{bmatrix} 0 & \frac{1}{3} \\ -\frac{1}{2} & \frac{1}{6}
+\end{bmatrix} = \begin{bmatrix} -\frac{1}{2} & \frac{1}{6} \end{bmatrix}, \quad 
+\bar{\bm{a}}^2 = \bar{\bm{y}}^\top\bm{D} = \begin{bmatrix} -\frac{1}{2} &
+\frac{1}{6} \end{bmatrix} \begin{bmatrix} 3 & 1 \\ 1 & -1 \end{bmatrix} = \begin{bmatrix}
+-\frac{4}{3} & -\frac{2}{3} \end{bmatrix}.
+$$
+
+
+## <span style="font-size:97%">Example &ndash; Dual Simplex Procedure Illustration </span> {.smaller}
+
+_Step 2_. Since all components in $\bar{\bm{a}}^o$ are negative, the
+componentwise ratios are
+
+$$
+\bm{r}_{\bm{D}} ./ (-\bar{\bm{a}}^2) = \begin{bmatrix} \frac{50}{3} &
+\frac{34}{3} \end{bmatrix} ./ \begin{bmatrix} \frac{4}{3} & \frac{2}{3}
+\end{bmatrix} = \begin{bmatrix} \frac{25}{2} & 17 \end{bmatrix}
+$$
+
+Here, we see the minimum ratio is the first component so that $e=1$ (which
+corresponds to column $\bm{a}_1$), that is $\bm{a}-1$ replaces $\bm{a}_3$ in the
+current basis.
+
+_Step 3_. The new basis is $\bm{B} = \begin{bmatrix} \bm{a}_2 & \bm{a}_1
+\end{bmatrix}$.
+
+$$
+\begin{equation}
+\bm{B} = \begin{bmatrix} 1 & 3 \\ 3 & 1 \end{bmatrix}, \quad \bm{B}^{-1} =
+\begin{bmatrix} -\frac{1}{8} & \frac{3}{8} \\ \frac{3}{8} & -\frac{1}{8} \end{bmatrix},
+\quad \bar{\bm{a}}_0 = \begin{bmatrix} -\frac{1}{8} & \frac{3}{8} \\ \frac{3}{8} &
+-\frac{1}{8} \end{bmatrix}\begin{bmatrix} 2 \\ 2 \end{bmatrix} = \begin{bmatrix}
+\frac{1}{2} \\ \frac{1}{2} \end{bmatrix}, \quad \bm{y}^\top = \begin{bmatrix}
+12 & 18 \end{bmatrix} \begin{bmatrix} -\frac{1}{8} & \frac{3}{8} \\ \frac{3}{8} &
+-\frac{1}{8} \end{bmatrix} = \begin{bmatrix} \frac{21}{4} & \frac{9}{4} \end{bmatrix},
+\end{equation}
+$$
+
+and
+
+$$
+\bm{r}_{\bm{D}}^\top = \begin{bmatrix} 2 & 6 \end{bmatrix} - \begin{bmatrix}
+\frac{21}{4} & \frac{9}{4} \end{bmatrix}\begin{bmatrix} -2 & 1 \\ 0 & -1 \end{bmatrix} =
+\begin{bmatrix} \frac{25}{2} & 3 \end{bmatrix}.
+$$
+
+Stop! The solution pair is optimal!
+
+
+## The Primal-Dual Algorithm {.smaller}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+* We can work simultaneously on the primal and dual problems to solve LP
+problems.
+* The procedure begins with a feasible solution to the dual that is improved at
+each step by optimizing an _associated restricted primal_ problem.
+:::
+
+::: {.column width="60%"}
+* As the method progresses, it can be regarded as striving to achieve the
+complementary slackness conditions for optimality.
+
+::: {.callout-important appearance="minimal"}
+
+::: {layout="[90, 5, 90]"}
+$$
+\begin{align}
+\operatorname{minimize} & \bm{c}^\top\bm{x} \\
+\text{subject to} & \bm{Ax} = \bm{b}, \quad \bm{x} \geq \bm{0}
+\end{align}
+$$
+
+&nbsp;
+and
+
+$$
+\begin{align}
+\operatorname{minimize} & \bm{y}^\top\bm{b} \\
+\text{subject to} & \bm{y}^\top\bm{A} = \bm{c}^\top.
+\end{align} 
+$$ {#eq-primal-dual}
+:::
+
+:::
+
+:::
+
+
+::::
+
+* Given a feasible solution $\bm{y}$, not necessarily basic, to the dual, define
+the subset $\mathcal{P}$ of indices $\{1, 2, \ldots, n\}$ by $j \in \mathcal{P}$
+if $\bm{y}^\top \bm{a}_j = c_j$.
+  - Since $\bm{y}$ is dual feasible, we have $\forall j \notin
+    \mathcal{P}, \;\; \bm{y}^\top \bm{a}_j < c_j$.
+* Corresponding to $\bm{y}$ and the index set $\mathcal{P}$, we define the
+_associated restricted primal problem_
+
+$$
+\begin{align}
+\operatorname{minimize} & \bm{1}^\top \bm{u}, & \bm{1}^\top = \begin{bmatrix} 1 &
+1 & \cdots & 1 \end{bmatrix} \\
+\text{subject to} & \bm{Ax} + \bm{u} = \bm{b}  & \\
+& \bm{x} \geq \bm{0} & x_j = 0 \quad \text{for} \quad j \notin \mathcal{P} \\
+& \bm{u} \geq \bm{0} & 
+\end{align}
+$$ {#eq-assoc}
+
+
+## The Primal-Dual Algorithm {.smaller}
+
+* The dual of this associated restricted primal is called the _associated
+restricted dual_ with dual variable vector $\bm{y}^\prime$. 
+
+$$
+\begin{align}
+\operatorname{maximize} & (\bm{y}^\prime)^\top \bm{b}  & \\
+\text{subject to} & (\bm{y}^\prime)^\top \bm{a}_j \leq 0 & j \in \mathcal{P} \\
+& (\bm{y}^\prime) \leq \bm{1}.
+\end{align}
+$$ {#eq-assoc-dual}
+
+::: {.callout-tip icon=false}
+## Primal-Dual Optimality Theorem
+Suppose that $\bm{y}$ is feasible for the original dual and that $\bm{x}$ and
+$\bm{u} = \bm{0}$ is feasible (and of course optimal) for the associated
+restricted primal. Then $\bm{x}$ and $\bm{y}$ are optimal for the original prime
+and dual programs, respectively.
+:::
+
+::: {.callout-note icon=false}
+## Proof
+Clearly $\bm{x}$ is feasible for the primal. Also, we have $\bm{c}^\top\bm{x} =
+\bm{y}^\top\bm{Ax}$ because $\bm{y}^\top\bm{A}$ is identical to $\bm{c}^\top$ on
+the components corresponding to the nonzero elements of $\bm{x}$. Thus
+$\bm{c}^\top\bm{x} = \bm{y}^\top\bm{Ax} = \bm{y}^\top\bm{b}$ and optimality
+follows from strong duality or complementary slackness.
+:::
+
+
+## The Primal-Dual Algorithm {.smaller}
+
+_Step 1_. Given a feasible solution $\bm{y}^0$ to the dual program
+@eq-primal-dual, determine the associated restricted primal according to
+@eq-assoc.
+
+_Step 2_. Optimize the associated restricted primal. If the minimal value of
+this problem is zero, the corresponding solution and $\bm{y}^0$ is an optimal
+pair for the original LP @eq-primal-dual.
+
+_Step 3_. If the minimal value of the associated restricted primal is strictly
+positive, the maximal objective value of the associated restricted dual
+@eq-assoc-dual is also positive from the strong duality theorem, that is, its
+optimal solution ${\bm{y}^\prime}^\top \bm{b} > 0$. If there is no $j$ for which
+${\bm{y}^\prime}^\top \bm{a}_j > 0$ for all $j \notin \mathcal{P}$, conclude the
+primal has no feasible solutions from Farkas's lemma.
+
+_Step 4_. If, on the other hand, for at least one $j \notin \mathcal{P}$,
+${\bm{y}^\prime}^\top \bm{a}_j > 0$, define the new dual feasible vector $$
+\bm{y}(\varepsilon) = \bm{y}^0 + \varepsilon \bm{y}^\prime, $$ where
+$\varepsilon$ is referred to as the stepsize, is chosen as large as possible
+till one of the constraints, $j \notin \mathcal{P}$ becomes equal
+$$ \bm{y}(\varepsilon)^\top \bm{a}_j = c_j, \quad j \notin \mathcal{P}. $$
+
+If $\varepsilon$ can be increased to $\infty$, then the original dual is
+unbounded. Otherwise $\varepsilon > 0$ and we go back to _Step 1_ using this new
+dual feasible solution $\bm{y}(\varepsilon)$ whose dual objective is strictly
+increased.
+$$ \bm{y}(\varepsilon)^\top \bm{b} = (\bm{y}^0)^\top \bm{b} + \varepsilon
+{\bm{y}^\prime}^\top \bm{b} > (\bm{y}^0)^\top \bm{b}. $$

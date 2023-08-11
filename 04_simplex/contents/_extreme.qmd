@@ -114,7 +114,7 @@ $$ \varepsilon = \operatorname{min}_i \left\{\frac{\bar{a}_{i0}}{\bar{a}_{ie}}:
 
 ::: {.column width="50%"}
 * We have a new BFS, with the vector $\bm{a}_e$ replacing (outgoing) column
-$\bm{a}_o$, where index $o \leq m$ correspondes to the minimizing-ratio in
+$\bm{a}_o$, where index $o \leq m$ corresponds to the minimizing-ratio in
 @eq-eps
 $$ o = \operatorname{arg \, min}_i \left\{\frac{\bar{a}_{i0}}{\bar{a}_{ie}}:
 \bar{a}_{ie} > 0 \right\}.$$

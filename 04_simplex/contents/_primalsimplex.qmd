@@ -1,2 +1,395 @@
 # The Primal Simplex Method
 
+## Determining an Optimal Feasible Solution {.smaller}
+
+::: {.callout-warning appearance="minimal"}
+The idea of the simplex method is to select the incoming column so that the
+resulting new BFS will yield a lower value to the objective function than the
+previous one.
+:::
+
+::: {.columns}
+
+::: {.column width="50%"}
+* Assume that $\bm{B}$ consists of the first $m$ columns of $A$. Then
+partition $\bm{A}, \bm{x}$ and $\bm{c}^\top$ as
+
+$$ \bm{A} = \begin{bmatrix} \bm{B} & \bm{D} \end{bmatrix} $$ 
+$$ \bm{x} =
+\begin{bmatrix}\bm{x}_{\bm{B}} & \bm{x}_{\bm{D}}\end{bmatrix}, \quad \bm{c}^\top
+= \begin{bmatrix} \bm{c}_{\bm{B}}^\top & \bm{c}_{\bm{D}}^\top \end{bmatrix}. $$
+
+* Suppose we have a basic feasible solution
+$$ \bm{x}_{\bm{B}} = \bar{\bm{a}}_0 := \bm{B}^{-1}\bm{b} \geq \bm{0}, \quad
+\text{and} \quad \bm{x}_{\bm{D}} = \bm{0}. $$
+
+* The value of the objective function is
+$$ z = c_1x_1 + c_2x_2 + \cdots + c_nx_n = \bm{c}_{\bm{B}}^\top\bm{x}_{\bm{B}} +
+\bm{c}_{\bm{D}}^\top\bm{x}_{\bm{D}}  $$ {#eq-obj}
+
+* Hence for the current basic solution, the corresponding value is
+$$ z_0 = \bm{c}_{\bm{B}}^\top \bm{B}^{-1}\bm{b}. $$ {#eq-cval}
+:::
+
+::: {.column width="50%"}
+* For any value of $\bm{x}_{\bm{D}}$ the necessary value of $\bm{x}_{\bm{B}}$ is
+determined from $m$ equality constraints of the linear program, i.e., from
+$\bm{Ax} = \bm{b}$.
+
+$$ \bm{Bx_{B} + Dx_D} = \bm{b} \quad \text{or} \quad \bm{x_B} =
+\bm{B}^{-1}\bm{b} - \bm{B}^{-1}\bm{D}\bm{x_D} $$ {#eq-xd}
+
+* When this expression is substituted into @eq-obj we obtain
+$$
+\begin{align}
+z &= \bm{c}_{\bm{B}}^\top(\bm{B}^{-1}\bm{b}-\bm{B}^{-1}\bm{Dx_D}) +
+\bm{c}_{\bm{D}}^\top\bm{x_D} \\
+&= \bm{c}_{\bm{B}}^\top\bm{B}^{-1}\bm{b} + (\bm{c}_{\bm{D}}^\top -
+\bm{c}_{\bm{B}}^\top\bm{B}^{-1}\bm{D})\bm{x_D} \\
+&= z_0 + (\bm{c}_{\bm{D}}^\top - \bm{y}^\top\bm{D})\bm{x_D}.
+\end{align}
+$$ {#eq-cxd}
+
+:::
+
+::::
+
+
+## Determining an Optimal Feasible Solution {.smaller}
+
+* @eq-cxd expresses the cost of any feasible solution to @eq-pc in terms of the
+independent variable in $\bm{x_D}$.
+
+* Here, $\bm{y}^\top = \bm{c}_{\bm{B}}^\top\bm{B}^{-1}$ is the simplex multipliers or
+the shadow prices corresponding to basis $\bm{B}$.
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* Let $$ \bm{r}_{\bm{D}}^\top = \bm{c}_{\bm{D}}^\top - \bm{y}^\top\bm{D}. $$ {#eq-rel}
+* Then from formula @eq-cxd, $$ z = \bm{c}^\top \bm{x} = z_0 + \sum_{j=m+1}^n r_jx_j $$ {#eq-cost}
+* The vector $\bm{r_D}$ represents the _relative cost vector_, also called
+_reduced cost_ or _reduced gradient vector_ for nonbasic variables in
+$\bm{x_D}$.
+:::
+
+::: {.column width="50%"}
+* From formula @eq-cost, we can now determine if there is any advantage in
+changing the basic solution by introducing one of the nonbasic variables.
+  - If $r_j$ is negative for some $j$, $m+1 \leq j \leq n$, then increasing
+    $x_j$ from zero to some positive value would decrease the total cost,
+    yielding a better solution.
+  - @eq-cost automatically takes into account the changes that would be required
+    in the values of the basic variables $x_1, x_2, \ldots, x_m$ to accommodate
+    for the change in $x_j$.
+:::
+
+::::
+
+
+## Determining an Optimal Feasible Solution {.smaller}
+
+::: {.callout-tip icon=false}
+## Theorem (Improvement of Basic Feasible Solution)
+Given a nondegenerate BFS with corresponding objective value $z_0$, suppose that
+for some $j$ there holds $r_j < 0$. Then there is a feasible solution with
+objective value $z < z_0$. If the column $\bm{a}_j$ can be substituted for some
+vector in the original basis to yield a new basic feasible solution, this new
+solution will have $z < z_0$. If $\bm{a}_j$ cannot be substituted to yield a
+BFS then the solution set $K$ is unbounded and the objective function can be
+made arbitarily small (toward minus infinity).
+:::
+
+* Final question: Does $r_j \geq 0, \;\; \forall j$ imply optimality?
+  - The answer is "yes" due to strong duality and the fact that
+
+$$ \bm{r}_{\bm{B}}^\top = \bm{c}_{\bm{B}}^\top - \bm{y}^\top\bm{B} =
+\bm{c}_{\bm{B}}^\top - \bm{c}_{\bm{B}}^\top = \bm{0}. $$
+
+This means that
+
+$$
+0 = \bm{r}_{\bm{B}}^\top \bm{x_B} = \bm{c}_{\bm{B}}^\top \bm{x}_{\bm{B}} -
+\bm{y}^\top \bm{Bx_B} = \bm{c}_{\bm{B}}^\top \bm{x}_{\bm{B}} - \bm{y}^\top
+\bm{B}\bm{B}^{-1}\bm{b} = \bm{c}^\top \bm{x} - \bm{y}^\top \bm{b}.
+$$
+
+and strong duality forces that $\bm{x}$ is optimal.
+
+
+::: {.callout-tip icon=false}
+## Optimality Condition Theorem
+If for some basic feasible solution $r_j \geq 0 \;\; \forall j$, then that
+solution is optimal.
+:::
+
+
+## Economic Interpretations &ndash; Diet Problem {.smaller}
+
+&nbsp;
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+::: {.callout-tip icon=false}
+## Optimality
+* We consider a certain food not in the basis &ndash; say carrots &ndash; and
+determine if it would be advantageous to bring it into the basis.
+* This is easily determined by examining the cost of carrots as compared with
+the cost of synthetic carrots.
+* Say carrots are food $j$, whose unit cost is $c_j$. The cost of a unit of
+synthetic carrots is
+$$ \sum_{i=1}^m c_i (\bm{B}^{-1}\bm{a}_j)_i = \bm{c}_{\bm{B}}^\top
+\bm{B}^{-1}\bm{a}_j = \bm{y}^\top \bm{a}_j. $$
+* If the reduced coefficient $r_j = c_j - \bm{y}^\top\bm{a}_j < 0$, it is
+advantageous to use real carrots in place of synthetic carrots, and carrots
+should be brought into the basis.
+* In general, each $\bm{y}^\top \bm{a}_j$ can be thought of as the price of a
+unit of the column $\bm{a}_j$ when constructed from the current basis.
+  - The difference between this synthetic price and the direct price of that
+    column determines whether that column should enter the basis.
+:::
+
+:::
+
+::: {.column width="40%"}
+
+::: {.callout-important icon=false}
+## Diet Problem (Exact nutritional requirements)
+$$
+\begin{align}
+\operatorname{minimize} & \bm{c}^\top \bm{x} \\
+\text{subject to} & \bm{Ax} = \bm{b}, \quad \bm{x} \geq \bm{0}.
+\end{align}
+$$
+
+* $\bm{a}_j$ gives the nutritional equivalent of a unit of a particular food.
+* Given a basis $\bm{B}$, say the first $m$ columns of $\bm{A}$, the
+corresponding $\bm{B}^{-1}\bm{a}_j$ shows how the
+nutritinal contents of any food $j$ can be constructed as a combination of the
+foods in the basis.
+* For instance, if carrots are not in the basis we can, using the description
+given by the tableau, construct a _synthetic_ carrot, which is nutritionally
+equivalent to a carrot, by an appropriate combination of the foods in the basis.
+:::
+
+:::
+
+
+::::
+
+
+## The Simplex Procedure {.smaller}
+
+::: {.callout-important appearance="minimal"}
+_Step 0_. Given the the inverse $\bm{B}^{-1}$ of a current basis, and the current
+solution $\bm{x}_{\bm{B}} = \bar{\bm{a}}_0 = \bm{B}^{-1}\bm{b}$.
+
+_Step 1_. Calculate the current simplex multiplier vector $\bm{y}^\top =
+\bm{c}_{\bm{B}}^\top\bm{B}^{-1}$ and then calculate the relative cost coefficients
+$\bm{r}_{\bm{D}}^\top = \bm{c}_{\bm{D}}^\top - \bm{y}^\top\bm{D}$. If
+$\bm{r}_{\bm{D}} \geq \bm{0}$ stop; the current solution is optimal.
+
+_Step 2_. Determine the vector $\bm{a}_e$ that is to enter the basis by
+selecting its most negative cost coefficient, the $e^{\text{th}}$ ($e > m$)
+coefficient (break ties arbitrarily); and calculate $\bar{\bm{a}}_e =
+\bm{B}^{-1}\bm{a}_e$.
+
+_Step 3_. If $\bar{\bm{a}}_e \leq \bm{0}$, stop; the problem is unbounded.
+Otherwise, calculate the ratios $\frac{\bar{a}_{i0}}{\bar{a}_{ie}}$ for
+$\bar{a}_{ie} > 0$ to determine the current basic column, $\bm{a}_o$ where $o
+\leq m+1$ corresponds to the index of the minimum ratio, to leave the basis.
+
+_Step 4_. Update $\bm{B}^{-1}$ (or its factorization) and the new basic feasible
+solution $\bar{\bm{a}}_0 = \bm{B}^{-1}\bm{b}$. Return to _Step 1_.
+:::
+
+::: {.callout-warning icon=false}
+## Remark
+The basic columns in $\bm{B}$ and the nonbasic columns in $\bm{D}$ can be
+ordered arbitrarily and the components in $\bm{x_B}, \bm{x_D}, \bm{c_B},
+\bm{c_D}$ follow the same index orders.
+
+More precisely, let columns be permuted as $\bm{B} = \begin{bmatrix}
+\bm{a}_{\sigma(1)} & \bm{a}_{\sigma(2)} & \cdots & \bm{a}_{\sigma(m)}
+\end{bmatrix}$ and $\bm{D} = \begin{bmatrix} \bm{a}_{\sigma(m+1)} &
+\bm{a}_{\sigma(m+2)} & \cdots & \bm{a}_{\sigma(n)} \end{bmatrix}$. Then when
+$r_e$ is identified as the most negative coefficient in $\bm{r}_{\bm{D}}$ in
+_Step 2_, $\bm{a}_{\sigma(e)}$ is the entering column. Similarly, when $o$ is
+identified as the minmum ratio index in _Step 3_, $\bm{a}_{\sigma(o)}$ is the
+outgoing column.
+:::
+
+
+## <span style="font-size:93%">Example &ndash; Primal Simplex Procedure Illustration </span> {.smaller}
+
+Suppose we start with the initial basis $\bm{B} = \begin{bmatrix} \bm{a}_1 &
+\bm{a}_3 \end{bmatrix}$ and $\bm{D} = \begin{bmatrix} \bm{a}_2 & \bm{a}_4
+\end{bmatrix}$.
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+
+_Step 0_. Initialization
+
+$$
+\begin{equation}
+\bm{B} = \begin{bmatrix} 3 & -2 \\ 1 & 0 \end{bmatrix}, \quad \bm{B}^{-1} =
+\begin{bmatrix} 0 & 1 \\ -\frac{1}{2} & \frac{3}{2} \end{bmatrix}, \quad
+\bar{\bm{a}}_0 = \bm{B}^{-1}\bm{b} = \begin{bmatrix} 2 \\ 2 \end{bmatrix}.
+\end{equation}
+$$
+
+_Step 1_. Calculate
+
+$$ 
+\begin{equation}
+\bm{y}^\top = \bm{c}_{\bm{B}}^\top\bm{B}^{-1} = \begin{bmatrix} 18 & 2
+\end{bmatrix} \begin{bmatrix} 0 & 1 \\ -\frac{1}{2} & \frac{3}{2} \end{bmatrix}
+= \begin{bmatrix} -1 & 21 \end{bmatrix}.
+\end{equation}
+$$
+
+and
+
+$$
+\begin{equation}
+\bm{r}_{\bm{D}}^\top = \bm{c}_{\bm{D}}^\top - \bm{y}^\top\bm{D} =
+\begin{bmatrix} 12 & 6 \end{bmatrix} - \begin{bmatrix} -1 & 21 \end{bmatrix}
+\begin{bmatrix} 1 & 1 \\ 3 & -1 \end{bmatrix} = \begin{bmatrix} -50 & 28
+\end{bmatrix}.
+\end{equation}
+$$
+
+_Step 2_. Then see $e = 2$, that is,$\bm{a}_2$ is the incoming column, and
+calculate
+
+$$
+\bar{\bm{a}}_2 = \bm{B}^{-1}\bm{a}_2 = \begin{bmatrix} 0 & 1 \\ -\frac{1}{2} &
+\frac{3}{2} \end{bmatrix} \begin{bmatrix} 1 \\ 3 \end{bmatrix} = \begin{bmatrix}
+3 \\ 4 \end{bmatrix}.
+$$
+
+:::
+
+::: {.column width="40%"}
+
+::: {.callout-important appearance="minimal"}
+$$
+\begin{align}
+\operatorname{minimize} & 18x_1 + 12x_2 + 2x_3 + 6x_4 \\
+\text{subject to} & 3x_1 + x_2 - 2x_3 + x_4 = 2, \\
+& x_1 + 3x_2 - x_4 = 2, \\
+& x_1, x_2, x_3, x_4 \geq 0.
+\end{align}
+$$
+:::
+
+
+_Step 3_. Since $\bar{\bm{a}}_2 \geq \bm{0}$ the ratios are, via the
+component-wise divide operation
+
+$$
+\bar{\bm{a}}_0 ./ \bar{\bm{a}}_2 = \begin{bmatrix} 2 \\ 2 \end{bmatrix} ./
+\begin{bmatrix} 3 \\ 4 \end{bmatrix} = \begin{bmatrix} \frac{2}{3} \\
+\frac{1}{2} \end{bmatrix}.
+$$
+
+The minimum ratio correspondes to column $\bm{a}_3$ ($o=3$) that would be
+outgoing. That is $\bm{a}_2$ replaces $\bm{a}_3$ in the basis, which is now
+$\bm{B} = \begin{bmatrix} \bm{a}_1 & \bm{a}_2 \end{bmatrix}$ and $\bm{D} =
+\begin{bmatrix} \bm{a}_2 & \bm{a}_4 \end{bmatrix}$.
+
+:::
+
+::::
+
+
+
+## <span style="font-size:93%">Example &ndash; Primal Simplex Procedure Illustration </span> {.smaller}
+
+_Step 4_. Update
+
+$$
+\begin{equation}
+\bm{B} = \begin{bmatrix} 3 & 1 \\ 1 & 3 \end{bmatrix}, \quad \bm{B}^{-1} =
+\begin{bmatrix} \frac{3}{8} & -\frac{1}{8} \\ -\frac{1}{8} & \frac{3}{8}
+\end{bmatrix}, \quad \bar{\bm{a}}_0 = \bm{B}^{-1}\bm{b} = \begin{bmatrix}
+\frac{1}{2} \\ \frac{1}{2} \end{bmatrix}.
+\end{equation}
+$$
+
+Return to _Step 1_.
+
+__Second Iteration__
+
+_Step 1_. Calculate$$ 
+\begin{equation}
+\bm{y}^\top = \bm{c}_{\bm{B}}^\top\bm{B}^{-1} = \begin{bmatrix} 18 & 2
+\end{bmatrix} \begin{bmatrix} \frac{3}{8} & -\frac{1}{8} \\ -\frac{1}{8} & \frac{3}{8} \end{bmatrix}
+= \begin{bmatrix} \frac{21}{4} & \frac{9}{4} \end{bmatrix}.
+\end{equation}
+$$
+
+and
+
+$$
+\begin{equation}
+\bm{r}_{\bm{D}}^\top = \bm{c}_{\bm{D}}^\top - \bm{y}^\top\bm{D} =
+\begin{bmatrix} 2 & 6 \end{bmatrix} - \begin{bmatrix} \frac{21}{4} & \frac{9}{4} \end{bmatrix}
+\begin{bmatrix} -2 & 1 \\ 0 & -1 \end{bmatrix} = \begin{bmatrix} \frac{25}{2} & 3 
+\end{bmatrix}.
+\end{equation}
+$$
+
+Stop! All of the reduced costs are positive so the current basic feasible
+solution is optimal!
+
+
+## Finding an Initial Basic Feasible Solution {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* The simplex procedure needs to start from a basic feasible solution.
+* Such a BFS is some times immediately available:
+  - if the constraints are of this form $\bm{Ax} \leq \bm{b}, \quad \bm{x} \geq
+    \bm{0}$, with $\bm{b} \geq \bm{0}$
+  - a BFS to the corresponding standard form of the problem is provided by the
+    slack variables.
+* An initial BFS is not always apparent for other types of LPs.
+* For those, an _auxiliary_ LP and a corresponding application of the simplex
+method can be used to determined the required initial solution.
+* An LP can always be expressed in the so-called Phase I form: $$ \bm{Ax} =
+\bm{b} \geq \bm{0}, \quad \bm{x} \geq \bm{0}. $$ {#eq-phase1}
+:::
+
+::: {.column width="50%"}
+* In order to find a solution to @eq-phase1, we consider the artificial
+minimization problem (_Phase One_ linear program)
+
+$$
+\begin{align}
+\operatorname{minimize} & \sum_{i=1}^m u_j \\
+\text{subject to} & \bm{Ax} + \bm{u} = \bm{b} \\
+& \bm{x} \geq \bm{0}, \quad \bm{u} \geq \bm{0}.
+\end{align}
+$$ {#eq-ph1lp}
+where $\bm{u} = (u_1, u_2, \ldots, u_m)$ is a vector of artifical variables.
+
+* If there is a feasible solution to @eq-phase1, then it is clear that @eq-ph1lp
+has a minimum value of zero with $\bm{u} = \bm{0}$.
+
+* If @eq-phase1 has no feasible solution, then the minimum value of @eq-ph1lp is
+greater than zero.
+
+* @eq-ph1lp is an LP and the a BFS for it is $\bm{u} = \bm{b}$. It can readily
+be solved using the simplex technique.
+:::
+
+
+::::
