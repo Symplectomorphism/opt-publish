@@ -155,7 +155,7 @@ widely applicable.
 | Task | Reward |
 |------|--------|
 |Robot walking|$+$ve reward on each time step proportional to robot's forward motion|
-|Escape from a maze| $-1$ reward for every time step tha passes prior to escape|
+|Escape from a maze| $-1$ reward for every time step that passes prior to escape|
 |Playing chess|$+1$ for winning, $-1$ for losing, $0$ for drawing|
 :::
 
