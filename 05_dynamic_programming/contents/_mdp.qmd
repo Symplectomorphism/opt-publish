@@ -1,0 +1,17 @@
+# Markov Decision Processes (MDP)
+
+## Introduction
+
+* MDPs are a classical formalization of sequential decision making.
+  - Actions influence not just immediate rewards, but also subsequent states,
+    and through those, future rewards.
+* MDPs involve delayed reward and the need to trade off immediate and delayed 
+reward.
+* We will estimate the value $q_\ast(s, a)$ of each action $a$ in each state
+$s$,
+  - or we estimate the value $v_\ast(s)$ of each state given optimal action
+    selections.
+* These state-dependent quantities are essential to accurately assigning credit
+for long-term consequences to individual action selections.
+
+## The Agent &ndash; Environment Interface {.smaller}

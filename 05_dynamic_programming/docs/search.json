@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "05_dynamic_programming.html#optimization-theory-and-practice",
+    "href": "05_dynamic_programming.html#optimization-theory-and-practice",
+    "title": "05_dynamic_programming",
+    "section": "Optimization Theory and Practice",
+    "text": "Optimization Theory and Practice\n\n\nDynamic Programming\n\n\n\n\nInstructor: Aykut Satici, Ph.D.   Mechanical and Biomedical Engineering  Electrical and Computer Engineering  Boise State University, Boise, ID, USA\n\n\nTopics:  Markov Decision Processes  Policies and Value Functions  Policy Evaluation  Policy Improvement  Policy Iteration  Value Iteration"
+  },
+  {
+    "objectID": "05_dynamic_programming.html#introduction",
+    "href": "05_dynamic_programming.html#introduction",
+    "title": "05_dynamic_programming",
+    "section": "Introduction",
+    "text": "Introduction\n\nMDPs are a classical formalization of sequential decision making.\n\nActions influence not just immediate rewards, but also subsequent states, and through those, future rewards.\n\nMDPs involve delayed reward and the need to trade off immediate and delayed reward.\nWe will estimate the value q*(s,a)q_\\ast(s, a) of each action aa in each state ss,\n\nor we estimate the value v*(s)v_\\ast(s) of each state given optimal action selections.\n\nThese state-dependent quantities are essential to accurately assigning credit for long-term consequences to individual action selections."
+  },
+  {
+    "objectID": "05_dynamic_programming.html#the-agent-environment-interface",
+    "href": "05_dynamic_programming.html#the-agent-environment-interface",
+    "title": "05_dynamic_programming",
+    "section": "The Agent – Environment Interface",
+    "text": "The Agent – Environment Interface\n\n\nOptimization Theory and Practice • Aykut C. Satici"
+  }
+]
