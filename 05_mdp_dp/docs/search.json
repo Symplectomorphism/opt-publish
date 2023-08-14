@@ -39,6 +39,20 @@
     "href": "05_mdp_dp.html#goals-and-rewards",
     "title": "05_mdp_dp",
     "section": "Goals and Rewards",
-    "text": "Goals and Rewards\n\nThe agent’s goal is to maximize the total amount of reward it receives; not the immediate reward, but the cumulative reward in the long run.\n\n\n\n\nReward Hypothesis\n\n\nAll of what we mean by goal and purposes can be well thought as the maximization of the expected value of the cumulative sum of a received scalar signal (called reward).\n\n\n\n\nFormulating goals in terms of reward signals has proved to be flexible and widely applicable.\n\n\n\n\nExamples\n\n\n\n\n\n\n\n\n\nTask\nReward\n\n\n\n\nRobot walking\n++ve reward on each time step proportional to robot’s forward motion\n\n\nEscape from a maze\n−1-1 reward for every time step that passes prior to escape\n\n\nPlaying chess\n+1+1 for winning, −1-1 for losing, 00 for drawing\n\n\n\n\n\n\n\nThe reward signal is no the place to impart to the agent prior knowledge about how to achieve what we want it to do (better places: initial policy, iniial value function).\n\nOtherwise the agent might find a way to achieve subgoals without achieving the real goal!\n\n\n\n\nOptimization Theory and Practice • Aykut C. Satici"
+    "text": "Goals and Rewards\n\nThe agent’s goal is to maximize the total amount of reward it receives; not the immediate reward, but the cumulative reward in the long run.\n\n\n\n\nReward Hypothesis\n\n\nAll of what we mean by goal and purposes can be well thought as the maximization of the expected value of the cumulative sum of a received scalar signal (called reward).\n\n\n\n\nFormulating goals in terms of reward signals has proved to be flexible and widely applicable.\n\n\n\n\nExamples\n\n\n\n\n\n\n\n\n\nTask\nReward\n\n\n\n\nRobot walking\n++ve reward on each time step proportional to robot’s forward motion\n\n\nEscape from a maze\n−1-1 reward for every time step that passes prior to escape\n\n\nPlaying chess\n+1+1 for winning, −1-1 for losing, 00 for drawing\n\n\n\n\n\n\n\nThe reward signal is no the place to impart to the agent prior knowledge about how to achieve what we want it to do (better places: initial policy, iniial value function).\n\nOtherwise the agent might find a way to achieve subgoals without achieving the real goal!"
+  },
+  {
+    "objectID": "05_mdp_dp.html#returns-and-episodes",
+    "href": "05_mdp_dp.html#returns-and-episodes",
+    "title": "05_mdp_dp",
+    "section": "Returns and Episodes",
+    "text": "Returns and Episodes\n\nIn general, we seek to maximize the expected return, where the return, denoted GtG_t, is defined as some specific function of the reward sequence.\n\nSimplest (bit naïve) case: Gt≜Rt+1+Rt+2+⋯+RT=∑k=t+1TRk,(7) G_t \\triangleq R_{t+1} + R_{t+2} + \\cdots + R_T = \\sum_{k=t+1}^T R_k,   \\qquad(7)\nDiscounted return: Gt≜∑k=0∞γkRt+k+1=∑k=t+1Tγk−t−1Rk,0≤γ≤1.(8) G_t \\triangleq \\sum_{k=0}^\\infty \\gamma^kR_{t+k+1} =\n\\sum_{k=t+1}^T \\gamma^{k-t-1}R_k, \\quad 0 \\leq \\gamma \\leq 1.  \\qquad(8)\n\nThe naïve approach makes sense in applications in which there is a natural notion of a final time step (episodes).\n\nEach episodes ends in a state called the terminal state.\nIn episodic tasks we sometimes need to distinguish the set of all nonterminal states, 𝒮\\mathcal{S} from the set of all states plus the terminal state, 𝒮+\\mathcal{S}^+.\n\nIf the task has no final time, or terminal state, then T=∞T=\\infty.\n\nThe naïve return may easily become infinite. Hence we use the discounted return. Gt=Rt+1+γ(Rt+2+γRt+3+γ2Rt+4+⋯)=Rt+1+γGt+1.(9) G_t = R_{t+1} + \\gamma(R_{t+2} + \\gamma R_{t+3} + \\gamma^2 R_{t+4} + \\cdots)\n= R_{t+1} + \\gamma G_{t+1}.  \\qquad(9)"
+  },
+  {
+    "objectID": "05_mdp_dp.html#how-good-are-a-state-and-an-action",
+    "href": "05_mdp_dp.html#how-good-are-a-state-and-an-action",
+    "title": "05_mdp_dp",
+    "section": "How good are a state and an action?",
+    "text": "How good are a state and an action?\n\n\n\nNote\n\n\n\n\n\n\n\n\nOptimization Theory and Practice • Aykut C. Satici"
   }
 ]

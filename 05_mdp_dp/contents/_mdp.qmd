@@ -164,3 +164,22 @@ about _how_ to achieve what we want it to do (better places: initial policy,
 iniial value function).
   - Otherwise the agent might find a way to achieve _subgoals_ without achieving
     the real goal!
+
+
+## Returns and Episodes {.smaller}
+
+* In general, we seek to maximize the _expected return_, where the return,
+denoted $G_t$, is defined as some specific function of the reward sequence.
+  - Simplest (bit na&iuml;ve) case: $$ G_t \triangleq R_{t+1} + R_{t+2} + \cdots + R_T = \sum_{k=t+1}^T R_k,  $$ {#eq-rew-episode}
+  - _Discounted return_: $$ G_t \triangleq \sum_{k=0}^\infty \gamma^kR_{t+k+1} =
+  \sum_{k=t+1}^T \gamma^{k-t-1}R_k, \quad 0 \leq \gamma \leq 1. $$ {#eq-rew-discounted}
+* The na&iuml;ve approach makes sense in applications in which there is a
+natural notion of a final time step (_episodes_).
+  - Each episodes ends in a state called the _terminal state_.
+  - In _episodic tasks_ we sometimes need to distinguish the set of all
+  nonterminal states, $\mathcal{S}$ from the set of all states plus the terminal
+  state, $\mathcal{S}^+$.
+* If the task has no final time, or terminal state, then $T=\infty$. 
+  - The na&iuml;ve return may easily become infinite. Hence we use the discounted return.
+$$ G_t = R_{t+1} + \gamma(R_{t+2} + \gamma R_{t+3} + \gamma^2 R_{t+4} + \cdots)
+= R_{t+1} + \gamma G_{t+1}. $$ {#eq-ret-rec}
