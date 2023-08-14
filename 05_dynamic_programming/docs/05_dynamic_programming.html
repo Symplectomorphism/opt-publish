@@ -357,6 +357,7 @@
 <li>MDPs are a classical formalization of sequential decision making.
 <ul>
 <li>Actions influence not just immediate rewards, but also subsequent states, and through those, future rewards.</li>
+<li>They are meant to be a straightforward framing of the problem of learning from interaction to achieve a goal.</li>
 </ul></li>
 <li>MDPs involve delayed reward and the need to trade off immediate and delayed reward.</li>
 <li>We will estimate the value <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mo>*</mo></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">q_\ast(s, a)</annotation></semantics></math> of each action <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math> in each state <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>,
@@ -368,6 +369,65 @@
 </section>
 <section id="the-agent-environment-interface" class="slide level2 smaller">
 <h2>The Agent – Environment Interface</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>The decision maker is called the <em>agent</em> or <em>controller</em>.</li>
+<li>The thing it interacts with, everything outside the agent, is called the <em>environment</em> or <em>plant</em>.</li>
+<li>These interact continually, the agent selecting <em>actions</em> (or <em>control signal</em>) and the environment responding to these control signals and presenting new situations to the agent.</li>
+<li>The environment also gives rise to <em>rewards</em>, special numerical values that the agent seeks to maximize over time through its choice of actions.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-warning no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>The agent and environment interact at each of a sequence of discrete time steps, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">t = 0, 1, 2, \ldots</annotation></semantics></math>.
+<ul>
+<li>At each time step <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>, the agent receives some respresentation of the environment’s <em>state</em>$, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>t</mi></msub><mo>∈</mo><mi>𝒮</mi></mrow><annotation encoding="application/x-tex">S_t \in \mathcal{S}</annotation></semantics></math>, and on that basis selects an action <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>t</mi></msub><mo>∈</mo><mi>𝒜</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">A_t \in \mathcal{A}(s)</annotation></semantics></math>.</li>
+<li>One time step later, in part as a consequence of its actions, the agent receives a numerical reward, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>∈</mo><mi>ℛ</mi><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">R_{t+1} \in \mathcal{R} \in \mathbb{R}</annotation></semantics></math> and finds itself in a new state, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">S_{t+1}</annotation></semantics></math>.</li>
+</ul></li>
+<li>The MDP and agent together give rise to a trajectory that begins like this: <span id="eq-traj"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>0</mn></msub><mo>,</mo><msub><mi>A</mi><mn>0</mn></msub><mo>,</mo><msub><mi>S</mi><mn>1</mn></msub><mo>,</mo><msub><mi>R</mi><mn>1</mn></msub><mo>,</mo><msub><mi>A</mi><mn>2</mn></msub><mo>,</mo><msub><mi>R</mi><mn>2</mn></msub><mo>,</mo><msub><mi>S</mi><mn>2</mn></msub><mo>,</mo><msub><mi>A</mi><mn>2</mn></msub><mo>,</mo><msub><mi>R</mi><mn>3</mn></msub><mo>,</mo><mi>…</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> S_0, A_0, S_1, R_1, A_2, R_2, S_2, A_2, R_3, \ldots  \qquad(1)</annotation></semantics></math></span></li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<center>
+<img src="contents/assets/agent_environment.png" width="95%" img="">
+</center>
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>In a <em>finite</em> MDP, the sets of states, actions, and rewards (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒮</mi><annotation encoding="application/x-tex">\mathcal{S}</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝒜</mi><annotation encoding="application/x-tex">\mathcal{A}</annotation></semantics></math>, and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℛ</mi><annotation encoding="application/x-tex">\mathcal{R}</annotation></semantics></math>) all have a finite number of elements.
+<ul>
+<li>In this case, the random variables <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mi>t</mi></msub><annotation encoding="application/x-tex">R_t</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mi>t</mi></msub><annotation encoding="application/x-tex">S_t</annotation></semantics></math> have well-defined discrete probability distributions dependent on the preceding state and action.</li>
+</ul></li>
+</ul>
+<p><span id="eq-dyn"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo>,</mo><mi>r</mi><mo>∣</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≜</mo><mi>ℙ</mi><mo stretchy="false" form="prefix">{</mo><msub><mi>S</mi><mi>t</mi></msub><mo>=</mo><mi>s</mi><mi>′</mi><mo>,</mo><msub><mi>R</mi><mi>t</mi></msub><mo>=</mo><mi>r</mi><mo>∣</mo><msub><mi>S</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>s</mi><mo>,</mo><msub><mi>A</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>a</mi><mo stretchy="false" form="postfix">}</mo><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> p(s', r \mid s, a) \triangleq \mathbb{P}\{S_t = s', R_t = r \mid S_{t-1} = s,
+A_{t-1} = a\}  \qquad(2)</annotation></semantics></math></span></p>
+<ul>
+<li>This function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> defines the <em>dynamics</em> of the MDP.
+<ul>
+<li>It specifies a probability distribution for each choice of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>, i.e.,</li>
+</ul></li>
+</ul>
+<p><span id="eq-pprob"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mrow><mi>s</mi><mi>′</mi><mo>∈</mo><mi>𝒮</mi></mrow></munder><munder><mo>∑</mo><mrow><mi>r</mi><mo>∈</mo><mi>ℛ</mi></mrow></munder><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo>,</mo><mi>r</mi><mo>∣</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn><mo>,</mo><mspace width="1.0em"></mspace><mo>∀</mo><mi>s</mi><mo>∈</mo><mi>𝒮</mi><mo>,</mo><mspace width="0.278em"></mspace><mi>a</mi><mo>∈</mo><mi>𝒜</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \sum_{s' \in \mathcal{S}} \sum_{r \in \mathcal{R}} p(s', r \mid s, a) = 1,
+\quad \forall s \in \mathcal{S}, \; a \in \mathcal{A}(s).  \qquad(3)</annotation></semantics></math></span></p>
+<ul>
+<li>This is called the <em>Markov property</em>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 <div class="footer footer-default">
 <p>Optimization Theory and Practice • Aykut C. Satici</p>
