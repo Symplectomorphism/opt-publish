@@ -1,5 +1,5 @@
 project:
-  title: "05_dynamic_programming"
+  title: "05_mdp_dp"
   type: website
   output-dir: docs
 

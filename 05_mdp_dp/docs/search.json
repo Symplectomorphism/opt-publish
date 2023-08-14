@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "05_mdp_dp.html#optimization-theory-and-practice",
+    "href": "05_mdp_dp.html#optimization-theory-and-practice",
+    "title": "05_mdp_dp",
+    "section": "Optimization Theory and Practice",
+    "text": "Optimization Theory and Practice\n\n\nMarkov Decision Processes and Dynamic Programming\n\n\n\n\nInstructor: Aykut Satici, Ph.D.   Mechanical and Biomedical Engineering  Electrical and Computer Engineering  Boise State University, Boise, ID, USA\n\n\nTopics:  Markov Decision Processes  Policies and Value Functions  Policy Evaluation  Policy Improvement  Policy Iteration  Value Iteration"
+  },
+  {
+    "objectID": "05_mdp_dp.html#introduction",
+    "href": "05_mdp_dp.html#introduction",
+    "title": "05_mdp_dp",
+    "section": "Introduction",
+    "text": "Introduction\n\nMDPs are a classical formalization of sequential decision making.\n\nActions influence not just immediate rewards, but also subsequent states, and through those, future rewards.\nThey are meant to be a straightforward framing of the problem of learning from interaction to achieve a goal.\n\nMDPs involve delayed reward and the need to trade off immediate and delayed reward.\nWe will estimate the value q*(s,a)q_\\ast(s, a) of each action aa in each state ss,\n\nor we estimate the value v*(s)v_\\ast(s) of each state given optimal action selections.\n\nThese state-dependent quantities are essential to accurately assigning credit for long-term consequences to individual action selections."
+  },
+  {
+    "objectID": "05_mdp_dp.html#the-agent-environment-interface",
+    "href": "05_mdp_dp.html#the-agent-environment-interface",
+    "title": "05_mdp_dp",
+    "section": "The Agent – Environment Interface",
+    "text": "The Agent – Environment Interface\n\n\n\n\n\n\nThe decision maker is called the agent or controller.\nThe thing it interacts with, everything outside the agent, is called the environment or plant.\nThese interact continually, the agent selecting actions (or control signal) and the environment responding to these control signals and presenting new situations to the agent.\nThe environment also gives rise to rewards, special numerical values that the agent seeks to maximize over time through its choice of actions.\n\n\n\n\n\n\n\n\nThe agent and environment interact at each of a sequence of discrete time steps, t=0,1,2,…t = 0, 1, 2, \\ldots.\n\nAt each time step tt, the agent receives some respresentation of the environment’s state$, St∈𝒮S_t \\in \\mathcal{S}, and on that basis selects an action At∈𝒜(s)A_t \\in \\mathcal{A}(s).\nOne time step later, in part as a consequence of its actions, the agent receives a numerical reward, Rt+1∈ℛ∈ℝR_{t+1} \\in \\mathcal{R} \\in \\mathbb{R} and finds itself in a new state, St+1S_{t+1}.\n\nThe MDP and agent together give rise to a trajectory that begins like this: S0,A0,S1,R1,A2,R2,S2,A2,R3,…(1) S_0, A_0, S_1, R_1, A_2, R_2, S_2, A_2, R_3, \\ldots  \\qquad(1)\n\n\n\n\n\n\n\n\n\n\n\n\nIn a finite MDP, the sets of states, actions, and rewards (𝒮\\mathcal{S}, 𝒜\\mathcal{A}, and ℛ\\mathcal{R}) all have a finite number of elements.\n\nIn this case, the random variables RtR_t and StS_t have well-defined discrete probability distributions dependent on the preceding state and action.\n\n\np(s′,r∣s,a)≜ℙ{St=s′,Rt=r∣St−1=s,At−1=a}(2) p(s', r \\mid s, a) \\triangleq \\mathbb{P}\\{S_t = s', R_t = r \\mid S_{t-1} = s,\nA_{t-1} = a\\}  \\qquad(2)\n\nThis function pp defines the dynamics of the MDP.\n\nIt specifies a probability distribution for each choice of ss and aa, i.e.,\n\n\n∑s′∈𝒮∑r∈ℛp(s′,r∣s,a)=1,∀s∈𝒮,a∈𝒜(s).(3) \\sum_{s' \\in \\mathcal{S}} \\sum_{r \\in \\mathcal{R}} p(s', r \\mid s, a) = 1,\n\\quad \\forall s \\in \\mathcal{S}, \\; a \\in \\mathcal{A}(s).  \\qquad(3)\n\nThis is called the Markov property."
+  },
+  {
+    "objectID": "05_mdp_dp.html#the-agent-environment-interface-1",
+    "href": "05_mdp_dp.html#the-agent-environment-interface-1",
+    "title": "05_mdp_dp",
+    "section": "The Agent – Environment Interface",
+    "text": "The Agent – Environment Interface\n\nFrom the four-argument dynamics function, pp, one can compute anything else one might want to know about the environment\n\nthe state-transition probabilities p(s′∣s,a)≜ℙ{St=s′∣St−1=a,At−1=a}=∑r∈ℛp(s′,r∣s,a).(4) p(s' \\mid s, a) \\triangleq \\mathbb{P}\\{S_t = s' \\mid S_{t-1} = a, A_{t-1} =\na\\} = \\sum_{r \\in \\mathcal{R}} p(s', r \\mid s, a).  \\qquad(4)\nthe expected rewards for state-action pairs as a two-argument function r(s,a)≜𝔼[Rt∣St−1=s,At−1=a]=∑r∈ℛr∑s′∈𝒮p(s′,r∣s,a),(5) r(s, a) \\triangleq \\mathbb{E}[R_t \\mid S_{t-1} = s, A_{t-1} = a] = \\sum_{r\n\\in \\mathcal{R}} r \\sum_{s' \\in \\mathcal{S}} p(s', r \\mid s, a),  \\qquad(5)\nthe expected rewards for state-action-next-state triples as a three argument function r(s,a,s′)≜𝔼[Rt∣St−1=s,At−1=a,St=s′]=∑r∈ℛrp(s′,r∣s,a)p(s′∣s,a).(6) r(s, a, s') \\triangleq \\mathbb{E}[R_t \\mid S_{t-1} = s, A_{t-1} = a, S_t =\ns'] = \\sum_{r \\in \\mathcal{R}} r \\; \\frac{p(s', r \\mid s, a)}{p(s' \\mid s, a)}.\n \\qquad(6)\n\n\n\n\nThe time steps can refer to arbitrary successive stages of decision making.\nThe actions can be low-level controls (e.g. voltages), or high-level decisions (e.g. have lunch, go to grad school).\nThey can be determined by low-level sensing (e.g. sensor readings) or they can be more high-level and abstract (e.g. symbolic descriptions of objects in a room).\nStates can be anything we can know that might be useful in making the decisions."
+  },
+  {
+    "objectID": "05_mdp_dp.html#the-agent-environment-interface-2",
+    "href": "05_mdp_dp.html#the-agent-environment-interface-2",
+    "title": "05_mdp_dp",
+    "section": "The Agent – Environment Interface",
+    "text": "The Agent – Environment Interface\n\n\n\nRule of thumb\n\n\n\nAnything that cannot be changed arbitrarily by the agent is considered to be outside of it and thus part of its environment.\n\n\n\n\n\nNot everything in the environtment is unknown to the agent.\n\nFor example, the agent often knows how its rewards are computed as a function of its actions and the states.\nReward computation is external to the agent because it defines the task facing the agent and thus is beyond its ability to change arbitrarily.\n\nIn fact, some agents know everything about how its environment.\n\n\n\n\nMDP framework\n\n\nWhatever the details of the sensory, memory, and control apparatus, and whatever objective one is trying to achieve, any problem of learning goal-directed behavior can be reduced to three signals passing back and forth between an agent and its environment:\n\none signal to represent the choices made by the agent (the actions),\none signal to represent the basis on which the choices are made (the states),\none signal to define the agent’s goal (the rewards)."
+  },
+  {
+    "objectID": "05_mdp_dp.html#goals-and-rewards",
+    "href": "05_mdp_dp.html#goals-and-rewards",
+    "title": "05_mdp_dp",
+    "section": "Goals and Rewards",
+    "text": "Goals and Rewards\n\n\nOptimization Theory and Practice • Aykut C. Satici"
+  }
+]

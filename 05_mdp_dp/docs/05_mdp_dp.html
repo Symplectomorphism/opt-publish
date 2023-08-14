@@ -333,7 +333,7 @@
 <h2>Optimization Theory and Practice</h2>
 <!-- ###################################################################### -->
 <hr>
-<h3 id="dynamic-programming">Dynamic Programming</h3>
+<h3 id="markov-decision-processes-and-dynamic-programming">Markov Decision Processes and Dynamic Programming</h3>
 <p><br></p>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -428,6 +428,70 @@ A_{t-1} = a\}  \qquad(2)</annotation></semantics></math></span></p>
 </div>
 </div>
 </div>
+</section>
+<section id="the-agent-environment-interface-1" class="slide level2 smaller">
+<h2>The Agent – Environment Interface</h2>
+<ul>
+<li>From the four-argument dynamics function, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>, one can compute anything else one might want to know about the environment
+<ul>
+<li>the <em>state-transition probabilities</em> <span id="eq-st-trans"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo>∣</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≜</mo><mi>ℙ</mi><mo stretchy="false" form="prefix">{</mo><msub><mi>S</mi><mi>t</mi></msub><mo>=</mo><mi>s</mi><mi>′</mi><mo>∣</mo><msub><mi>S</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>a</mi><mo>,</mo><msub><mi>A</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>a</mi><mo stretchy="false" form="postfix">}</mo><mo>=</mo><munder><mo>∑</mo><mrow><mi>r</mi><mo>∈</mo><mi>ℛ</mi></mrow></munder><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo>,</mo><mi>r</mi><mo>∣</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> p(s' \mid s, a) \triangleq \mathbb{P}\{S_t = s' \mid S_{t-1} = a, A_{t-1} =
+a\} = \sum_{r \in \mathcal{R}} p(s', r \mid s, a).  \qquad(4)</annotation></semantics></math></span></li>
+<li>the expected rewards for state-action pairs as a two-argument function <span id="eq-exp-rew-sa"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≜</mo><mi>𝔼</mi><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>R</mi><mi>t</mi></msub><mo>∣</mo><msub><mi>S</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>s</mi><mo>,</mo><msub><mi>A</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>a</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><munder><mo>∑</mo><mrow><mi>r</mi><mo>∈</mo><mi>ℛ</mi></mrow></munder><mi>r</mi><munder><mo>∑</mo><mrow><mi>s</mi><mi>′</mi><mo>∈</mo><mi>𝒮</mi></mrow></munder><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo>,</mo><mi>r</mi><mo>∣</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>5</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> r(s, a) \triangleq \mathbb{E}[R_t \mid S_{t-1} = s, A_{t-1} = a] = \sum_{r
+\in \mathcal{R}} r \sum_{s' \in \mathcal{S}} p(s', r \mid s, a),  \qquad(5)</annotation></semantics></math></span></li>
+<li>the expected rewards for state-action-next-state triples as a three argument function <span id="eq-exp-rew-sas"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo>,</mo><mi>s</mi><mi>′</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≜</mo><mi>𝔼</mi><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>R</mi><mi>t</mi></msub><mo>∣</mo><msub><mi>S</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>s</mi><mo>,</mo><msub><mi>A</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>a</mi><mo>,</mo><msub><mi>S</mi><mi>t</mi></msub><mo>=</mo><mi>s</mi><mi>′</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><munder><mo>∑</mo><mrow><mi>r</mi><mo>∈</mo><mi>ℛ</mi></mrow></munder><mi>r</mi><mspace width="0.278em"></mspace><mfrac><mrow><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo>,</mo><mi>r</mi><mo>∣</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo>∣</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>6</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> r(s, a, s') \triangleq \mathbb{E}[R_t \mid S_{t-1} = s, A_{t-1} = a, S_t =
+s'] = \sum_{r \in \mathcal{R}} r \; \frac{p(s', r \mid s, a)}{p(s' \mid s, a)}.
+ \qquad(6)</annotation></semantics></math></span></li>
+</ul></li>
+</ul>
+<div class="column-tip" data-appearance="minimal">
+<ul>
+<li>The time steps can refer to arbitrary successive stages of decision making.</li>
+<li>The actions can be low-level controls (e.g.&nbsp;voltages), or high-level decisions (e.g.&nbsp;have lunch, go to grad school).</li>
+<li>They can be determined by low-level sensing (e.g.&nbsp;sensor readings) or they can be more high-level and abstract (e.g.&nbsp;symbolic descriptions of objects in a room).</li>
+<li>States can be anything we can know that might be useful in making the decisions.</li>
+</ul>
+</div>
+</section>
+<section id="the-agent-environment-interface-2" class="slide level2 smaller">
+<h2>The Agent – Environment Interface</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Rule of thumb</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Anything that cannot be changed arbitrarily by the agent is considered to be outside of it and thus part of its environment.</li>
+</ul>
+</div>
+</div>
+</div>
+<ul>
+<li>Not everything in the environtment is unknown to the agent.
+<ul>
+<li>For example, the agent often knows how its rewards are computed as a function of its actions and the states.</li>
+<li>Reward computation is external to the agent because it defines the task facing the agent and thus is beyond its ability to change arbitrarily.</li>
+</ul></li>
+<li>In fact, some agents know <em>everything</em> about how its environment.</li>
+</ul>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>MDP framework</strong></p>
+</div>
+<div class="callout-content">
+<p>Whatever the details of the sensory, memory, and control apparatus, and whatever objective one is trying to achieve, any problem of learning goal-directed behavior can be reduced to three signals passing back and forth between an agent and its environment:</p>
+<ol type="1">
+<li>one signal to represent the choices made by the agent (the actions),</li>
+<li>one signal to represent the basis on which the choices are made (the states),</li>
+<li>one signal to define the agent’s goal (the rewards).</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="goals-and-rewards" class="slide level2 smaller">
+<h2>Goals and Rewards</h2>
 
 <div class="footer footer-default">
 <p>Optimization Theory and Practice • Aykut C. Satici</p>

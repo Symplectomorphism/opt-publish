@@ -3,7 +3,7 @@
 
 <hr>
 
-### Dynamic Programming
+### Markov Decision Processes and Dynamic Programming
 
 <br/>
 

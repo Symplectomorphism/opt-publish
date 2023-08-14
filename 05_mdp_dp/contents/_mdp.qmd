@@ -77,3 +77,62 @@ $$ \sum_{s' \in \mathcal{S}} \sum_{r \in \mathcal{R}} p(s', r \mid s, a) = 1,
 
 
 ::::
+
+
+## The Agent &ndash; Environment Interface {.smaller}
+
+* From the four-argument dynamics function, $p$, one can compute anything else
+one might want to know about the environment
+  - the _state-transition probabilities_
+$$ p(s' \mid s, a) \triangleq \mathbb{P}\{S_t = s' \mid S_{t-1} = a, A_{t-1} =
+a\} = \sum_{r \in \mathcal{R}} p(s', r \mid s, a). $$ {#eq-st-trans}
+  - the expected rewards for state-action pairs as a two-argument function 
+  $$ r(s, a) \triangleq \mathbb{E}[R_t \mid S_{t-1} = s, A_{t-1} = a] = \sum_{r
+  \in \mathcal{R}} r \sum_{s' \in \mathcal{S}} p(s', r \mid s, a), $$ {#eq-exp-rew-sa}
+  - the expected rewards for state-action-next-state triples as a three argument
+    function 
+  $$ r(s, a, s') \triangleq \mathbb{E}[R_t \mid S_{t-1} = s, A_{t-1} = a, S_t =
+  s'] = \sum_{r \in \mathcal{R}} r \; \frac{p(s', r \mid s, a)}{p(s' \mid s, a)}.
+  $$ {#eq-exp-rew-sas}
+
+::: {.column-tip appearance="minimal"}
+* The time steps can refer to arbitrary successive stages of decision making.
+* The actions can be low-level controls (e.g. voltages), or high-level decisions
+(e.g. have lunch, go to grad school).
+* They can be determined by low-level sensing (e.g. sensor readings) or they can
+be more high-level and abstract (e.g. symbolic descriptions of objects in a
+room).
+* States can be anything we can know that might be useful in making the
+decisions.
+:::
+
+
+## The Agent &ndash; Environment Interface {.smaller}
+
+::: {.callout-tip icon=false}
+## Rule of thumb
+* Anything that cannot be changed arbitrarily by the agent is considered to be
+outside of it and thus part of its environment.
+:::
+
+* Not everything in the environtment is unknown to the agent.
+  - For example, the agent often knows how its rewards are computed as a
+    function of its actions and the states.
+  - Reward computation is external to the agent because it defines the task
+    facing the agent and thus is beyond its ability to change arbitrarily.
+* In fact, some agents know _everything_ about how its environment.
+
+::: {.callout-tip icon=false}
+## MDP framework
+Whatever the details of the sensory, memory, and control apparatus, and whatever
+objective one is trying to achieve, any problem of learning goal-directed
+behavior can be reduced to three signals passing back and forth between an agent
+and its environment:
+
+1. one signal to represent the choices made by the agent (the actions),
+2. one signal to represent the basis on which the choices are made (the states),
+3. one signal to define the agent's goal (the rewards).
+:::
+
+
+## Goals and Rewards {.smaller}
