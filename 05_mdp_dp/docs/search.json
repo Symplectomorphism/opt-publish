@@ -39,6 +39,6 @@
     "href": "05_mdp_dp.html#goals-and-rewards",
     "title": "05_mdp_dp",
     "section": "Goals and Rewards",
-    "text": "Goals and Rewards\n\n\nOptimization Theory and Practice • Aykut C. Satici"
+    "text": "Goals and Rewards\n\nThe agent’s goal is to maximize the total amount of reward it receives; not the immediate reward, but the cumulative reward in the long run.\n\n\n\n\nReward Hypothesis\n\n\nAll of what we mean by goal and purposes can be well thought as the maximization of the expected value of the cumulative sum of a received scalar signal (called reward).\n\n\n\n\nFormulating goals in terms of reward signals has proved to be flexible and widely applicable.\n\n\n\n\nExamples\n\n\n\n\n\n\n\n\n\nTask\nReward\n\n\n\n\nRobot walking\n++ve reward on each time step proportional to robot’s forward motion\n\n\nEscape from a maze\n−1-1 reward for every time step tha passes prior to escape\n\n\nPlaying chess\n+1+1 for winning, −1-1 for losing, 00 for drawing\n\n\n\n\n\n\n\nThe reward signal is no the place to impart to the agent prior knowledge about how to achieve what we want it to do (better places: initial policy, iniial value function).\n\nOtherwise the agent might find a way to achieve subgoals without achieving the real goal!\n\n\n\n\nOptimization Theory and Practice • Aykut C. Satici"
   }
 ]

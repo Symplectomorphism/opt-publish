@@ -492,6 +492,63 @@ s'] = \sum_{r \in \mathcal{R}} r \; \frac{p(s', r \mid s, a)}{p(s' \mid s, a)}.
 </section>
 <section id="goals-and-rewards" class="slide level2 smaller">
 <h2>Goals and Rewards</h2>
+<ul>
+<li>The agent’s goal is to <em>maximize</em> the total amount of reward it receives; <em>not</em> the immediate reward, but the cumulative reward in the long run.</li>
+</ul>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Reward Hypothesis</strong></p>
+</div>
+<div class="callout-content">
+<p>All of what we mean by goal and purposes can be well thought as the maximization of the expected value of the cumulative sum of a received scalar signal (called reward).</p>
+</div>
+</div>
+</div>
+<ul>
+<li>Formulating goals in terms of reward signals has proved to be flexible and widely applicable.</li>
+</ul>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Examples</strong></p>
+</div>
+<div class="callout-content">
+<table>
+<colgroup>
+<col style="width: 42%">
+<col style="width: 57%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Reward</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Robot walking</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>+</mo><annotation encoding="application/x-tex">+</annotation></semantics></math>ve reward on each time step proportional to robot’s forward motion</td>
+</tr>
+<tr class="even">
+<td>Escape from a maze</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math> reward for every time step tha passes prior to escape</td>
+</tr>
+<tr class="odd">
+<td>Playing chess</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math> for winning, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math> for losing, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math> for drawing</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li>The reward signal is no the place to impart to the agent prior knowledge about <em>how</em> to achieve what we want it to do (better places: initial policy, iniial value function).
+<ul>
+<li>Otherwise the agent might find a way to achieve <em>subgoals</em> without achieving the real goal!</li>
+</ul></li>
+</ul>
 
 <div class="footer footer-default">
 <p>Optimization Theory and Practice • Aykut C. Satici</p>

@@ -136,3 +136,31 @@ and its environment:
 
 
 ## Goals and Rewards {.smaller}
+
+* The agent's goal is to _maximize_ the total amount of reward it receives;
+_not_ the immediate reward, but the cumulative reward in the long run.
+
+::: {.callout-important icon=false}
+## Reward Hypothesis
+All of what we mean by goal and purposes can be well thought as the maximization
+of the expected value of the cumulative sum of a received scalar signal (called
+reward).
+:::
+
+* Formulating goals in terms of reward signals has proved to be flexible and
+widely applicable.
+
+::: {.callout-note icon=false}
+## Examples
+| Task | Reward |
+|------|--------|
+|Robot walking|$+$ve reward on each time step proportional to robot's forward motion|
+|Escape from a maze| $-1$ reward for every time step tha passes prior to escape|
+|Playing chess|$+1$ for winning, $-1$ for losing, $0$ for drawing|
+:::
+
+* The reward signal is no the place to impart to the agent prior knowledge
+about _how_ to achieve what we want it to do (better places: initial policy,
+iniial value function).
+  - Otherwise the agent might find a way to achieve _subgoals_ without achieving
+    the real goal!
