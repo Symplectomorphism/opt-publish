@@ -134,8 +134,7 @@ policies: an _optimal policy_.
 * For the state-action pair $(s,a)$, this function gives the expected return for
 taking action $a$ in state $s$ and thereafter following an optimal policy.
   - Thus, we can write $q_\ast$ in terms of $v_\ast$ as follows:
-
-$$ q_\ast (s, a) = \mathbb{E}[R_{t+1} + \gamma v_\ast(S_{t+1}) | S_t = s, A_t =
+$$ q_\ast (s, a) = \mathbb{E}[R_{t+1} + \gamma v_\ast(S_{t+1}) \mid S_t = s, A_t =
 a]. $$ {#eq-q-w-v}
 
 

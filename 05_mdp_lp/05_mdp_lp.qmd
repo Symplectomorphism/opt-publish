@@ -30,3 +30,4 @@ revealjs-plugins:
 {{< include contents/_frontmatter.qmd >}}
 {{< include contents/_mdp.qmd >}}
 {{< include contents/_policy_value.qmd >}}
+{{< include contents/_bellman_lp.qmd >}}
