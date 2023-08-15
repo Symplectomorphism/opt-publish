@@ -1,0 +1,173 @@
+# Policies and Value Functions
+
+## How good are a state and an action? {.smaller}
+
+* The rewards the agent can expect to receive in the future depend on what
+actions it will take.
+* Value functions are defined with respect to paricular ways of acting, called
+_policies_.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## Definition
+A _policy_ is a mapping from states o probabilities of selecting each possible
+action.
+
+* If the agent is following policy $\pi$ at time $t$, then $\pi(a|s)$ is
+the probability that $A_t = a$ given that $S_t = s$.
+* $\pi(a|s)$ defines a probability distribution over $a \in \mathcal{A}(s)$ for
+each $s \in \mathcal{S}$.
+:::
+:::
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## Definition (State-Value Function for Policy $\pi$)
+The _value function_ of a state $s$ under a policy $\pi$, denoted $v_\pi(s)$, is
+the expected return when starting in $s$ and following $\pi$ thereafter.
+
+$$ 
+\begin{align}
+v_\pi(s) &\triangleq \mathbb{E}_\pi[G_t | S_t = s] \\ 
+&= \mathbb{E}_\pi\left[\sum_{k=0}^\infty \gamma^k R_{t+k+1} | S_t = s \right],
+\;\; \forall s \in \mathcal{S}.
+\end{align}
+$$ {#eq-val-fcn}
+
+* The value of the terminal state, if any, is always zero.
+:::
+
+:::
+
+::::
+
+::: {.callout-tip icon=false}
+## Definition (Action-Value Function for Policy $\pi$)
+We define the value of taking action $a$ in state $s$ under a policy $\pi$,
+denoted $q_\pi(s, a)$, as the expected return starting from $s$, taking the
+action $a$, and thereafter following policy $\pi$:
+
+$$ 
+\begin{align}
+q_\pi(s, a) &\triangleq \mathbb{E}_\pi[G_t | S_t=s, A_t=a] \\
+&= \mathbb{E}_\pi\left[\sum_{k=0}^\infty \left. \gamma^k R_{t+k+1}\right| S_t=s, 
+A_t=a \right].
+\end{align}
+$$ {#eq-act-val-fcn}
+:::
+
+
+## Bellman Equation {.smaller}
+
+::: {.callout-important icon=false}
+## Fundamental property of Value Functions
+Value functions saisfy recursive relationships similar that which we established
+for the return @eq-ret-rec.
+
+For any policy $\pi$ and any state $s$, the following consistency condition
+holds between he value of $s$ and he value of its possible successor states:
+
+$$
+\begin{align}
+v_\pi(s) \triangleq &= \mathbb{E}_\pi[G_t|S_t=s] = \mathbb{E}_\pi[R_{t+1} +
+\gamma G_{t+1}|S_t = s], \quad {\text{by (9)} }\\
+&= \sum_{a \in \mathcal{A}(s)} \pi(a|s)\sum_{s',r}p(s',r|s,a)\left[r + \gamma
+\mathbb{E}_\pi[G_{t+1}|S_{t+1}=s']\right] \\
+&= \sum_{a \in \mathcal{A}(s)} \pi(a|s) \sum_{s', r}p(s',r|s,a)\left[r + \gamma
+v_\pi(s')\right],
+\quad \forall s \in \mathcal{S}.
+\end{align}
+$$ {#eq-bellman}
+:::
+
+:::: {.columns}
+
+::: {.column width="78%"}
+* Each open circle represents a state and each solid circle represents a
+state-action pair.
+* Starting from state $s$, the root node at the top, the agent could take any of
+some set of actions &mdash; three are shown &mdash; based on its policy $\pi$.
+:::
+
+::: {.column width="22%"}
+<center>
+<img src="contents/assets/backup.png" width="95%" /img>
+</center>
+:::
+
+::::
+* From each of these, the environment could respond with one of several next
+states, $s'$ (two are shown), along with a reward, $r$, depending on its
+dynamics, given by the function $p$.
+* Bellman equation averages over all the possibilites, weighing each by its
+probability of occuring: the value of the start state must equal the
+(discounted) value of the expected next state, plus the reward expected along
+the way.
+
+
+## <span style="font-size:99%"> Optimal Policies and Optimal Value Functions </span> {.smaller}
+
+* We want to find a policy that achieves a lot of reward over the long run.
+* Value functions define a partial ordering over policies: a policy $\pi$ is
+defined to be better than or equal to a policy $\pi'$ if its expected return is
+greater than or equal to that of $\pi'$ for all states.
+  $$ \pi \geq \pi' \Longleftrightarrow v_{\pi}(s) \geq v_{\pi'}(s), \quad
+  \forall s \in \mathcal{S}. $$
+* $\exists$ always at least one policy that is better than or equal to all other
+policies: an _optimal policy_.
+  - Although there may be more than one, let us denot all the optimal policies
+    by $\pi_\ast$.
+  - They share the same state-value function, called the _optimal state-value
+    function_: 
+
+    $$ v_\ast(s) \triangleq \operatorname{max}_\pi v_{\pi}(s), \quad
+    \forall s \in \mathcal{S}. $$ {#eq-optimal-st-val}
+* Optimal policies also share the same _optimal action-value function_:
+
+    $$ q_\ast(s, a) \triangleq \operatorname{max}_\pi q_{\pi}(s, a), \quad
+    \forall s \in \mathcal{S}, \; a \in \mathcal{A}(s). $$ {#eq-optimal-act-val}
+
+* For the state-action pair $(s,a)$, this function gives the expected return for
+taking action $a$ in state $s$ and thereafter following an optimal policy.
+  - Thus, we can write $q_\ast$ in terms of $v_\ast$ as follows:
+
+$$ q_\ast (s, a) = \mathbb{E}[R_{t+1} + \gamma v_\ast(S_{t+1}) | S_t = s, A_t =
+a]. $$ {#eq-q-w-v}
+
+
+## Bellman Optimality Equation {.smaller}
+
+* Because $v_\ast$ is the value function for a policy, it must satisfy the
+self-consistency condition given by the Bellman equation for state values @eq-bellman.
+* But it is also the optimal value function so $v_\ast$'s consistency condition
+can be written in a special form w/o reference to any specific policy!
+
+::: {.callout-tip appearance="minimal"}
+The Bellman optimality equation expresses the fact that the value of a state
+under an optimal policy must equal the expected return for the best action from
+that state.
+:::
+
+$$
+\begin{align}
+v_\ast(s) &= \operatorname{max}_{a \in \mathcal{A}(s)} q_{\pi_\ast}(s, a) =
+\operatorname{max}_{a} \mathbb{E}_{\pi_\ast}[G_t | S_t =s, A_t = a] \\
+&= \operatorname{max}_a \mathbb{E}_{\pi_\ast}[R_{t+1} + \gamma G_{t+1} | S_t =
+s, A_t = a] \\
+&= \operatorname{max}_a \mathbb{E}_{\pi_\ast}[R_{t+1} + \gamma v_\ast(S_{t+1}) | S_t =
+s, A_t = a] \\
+&= \operatorname{max}_a \sum_{s', r} p(s', r|s, a)[r + \gamma v_\ast(s')].
+\end{align}
+$$ {#eq-bellman-optimality-v}
+
+* The Bellman optimality equation for $q_\ast$ is
+
+$$
+q_\ast(s, a) = \mathbb{E}\left[R_{t+1} + \gamma \operatorname{max}_{a'}
+q_\ast(S_{t+1}, a) \mid S_t = s, A_t = a\right] = \sum_{s', r} p(s', r|s, a) 
+\left[ r+ \gamma \operatorname{max}_{a'} q_\ast (s', a') \right].
+$$ {#eq-bellman-optimality-q}

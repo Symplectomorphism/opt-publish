@@ -3,7 +3,7 @@
 
 <hr>
 
-### Markov Decision Processes and Dynamic Programming
+### Markov Decision Processes and Linear Programming
 
 <br/>
 
@@ -17,8 +17,4 @@ Boise State University, Boise, ID, USA
 __Topics__: <br>
 Markov Decision Processes <br>
 Policies and Value Functions <br>
-Policy Evaluation <br>
-Policy Improvement <br>
-Policy Iteration <br>
-Value Iteration <br>
 :::
