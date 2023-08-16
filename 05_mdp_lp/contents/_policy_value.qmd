@@ -108,6 +108,14 @@ probability of occuring: the value of the start state must equal the
 (discounted) value of the expected next state, plus the reward expected along
 the way.
 
+## Example &mdash; Gridworld {.smaller}
+
+
+
+
+## Example &mdash; Golf {.smaller}
+
+
 
 ## <span style="font-size:99%"> Optimal Policies and Optimal Value Functions </span> {.smaller}
 

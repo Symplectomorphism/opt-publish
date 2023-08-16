@@ -467,7 +467,7 @@ s'] = \sum_{r \in \mathcal{R}} r \; \frac{p(s', r \mid s, a)}{p(s' \mid s, a)}.
 </div>
 </div>
 <ul>
-<li>Not everything in the environtment is unknown to the agent.
+<li>Not everything in the environment is unknown to the agent.
 <ul>
 <li>For example, the agent often knows how its rewards are computed as a function of its actions and the states.</li>
 <li>Reward computation is external to the agent because it defines the task facing the agent and thus is beyond its ability to change arbitrarily.</li>
@@ -487,6 +487,95 @@ s'] = \sum_{r \in \mathcal{R}} r \; \frac{p(s', r \mid s, a)}{p(s' \mid s, a)}.
 <li>one signal to define the agent’s goal (the rewards).</li>
 </ol>
 </div>
+</div>
+</div>
+</section>
+<section id="examples" class="slide level2 smaller">
+<h2>Examples</h2>
+<div class="callout callout-tip no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Example 1 – Bioreactor</strong></p>
+</div>
+<div class="callout-content">
+<p>Suppose we want to determine moment-by-moment temperatures and stirring rates for a bioreactor.</p>
+<ul>
+<li>The actions might be target temperatures and target stirring rates that are passed to the lower-level control system,
+<ul>
+<li>The control system, in turn, will activate heating elements and motors to attain the targets.</li>
+</ul></li>
+<li>The states could be the outputs of a thermocouple and other sensory readings</li>
+<li>The rewards might be moment-by-moment measures of the rate at which the useful chemical is being produced by the bioreactor.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Example 2 – Pick-and-Place Robot</strong></p>
+</div>
+<div class="callout-content">
+<p>Suppose we want to control the motion of a robot arm in a repetitive pick-and-place task.</p>
+<ul>
+<li>The actions might be the voltages applied to each motor at each joint.</li>
+<li>The states might be the latest readings of joint angles and velocities.</li>
+<li>The reward might be <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">+1</annotation></semantics></math> for each object successfully picked up and placed.
+<ul>
+<li>To encourage smooth movements, at each time step, a small, negative reward could be given as a function of the moment-to-moment jerkiness of the motion.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Homework</strong></p>
+</div>
+<div class="callout-content">
+<p>Devise three example tasks of your own that fit into the MDP framework, identifying for each states, actions, and rewards.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="example-recycling-robot" class="slide level2 smaller">
+<h2>Example — Recycling Robot</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="r-stack">
+<div class="fragment fade-out">
+<ul>
+<li>A mobile robot has the job of collecting empty soda cans in an office environment.</li>
+<li>It has sensors for detecting cans, and an arm and gripper that can pick them up and place them in an onboard bin; it runs on a rechargable battery.</li>
+<li>The robot’s control system has components for
+<ul>
+<li>interpreting sensory information,</li>
+<li>for navigating,</li>
+<li>and for controlling the arm and gripper.</li>
+</ul></li>
+<li>High-level decisions about how to search for cans are to be made by the agent on the current charge level of the battery.
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathvariant="script"><mi>𝒮</mi></mstyle><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mtext mathvariant="monospace">𝚑𝚒𝚐𝚑</mtext><mo>,</mo><mtext mathvariant="monospace">𝚕𝚘𝚠</mtext><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\mathcal{S} = \{\texttt{high}, \texttt{low}\}</annotation></semantics></math>.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathvariant="script"><mi>𝒜</mi></mstyle><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="monospace">𝚑𝚒𝚐𝚑</mtext><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mtext mathvariant="monospace">𝚜𝚎𝚊𝚛𝚌𝚑</mtext><mo>,</mo><mtext mathvariant="monospace">𝚠𝚊𝚒𝚝</mtext><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\mathcal{A}(\texttt{high}) = \{\texttt{search}, \texttt{wait}\}</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathvariant="script"><mi>𝒜</mi></mstyle><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="monospace">𝚕𝚘𝚠</mtext><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mtext mathvariant="monospace">𝚜𝚎𝚊𝚛𝚌𝚑</mtext><mo>,</mo><mtext mathvariant="monospace">𝚠𝚊𝚒𝚝</mtext><mo>,</mo><mtext mathvariant="monospace">𝚛𝚎𝚌𝚑𝚊𝚛𝚐𝚎</mtext><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\mathcal{A}(\texttt{low}) = \{\texttt{search}, \texttt{wait}, \texttt{recharge}\}</annotation></semantics></math>.</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment fade-in">
+<ul>
+<li>The rewards are zero most of the time, but become positive when the robot secures an empty can, or large and negative if the battery runs all the down.</li>
+<li>Best way to find cans is to actively search for them, but this runs down the robot’s battery.
+<ul>
+<li>If the battery is depleted, the robot must be rescued.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<center>
+<p><img src="contents/assets/recycling1.png" width="95%" img=""></p>
+<img src="contents/assets/recycling2.png" width="95%" img="">
+</center>
 </div>
 </div>
 </section>
@@ -570,6 +659,9 @@ s'] = \sum_{r \in \mathcal{R}} r \; \frac{p(s', r \mid s, a)}{p(s' \mid s, a)}.
 = R_{t+1} + \gamma G_{t+1}.  \qquad(9)</annotation></semantics></math></span></li>
 </ul></li>
 </ul>
+</section>
+<section id="example-pole-balancing" class="slide level2 smaller">
+<h2>Example — Pole-Balancing</h2>
 </section></section>
 <section>
 <section id="policies-and-value-functions" class="title-slide slide level1 center">
@@ -679,6 +771,12 @@ v_\pi(s')\right],
 <li>From each of these, the environment could respond with one of several next states, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>′</mi></mrow><annotation encoding="application/x-tex">s'</annotation></semantics></math> (two are shown), along with a reward, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>, depending on its dynamics, given by the function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>.</li>
 <li>Bellman equation averages over all the possibilites, weighing each by its probability of occuring: the value of the start state must equal the (discounted) value of the expected next state, plus the reward expected along the way.</li>
 </ul>
+</section>
+<section id="example-gridworld" class="slide level2 smaller">
+<h2>Example — Gridworld</h2>
+</section>
+<section id="example-golf" class="slide level2 smaller">
+<h2>Example — Golf</h2>
 </section>
 <section id="optimal-policies-and-optimal-value-functions" class="slide level2 smaller">
 <h2><span style="font-size:99%"> Optimal Policies and Optimal Value Functions </span></h2>

@@ -32,7 +32,21 @@
     "href": "05_mdp_lp.html#the-agent-environment-interface-2",
     "title": "05_mdp_lp",
     "section": "The Agent – Environment Interface",
-    "text": "The Agent – Environment Interface\n\n\n\nRule of thumb\n\n\n\nAnything that cannot be changed arbitrarily by the agent is considered to be outside of it and thus part of its environment.\n\n\n\n\n\nNot everything in the environtment is unknown to the agent.\n\nFor example, the agent often knows how its rewards are computed as a function of its actions and the states.\nReward computation is external to the agent because it defines the task facing the agent and thus is beyond its ability to change arbitrarily.\n\nIn fact, some agents know everything about how its environment.\n\n\n\n\nMDP framework\n\n\nWhatever the details of the sensory, memory, and control apparatus, and whatever objective one is trying to achieve, any problem of learning goal-directed behavior can be reduced to three signals passing back and forth between an agent and its environment:\n\none signal to represent the choices made by the agent (the actions),\none signal to represent the basis on which the choices are made (the states),\none signal to define the agent’s goal (the rewards)."
+    "text": "The Agent – Environment Interface\n\n\n\nRule of thumb\n\n\n\nAnything that cannot be changed arbitrarily by the agent is considered to be outside of it and thus part of its environment.\n\n\n\n\n\nNot everything in the environment is unknown to the agent.\n\nFor example, the agent often knows how its rewards are computed as a function of its actions and the states.\nReward computation is external to the agent because it defines the task facing the agent and thus is beyond its ability to change arbitrarily.\n\nIn fact, some agents know everything about how its environment.\n\n\n\n\nMDP framework\n\n\nWhatever the details of the sensory, memory, and control apparatus, and whatever objective one is trying to achieve, any problem of learning goal-directed behavior can be reduced to three signals passing back and forth between an agent and its environment:\n\none signal to represent the choices made by the agent (the actions),\none signal to represent the basis on which the choices are made (the states),\none signal to define the agent’s goal (the rewards)."
+  },
+  {
+    "objectID": "05_mdp_lp.html#examples",
+    "href": "05_mdp_lp.html#examples",
+    "title": "05_mdp_lp",
+    "section": "Examples",
+    "text": "Examples\n\n\n\nExample 1 – Bioreactor\n\n\nSuppose we want to determine moment-by-moment temperatures and stirring rates for a bioreactor.\n\nThe actions might be target temperatures and target stirring rates that are passed to the lower-level control system,\n\nThe control system, in turn, will activate heating elements and motors to attain the targets.\n\nThe states could be the outputs of a thermocouple and other sensory readings\nThe rewards might be moment-by-moment measures of the rate at which the useful chemical is being produced by the bioreactor.\n\n\n\n\n\n\n\nExample 2 – Pick-and-Place Robot\n\n\nSuppose we want to control the motion of a robot arm in a repetitive pick-and-place task.\n\nThe actions might be the voltages applied to each motor at each joint.\nThe states might be the latest readings of joint angles and velocities.\nThe reward might be +1+1 for each object successfully picked up and placed.\n\nTo encourage smooth movements, at each time step, a small, negative reward could be given as a function of the moment-to-moment jerkiness of the motion.\n\n\n\n\n\n\n\n\nHomework\n\n\nDevise three example tasks of your own that fit into the MDP framework, identifying for each states, actions, and rewards."
+  },
+  {
+    "objectID": "05_mdp_lp.html#example-recycling-robot",
+    "href": "05_mdp_lp.html#example-recycling-robot",
+    "title": "05_mdp_lp",
+    "section": "Example — Recycling Robot",
+    "text": "Example — Recycling Robot\n\n\n\n\n\nA mobile robot has the job of collecting empty soda cans in an office environment.\nIt has sensors for detecting cans, and an arm and gripper that can pick them up and place them in an onboard bin; it runs on a rechargable battery.\nThe robot’s control system has components for\n\ninterpreting sensory information,\nfor navigating,\nand for controlling the arm and gripper.\n\nHigh-level decisions about how to search for cans are to be made by the agent on the current charge level of the battery.\n\n𝒮={𝚑𝚒𝚐𝚑,𝚕𝚘𝚠}\\mathcal{S} = \\{\\texttt{high}, \\texttt{low}\\}.\n𝒜(𝚑𝚒𝚐𝚑)={𝚜𝚎𝚊𝚛𝚌𝚑,𝚠𝚊𝚒𝚝}\\mathcal{A}(\\texttt{high}) = \\{\\texttt{search}, \\texttt{wait}\\}, 𝒜(𝚕𝚘𝚠)={𝚜𝚎𝚊𝚛𝚌𝚑,𝚠𝚊𝚒𝚝,𝚛𝚎𝚌𝚑𝚊𝚛𝚐𝚎}\\mathcal{A}(\\texttt{low}) = \\{\\texttt{search}, \\texttt{wait}, \\texttt{recharge}\\}.\n\n\n\n\n\nThe rewards are zero most of the time, but become positive when the robot secures an empty can, or large and negative if the battery runs all the down.\nBest way to find cans is to actively search for them, but this runs down the robot’s battery.\n\nIf the battery is depleted, the robot must be rescued."
   },
   {
     "objectID": "05_mdp_lp.html#goals-and-rewards",
@@ -49,6 +63,13 @@
     "text": "Returns and Episodes\n\nIn general, we seek to maximize the expected return, where the return, denoted GtG_t, is defined as some specific function of the reward sequence.\n\nSimplest (bit naïve) case: Gt≜Rt+1+Rt+2+⋯+RT=∑k=t+1TRk,(7) G_t \\triangleq R_{t+1} + R_{t+2} + \\cdots + R_T = \\sum_{k=t+1}^T R_k,   \\qquad(7)\nDiscounted return: Gt≜∑k=0∞γkRt+k+1=∑k=t+1Tγk−t−1Rk,0≤γ≤1.(8) G_t \\triangleq \\sum_{k=0}^\\infty \\gamma^kR_{t+k+1} =\n\\sum_{k=t+1}^T \\gamma^{k-t-1}R_k, \\quad 0 \\leq \\gamma \\leq 1.  \\qquad(8)\n\nThe naïve approach makes sense in applications in which there is a natural notion of a final time step (episodes).\n\nEach episodes ends in a state called the terminal state.\nIn episodic tasks we sometimes need to distinguish the set of all nonterminal states, 𝒮\\mathcal{S} from the set of all states plus the terminal state, 𝒮+\\mathcal{S}^+.\n\nIf the task has no final time, or terminal state, then T=∞T=\\infty.\n\nThe naïve return may easily become infinite. Hence we use the discounted return. Gt=Rt+1+γ(Rt+2+γRt+3+γ2Rt+4+⋯)=Rt+1+γGt+1.(9) G_t = R_{t+1} + \\gamma(R_{t+2} + \\gamma R_{t+3} + \\gamma^2 R_{t+4} + \\cdots)\n= R_{t+1} + \\gamma G_{t+1}.  \\qquad(9)"
   },
   {
+    "objectID": "05_mdp_lp.html#example-pole-balancing",
+    "href": "05_mdp_lp.html#example-pole-balancing",
+    "title": "05_mdp_lp",
+    "section": "Example — Pole-Balancing",
+    "text": "Example — Pole-Balancing"
+  },
+  {
     "objectID": "05_mdp_lp.html#how-good-are-a-state-and-an-action",
     "href": "05_mdp_lp.html#how-good-are-a-state-and-an-action",
     "title": "05_mdp_lp",
@@ -61,6 +82,20 @@
     "title": "05_mdp_lp",
     "section": "Bellman Equation",
     "text": "Bellman Equation\n\n\n\nFundamental property of Value Functions\n\n\nValue functions saisfy recursive relationships similar that which we established for the return Equation 9.\nFor any policy π\\pi and any state ss, the following consistency condition holds between he value of ss and he value of its possible successor states:\nvπ(s)≜=𝔼π[Gt|St=s]=𝔼π[Rt+1+γGt+1|St=s],by (9)=∑a∈𝒜(s)π(a|s)∑s′,rp(s′,r|s,a)[r+γ𝔼π[Gt+1|St+1=s′]]=∑a∈𝒜(s)π(a|s)∑s′,rp(s′,r|s,a)[r+γvπ(s′)],∀s∈𝒮.(12)\n\\begin{align}\nv_\\pi(s) \\triangleq &= \\mathbb{E}_\\pi[G_t|S_t=s] = \\mathbb{E}_\\pi[R_{t+1} +\n\\gamma G_{t+1}|S_t = s], \\quad {\\text{by (9)} }\\\\\n&= \\sum_{a \\in \\mathcal{A}(s)} \\pi(a|s)\\sum_{s',r}p(s',r|s,a)\\left[r + \\gamma\n\\mathbb{E}_\\pi[G_{t+1}|S_{t+1}=s']\\right] \\\\\n&= \\sum_{a \\in \\mathcal{A}(s)} \\pi(a|s) \\sum_{s', r}p(s',r|s,a)\\left[r + \\gamma\nv_\\pi(s')\\right],\n\\quad \\forall s \\in \\mathcal{S}.\n\\end{align}\n \\qquad(12)\n\n\n\n\n\n\nEach open circle represents a state and each solid circle represents a state-action pair.\nStarting from state ss, the root node at the top, the agent could take any of some set of actions — three are shown — based on its policy π\\pi.\n\n\n\n\n\n\n\n\nFrom each of these, the environment could respond with one of several next states, s′s' (two are shown), along with a reward, rr, depending on its dynamics, given by the function pp.\nBellman equation averages over all the possibilites, weighing each by its probability of occuring: the value of the start state must equal the (discounted) value of the expected next state, plus the reward expected along the way."
+  },
+  {
+    "objectID": "05_mdp_lp.html#example-gridworld",
+    "href": "05_mdp_lp.html#example-gridworld",
+    "title": "05_mdp_lp",
+    "section": "Example — Gridworld",
+    "text": "Example — Gridworld"
+  },
+  {
+    "objectID": "05_mdp_lp.html#example-golf",
+    "href": "05_mdp_lp.html#example-golf",
+    "title": "05_mdp_lp",
+    "section": "Example — Golf",
+    "text": "Example — Golf"
   },
   {
     "objectID": "05_mdp_lp.html#optimal-policies-and-optimal-value-functions",
