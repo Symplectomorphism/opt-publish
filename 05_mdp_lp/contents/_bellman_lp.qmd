@@ -53,9 +53,50 @@ TJ$.
 :::
 $$
 \begin{align}
-\operatorname{maximize} & \sum_{s} J(s) \\
+\operatorname{minimize} & \sum_{s} J(s) \\
 \text{subject to} & J(s) \geq r(s,a) + \gamma \sum_{s'} p(s'|s,a) J(s'), \quad
 s, s' \in \mathcal{S}, \;\; a \in \mathcal{A}(s).
 \end{align}
-$$
+$$ {#eq-mdp-lp}
 
+
+
+## Cost Approximation-Based on LP {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* When the number of states is very large or infinite, we may consdier finding
+an approximation to the optimal value fuinction.
+  - This can be used, in turn, to obtain a (suboptimal) policy by maximization
+  in Bellman's equation.
+:::
+::: {.column width="50%"}
+
+::: {.callout-important icon=false}
+## Linear form approximation
+$$ \tilde{J}(s; \theta) = \sum_{k=1}^s \theta_k \phi_k(s), $$
+
+* $\theta = (\theta_1, \theta_2, \ldots, \theta_s)$ is a vector of parameters.
+* $\phi_k: \mathcal{S} \rightarrow \mathbb{R}$ are some fixed known functions &ndash, called the _basis_ functions.
+:::
+
+:::
+
+::::
+
+* It is then possible to determine $\theta$ by using $\tilde{J}(s; \theta)$ in
+place of $J^\ast$ in the LP approach.
+  - In particular, we optimize over $\theta$ the following program
+
+$$
+\begin{align}
+\operatorname{minimize} & \sum_{s \in \tilde{\mathcal{S}}} \tilde{J}(s; \theta) \\
+\text{subject to} & \tilde{J}(s; \theta) \geq r(s, a) + \gamma \sum_{s' \in
+\mathcal{S}} p(s' | s, a) \tilde{J}(s'; \theta), \quad s \in \mathcal{S}, \;\; a
+\in \tilde{\mathcal{A}}(s),
+\end{align}
+$$ {#eq-mdp-lp-approx}
+
+* $\tilde{\mathcal{S}}$ is either the state-space $\mathcal{S}$ or a suitably chosen finite subset of $\mathcal{S}$,
+* $\tilde{\mathcal{A}}$ is either the action-space $\mathcal{A}$ or a suitably chosen finite subset of $\mathcal{A}$.

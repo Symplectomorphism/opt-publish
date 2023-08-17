@@ -1008,18 +1008,64 @@ q_\ast(S_{t+1}, a) \mid S_t = s, A_t = a\right] = \sum_{s', r} p(s', r|s, a)
 </div>
 </div>
 </div>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right"><mo>maximize</mo></mtd><mtd columnalign="left"><munder><mo>∑</mo><mi>s</mi></munder><mi>J</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left"><mi>J</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mi>r</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>γ</mi><munder><mo>∑</mo><mrow><mi>s</mi><mi>′</mi></mrow></munder><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo stretchy="false" form="prefix">|</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>J</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><mi>s</mi><mo>,</mo><mi>s</mi><mi>′</mi><mo>∈</mo><mstyle mathvariant="script"><mi>𝒮</mi></mstyle><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mi>a</mi><mo>∈</mo><mstyle mathvariant="script"><mi>𝒜</mi></mstyle><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+<p><span id="eq-mdp-lp"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right"><mo>minimize</mo></mtd><mtd columnalign="left"><munder><mo>∑</mo><mi>s</mi></munder><mi>J</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left"><mi>J</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mi>r</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>γ</mi><munder><mo>∑</mo><mrow><mi>s</mi><mi>′</mi></mrow></munder><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo stretchy="false" form="prefix">|</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>J</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><mi>s</mi><mo>,</mo><mi>s</mi><mi>′</mi><mo>∈</mo><mstyle mathvariant="script"><mi>𝒮</mi></mstyle><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mi>a</mi><mo>∈</mo><mstyle mathvariant="script"><mi>𝒜</mi></mstyle><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>18</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
 \begin{align}
-\operatorname{maximize} &amp; \sum_{s} J(s) \\
+\operatorname{minimize} &amp; \sum_{s} J(s) \\
 \text{subject to} &amp; J(s) \geq r(s,a) + \gamma \sum_{s'} p(s'|s,a) J(s'), \quad
 s, s' \in \mathcal{S}, \;\; a \in \mathcal{A}(s).
 \end{align}
-</annotation></semantics></math></p>
+ \qquad(18)</annotation></semantics></math></span></p>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>D. Bertsekas, <em>Dynamic Programming and Optimal Control</em> Vol. 2, Athena Scientific, 2018</p></li></ol></aside></section>
+<section id="cost-approximation-based-on-lp" class="slide level2 smaller">
+<h2>Cost Approximation-Based on LP</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>When the number of states is very large or infinite, we may consdier finding an approximation to the optimal value fuinction.
+<ul>
+<li>This can be used, in turn, to obtain a (suboptimal) policy by maximization in Bellman’s equation.</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="callout callout-important no-icon callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Linear form approximation</strong></p>
+</div>
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>J</mi><mo accent="true">̃</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo>;</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>s</mi></munderover><msub><mi>θ</mi><mi>k</mi></msub><msub><mi>ϕ</mi><mi>k</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex"> \tilde{J}(s; \theta) = \sum_{k=1}^s \theta_k \phi_k(s), </annotation></semantics></math></p>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>θ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>θ</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>θ</mi><mi>s</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\theta = (\theta_1, \theta_2, \ldots, \theta_s)</annotation></semantics></math> is a vector of parameters.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>k</mi></msub><mo>:</mo><mstyle mathvariant="script"><mi>𝒮</mi></mstyle><mo>→</mo><mstyle mathvariant="double-struck"><mi>ℝ</mi></mstyle></mrow><annotation encoding="application/x-tex">\phi_k: \mathcal{S} \rightarrow \mathbb{R}</annotation></semantics></math> are some fixed known functions &amp;ndash, called the <em>basis</em> functions.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>It is then possible to determine <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math> by using <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>J</mi><mo accent="true">̃</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo>;</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\tilde{J}(s; \theta)</annotation></semantics></math> in place of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>J</mi><mo>*</mo></msup><annotation encoding="application/x-tex">J^\ast</annotation></semantics></math> in the LP approach.
+<ul>
+<li>In particular, we optimize over <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math> the following program</li>
+</ul></li>
+</ul>
+<p><span id="eq-mdp-lp-approx"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right"><mo>minimize</mo></mtd><mtd columnalign="left"><munder><mo>∑</mo><mrow><mi>s</mi><mo>∈</mo><mover><mstyle mathvariant="script"><mi>𝒮</mi></mstyle><mo accent="true">̃</mo></mover></mrow></munder><mover><mi>J</mi><mo accent="true">̃</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo>;</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left"><mover><mi>J</mi><mo accent="true">̃</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo>;</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mi>r</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>γ</mi><munder><mo>∑</mo><mrow><mi>s</mi><mi>′</mi><mo>∈</mo><mstyle mathvariant="script"><mi>𝒮</mi></mstyle></mrow></munder><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo stretchy="false" form="prefix">|</mo><mi>s</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mover><mi>J</mi><mo accent="true">̃</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mi>′</mi><mo>;</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><mi>s</mi><mo>∈</mo><mstyle mathvariant="script"><mi>𝒮</mi></mstyle><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mi>a</mi><mo>∈</mo><mover><mstyle mathvariant="script"><mi>𝒜</mi></mstyle><mo accent="true">̃</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mtd></mtr></mtable><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>19</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize} &amp; \sum_{s \in \tilde{\mathcal{S}}} \tilde{J}(s; \theta) \\
+\text{subject to} &amp; \tilde{J}(s; \theta) \geq r(s, a) + \gamma \sum_{s' \in
+\mathcal{S}} p(s' | s, a) \tilde{J}(s'; \theta), \quad s \in \mathcal{S}, \;\; a
+\in \tilde{\mathcal{A}}(s),
+\end{align}
+ \qquad(19)</annotation></semantics></math></span></p>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mstyle mathvariant="script"><mi>𝒮</mi></mstyle><mo accent="true">̃</mo></mover><annotation encoding="application/x-tex">\tilde{\mathcal{S}}</annotation></semantics></math> is either the state-space <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mstyle mathvariant="script"><mi>𝒮</mi></mstyle><annotation encoding="application/x-tex">\mathcal{S}</annotation></semantics></math> or a suitably chosen finite subset of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mstyle mathvariant="script"><mi>𝒮</mi></mstyle><annotation encoding="application/x-tex">\mathcal{S}</annotation></semantics></math>,</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mstyle mathvariant="script"><mi>𝒜</mi></mstyle><mo accent="true">̃</mo></mover><annotation encoding="application/x-tex">\tilde{\mathcal{A}}</annotation></semantics></math> is either the action-space <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mstyle mathvariant="script"><mi>𝒜</mi></mstyle><annotation encoding="application/x-tex">\mathcal{A}</annotation></semantics></math> or a suitably chosen finite subset of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mstyle mathvariant="script"><mi>𝒜</mi></mstyle><annotation encoding="application/x-tex">\mathcal{A}</annotation></semantics></math>.</li>
+</ul>
 
 <div class="footer footer-default">
 <p>Optimization Theory and Practice • Aykut C. Satici</p>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>D. Bertsekas, <em>Dynamic Programming and Optimal Control</em> Vol. 2, Athena Scientific, 2018</p></li></ol></aside></section></section>
+</section></section>
 
     </div>
   </div>
