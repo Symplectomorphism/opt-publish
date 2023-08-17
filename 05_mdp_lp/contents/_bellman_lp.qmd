@@ -1,1 +1,61 @@
 # Bellman Optimality and Linear Programming
+
+## Linear Programming Methods {.smaller}
+
+:::: {.columns}
+
+::: {.column width="43%"}
+
+::: {.callout-note icon=false}
+## Short-hand notation
+For any function $J: \mathcal{S} \rightarrow \mathbb{R}$, define the functional $TJ$ by
+
+$$ 
+\begin{align}
+(TJ)(s) = \operatorname{max}_{a \in \mathcal{A}(s)} &r(s,a) + \mathbb{E}\left[ 
+    \gamma J(S_{t+1}) \mid \right. \\
+    &\left. S_t = s, A_t = a\right], \quad s \in \mathcal{S}.
+\end{align}
+$$
+
+:::
+:::
+
+
+::: {.column width="57%"}
+::: {.callout-tip icon=false}
+## Monotonicity Lemma 
+For any $J: \mathcal{S} \rightarrow \mathbb{R}$ and $J': \mathcal{S}
+\rightarrow \mathbb{R}$, such that for all $s \in \mathcal{S}$, $J(s) \geq
+J'(s)$, and any stationary policy $\pi: \mathcal{S} \rightarrow \mathcal{A}$, we
+have
+$$ (T^kJ)(s) \geq (T^kJ')(s), \quad s \in \mathcal{S}, \;\; k = 1, 2, \ldots . $$
+In particular, if $J: \mathcal{S} \rightarrow \mathcal{R}$ is such that for all
+$s \in \mathcal{S}$, $J(s) \geq (TJ)(s)$,
+$$ (T^kJ)(s) \geq (T^{k+1}J)(s), \quad s \in \mathcal{S}, \;\; k = 1, 2, \ldots .$$
+:::
+:::
+
+:::: 
+
+::: {.callout-important icon=false}
+## Main idea
+Since $T$ is monotone, if $J \geq TJ$ for some $J$, we also have $J \geq T^kJ$
+for all $k$ and since^[D. Bertsekas, _Dynamic Programming and Optimal Control_
+Vol. 2, Athena Scientific, 2018] $\lim_{k\rightarrow \infty} T^kJ = J^\ast$, it
+follows that
+$$ J \geq TJ \quad \Rightarrow \quad J \geq J^\ast = TJ^\ast. $$
+
+* Thus, $J^\ast$ is the "smallest" $J$ that satisfies the constraint $J \geq
+TJ$.
+* This constraint can be written as a finite system of linear inequalities,
+  yielding an LP to find the optimal value function. 
+:::
+$$
+\begin{align}
+\operatorname{maximize} & \sum_{s} J(s) \\
+\text{subject to} & J(s) \geq r(s,a) + \gamma \sum_{s'} p(s'|s,a) J(s'), \quad
+s, s' \in \mathcal{S}, \;\; a \in \mathcal{A}(s).
+\end{align}
+$$
+
