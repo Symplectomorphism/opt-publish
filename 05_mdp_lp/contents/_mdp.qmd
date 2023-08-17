@@ -115,7 +115,7 @@ decisions.
 outside of it and thus part of its environment.
 :::
 
-* Not everything in the environtment is unknown to the agent.
+* Not everything in the environment is unknown to the agent.
   - For example, the agent often knows how its rewards are computed as a
     function of its actions and the states.
   - Reward computation is external to the agent because it defines the task
@@ -133,6 +133,92 @@ and its environment:
 2. one signal to represent the basis on which the choices are made (the states),
 3. one signal to define the agent's goal (the rewards).
 :::
+
+
+## Examples {.smaller}
+
+::: {.callout-tip icon=false}
+## Example 1 &ndash; Bioreactor
+Suppose we want to determine moment-by-moment temperatures and stirring rates
+for a bioreactor.
+
+* The actions might be target temperatures and target stirring rates that are
+passed to the lower-level control system,
+  - The control system, in turn, will activate heating elements and motors to
+  attain the targets.
+* The states could be the outputs of a thermocouple and other sensory readings
+* The rewards might be moment-by-moment measures of the rate at which the useful
+chemical is being produced by the bioreactor.
+:::
+
+::: {.callout-tip icon=false}
+## Example 2 &ndash; Pick-and-Place Robot
+Suppose we want to control the motion of a robot arm in a repetitive
+pick-and-place task.
+
+* The actions might be the voltages applied to each motor at each joint.
+* The states might be the latest readings of joint angles and velocities.
+* The reward might be $+1$ for each object successfully picked up and placed.
+  - To encourage smooth movements, at each time step, a small, negative reward
+  could be given as a function of the moment-to-moment jerkiness of the motion.
+:::
+
+::: {.callout-warning icon=false}
+## Homework
+Devise three example tasks of your own that fit into the MDP framework,
+identifying for each states, actions, and rewards. 
+:::
+
+
+## Example &mdash; Recycling Robot {.smaller}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+* A mobile robot has the job of collecting empty soda cans in an office
+environment.
+* It has sensors for detecting cans, and an arm and gripper that can pick them
+up and place them in an onboard bin; it runs on a rechargable battery.
+* The robot's control system has components for
+  - interpreting sensory information,
+  - for navigating,
+  - and for controlling the arm and gripper.
+* High-level decisions about how to search for cans are to be made by the agent
+on the current charge level of the battery.
+  - $\mathcal{S} = \{\texttt{high}, \texttt{low}\}$.
+  - $\mathcal{A}(\texttt{high}) = \{\texttt{search}, \texttt{wait}\}$, 
+    $\mathcal{A}(\texttt{low}) = \{\texttt{search}, \texttt{wait}, \texttt{recharge}\}$.
+:::
+
+::: {.fragment .fade-in}
+* The rewards are zero most of the time, but become positive when the robot
+secures an empty can, or large and negative if the battery runs all the down.
+* Best way to find cans is to actively search for them, but this runs down the
+robot's battery.
+  - If the battery is depleted, the robot must be rescued.
+:::
+
+
+:::
+
+:::
+
+
+
+::: {.column width="40%"}
+<center>
+<img src="contents/assets/recycling1.png" width="95%" /img>
+
+<img src="contents/assets/recycling2.png" width="95%" /img>
+</center>
+:::
+
+::::
+
 
 
 ## Goals and Rewards {.smaller}
@@ -183,3 +269,6 @@ natural notion of a final time step (_episodes_).
   - The na&iuml;ve return may easily become infinite. Hence we use the discounted return.
 $$ G_t = R_{t+1} + \gamma(R_{t+2} + \gamma R_{t+3} + \gamma^2 R_{t+4} + \cdots)
 = R_{t+1} + \gamma G_{t+1}. $$ {#eq-ret-rec}
+
+
+## Example &mdash; Pole-Balancing {.smaller}
