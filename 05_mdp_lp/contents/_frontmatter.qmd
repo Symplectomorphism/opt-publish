@@ -7,14 +7,15 @@
 
 <br/>
 
-::: {layout="[120, 60]"}
+::: {layout="[120, 110]"}
 __Instructor__: Aykut Satici, Ph.D. <br>
 <br>
 Mechanical and Biomedical Engineering <br>
 Electrical and Computer Engineering <br>
 Boise State University, Boise, ID, USA
 
-__Topics__: <br>
+__Topics__: <br><br>
 Markov Decision Processes <br>
 Policies and Value Functions <br>
+Bellman Optimality and Linear Programming <br>
 :::

@@ -178,7 +178,7 @@ identifying for each states, actions, and rewards.
 
 ::: {.r-stack}
 
-::: {.fragment .fade-out}
+::: {.fragment .fade-out fragment-index=1}
 * A mobile robot has the job of collecting empty soda cans in an office
 environment.
 * It has sensors for detecting cans, and an arm and gripper that can pick them
@@ -194,12 +194,42 @@ on the current charge level of the battery.
     $\mathcal{A}(\texttt{low}) = \{\texttt{search}, \texttt{wait}, \texttt{recharge}\}$.
 :::
 
-::: {.fragment .fade-in}
+::: {.fragment .fade-in-then-out fragment-index=2}
 * The rewards are zero most of the time, but become positive when the robot
 secures an empty can, or large and negative if the battery runs all the down.
 * Best way to find cans is to actively search for them, but this runs down the
 robot's battery.
-  - If the battery is depleted, the robot must be rescued.
+  - If the battery is depleted, the robot must be rescued (producing a low
+    reward).
+* If the energy is $\texttt{high}$ then a period active search can always be
+completed w/o risk of depleting the battery.
+* A period of searching that begins with a $\texttt{high}$ energy level leaves
+the energy level $\texttt{high}$ with probability $\alpha$ and reduces it to
+$\texttt{low}$ with probability $1-\alpha$.
+* A period of searching undertaken when the energy level is $\texttt{low}$
+leaves it $\texttt{low}$ with probability $\beta$ and depletes the battery with
+probability $1-\beta$.
+  - Robot must be rescued and the battery is then recharged back to
+    $\texttt{high}$.
+:::
+
+
+::: {.fragment fragment-index=3}
+* Each can collected by the robot counts as a unit reward, whereas a reward of
+$-3$ results whenever the robot has to be rescued.
+* Let $r_{\text{search}}$ and $r_{\text{wait}}$ with $r_{\text{search}} >
+r_{\text{wait}}$ denote the expected number of cans the robot will collect.
+* Finally, suppose that no cans can be collected during a run home for
+recharging, and that no cans can be collected on a step in which the battery is
+depleted.
+
+::: {.callout-important icon=false}
+## Exercise
+Give a table analogous to the one on the right but for $p(s', r | s, a)$. It
+should have columns for $s, a, s', r$ and $p(s', r|s,a)$ and a row every
+$4$-tuple for which $p(s', r| s, a) > 0$.
+:::
+
 :::
 
 
@@ -215,6 +245,11 @@ robot's battery.
 
 <img src="contents/assets/recycling2.png" width="95%" /img>
 </center>
+
+::: {.callout-tip icon=false}
+## Transition graph
+ _states_: open circle | _actions_: solid circle
+:::
 :::
 
 ::::
@@ -272,3 +307,39 @@ $$ G_t = R_{t+1} + \gamma(R_{t+2} + \gamma R_{t+3} + \gamma^2 R_{t+4} + \cdots)
 
 
 ## Example &mdash; Pole-Balancing {.smaller}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+* A failure is said to occur if the pole falls past a given angle from vertical
+or if the cart runs off the track.
+  - The pole is reset to vertical after each failure.
+* This task could be treated as _episodic_, where the natural episodes are the
+repeated atempts to balance the pole.
+  - The reward in this case would be $+1$ for every time step on which failure
+    did not occur.
+  - The return at each time would be the number of steps until failure.
+  - Successful balancing forever would mean a return of infinity.
+:::
+
+::: {.column width="40%"}
+<center>
+<img src="contents/assets/cartpole.png" width="85%" /img>
+</center>
+
+::: {.callout-tip appearance="minimal"}
+Objective: Apply forces to a cart moving along a track so as to keep a pole
+hinged to the cart from falling over.
+:::
+:::
+
+::::
+
+* Alternatively, we could treat pole-balancing as a continuing task, using
+discounting.
+  - In his case the reward would be $-1$ on each failur and zero all other
+    times.
+  - The return at each time would the be related to $-\gamma^{K-1}$, where $K$
+    is the number of time steps before failure.
+* In either case, the return is maximized by keeping the pole balanced for as
+long as possible.
