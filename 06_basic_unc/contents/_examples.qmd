@@ -1,1 +1,95 @@
 # Examples of Unconstrained Problems
+
+## Example 1 &ndash; Logistic Regression {.smaller}
+
+* We have vectors $\bm{a}_i \in \mathbb{R}^d$ for $i = 1, 2, \ldots, n_1$ in a
+class and vectors $\bm{b}_j \in \mathbb{R}^d$ for $j = 1, 2, \ldots, n_2$ not in
+that class.
+* We wish to classify them, i.e., find a vector $\bm{y} \in \mathbb{R}^d$ and a
+number $\beta$ such that
+
+$$ \frac{\operatorname{exp}(\bm{a}_i^\top \bm{y} + \beta)}{1 +
+\operatorname{exp}(\bm{a}_i^\top \bm{y} + \beta)} \approx 1, \;\; \forall i,
+\quad \text{ and } \quad \frac{\operatorname{exp}(\bm{b}_j^\top \bm{y} +
+\beta)}{1 + \operatorname{exp}(\bm{b}_j^\top \bm{y} + \beta)} \approx 0, \;\;
+\forall j. $$
+
+* This problem can be cast as an unconstrained optimization problem
+
+$$ \operatorname{maximize}_{\bm{y}, \beta} 
+\left(\prod_i \frac{\operatorname{exp}(\bm{a}_i^\top \bm{y} + \beta)}{1 +
+\operatorname{exp}(\bm{a}_i^\top \bm{y} + \beta)}\right) \left(\prod_j
+\left(1 - \frac{\operatorname{exp}(\bm{b}_j^\top \bm{y} + \beta)}{1 +
+\operatorname{exp}(\bm{b}_j^\top \bm{y} + \beta)} \right) \right)
+$$
+
+which may equivalently be expressed using a log transformation as
+
+$$
+\operatorname{minimize}_{\bm{y}, \beta} \sum_i \operatorname{log}\left(1 +
+\operatorname{exp}(-\bm{a}_i^\top \bm{y} - \beta) \right) + \sum_j
+\operatorname{log}\left(1 + \operatorname{exp}(\bm{b}_i^\top \bm{y} + \beta)
+\right).
+$$
+
+
+## Example 2 &ndash; Parametric Estimation (Convex) {.smaller}
+
+* A common use of optimization is for the purpose of function approximation.
+* Suppose that through an experiment the value of a function $g$ is observed at
+$m$ points: $x_1, x_2, \ldots, x_m$. Thus the values $g(x_1), g(x_2), \ldots,
+g(x_m)$ are known.
+* We wish to approximate the function by a polynomial of degree $n < m$:
+
+$$ h(x) = a_0 + a_1 x + \cdots + a_{n-1}x^{n-1} + a_nx^n. $$
+
+* Define the errors $\varepsilon_k = g(x_k) - h(x_k)$ and define the best
+approximation as the polynomial that minimizes the sum-of-squares of these
+errors
+
+$$ \operatorname{minimize}_\bm{a} f(\bm{a}) = \sum_{k=1}^n \varepsilon_k^2 =
+\sum_{k=1}^n \left[g(x_k) - \left(a_0 + a_1 x + \cdots + a_{n-1}x^{n-1} +
+a_nx^n\right) \right]^2.  $$
+
+* To find a compact representation for this objective, define 
+
+$$ q_{ij} \triangleq \sum_{k=1}^m x_k^{i+j}, \quad b_j = \sum_{k=1}^n
+g(x_k)x_k^j, \quad \text{ and } c = \sum_{k=1}^n g(x_k)^2. $$
+
+* Then after a bit of algebra, it can be shown that 
+$\quad f(\bm{a}) = \bm{a}^\top
+\bm{Qa} - 2\bm{b}^\top\bm{a} + c$.
+
+
+## <span style="font-size:95%"> Example 2 &ndash; Parametric Estimation (Nonconvex) </span> {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* Estimating the parameters of a neural network is typically nonconvex.
+* This network has $6$ layers, where the initial layer is the input vector
+$\bm{x} = \bm{f}^0$ and the last layer is the function output $\bm{f}(\bm{x}) =
+\bm{f}^5$.
+:::
+
+::: {.column width="50%"}
+<center>
+<img src="./contents/assets/neuralnet.png" width="80%" /img>
+</center>
+:::
+
+::::
+
+* The vector function $\bm{f}^\ell$, $\ell = 0, 1, \ldots, 5$, is defined
+recursively by the parameter weights between two consecutive layers
+$w_{ij}^{\ell-1}$ as a piecewise linear/affine function
+
+$$ f_j^\ell = \operatorname{max}\left\{0, \sum_i w_{ij}^{\ell-1} f_i^{\ell -1
+}\right\}, \quad \forall j. $$
+
+* Similarly, for a sequence of variable value vector $\bm{x}^k$ and observed
+function value vector $\bm{g}(\bm{x}^k)$,
+  - We would like to find all weights $\left(w_{ij}^\ell \right)$'s to minimize
+    the total difference between $\bm{f}(\bm{x}^k)$ and $\bm{g}(\bm{x}^k)$ for
+    all $k$.
+$$ \sum_k \left| \bm{f}(\bm{x}^k) - \bm{g}(\bm{x}^k) \right|^2. $$

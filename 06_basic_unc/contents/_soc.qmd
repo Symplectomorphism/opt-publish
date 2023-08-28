@@ -1,1 +1,122 @@
 # Second-Order Conditions
+
+## Second-Order Necessary Conditions {.smaller}
+
+::: {.callout-tip icon=false}
+## Proposition (Second-Order Necessary Conditions)
+Let $\Omega \subseteq \mathbb{R}^n$ and let $f \in C^2$ on $\Omega$. If
+$\bm{x}^\ast$ is a relative minimum point of $f$ over $\Omega$, then for any
+$\bm{d} \in \mathbb{R}^n$ that is a feasible direction at $\bm{x}^\ast$ we have
+
+$$ \nabla f(\bm{x}^\ast) \bm{d} \geq 0 $$ {#eq-sonc1}
+$$ \nabla f(\bm{x}^\ast) \bm{d} = 0, \;\; \text{ then } \;\; \bm{d}^\top
+\nabla^2 f(\bm{x}^\ast) \bm{d} = \bm{d}^\top \bm{F}(\bm{x}^\ast) \bm{d} \geq 0.$$ {#eq-sonc2}
+:::
+
+::: {.callout-note icon=false}
+## Proof
+The first condition is just the FONC, and the second applies only if $\nabla
+f(\bm{x}^\ast)\bm{d} = 0$. In this case, introducing $\bm{x}(\alpha) =
+\bm{x}^\ast + \alpha \bm{d}$ and $g(\alpha) = f(\bm{x}(\alpha))$ as before, we
+have, in view of $g'(\alpha) = 0$, 
+
+$$ g(\alpha) - g(0) = \frac{1}{2}g''(0)\alpha^2 + o(\alpha^2). $$
+
+If $g''(0) < 0$a the rhs of the above equation is negative for sufficiently
+small $\alpha$ which contradicts the relative minimum nature of $g(0)$. Thus
+
+$$ g''(0) = \bm{d}^\top \nabla^2 f(\bm{x}^\ast)\bm{d} \geq 0. $$
+:::
+
+* See Example 2 from FOSC slide with $d_2 = 0$ whence $\bm{d}^\top \nabla^2
+f(\bm{x}^\ast) \bm{d} = 2d_1^2 \geq 0$, satisfying the second condition.
+
+
+## Second-Order Necessary Conditions {.smaller}
+
+::: {.callout-tip icon=false}
+## Proposition (Second-Order Necessary Conditions &mdash; Unconstrained Case)
+Let $\bm{x}^\ast \in \mathring{\Omega}$ and suppose $\bm{x}^\ast$ is a relative
+minimum point over $\Omega$ of $f \in C^2$. Then
+
+$$ \nabla f(\bm{x}^\ast) = 0 $$ {#eq-sonc3}
+$$ \forall \bm{d},  \;\; \bm{d}^\top \bm{F}(\bm{x}^\ast) \bm{d} \geq 0.$$ {#eq-sonc4}
+
+* The second condition is equivalent to stating that the matrix
+$\bm{F}(\bm{x}^\ast)$ is positive semidefinite.
+:::
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.callout-warning icon=false}
+## Example 
+$$
+\begin{align}
+\operatorname{minimize} & f(x_1, x_2) = x_1^3 - x_1^2x_2 + 2x_2^2 \\
+\text{subject to} & x_1, x_2 \geq 0.
+\end{align}
+$$
+:::
+:::
+
+::: {.column width="50%"}
+If $x_1, x_2 > 0$, then the FONC are 
+
+$$ 3x_1^2 - 2x_1x_2 = 0, \quad -x_1^2 + 4x_2 = 0. $$
+
+with a solution at $x_1 = 6$, $x_2 = 9$.
+:::
+
+::::
+
+::: {.r-stack}
+
+::: {.fragment .fade-in-then-out}
+* Note that for $x_1$ fixed at $x_1 = 6$, the objective attains a relative
+minimum w.r.t. $x_2$ at $x_2 = 9.
+* Conversely, with $x_2$ fixed at $x_2 = 9$, the objective attains a relative
+minimum w.r.t. $x_1$ at $x_1 = 6$.
+:::
+
+::: {.fragment}
+Despite this fact, the point $x_1 = 6$, $x_2 =9$ is not a relative minimum
+because the Hessian matrix is 
+
+$$
+\bm{F}(\bm{x}) = \begin{bmatrix} 6x_1 - 2x_2 & -2x_1 \\ -2x_1 & 4 \end{bmatrix};
+\qquad 
+\bm{F}(\bm{x}^\ast) = \begin{bmatrix} 18 & -12 \\ -12 & 4 \end{bmatrix} \nsucceq  0.
+$$
+:::
+
+:::
+
+
+## Second-Order Sufficient Conditions {.smaller}
+
+::: {.callout-tip icon=false}
+## Proposition (Second-Order Sufficient Conditions)
+Let $f \in C^2$ be a function defined on a region in which the point
+$\bm{x}^\ast$ is an interior point. Suppose
+
+$$ \nabla f(\bm{x}^\ast) = 0 $$ {#eq-sosc1}
+$$ \bm{F}(\bm{x}^\ast) \succ 0 $$ {#eq-sosc2}
+
+Then $\bm{x}^\ast$ is a strict relative minimum of $f$.
+:::
+
+::: {.callout-note icon=false}
+## Proof
+Since $\bm{F}(\bm{x}^\ast)$ is positive definite, there is an $a > 0$ such that
+for all $\bm{d}$, $\bm{d}^\top \bm{F}(\bm{x}^\ast)\bm{d} \geq a |\bm{d}|^2$.
+By Taylor's Theorem (with remainder)
+
+$$ f(\bm{x}^\ast + \bm{d}) - f(\bm{x}^\ast) = \frac{1}{2} \bm{d}^\top
+\bm{F}(\bm{x}^\ast)\bm{d} + o(|\bm{d}|^2) \geq \frac{a}{2}|\bm{d}|^2 +
+o(|\bm{d}|^2). $$
+
+For small $|\bm{d}|$, the first term on the right dominates the second, implying
+that both sides are positive for small $\bm{d}$.
+:::

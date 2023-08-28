@@ -1,1 +1,134 @@
 # First-Order Necessary Conditions
+
+::: {.callout-tip icon=false}
+## Theorem (Weierstrass).
+A continuous function $f$ defined on a compact set $S$ has a minimum point in
+$S$.
+:::
+
+## Feasible and Descent Directions {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-note icon=false}
+## Definition (relative minimum or local minimum).
+A point $\bm{x}^\ast \in \Omega$ is said to be a _relative minimum point_ of $f$
+over $\Omega$ if $\exists \varepsilon > 0$ such that $f(\bm{x}) \geq
+f(\bm{x}^\ast)$ for all $\bm{x} \in \Omega$ within a distance $\varepsilon$ of
+$\bm{x}^\ast$.
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.callout-note icon=false}
+## Definition (global minimum).
+A point $\bm{x}^\ast \in \Omega$ is said to be a _global minimum point_ of $f$ over
+$\Omega$ if $f(\bm{x}) \geq f(\bm{x}^\ast)$ for all $\bm{x} \in \Omega$.
+
+* Usually impossible to find w/ gradient-based methods.
+:::
+
+:::
+
+::::
+
+* Along any given direction, the objective function can be regarded as a
+function of a single variable: the parameter defining movement in this
+direction.
+
+::: {.callout-note icon=false}
+## Feasible direction
+Given $\bm{x} \in \Omega$ we say that a vector $\bm{d}$ is a _feasible
+direction_ at $\bm{x}$ if there is an $\bar{\alpha} > 0$ such that $\bm{x} +
+\alpha \bm{d} \in \Omega$ for all $\alpha$ with $0 \leq \alpha \leq
+\bar{\alpha}$.
+:::
+
+
+::: {.callout-note icon=false}
+## Descent direction
+An element of the set of directions with the property $\{\bm{d}: \nabla
+f(\bm{x}) \bm{d} < 0\}$ is called a _descent direction_. 
+
+If $f(\bm{x}) \in C^1$, then there is $\bar{\alpha} > 0$ such that $f(\bm{x} +
+\alpha \bm{d}) < f(\bm{x})$ for all $\alpha$ with $0 < \alpha \leq
+\bar{\alpha}$. The direction $\bm{d}^\top = -\nabla f(\bm{x})$ is the steepest
+descent one.
+:::
+
+
+## First-Order Necessary Conditions {.smaller}
+
+::: {.callout-tip icon=false}
+## Proposition (FONC).
+If $\bm{x}^\ast$ is a relative minimum point of $f$ over $\Omega \subseteq
+\mathbb{R}^n$, then for any $\bm{d} \in \mathbb{R}^n$ that is a feasible
+direction at $\bm{x}^\ast$, we have $\nabla f(\bm{x}^\ast) \bm{d} \geq 0$.
+:::
+
+::: {.callout-note icon=false}
+## Proof.
+For any $\alpha$, $0 \leq \alpha \leq \bar{\alpha}$, the point $\bm{x}(\alpha) =
+\bm{x}^\ast + \alpha \bm{d} \in \Omega$. For $0 \leq \alpha \leq \bar{\alpha}$
+define the function $g(\alpha) = f(\bm{x}(\alpha))$. Then $g$ has a relative
+minimum at $\alpha = 0$. By ordinary calculus, we have 
+
+$$ g(\alpha) - g(0) = g'(0)\alpha + o(\alpha) $$ {#eq-ord-calc} 
+
+where $o(\alpha)$ denotes terms that go to zero faster than $\alpha$. If $g'(0)
+< 0$, then for sufficiently small values of $\alpha$, the rhs of @eq-ord-calc
+will be negative and hence $g(\alpha) - g(0) < 0$, which contradicts the
+minimality of $g(0)$. Thus $g'(0) = \nabla f(\bm{x}^\ast) \bm{d} \geq 0$.
+:::
+
+::: {.callout-important icon=false}
+## Corollary (Unconstrained Case).
+Let $\Omega \subseteq \mathbb{R}^n$ and let $f \in C^1$ on $\Omega$. If
+$\bm{x}^\ast$ is a relative minimum point of $f$ over $\Omega$ and if
+$\bm{x}^\ast \in \mathring{\Omega}$, then $\nabla f(\bm{x}^\ast) = \bm{0}$.
+:::
+
+
+## First-Order Sufficient Conditions {.smaller}
+
+::: {.callout-tip icon=false}
+## Proposition (FOSC).
+Let $f \in C^1$ be a convex function on $\mathbb{R}^n$. If $\bm{x}^\ast$ meets
+the first-order conditions $\nabla f(\bm{x}^\ast) = \bm{0}$, $\bm{x}^\ast$ is a
+global minimizer of $f$.
+:::
+
+::: {.callout-warning icon=false}
+## Examples
+__Example 1__. Consider the problem 
+$$ \operatorname{minimize} f(x_1, x_2) = x_1^2 - x_1x_2 + x_2^2 - 3x_2. $$
+There are no constraints, $\Omega = \mathbb{R}^2$. Setting the partial
+derivatives of $f$ equal to zero yields
+
+$$ 2x_1 - x_ 2= 0, \quad -x_1 + 2x_2 = 3. $$
+
+which has the unique solution $x_1 = 1$, $x_2 = 2$. This is a global minimum
+point of $f$.
+
+__Example 2__.
+$$
+\begin{align}
+\operatorname{minimize} & f(x_1, x_2) = x_1^2 - x_1 + x_2 + x_1x_2, \\
+\text{subject to} & x_1, x_2 \geq 0.
+\end{align}
+$$
+This problem has a global minimum at $x_1 = \frac{1}{2}$, $x_2 = 0$. At this
+point
+
+$$ \frac{\partial f}{\partial x_1} = 2x_1 - 1 + x_2 = 0, \quad \frac{\partial
+f}{\partial x_2} = 1 + x_1 = \frac{3}{2}. $$
+
+* Thus the partial derivatives do not both vanish at the solution
+* Since any feasible direction must have an $x_2$ component greater than or
+equal to zero, we have
+$$ \nabla f(\bm{x}^\ast) \bm{d} \geq 0, \;\; \forall \bm{d} \in \mathbb{R}^2. $$
+:::
