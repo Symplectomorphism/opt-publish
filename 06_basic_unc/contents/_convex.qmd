@@ -1,1 +1,108 @@
 # Convex and Concave Functions
+
+## Properties of Convex Functions {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## Proposition.
+Let $f_1$ and $f_2$ be convex functions on the convex set $\Omega$. Then the
+function $f_1 + f_2$ is convex on $\Omega$.
+:::
+
+::: {.callout-note icon=false}
+## Proof.
+Let $\bm{x}_1, \bm{x}_2 \in \Omega$, and $0 < \alpha < 1$. Then
+
+$$ 
+\begin{align}
+&f_1(\alpha \bm{x}_1 + (1-\alpha)\bm{x}_2) + f_2(\alpha \bm{x}_1 +
+(1-\alpha)\bm{x}_2) \\ &\leq \alpha [f_1(\bm{x}_1) + f_2(\bm{x}_2)] +
+(1-\alpha)[f_1(\bm{x}_1) + f_2(\bm{x}_2)]. 
+\end{align}
+$$
+:::
+
+
+::: {.callout-tip icon=false}
+## Proposition.
+Let $f$ be a convex function over the convex set $\Omega$. Then the function
+$af$ is convex for any $a \geq 0$.
+:::
+
+
+::: {.callout-tip icon=false}
+## Corollary
+A conic combination of convex function $a_1f_1 + a_2f_2 + \cdots + a_mf_m$ is
+again convex.
+:::
+
+:::
+
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## Proposition.
+Let $f$ be a convex function on a convex set $\Omega$. The (sublevel) set
+$\Gamma_c = \{\bm{x}: \bm{x} \in \Omega, f(\bm{x}) \leq c\}$ is convex for every
+real number $c$.
+:::
+
+::: {.callout-note icon=false}
+## Proof.
+Let $\bm{x}_1, \bm{x}_2 \in \Gamma_c$. Then $f(\bm{x}_1) \leq c$, $f(\bm{x}_2)
+\leq c$ and for $0 < \alpha < 1$,
+
+$$
+f(\alpha \bm{x}_1 + (1-\alpha)\bm{x}_2) \leq \alpha f(\bm{x}_1) +
+(1-\alpha)f(\bm{x}_2) \leq c.
+$$
+
+Thus $\alpha \bm{x}_1 + (1-\alpha)\bm{x}_2 \in \Gamma_c$.
+:::
+
+::: {.callout-tip icon=false}
+## Corollary
+Since the intersection of convex sets is also convex, the set of points
+simultaneously satisfying 
+
+$$
+f_1(\bm{x}) \leq c_1, \;\; f_2(\bm{x}) \leq c_2, \ldots, f_m(\bm{x}) \leq c_m,
+$$
+
+where each $f_i$ is a convex function, defines a convex set.
+:::
+
+:::
+
+::::
+
+
+## <span style="font-size:99%"> Properties of Differentiable Convex Functions </span> {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.callout-tip icon=false}
+## Proposition
+Let $f \in C^1$. Then $f$ is convex over a convex set $\Omega$ iff
+$$ f(\bm{y}) \geq f(\bm{x}) + \nabla f(\bm{x})(\bm{y} - \bm{x}), \quad \forall
+\bm{x}, \bm{y} \in \Omega. $$
+:::
+
+::: {.callout-note icon=false}
+## Proof
+First suppose $f$ is convex. Then for all $\alpha, 0 \leq \alpha \leq 1$, 
+$$ f(\alpha \bm{y} + (1-\alpha)\bm{x}) \leq \alpha f(\bm{y}) +
+(1-\alpha)f(\bm{x}). $$
+:::
+:::
+
+
+::: {.column width="50%"}
+:::
+
+::::
