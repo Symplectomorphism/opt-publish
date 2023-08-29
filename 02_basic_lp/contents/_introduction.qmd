@@ -107,10 +107,10 @@ positive or negative values.
 :::
 
 * We then write $x_1 = u_1 - v_1$, and require that $u_1, v_1 \geq 0$.
-* We substitute $u_1 - v_1$ for $x_1$ everwhere.
+* We substitute $u_1 - v_1$ for $x_1$ everywhere.
 * The problem is then expressed in terms of the $n+1$ variables $u_1, v_1, x_2,
 x_3, \ldots, x_n$.
-* There is a certaind egree of redundancy introduced in this technique since a
+* There is a certain degree of redundancy introduced in this technique since a
 constant added to $u_1$ and $v_1$ does not change $x_1$.
 * Nevertheless, the simplex method can still be used to find the solution.
 
@@ -129,11 +129,11 @@ where $a_{i1} \neq 0$.
 * Then $x_1$ can be expressed as a linear combination of the other variables,
 plus a constant.
 * This expression can be substituted everywhere for $x_1$ and we are led to a
-new problem of exacly the same form but expressed in terms of the variables
+new problem of exactly the same form but expressed in terms of the variables
 $x_2, x_3, \ldots, x_n$ only.
 * Furthermore, the $i^{\text{th}}$ equation, used to determine $x_1$ is now
 identically zero and it too can be eliminated.
-* We obtain a linear program having $n_1$ variables and $m-1$ constraint
+* We obtain a linear program having $n-1$ variables and $m-1$ constraint
 equations.
 
 ## Example &#8211; Specific Case {.smaller}

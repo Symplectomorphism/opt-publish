@@ -62,7 +62,7 @@ Assume $\bm{a}_1, \bm{a}_2, \ldots, \bm{a}_p$ are linearly independent. Then
 clearly, $p \leq m$. If $p = m$, the solution is basic and the proof is
 complete. If $p < m$, then, since $\bm{A}$ has rank $m$, $m-p$ vectors can be
 found from the remaining $n-p$ vectors so that the resulting set of $m$ vectors
-is lienarly independent. Assigning the value zero to the corresponding $m-p$
+is linearly independent. Assigning the value zero to the corresponding $m-p$
 variables yields a (degenerate) basic feasible solution.
 
 
@@ -122,7 +122,7 @@ applies.
 ## Proof (2)
 Let $\bm{x} = (x_1, x_2, \ldots, x_n)$ be an optimal feasible solution and, as
 in the proof of (1) above, suppose there are exactly $p$ positive variables
-$x_1, x_2, \ldots, x_p$. Agan, there are two cases; and Case 1, corresponding to
+$x_1, x_2, \ldots, x_p$. Again, there are two cases; and Case 1, corresponding to
 the linear independence is exactly the same as before.
 
 Case 2 also goes exactly the same as before, but it must be shown that for any
@@ -144,7 +144,7 @@ we conclude that $\bm{c}^\top \bm{y} = \bm{0}$ (why?).
 ## Proof (2)
 Let $\bm{x} = (x_1, x_2, \ldots, x_n)$ be an optimal feasible solution and, as
 in the proof of (1) above, suppose there are exactly $p$ positive variables
-$x_1, x_2, \ldots, x_p$. Agan, there are two cases; and Case 1, corresponding to
+$x_1, x_2, \ldots, x_p$. Again, there are two cases; and Case 1, corresponding to
 the linear independence is exactly the same as before.
 
 Case 2 also goes exactly the same as before, but it must be shown that for any

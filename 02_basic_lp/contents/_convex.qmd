@@ -251,7 +251,7 @@ solution points.
 
 * The level sets of an objective function $-2x_1 - x_2$ is included in the
 bottom figure.
-  - As the level varies, different aparallel lines are obtained.
+  - As the level varies, different parallel lines are obtained.
   - The optimal value of the linear program is the smallest value of this level
     for which the corresponding line has a point in common with the feasible
     set.

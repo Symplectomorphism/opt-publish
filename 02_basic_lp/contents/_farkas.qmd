@@ -46,7 +46,7 @@ $$ 0 < \bm{y}^\top \bm{b} = \bm{y}^\top(\bm{A}\bar{\bm{x}}) = (\bm{y}^\top
 from $\bar{\bm{x}} \geq \bm{0}$ and $\bm{y}^\top \bm{A} \leq \bm{0}$.
 
 Now, let the system @eq-p7 have no feasible solution, that is, $\bm{b} \notin C
-:= \{\bm{Ax}: \bm{x} \geq 0\}$. We now prove taht its alternative system @eq-p8
+:= \{\bm{Ax}: \bm{x} \geq 0\}$. We now prove that its alternative system @eq-p8
 must have a feasible solution.
 
 Since points $\bm{b}$ is not in $C$ and $C$ is a closed convex set, by the
@@ -68,10 +68,14 @@ Furthermore, inequality @eq-p9 also implies $\bm{y}^\top \bm{A} \leq \bm{0}$.
 Since otherwise, say the first entry of $\bm{y}^\top \bm{A}$, $(\bm{y}^\top
 \bm{A})_1$, is positive. We can then choose a vector $\bar{\bm{x}} \geq \bm{0}$
 such that 
+
 $$ \bar{x}_1 = \alpha > 0, \bar{x}_2 = \cdots = \bar{x}_n = 0. $$
+
 Then, from this choice, we have
+
 $$ \operatorname{sup}_{\bm{x} \geq \bm{0}} (\bm{y}^\top\bm{A})\bm{x} \geq
 (\bm{y}^\top \bm{A})\bar{\bm{x}} = \alpha(\bm{y}^\top \bm{A})_1. $$
+
 This tends to $\infty$ as $\alpha \rightarrow \infty$. This is a contradiction
 because $(\bm{y}^\top\bm{A})\bar{\bm{x}}$ should be bounded from above by
 inequality @eq-p9. Therefore, $\bm{y}$ identified in the separating hyperplane
@@ -95,10 +99,14 @@ slope-vector of the hyperplane.
 ## Corollary
 Let $\bm{A}$ be an $m \times n$ matrix and $\bm{c}$ an $n$-vector. The system of
 constraints 
+
 $$ \bm{A}^\top \bm{y} \leq c $$ {#eq-p10}
+
 has a feasible solution $\bm{y}$ if and only if the system of constraints
+
 $$ \bm{Ax} = \bm{0}, \quad \bm{x} \geq \bm{0}, \quad \bm{c}^\top \bm{x} = -1 \;
 (\text{or} < 0) $$ {#eq-p11}
+
 has no feasible solution $\bm{x}$. Therefore a single feasible solution $\bm{x}$
 for system @eq-p11 establishes an infeasibility certificate for the system
 @eq-p10.

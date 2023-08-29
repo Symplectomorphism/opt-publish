@@ -3,7 +3,7 @@
 ## Example 1 &#8211; The Diet Problem {.smaller}
 
 ::: {.callout-tip appearance="minimal"}
-## Determine the most economical die that satisfies the basic minimum nutritional requirements for good health
+## Determine the most economical diet that satisfies the basic minimum nutritional requirements for good health
 :::
 
 :::: {.columns}
@@ -41,7 +41,7 @@ on the food quantities.
 ::: {.fragment fragment-index=4}
 
 ::: {.callout-note appearance="minimal"}
-This problem can be converted to standard form by subtrating a nonnegative
+This problem can be converted to standard form by subtracting a nonnegative
 surplus variable from the left side of each of the $m$ linear inequalities.
 :::
 
@@ -134,9 +134,9 @@ td, th {
 |$b_{1}$|$b_{2}$|$\cdots$|$b_{n}$|||
 
 :::{.fragment}
-* The $i^{\text{th}}$ row in this array defines the variables assoc. w/ the
+* The $i^{\text{th}}$ row in this array defines the variables associated with the
 $i^{\text{th}}$ origin.
-* The $j^{\text{th}}$ column defines the variables assoc. w/ the $j^{\text{th}}$
+* The $j^{\text{th}}$ column defines the variables associated with the $j^{\text{th}}$
 destination.
 * _Problem_: find the nonnegative variables $x_{ij}$ so that the sum across the
 $i^{\text{th}}$ row is $a_j$, the sum down the $j^{\text{th}}$ column is $b_j$,
@@ -380,7 +380,7 @@ $$
 
 * Let $y_i^\ast$, $i = 1, \ldots, m$ represent the optimal present-expected cost
 when the process starts at state $i$ and time $0$
-  - also called the _cost-to_go_ value of state $i$.
+  - also called the _cost-to-go_ value of state $i$.
   - The $y_i^\ast$'s follow Bellman's principle of optimality:
 
 $$

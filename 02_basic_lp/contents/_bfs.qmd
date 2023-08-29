@@ -66,8 +66,8 @@ solution is said to be a _degenerate basic solution_.
 * In a nondegenerate basic solution, the basic variables, and hence the basis
 $\bm{B}$, can be immediately identified from the positive components of the
 solution.
-  - There is ambiguity associated with a degenerate basic solution - some of the
-    nonbasic variables can be interchanged!
+  - There is ambiguity associated with a degenerate basic solution &ndash; some
+    of the nonbasic variables can be interchanged!
 
 ::: {.callout-tip icon=false}
 ## Definition
