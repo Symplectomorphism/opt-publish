@@ -1,0 +1,9 @@
+[
+  {
+    "objectID": "07_basic_descent.html#optimization-theory-and-practice",
+    "href": "07_basic_descent.html#optimization-theory-and-practice",
+    "title": "07_basic_descent",
+    "section": "Optimization Theory and Practice",
+    "text": "Optimization Theory and Practice\n\n\nBasic Descent Methods\n\n\n\n\nInstructor: Aykut Satici, Ph.D.    Mechanical and Biomedical Engineering  Electrical and Computer Engineering  Boise State University, Boise, ID, USA\n\n\nTopics:  Line Search Algorithms  The Method of Steepest Descent  Accelerated Steepest Descent  Multiplicative Steepest Descent  Newton’s Method: Second-Order  Sequential Quadratic Optimization Methods  Coordinate and Stochastic Gradient Descent \n\n\n\n\n\nOptimization Theory and Practice • Aykut C. Satici"
+  }
+]
