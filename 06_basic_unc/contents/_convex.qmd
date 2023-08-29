@@ -1,5 +1,9 @@
 # Convex and Concave Functions
 
+<center>
+<img src="./contents/assets/convexfcn.png" width="30%" /img>
+</center>
+
 ## Properties of Convex Functions {.smaller}
 
 :::: {.columns}
@@ -93,16 +97,157 @@ $$ f(\bm{y}) \geq f(\bm{x}) + \nabla f(\bm{x})(\bm{y} - \bm{x}), \quad \forall
 \bm{x}, \bm{y} \in \Omega. $$
 :::
 
+::: {.r-stack}
+
+::: {.fragment .fade-out fragment-index=1}
 ::: {.callout-note icon=false}
 ## Proof
 First suppose $f$ is convex. Then for all $\alpha, 0 \leq \alpha \leq 1$, 
+
 $$ f(\alpha \bm{y} + (1-\alpha)\bm{x}) \leq \alpha f(\bm{y}) +
 (1-\alpha)f(\bm{x}). $$
+
+Thus for $0 < \alpha \leq 1$
+
+$$\frac{f(\bm{x}+\alpha(\bm{y}-\bm{x})) - f(\bm{x})}{\alpha} \leq f(\bm{y}) -
+f(\bm{x}). $$
+
+Letting $\alpha \rightarrow 0$ we obtain 
+
+$$ \nabla f(\bm{x})(\bm{y}-\bm{x}) \leq f(\bm{y}) - f(\bm{x}). $$
+
+This proves the "only if" part.
 :::
+:::
+
+::: {.fragment fragment-index=2}
+::: {.callout-note icon=false}
+## Proof
+Now assume 
+
+$$f(\bm{y}) \geq f(\bm{x}) + \nabla f(\bm{x})(\bm{y} - \bm{x})$$ 
+
+for all $\bm{x}, \bm{y} \in \Omega$. Fix $\bm{x}_1, \bm{x}_2 \in \Omega$ and
+$\alpha$, $0 \leq \alpha \leq 1$. Setting $\bm{x} = \alpha \bm{x}_1 + (1-\alpha)
+\bm{x}_2$ and alternatively $\bm{y} = \bm{x}_1$ or $\bm{y} = \bm{x}_2$, we have
+
+$$
+\begin{align}
+f(\bm{x}_1) &\geq f(\bm{x}) + \nabla f(\bm{x})(\bm{x}_1 - \bm{x}) \\
+f(\bm{x}_2) &\geq f(\bm{x}) + \nabla f(\bm{x})(\bm{x}_2 - \bm{x}).
+\end{align}
+$$
+
+Multiply the first equation by $\alpha$ and the second equation by $(1-\alpha)$
+and add to obtain
+
+$$ \alpha f(\bm{x}_1) + (1-\alpha)f(\bm{x}_2) \geq f(\bm{x}) + \nabla
+f(\bm{x})[\alpha \bm{x}_1 + (1-\alpha)\bm{x}_2 - \bm{x}]. $$
+
+But substituting $\bm{x} = \alpha \bm{x}_1 + (1-\alpha)\bm{x}_2$, we obtain
+
+$$ \alpha f(\bm{x}_1) + (1-\alpha)f(\bm{x}_2) \geq f(\alpha \bm{x}_1 +
+(1-\alpha)\bm{x}_2). $$
+:::
+:::
+
+:::
+
 :::
 
 
 ::: {.column width="50%"}
+<center>
+<img src="./contents/assets/illustration.png" width="70%" /img>
+</center>
+
+::: {.callout-important icon=false}
+## Illustration of the proposition
+This is a dual characterization of the original definition.
+
+* The original definition states that a linear interpolation between two points
+overestimates the function.
+* This characterization states that linear approximation based on the local
+derivative underestimates the function.
+:::
+
+:::
+
+::::
+
+
+## <span style="font-size:99%"> Properties of Differentiable Convex Functions </span> {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## Proposition
+Let $f \in C^2$. Then $f$ is convex over a convex set $\Omega$ containing an
+interior point if and only if the Hessian matrix $\bm{F}$ of $f$ is positive
+semidefinite throughout $\Omega$.
+:::
+
+::: {.r-stack}
+
+::: {.fragment .fade-out}
+::: {.callout-note icon=false}
+## Proof
+By Taylor's theorem we have 
+
+$$
+\begin{align}
+f(\bm{y}) - f(\bm{x}) &= \nabla f(\bm{x})(\bm{y}-\bm{x}) + \\
+&\frac{1}{2}(\bm{y}-\bm{x})^\top \bm{F}(\bm{x} +
+\alpha(\bm{y}-\bm{x}))(\bm{y}-\bm{x})
+\end{align}
+$$ {#eq-taylor}
+
+for some $\alpha$, $0 \leq \alpha \leq 1$. Clearly, if the Hessian is everywhere
+positive semidefinite, we have
+
+$$ f(\bm{y}) \geq f(\bm{x}) + \nabla f(\bm{x}) (\bm{y} - \bm{x}), $$ {#eq-foc}
+
+which in view of the previous proposition implies that $f$ is convex.
+:::
+:::
+
+::: {.fragment}
+::: {.callout-note icon=false}
+## Proof
+Now suppose the Hessian is not positive semidefinite at some point $\bm{x} \in
+\Omega$. By the continuity of the Hessian, it can be assumed w.l.o.g., that
+$\bm{x}$ is an interior point of $\Omega$. There is a $\bm{y} \in \Omega$ such
+that $(\bm{y}-\bm{x})^\top \bm{F}(\bm{x})(\bm{y}-\bm{x}) < 0$.
+
+Again, by the continuity of the Hessian, $\bm{y}$ may be selected so that for
+all $\alpha$, $0 \leq \alpha \leq 1$, 
+
+$$ (\bm{y}-\bm{x})^\top \bm{F}(\bm{x}+\alpha(\bm{y}-\bm{x}))(\bm{y}-\bm{x}) < 0.
+$$
+
+This, in view of @eq-taylor implies that @eq-foc does not hold; which in view of
+the previous proposition implies that $f$ is not convex.
+:::
+:::
+
+:::
+
+:::
+
+::: {.column width="50%"}
+* The Hessian matrix is the generalization to $\mathbb{R}^n$ of the concept of
+the curvature of a function.
+  - positive definiteness of the Hessian is the generalization of positive
+    curvature.
+* Convex functions have positive (at least nonnegative) curvature in every
+direction.
+* We refer to a function as being _locally convex_ if its Hessian matrix is
+positive semidefinite in a neighborhood.
+* The SOSC requires that the fcn. be locally strictly convex  at the point
+$\bm{x}^\ast$.
+* Hence the local sufficiency theory is intimately related to convexity.
 :::
 
 ::::

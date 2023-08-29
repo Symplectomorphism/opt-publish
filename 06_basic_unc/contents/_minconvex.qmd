@@ -1,1 +1,72 @@
 # Minimization and Maximization of Convex Functions
+
+## <span style="font-size:87%"> Minimization of and Maximization Convex Functions </span> {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.callout-tip icon=false}
+## Theorem
+Let $f$ be a convex function defined on the convex set $\Omega$. Then the set
+$\Gamma$ where $f$ achieves its minimum is convex, and any relative minimum of
+$f$ is a global minimum.
+:::
+
+::: {.callout-note icon=false}
+## Proof
+If $f$ has no relative minima the theorem is valid by default. Assume now that
+$c_0$ is the minimum of $f$. Then clearly $\Gamma = \{\bm{x}: f(\bm{x}) \leq
+c_0, \; \bm{x} \in \Omega \}$ and this is convex by a proposition we covered
+earlier.
+
+Suppose now that $\bm{x}^\ast \in \Omega$ is a relative minimum point of $f$,
+but that there is another point $\bm{y} \in \Omega$ with $f(\bm{y}) <
+f(\bm{x}^\ast)$. On the line $\alpha \bm{y} + (1-\alpha)\bm{x}^\ast$, $0 <
+\alpha < 1$ we have
+
+$$ f(\alpha \bm{y} + (1-\alpha)\bm{x}^\ast) \leq \alpha f(\bm{y}) + (1-\alpha)
+f(\bm{x}^\ast) < f(\bm{x}^\ast), $$
+
+contradicting the fact that $\bm{x}^\ast$ is a relative minimum point.
+:::
+
+* All minimum points of a convex function are located together and are global
+minima.
+:::
+
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## Theorem
+Let $f \in C^1$ be convex on the convex set $\Omega$. If there is a point
+$\bm{x}^\ast \in \Omega$ such that for all $\bm{y} \in \Omega$, $\nabla
+f(\bm{x}^\ast)(\bm{y} - \bm{x}^\ast) \geq 0$, then $\bm{x}^\ast$ is a global
+minimum point of $f$ over $\Omega$.
+:::
+
+::: {.callout-note icon=false}
+## Proof
+Since $\bm{y}-\bm{x}^\ast$ is a feasible direction at $\bm{x}^\ast$, the given
+condition is equivalent to the FONC. The proof of the propostion is now
+immediate since by an earlier proposition we have 
+
+$$ f(\bm{y}) \geq f(\bm{x}^\ast) + \nabla f(\bm{x}^\ast)(\bm{y} - \bm{x}^\ast)
+\geq f(\bm{x}^\ast). $$
+:::
+
+::: {.callout-tip icon=false}
+## Theorem
+Let $f$ be a convex function defined on the bounded, closed convex set $\Omega$. 
+If $f$ has a maximum over $\Omega$, it is achieved at an extreme point of
+$\Omega$.
+:::
+
+::: {.callout-note icon=false}
+## Proof -- Omitted.
+:::
+
+:::
+
+
+::::

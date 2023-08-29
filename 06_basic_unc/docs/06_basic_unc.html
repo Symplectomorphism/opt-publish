@@ -693,7 +693,9 @@ o(|\bm{d}|^2). </annotation></semantics></math></p>
 <section>
 <section id="convex-and-concave-functions" class="title-slide slide level1 center">
 <h1>Convex and Concave Functions</h1>
-
+<center>
+<img src="./contents/assets/convexfcn.png" width="30%" img="">
+</center>
 </section>
 <section id="properties-of-convex-functions" class="slide level2 smaller">
 <h2>Properties of Convex Functions</h2>
@@ -804,34 +806,402 @@ f_1(\bm{x}) \leq c_1, \;\; f_2(\bm{x}) \leq c_2, \ldots, f_m(\bm{x}) \leq c_m,
 </div>
 </div>
 </div>
+<div class="r-stack">
+<div class="fragment fade-out" data-fragment-index="1">
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <p><strong>Proof</strong></p>
 </div>
 <div class="callout-content">
-<p>First suppose <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> is convex. Then for all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>,</mo><mn>0</mn><mo>≤</mo><mi>α</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\alpha, 0 \leq \alpha \leq 1</annotation></semantics></math>, <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>α</mi><mi>𝐲</mi><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>α</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> f(\alpha \bm{y} + (1-\alpha)\bm{x}) \leq \alpha f(\bm{y}) +
+<p>First suppose <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> is convex. Then for all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>,</mo><mn>0</mn><mo>≤</mo><mi>α</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\alpha, 0 \leq \alpha \leq 1</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>α</mi><mi>𝐲</mi><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>α</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> f(\alpha \bm{y} + (1-\alpha)\bm{x}) \leq \alpha f(\bm{y}) +
 (1-\alpha)f(\bm{x}). </annotation></semantics></math></p>
+<p>Thus for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>α</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 &lt; \alpha \leq 1</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>+</mo><mi>α</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mi>α</mi></mfrac><mo>≤</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\frac{f(\bm{x}+\alpha(\bm{y}-\bm{x})) - f(\bm{x})}{\alpha} \leq f(\bm{y}) -
+f(\bm{x}). </annotation></semantics></math></p>
+<p>Letting <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\alpha \rightarrow 0</annotation></semantics></math> we obtain</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> \nabla f(\bm{x})(\bm{y}-\bm{x}) \leq f(\bm{y}) - f(\bm{x}). </annotation></semantics></math></p>
+<p>This proves the “only if” part.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment" data-fragment-index="2">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Proof</strong></p>
+</div>
+<div class="callout-content">
+<p>Now assume</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(\bm{y}) \geq f(\bm{x}) + \nabla f(\bm{x})(\bm{y} - \bm{x})</annotation></semantics></math></p>
+<p>for all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>,</mo><mi>𝐲</mi><mo>∈</mo><mi>Ω</mi></mrow><annotation encoding="application/x-tex">\bm{x}, \bm{y} \in \Omega</annotation></semantics></math>. Fix <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐱</mi><mn>2</mn></msub><mo>∈</mo><mi>Ω</mi></mrow><annotation encoding="application/x-tex">\bm{x}_1, \bm{x}_2 \in \Omega</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>α</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \leq \alpha \leq 1</annotation></semantics></math>. Setting <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>=</mo><mi>α</mi><msub><mi>𝐱</mi><mn>1</mn></msub><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>𝐱</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\bm{x} = \alpha \bm{x}_1 + (1-\alpha) \bm{x}_2</annotation></semantics></math> and alternatively <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐲</mi><mo>=</mo><msub><mi>𝐱</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\bm{y} = \bm{x}_1</annotation></semantics></math> or <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐲</mi><mo>=</mo><msub><mi>𝐱</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\bm{y} = \bm{x}_2</annotation></semantics></math>, we have</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>≥</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mn>1</mn></msub><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>≥</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mn>2</mn></msub><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+f(\bm{x}_1) &amp;\geq f(\bm{x}) + \nabla f(\bm{x})(\bm{x}_1 - \bm{x}) \\
+f(\bm{x}_2) &amp;\geq f(\bm{x}) + \nabla f(\bm{x})(\bm{x}_2 - \bm{x}).
+\end{align}
+</annotation></semantics></math></p>
+<p>Multiply the first equation by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> and the second equation by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1-\alpha)</annotation></semantics></math> and add to obtain</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mi>α</mi><msub><mi>𝐱</mi><mn>1</mn></msub><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>𝐱</mi><mn>2</mn></msub><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> \alpha f(\bm{x}_1) + (1-\alpha)f(\bm{x}_2) \geq f(\bm{x}) + \nabla
+f(\bm{x})[\alpha \bm{x}_1 + (1-\alpha)\bm{x}_2 - \bm{x}]. </annotation></semantics></math></p>
+<p>But substituting <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>=</mo><mi>α</mi><msub><mi>𝐱</mi><mn>1</mn></msub><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>𝐱</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\bm{x} = \alpha \bm{x}_1 + (1-\alpha)\bm{x}_2</annotation></semantics></math>, we obtain</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>α</mi><msub><mi>𝐱</mi><mn>1</mn></msub><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>𝐱</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> \alpha f(\bm{x}_1) + (1-\alpha)f(\bm{x}_2) \geq f(\alpha \bm{x}_1 +
+(1-\alpha)\bm{x}_2). </annotation></semantics></math></p>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-
+<center>
+<img src="./contents/assets/illustration.png" width="70%" img="">
+</center>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Illustration of the proposition</strong></p>
+</div>
+<div class="callout-content">
+<p>This is a dual characterization of the original definition.</p>
+<ul>
+<li>The original definition states that a linear interpolation between two points overestimates the function.</li>
+<li>This characterization states that linear approximation based on the local derivative underestimates the function.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="properties-of-differentiable-convex-functions-1" class="slide level2 smaller">
+<h2><span style="font-size:99%"> Properties of Differentiable Convex Functions </span></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Proposition</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>∈</mo><msup><mi>C</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">f \in C^2</annotation></semantics></math>. Then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> is convex over a convex set <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math> containing an interior point if and only if the Hessian matrix <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐅</mi><annotation encoding="application/x-tex">\bm{F}</annotation></semantics></math> of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> is positive semidefinite throughout <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+<div class="r-stack">
+<div class="fragment fade-out">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Proof</strong></p>
+</div>
+<div class="callout-content">
+<p>By Taylor’s theorem we have</p>
+<p><span id="eq-taylor"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>𝐅</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>+</mo><mi>α</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>8</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+\begin{align}
+f(\bm{y}) - f(\bm{x}) &amp;= \nabla f(\bm{x})(\bm{y}-\bm{x}) + \\
+&amp;\frac{1}{2}(\bm{y}-\bm{x})^\top \bm{F}(\bm{x} +
+\alpha(\bm{y}-\bm{x}))(\bm{y}-\bm{x})
+\end{align}
+ \qquad(8)</annotation></semantics></math></span></p>
+<p>for some <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>α</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \leq \alpha \leq 1</annotation></semantics></math>. Clearly, if the Hessian is everywhere positive semidefinite, we have</p>
+<p><span id="eq-foc"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>9</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> f(\bm{y}) \geq f(\bm{x}) + \nabla f(\bm{x}) (\bm{y} - \bm{x}),  \qquad(9)</annotation></semantics></math></span></p>
+<p>which in view of the previous proposition implies that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> is convex.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Proof</strong></p>
+</div>
+<div class="callout-content">
+<p>Now suppose the Hessian is not positive semidefinite at some point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>∈</mo><mi>Ω</mi></mrow><annotation encoding="application/x-tex">\bm{x} \in \Omega</annotation></semantics></math>. By the continuity of the Hessian, it can be assumed w.l.o.g., that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> is an interior point of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>. There is a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐲</mi><mo>∈</mo><mi>Ω</mi></mrow><annotation encoding="application/x-tex">\bm{y} \in \Omega</annotation></semantics></math> such that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>𝐅</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(\bm{y}-\bm{x})^\top \bm{F}(\bm{x})(\bm{y}-\bm{x}) &lt; 0</annotation></semantics></math>.</p>
+<p>Again, by the continuity of the Hessian, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐲</mi><annotation encoding="application/x-tex">\bm{y}</annotation></semantics></math> may be selected so that for all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>α</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 \leq \alpha \leq 1</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>𝐅</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>+</mo><mi>α</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>&lt;</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex"> (\bm{y}-\bm{x})^\top \bm{F}(\bm{x}+\alpha(\bm{y}-\bm{x}))(\bm{y}-\bm{x}) &lt; 0.
+</annotation></semantics></math></p>
+<p>This, in view of <a href="#/properties-of-differentiable-convex-functions-1">Equation&nbsp;8</a> implies that <a href="#/properties-of-differentiable-convex-functions-1">Equation&nbsp;9</a> does not hold; which in view of the previous proposition implies that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> is not convex.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>The Hessian matrix is the generalization to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mi>n</mi></msup><annotation encoding="application/x-tex">\mathbb{R}^n</annotation></semantics></math> of the concept of the curvature of a function.
+<ul>
+<li>positive definiteness of the Hessian is the generalization of positive curvature.</li>
+</ul></li>
+<li>Convex functions have positive (at least nonnegative) curvature in every direction.</li>
+<li>We refer to a function as being <em>locally convex</em> if its Hessian matrix is positive semidefinite in a neighborhood.</li>
+<li>The SOSC requires that the fcn. be locally strictly convex at the point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math>.</li>
+<li>Hence the local sufficiency theory is intimately related to convexity.</li>
+</ul>
 </div>
 </div>
 </section></section>
+<section>
 <section id="minimization-and-maximization-of-convex-functions" class="title-slide slide level1 center">
 <h1>Minimization and Maximization of Convex Functions</h1>
 
 </section>
+<section id="minimization-of-and-maximization-convex-functions" class="slide level2 smaller">
+<h2><span style="font-size:87%"> Minimization of and Maximization Convex Functions </span></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> be a convex function defined on the convex set <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>. Then the set <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math> where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> achieves its minimum is convex, and any relative minimum of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> is a global minimum.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Proof</strong></p>
+</div>
+<div class="callout-content">
+<p>If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> has no relative minima the theorem is valid by default. Assume now that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>c</mi><mn>0</mn></msub><annotation encoding="application/x-tex">c_0</annotation></semantics></math> is the minimum of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>. Then clearly <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Γ</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>𝐱</mi><mo>:</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><msub><mi>c</mi><mn>0</mn></msub><mo>,</mo><mspace width="0.278em"></mspace><mi>𝐱</mi><mo>∈</mo><mi>Ω</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\Gamma = \{\bm{x}: f(\bm{x}) \leq c_0, \; \bm{x} \in \Omega \}</annotation></semantics></math> and this is convex by a proposition we covered earlier.</p>
+<p>Suppose now that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝐱</mi><mo>*</mo></msup><mo>∈</mo><mi>Ω</mi></mrow><annotation encoding="application/x-tex">\bm{x}^\ast \in \Omega</annotation></semantics></math> is a relative minimum point of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>, but that there is another point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐲</mi><mo>∈</mo><mi>Ω</mi></mrow><annotation encoding="application/x-tex">\bm{y} \in \Omega</annotation></semantics></math> with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>&lt;</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(\bm{y}) &lt; f(\bm{x}^\ast)</annotation></semantics></math>. On the line <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mi>𝐲</mi><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><msup><mi>𝐱</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">\alpha \bm{y} + (1-\alpha)\bm{x}^\ast</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>α</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 &lt; \alpha &lt; 1</annotation></semantics></math> we have</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>α</mi><mi>𝐲</mi><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>α</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>&lt;</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex"> f(\alpha \bm{y} + (1-\alpha)\bm{x}^\ast) \leq \alpha f(\bm{y}) + (1-\alpha)
+f(\bm{x}^\ast) &lt; f(\bm{x}^\ast), </annotation></semantics></math></p>
+<p>contradicting the fact that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math> is a relative minimum point.</p>
+</div>
+</div>
+</div>
+<ul>
+<li>All minimum points of a convex function are located together and are global minima.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>∈</mo><msup><mi>C</mi><mn>1</mn></msup></mrow><annotation encoding="application/x-tex">f \in C^1</annotation></semantics></math> be convex on the convex set <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>. If there is a point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝐱</mi><mo>*</mo></msup><mo>∈</mo><mi>Ω</mi></mrow><annotation encoding="application/x-tex">\bm{x}^\ast \in \Omega</annotation></semantics></math> such that for all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐲</mi><mo>∈</mo><mi>Ω</mi></mrow><annotation encoding="application/x-tex">\bm{y} \in \Omega</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\nabla f(\bm{x}^\ast)(\bm{y} - \bm{x}^\ast) \geq 0</annotation></semantics></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math> is a global minimum point of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> over <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Proof</strong></p>
+</div>
+<div class="callout-content">
+<p>Since <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐲</mi><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">\bm{y}-\bm{x}^\ast</annotation></semantics></math> is a feasible direction at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math>, the given condition is equivalent to the FONC. The proof of the propostion is now immediate since by an earlier proposition we have</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> f(\bm{y}) \geq f(\bm{x}^\ast) + \nabla f(\bm{x}^\ast)(\bm{y} - \bm{x}^\ast)
+\geq f(\bm{x}^\ast). </annotation></semantics></math></p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> be a convex function defined on the bounded, closed convex set <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>. If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> has a maximum over <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>, it is achieved at an extreme point of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Proof – Omitted.</strong></p>
+</div>
+<div class="callout-content">
 
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
 <section id="global-convergence-of-descent-algorithms" class="title-slide slide level1 center">
 <h1>Global Convergence of Descent Algorithms</h1>
+
+</section>
+<section id="algorithms" class="slide level2">
+<h2>Algorithms</h2>
+<ul>
+<li><p><strong>Iterative</strong>: the algorithm generates a series of points, each point being calculated on the basis of the points preceding it.</p></li>
+<li><p><strong>Descent</strong>: as each new point is generated by the algorithm the corresponding value of some function decreases in value.</p></li>
+<li><p>An iterative algorithm is initiated by specifying a starting point.</p>
+<ul>
+<li>If for arbitrary starting points, the algorithm is guaranteed to generate a sequence of points converging to a solution, then the algorithm is said to be <em>globally convergent</em>.</li>
+<li>Not all algorithms have this desirable property: indeed, many of the most important algorithms for NLP are not globally convergent.</li>
+<li>They occasionally generate sequences that do not converge at all or converge to points that are not solutions.</li>
+</ul></li>
+</ul>
+</section>
+<section id="iterative-algorithms" class="slide level2 smaller">
+<h2>Iterative Algorithms</h2>
+<div class="r-stack">
+<div class="fragment fade-out">
+<ul>
+<li>We formally define an algorithm <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> as a mapping, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mi>𝐀</mi><mo>:</mo><mi>X</mi><mo>→</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">\;\; \bm{A}: X \rightarrow X</annotation></semantics></math>. Operated iteratively, the algorithm <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> initiated at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mn>0</mn></msub><mo>∈</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">\bm{x}_0 \in X</annotation></semantics></math> would generates a sequence <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{\bm{x}_k\}</annotation></semantics></math> defined by</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mi>𝐀</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> \bm{x}_{k+1} = \bm{A}(\bm{x}_k). </annotation></semantics></math></p>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definition (Algorithm – a generalization)</strong></p>
+</div>
+<div class="callout-content">
+<p>An <em>algorithm</em> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> is a mapping defined on a space <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math> that assigns to every point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>∈</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">\bm{x} \in X</annotation></semantics></math> a subset of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>. That is, the mapping <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> is a <em>point-to-set</em> mapping of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+<ul>
+<li>An algorithm <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math>, therefore, generates a sequence of points in the following way.
+<ul>
+<li>Given <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mi>k</mi></msub><mo>∈</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">\bm{x}_k \in X</annotation></semantics></math>, the algorithm yields <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐀</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>⊆</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">\bm{A}(\bm{x}_k) \subseteq X</annotation></semantics></math>.</li>
+<li>From this subset an arbitrary element <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">\bm{x}_{k+1}</annotation></semantics></math> is selected.</li>
+<li>In this way, given an initial point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\bm{x}_0</annotation></semantics></math>, the algorithm generates sequences through the iteration</li>
+</ul></li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>∈</mo><mi>𝐀</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> \bm{x}_{k+1} \in \bm{A}(\bm{x}_k). </annotation></semantics></math></p>
+<ul>
+<li>The utility of this more general definition is that it allows one to analyze the convergence of an infinite family of similar algorithms.</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<p>Suppose for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">x \in \mathbb{R}</annotation></semantics></math>, we define</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mo>−</mo><mfrac><mrow><mo stretchy="true" form="prefix">|</mo><mi>x</mi><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></mfrac><mo>,</mo><mfrac><mrow><mo stretchy="true" form="prefix">|</mo><mi>x</mi><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></mfrac><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex"> A(x) = \left[ -\frac{|x|}{2}, \frac{|x|}{2} \right ] </annotation></semantics></math></p>
+<p>so that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">A(x)</annotation></semantics></math> is an interval of the real line.</p>
+<ul>
+<li>Let us start at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">x_0 = 100</annotation></semantics></math>.</li>
+<li>Each of the following sequences below might be generated from an iterative application of this algorithm.</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mn>100</mn><mo>,</mo><mn>50</mn><mo>,</mo><mn>25</mn><mo>,</mo><mn>12</mn><mo>,</mo><mo>−</mo><mn>6</mn><mo>,</mo><mo>−</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>,</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mi>…</mi><mo stretchy="true" form="postfix">}</mo></mrow><annotation encoding="application/x-tex"> \left\{100, 50, 25, 12, -6, -2, 1, \frac{1}{2}, \ldots \right\} </annotation></semantics></math> <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mn>100</mn><mo>,</mo><mo>−</mo><mn>40</mn><mo>,</mo><mn>20</mn><mo>,</mo><mo>−</mo><mn>5</mn><mo>,</mo><mo>−</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>,</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>,</mo><mfrac><mn>1</mn><mn>8</mn></mfrac><mo>,</mo><mi>…</mi><mo stretchy="true" form="postfix">}</mo></mrow><annotation encoding="application/x-tex"> \left\{100, -40, 20, -5, -2, 1, \frac{1}{4}, \frac{1}{8}, \ldots \right\} </annotation></semantics></math> <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mn>100</mn><mo>,</mo><mn>10</mn><mo>,</mo><mo>−</mo><mn>1</mn><mo>,</mo><mfrac><mn>1</mn><mn>16</mn></mfrac><mo>,</mo><mfrac><mn>1</mn><mn>100</mn></mfrac><mo>,</mo><mo>−</mo><mfrac><mn>1</mn><mn>1000</mn></mfrac><mo>,</mo><mfrac><mn>1</mn><mn>10000</mn></mfrac><mo>,</mo><mi>…</mi><mo stretchy="true" form="postfix">}</mo></mrow><annotation encoding="application/x-tex"> \left\{100, 10, -1, \frac{1}{16}, \frac{1}{100}, -\frac{1}{1000}, \frac{1}{10000}, \ldots \right\} </annotation></semantics></math></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="descent" class="slide level2 smaller">
+<h2>Descent</h2>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definition (Descent)</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Γ</mi><mo>⊆</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">\Gamma \subseteq X</annotation></semantics></math> be a given solution set and let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> be an algorithm on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>. A continuous real-valued function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Z</mi><annotation encoding="application/x-tex">Z</annotation></semantics></math> on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math> is said to be a <em>descent function</em> for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> if it satisfies</p>
+<ol type="1">
+<li>if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>∉</mo><mi>Γ</mi></mrow><annotation encoding="application/x-tex">\bm{x} \notin \Gamma</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐲</mi><mo>∈</mo><mi>𝐀</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{y} \in \bm{A}(\bm{x})</annotation></semantics></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>&lt;</mo><mi>Z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">Z(\bm{y}) &lt; Z(\bm{x})</annotation></semantics></math>,</li>
+<li>if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>∈</mo><mi>Γ</mi></mrow><annotation encoding="application/x-tex">\bm{x} \in \Gamma</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐲</mi><mo>∈</mo><mi>𝐀</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{y} \in \bm{A}(\bm{x})</annotation></semantics></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>Z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">Z(\bm{y}) \leq Z(\bm{x})</annotation></semantics></math>.</li>
+</ol>
+</div>
+</div>
+</div>
+<ul>
+<li><p>There are a number of ways a solution set, algorithm, and descent function can be defined.</p></li>
+<li><p>A natural set-up for the problem</p></li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><mi>𝐱</mi><mo>∈</mo><mi>Ω</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize} &amp; f(\bm{x}) \\
+\text{subject to} &amp; \bm{x} \in \Omega
+\end{align}
+</annotation></semantics></math></p>
+<ul>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math> be the set of minimizing points; define an algorithm <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math> in such a way that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> decreases at each step (descent function).</p></li>
+<li><p>Another possibility: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math> is the set of points <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> satisfying <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\nabla f(\bm{x}) = 0</annotation></semantics></math>. <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">|</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><annotation encoding="application/x-tex">|\nabla f(\bm{x})|</annotation></semantics></math> might then serve as a descent function.</p></li>
+</ul>
+</section>
+<section id="global-convergence-theorem" class="slide level2 smaller">
+<h2>Global Convergence Theorem</h2>
+<div class="r-stack">
+<div class="fragment fade-out">
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>The set-up</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>There is a solution set <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math></li>
+<li>Points are generated according to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>∈</mo><mi>𝐀</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}_{k+1} \in \bm{A}(\bm{x}_k)</annotation></semantics></math></li>
+<li>Each new point strictly decreases a descent function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐙</mi><annotation encoding="application/x-tex">\bm{Z}</annotation></semantics></math> unless the solution set <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math> is reached.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Global Convergence Theorem</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> be an algorithm on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>, and suppose that, given <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\bm{x}_0</annotation></semantics></math>, the sequence <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mrow><mo stretchy="true" form="prefix">{</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">}</mo></mrow><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mi>∞</mi></msubsup><annotation encoding="application/x-tex">\left\{\bm{x}_k\right\}_{k=0}^\infty</annotation></semantics></math> is generated satisfying</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>∈</mo><mi>𝐀</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> \bm{x}_{k+1} \in \bm{A}(\bm{x}_k). </annotation></semantics></math></p>
+<p>Let a solution set <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Γ</mi><mo>⊆</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">\Gamma \subseteq X</annotation></semantics></math> be given, and suppose</p>
+<ol type="1">
+<li>all points <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\bm{x}_k</annotation></semantics></math> are contained in a compact set <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>⊆</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">S \subseteq X</annotation></semantics></math>,</li>
+<li>there is a continuous function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐙</mi><annotation encoding="application/x-tex">\bm{Z}</annotation></semantics></math> on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math> such that
+<ol type="a">
+<li>if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>∉</mo><mi>Γ</mi></mrow><annotation encoding="application/x-tex">\bm{x} \notin \Gamma</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐲</mi><mo>∈</mo><mi>𝐀</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{y} \in \bm{A}(\bm{x})</annotation></semantics></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>&lt;</mo><mi>Z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">Z(\bm{y}) &lt; Z(\bm{x})</annotation></semantics></math>,</li>
+<li>if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>∈</mo><mi>Γ</mi></mrow><annotation encoding="application/x-tex">\bm{x} \in \Gamma</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐲</mi><mo>∈</mo><mi>𝐀</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{y} \in \bm{A}(\bm{x})</annotation></semantics></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>Z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">Z(\bm{y}) \leq Z(\bm{x})</annotation></semantics></math>.</li>
+</ol></li>
+<li>the mapping <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> is closed at points outside <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Γ</mi><annotation encoding="application/x-tex">\Gamma</annotation></semantics></math>.</li>
+</ol>
+<p>Then the limit of any convergent subsequence of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{\bm{x}_k\}</annotation></semantics></math> is a solution.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<div class="columns">
+<div class="column" style="width:70%;">
+<p>Consider the point-to-set algorithm <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math> defined by the graph in the figure on the right.</p>
+<p>This is given explicitly on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">X = [0, 1]</annotation></semantics></math> by</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐀</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>n</mi><mn>0</mn><mo>&lt;</mo><mi>x</mi><mo>≤</mo><mn>1</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>=</mo><mn>0</mn><mo>,</mo></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex"> 
+\bm{A}(x) = 
+\begin{cases}
+  [0, x)  &amp; n 0 &lt; x \leq 1 \\
+  0 &amp; x = 0,
+\end{cases}
+</annotation></semantics></math></p>
+<p>Letting <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Γ</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mn>0</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\Gamma = \{0\}</annotation></semantics></math>, the function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">Z(x) = x</annotation></semantics></math> serves as a descent function because for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \neq 0</annotation></semantics></math> all points in <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐀</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{A}(x)</annotation></semantics></math> are less than <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>.</p>
+</div><div class="column" style="width:30%;">
+<center>
+<img src="./contents/assets/examplegraph.png" width="80%" img="">
+</center>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 <div class="footer footer-default">
 <p>Optimization Theory and Practice • Aykut C. Satici</p>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
