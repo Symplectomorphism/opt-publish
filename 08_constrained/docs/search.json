@@ -4,6 +4,20 @@
     "href": "08_constrained.html#optimization-theory-and-practice",
     "title": "08_constrained",
     "section": "Optimization Theory and Practice",
-    "text": "Optimization Theory and Practice\n\n\nConstrained Optimization Conditions\n\n\n\n\nInstructor: Aykut Satici, Ph.D.    Mechanical and Biomedical Engineering  Electrical and Computer Engineering  Boise State University, Boise, ID, USA\n\n\nTopics:  Constraints and Tangent Plane  First-Order Necessary Conditions (Equality)  Equality Constrained Examples  Second Order Conditions (Equality)  Inequality Constraints  Mix-Constrained Examples  Lagrangian Duality \n\n\n\n\n\nOptimization Theory and Practice • Aykut C. Satici"
+    "text": "Optimization Theory and Practice\n\n\nConstrained Optimization Conditions\n\n\n\n\nInstructor: Aykut Satici, Ph.D.   Mechanical and Biomedical Engineering  Electrical and Computer Engineering  Boise State University, Boise, ID, USA\n\n\nTopics:  Constraints and Tangent Plane  First-Order Necessary Conditions (Equality)  Equality Constrained Examples  Second Order Conditions (Equality)  Inequality Constraints  Mix-Constrained Examples"
+  },
+  {
+    "objectID": "08_constrained.html#constraints",
+    "href": "08_constrained.html#constraints",
+    "title": "08_constrained",
+    "section": "Constraints",
+    "text": "Constraints\nGeneral nonlinear programming problems are of the form\n\n\nminimizef(𝐱)subject to𝐡(𝐱)=𝟎,𝐠(𝐱)≥𝟎,𝐱∈Ω.\n\\begin{align}\n\\operatorname{minimize} & f(\\bm{x}) \\\\\n\\text{subject to} & \\bm{h}(\\bm{x}) = \\bm{0}, \\;\\; \\bm{g}(\\bm{x}) \\geq \\bm{0}, \\\\ \n& \\bm{x} \\in \\Omega.\n\\end{align}\n\n\nAn inequality constraint is said to be active at 𝐱\\bm{x} if gi(𝐱)=0g_i(\\bm{x}) = 0.\nIt is said to be inactive if gi(𝐱)&gt;0g_i(\\bm{x}) &gt; 0.\nAny equality constraint hi(𝐱)=0h_i(\\bm{x}) = 0 is active.\nIn the figure, g1g_1 is active, g2g_2 and g3g_3 are not.\nIf it were known a priori which constraints were active at an optimal solution then it would be a local minimum point of the problem defined by ignoring the inactive constraints.\n\n\n\n𝐡=(h1,h2,…,hm)\\bm{h} = (h_1, h_2, \\ldots, h_m), 𝐠=(g1,g2,…,gp)\\;\\;\\bm{g} = (g_1, g_2, \\ldots, g_p) are functional constraints.\n𝐱∈Ω\\bm{x} \\in \\Omega: set constraint.\n\n\n\n\n\n\n\nWe will therefore start by ignoring the inequality constraints and come back to them later."
+  },
+  {
+    "objectID": "08_constrained.html#tangent-plane",
+    "href": "08_constrained.html#tangent-plane",
+    "title": "08_constrained",
+    "section": "Tangent Plane",
+    "text": "Tangent Plane\n\n\nOptimization Theory and Practice • Aykut C. Satici"
   }
 ]

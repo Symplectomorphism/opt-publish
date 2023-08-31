@@ -338,18 +338,59 @@
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 53.3%;justify-content: center;">
-<p><strong>Instructor</strong>: Aykut Satici, Ph.D.&nbsp;<br> <br> <br> Mechanical and Biomedical Engineering <br> Electrical and Computer Engineering <br> Boise State University, Boise, ID, USA</p>
+<p><strong>Instructor</strong>: Aykut Satici, Ph.D.&nbsp;<br> <br> Mechanical and Biomedical Engineering <br> Electrical and Computer Engineering <br> Boise State University, Boise, ID, USA</p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 46.7%;justify-content: center;">
-<p><strong>Topics</strong>: <br> Constraints and Tangent Plane <br> First-Order Necessary Conditions (Equality) <br> Equality Constrained Examples <br> Second Order Conditions (Equality) <br> Inequality Constraints <br> Mix-Constrained Examples <br> Lagrangian Duality <br></p>
+<p><strong>Topics</strong>: <br> Constraints and Tangent Plane <br> First-Order Necessary Conditions (Equality) <br> Equality Constrained Examples <br> Second Order Conditions (Equality) <br> Inequality Constraints <br> Mix-Constrained Examples <br></p>
 </div>
 </div>
 </div>
+</section>
+<section>
+<section id="constraints-and-the-tangent-plane" class="title-slide slide level1 center">
+<h1>Constraints and the Tangent Plane</h1>
+
+</section>
+<section id="constraints" class="slide level2 smaller">
+<h2>Constraints</h2>
+<p>General nonlinear programming problems are of the form</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>𝟎</mn><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mn>𝟎</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mi>𝐱</mi><mo>∈</mo><mi>Ω</mi><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize} &amp; f(\bm{x}) \\
+\text{subject to} &amp; \bm{h}(\bm{x}) = \bm{0}, \;\; \bm{g}(\bm{x}) \geq \bm{0}, \\ 
+&amp; \bm{x} \in \Omega.
+\end{align}
+</annotation></semantics></math></p>
+<ul>
+<li>An inequality constraint is said to be <em>active</em> at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g_i(\bm{x}) = 0</annotation></semantics></math>.</li>
+<li>It is said to be <em>inactive</em> if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>g</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g_i(\bm{x}) &gt; 0</annotation></semantics></math>.</li>
+<li>Any equality constraint <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h_i(\bm{x}) = 0</annotation></semantics></math> is <em>active</em>.</li>
+<li>In the figure, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>g</mi><mn>1</mn></msub><annotation encoding="application/x-tex">g_1</annotation></semantics></math> is active, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>g</mi><mn>2</mn></msub><annotation encoding="application/x-tex">g_2</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>g</mi><mn>3</mn></msub><annotation encoding="application/x-tex">g_3</annotation></semantics></math> are not.</li>
+<li>If it were known a priori which constraints were active at an optimal solution then it would be a local minimum point of the problem defined by ignoring the inactive constraints.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐡</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>h</mi><mn>1</mn></msub><mo>,</mo><msub><mi>h</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>h</mi><mi>m</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{h} = (h_1, h_2, \ldots, h_m)</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mi>𝐠</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>g</mi><mn>1</mn></msub><mo>,</mo><msub><mi>g</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>g</mi><mi>p</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\;\;\bm{g} = (g_1, g_2, \ldots, g_p)</annotation></semantics></math> are <em>functional constraints</em>.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>∈</mo><mi>Ω</mi></mrow><annotation encoding="application/x-tex">\bm{x} \in \Omega</annotation></semantics></math>: set constraint.</li>
+</ul>
+<center>
+<img src="./contents/assets/inactive.png" width="75%" img="">
+</center>
+</div>
+</div>
+<ul>
+<li>We will therefore start by ignoring the inequality constraints and come back to them later.</li>
+</ul>
+</section>
+<section id="tangent-plane" class="slide level2 smaller">
+<h2>Tangent Plane</h2>
 
 <div class="footer footer-default">
 <p>Optimization Theory and Practice • Aykut C. Satici</p>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 

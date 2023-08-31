@@ -1,0 +1,47 @@
+# Constraints and the Tangent Plane
+
+## Constraints {.smaller}
+
+General nonlinear programming problems are of the form
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+$$
+\begin{align}
+\operatorname{minimize} & f(\bm{x}) \\
+\text{subject to} & \bm{h}(\bm{x}) = \bm{0}, \;\; \bm{g}(\bm{x}) \geq \bm{0}, \\ 
+& \bm{x} \in \Omega.
+\end{align}
+$$
+
+* An inequality constraint is said to be _active_ at $\bm{x}$ if $g_i(\bm{x}) =
+0$.
+* It is said to be _inactive_ if $g_i(\bm{x}) > 0$.
+* Any equality constraint $h_i(\bm{x}) = 0$ is _active_.
+* In the figure, $g_1$ is active, $g_2$ and $g_3$ are not.
+* If it were known a priori which constraints were active at an optimal solution
+then it would be a local minimum point of the problem defined by ignoring the
+inactive constraints.
+:::
+
+::: {.column width="50%"}
+* $\bm{h} = (h_1, h_2, \ldots, h_m)$, $\;\;\bm{g} = (g_1, g_2, \ldots, g_p)$ are
+_functional constraints_.
+* $\bm{x} \in \Omega$: set constraint.
+
+<center>
+<img src="./contents/assets/inactive.png" width="75%" /img>
+</center>
+:::
+
+::::
+
+* We will therefore start by ignoring the inequality constraints and come back
+to them later.
+
+
+## Tangent Plane {.smaller}
+
+
