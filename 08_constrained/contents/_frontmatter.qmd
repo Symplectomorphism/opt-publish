@@ -20,5 +20,4 @@ First-Order Necessary Conditions (Equality) <br>
 Equality Constrained Examples <br>
 Second Order Conditions (Equality) <br>
 Inequality Constraints <br>
-Mix-Constrained Examples <br>
 :::

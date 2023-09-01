@@ -74,7 +74,7 @@ $$ T_{\bm{x}^\ast}S = M \triangleq \{\bm{d}: \nabla \bm{h}(\bm{x}^\ast)\bm{d} =
 :::
 
 
-## Tangent plane {.smaller}
+## Tangent Plane {.smaller}
 
 :::: {.columns}
 

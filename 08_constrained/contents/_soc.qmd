@@ -1,0 +1,295 @@
+# Second-Order Conditions
+
+
+## Second-Order Conditions {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## Theorem (SONC)
+Suppose that $\bm{x}^\ast$ is a regular local minimum of $f$ subject to
+$\bm{h}(\bm{x}) = \bm{0}$. Then there is a $\bm{\lambda} \in \mathbb{R}^m$ such
+that $$ \nabla f(\bm{x}^\ast) - \bm{\lambda}^\top \nabla \bm{h}(\bm{x}^\ast) =
+\bm{0}. $$ {#eq-sonc1} If we denote by $M$, the tangent plane, then the matrix
+$$ \bm{L}(\bm{x}^\ast) = \bm{F}(\bm{x}^\ast) - \bm{\lambda}^\top
+\bm{H}(\bm{x}^\ast) \succeq \bm{0} $$ {#eq-lhess} on $M$, that is,
+$\bm{d}^\top \bm{L}(\bm{x}^\ast) \bm{d} \geq \bm{0}$, $\forall \bm{d} \in M$.
+:::
+
+::: {.callout-note icon=false}
+## Proof
+From elementary calculus for every twice differentiable curve $\bm{x}(t) \in S$
+through $\bm{x}^\ast$ we have $$ 0 \leq \frac{d^2}{dt^2}f(\bm{x}(t))
+\Bigg\rvert_{t=0} = \dot{\bm{x}}(0)^\top \bm{F}(\bm{x}^\ast) \dot{\bm{x}}(0) +
+\nabla f(\bm{x}^\ast) \ddot{\bm{x}}(0). $$ Furthermore, differentiating the
+relation $\bm{\lambda}^\top \bm{h}(\bm{x}(t)) = 0$ twice, we obtain $$
+\dot{\bm{x}}(0)^\top \bm{\lambda}^\top \bm{H}(\bm{x}^\ast)\dot{\bm{x}}(0) -
+\bm{\lambda}^\top \nabla \bm{h}(\bm{x}^\ast) \ddot{\bm{x}}(0) = 0. $$ Additing
+these two equations yields the result
+$$ \frac{d^2}{dt^2}f(\bm{x}(t)) \Bigg\rvert_{t=0} = \dot{\bm{x}}(0)^\top
+\bm{L}(\bm{x}^\ast) \dot{\bm{x}}(0) \geq 0. $$ Since $\dot{\bm{x}}(0)$ is
+arbitrary in $M$, we have the stated conclusion.
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## Theorem (SOSC)
+Suppose there is a point $\bm{x}^\ast$ satisfying $\bm{h}(\bm{x}^\ast) =
+\bm{0}$, and a $\bm{\lambda}$ such that @eq-sonc1 holds.
+Suppose also that the matrix $\bm{L}(\bm{x}^\ast) \succ \bm{0}$ on $M$. Then
+$\bm{x}^\ast$ is a strict local minimum of $f$ subject to $\bm{h}(\bm{x}) = \bm{0}$.
+:::
+
+::: {.callout-note icon=false}
+## Proof
+If $\bm{x}^\ast$ is not a strict relative minimum point, $\exists$ a sequence of
+feasible points $\{\bm{y}_k\}$ converging to $\bm{x}^\ast$ s.t. for each $k$,
+$f(\bm{y}_k) \leq f(\bm{x}^\ast)$. Write $\bm{y}_k = \bm{x}^\ast + \delta_k
+\bm{s}_k$, where $|\bm{s}_k| = 1$ and $\delta_k > 0$, $\forall k$. By
+Bolzano-Weierstrass some subsequence of $\{\bm{s}_k\}$ converges. WLOG assume
+$\bm{s}_k \rightarrow \bm{s}^\ast$. We also have $\bm{h}(\bm{y}_k) -
+\bm{h}(\bm{x}^\ast) = \bm{0}$ which implies $\nabla
+\bm{h}(\bm{x}^\ast)\bm{s}^\ast = \bm{0}$. We have
+
+$$ 0 = h_i(\bm{y}_k) = h_i(\bm{x}^\ast) + \delta_k \nabla
+h_i(\bm{x}^\ast)\bm{s}_k + \frac{\delta_k^2}{2}\bm{s}_k^\top \nabla^2
+h_i(\bm{\eta}_i) \bm{s}_k $$ {#eq-taylorh}
+$$ 0 \geq f(\bm{y}_k) - f(\bm{x}^\ast) =  \delta_k \nabla
+f(\bm{x}^\ast)\bm{s}_k + \frac{\delta_k^2}{2}\bm{s}_k^\top \nabla^2
+f(\bm{\eta}_0) \bm{s}_k $$ {#eq-taylorf}
+
+Multiply @eq-taylorh by $-\lambda_i$ and add to @eq-taylorf to obtain 
+
+$$ 0 \geq \frac{\delta_k^2}{2}\bm{s}_k^\top \left\{ \nabla^2 f(\bm{\eta}_0) -
+\sum_{i=1}^m \lambda_i \nabla^2 h_i(\bm{\eta}_i) \right\}\bm{s}_k, \quad
+\Rightarrow\!\Leftarrow \;\; \text{as} \;\; k \rightarrow \infty. $$
+
+:::
+
+:::
+
+::::
+
+
+## Example {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Consider the problem
+
+$$
+\begin{align}
+\operatorname{maximize} & (x_1 - 1)^2 + (x_2 - 1)^2 \\
+\text{subject to} & x_1^2 + x_2^2 - 1 = 0.
+\end{align}
+$$
+
+The Lagrangian and subsection FONC would be
+
+$$
+\begin{align}
+\ell(x_1, x_2, \lambda) &= (x_1 - 1)^2 + (x_2 - 1)^2 - \lambda(x_1^2 + x_2^2 -
+1), \\
+\nabla_{\bm{x}}\ell(x_1, x_2, \lambda) &= \begin{pmatrix} 2x_1(1-\lambda) - 2 \\
+2x_2(1-\lambda) - 2 \end{pmatrix} = \bm{0}.
+\end{align}
+$$
+
+From the two equations we conclude $x_1 = x_2$, together with $x_1^2 + x_2^2 -
+1= 0$.
+
+We have the two first-order stationary solutions
+$$ 
+\begin{align}
+x_1 &= x_2 = \frac{1}{\sqrt{2}}, \quad \lambda = 1-\sqrt{2} \\
+x_1 &= x_2 = -\frac{1}{\sqrt{2}}, \quad \lambda = 1+\sqrt{2}. 
+\end{align}
+$$
+
+:::
+
+::: {.column width="50%"}
+<center>
+<img src="./contents/assets/stationary.png" width="50%" /img>
+</center>
+
+The Lagrangian Hessian matrix $\bm{F}-\bm{\lambda}^\top \bm{H}$ at these
+$\lambda$s becomes
+
+$$
+\begin{align}
+\left. \begin{bmatrix}
+2(1-\lambda) & 0 \\ 0 & 2(1-\lambda)
+\end{bmatrix}\right\rvert_{\lambda = 1-\sqrt{2}} &= 
+\begin{bmatrix}
+2\sqrt{2} & 0 \\ 0 & 2\sqrt{2}
+\end{bmatrix} \\
+\left. \begin{bmatrix}
+2(1-\lambda) & 0 \\ 0 & 2(1-\lambda)
+\end{bmatrix}\right\rvert_{\lambda = 1+\sqrt{2}} &= 
+\begin{bmatrix}
+-2\sqrt{2} & 0 \\ 0 & -2\sqrt{2}
+\end{bmatrix}
+\end{align}
+$$
+
+:::
+
+
+::::
+
+* So which is minimum, which is maximum?
+
+
+## Eigenvalues in the Tangent Subspace {.smaller}
+
+:::: {.columns}
+
+::: {.column width="78%"}
+* Given any vector $\bm{d} \in M$, the vector $\bm{Ld} \in \mathbb{R}^n$, but
+not necessarily in $M$.
+* We project $\bm{Ld}$ orthogonally back onto $M$ as in figure.
+  - This is the _restriction_ of $\bm{L}$ to $M$ operating on $\bm{d}$.
+  - In this way, we obtain a linear transformation $\bm{L}_M: M \rightarrow M$.
+
+* A vector $\bm{y} \in M$ is an _eigenvector_ of $\bm{L}_M$ if $\exists \lambda$
+s.t. $\bm{L}_M\bm{y} = \lambda \bm{y}$ ($\lambda$: eigenvalue of $\bm{L}_M$).
+  - In terms of $\bm{L}$, we see that $\bm{y}$ is an eigenvector of $\bm{L}_M$
+    if $\bm{Ly}$ can be written as a sum of $\lambda \bm{y}$ and a vector
+    orthogonal to $M$.
+* Introduce an orthonormal basis $\{\bm{e}_1, \ldots, \bm{e}_{n-m}\}$ of $M$.
+  - Define $\bm{E} \triangleq \begin{bmatrix} \bm{e}_1 & \bm{e}_2 & \cdots
+    \bm{e}_{n-m} \end{bmatrix}$.
+  - Any vector $\bm{y} \in M$ can be written as $\bm{y} = \bm{Ez}$ for some
+    $\bm{z} \in \mathbb{R}^{n-m}$.
+  - $\bm{LEz}$ represents the action of $L$ on such a vector.
+:::
+
+::: {.column width="22%"}
+<center>
+<img src="./contents/assets/definelm.png" width="95%" /img>
+
+<br>
+
+<img src="./contents/assets/eigenlm.png" width="110%" /img>
+</center>
+:::
+
+::::
+
+- To project the result back to $M$ and express the result back in terms of
+the basis $\{\bm{e}_1, \bm{e}_2, \ldots, \bm{e}_{n-m}\}$, we multiply by
+$\bm{E}^\top$: $\bm{E}^\top \bm{LE}$ is the matrix representation of $\bm{L}$
+restricted to $M$.
+
+
+## Example {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-important icon=false}
+## Problem
+$$
+\begin{align}
+\operatorname{minimize} & x_1 + x_2^2 + x_2x_3 + 2x_3^2 \\
+\text{subject to} & \frac{1}{2}\left(x_1^2 + x_2^2 + x_3^2 \right) = 1.
+\end{align}
+$$
+:::
+::: {.callout-important icon=false}
+## FONC
+$$
+\begin{align}
+1 - \lambda x_1 &= 0, \\
+2x_2 + x_3 - \lambda x_2 &= 0, \\
+x_2 + 4x_3 - \lambda x_3 &= 0.
+\end{align}
+$$
+
+with one solution $x_1 = 1$, $x_2 = 0$, $x_3 = 0$, $\lambda = 1$.
+:::
+
+
+::: {.callout-important icon=false}
+## SOC
+$$
+\bm{L} = \begin{bmatrix}
+-1 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 1 & 3
+\end{bmatrix}
+$$
+
+and the corresponding subspace $M$ is 
+
+$$ M = \{ \bm{y}: y_1 = 0 \}. $$
+:::
+
+:::
+
+::: {.column width="50%"}
+<br>
+<br>
+
+* In this case $M$ is the subspace spanned by the standard bases $\bm{e}_2$ and
+$\bm{e}_3$ of $\mathbb{R}^3$.
+
+* Therefore the restriction of $\bm{L}$ is computed to be
+
+$$
+\bm{L}_M = \begin{bmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} \begin{bmatrix}
+-1 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 1 & 3
+\end{bmatrix}
+\begin{bmatrix} 0 & 0 \\ 1 & 0 \\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 1 \\
+1 & 3 \end{bmatrix}.
+$$
+
+* $\bm{L}_M$ is seen to be positive definite.
+  - Therefore the point in question is a relative minimum point.
+:::
+
+::::
+
+
+## Projected Hessians {.smaller}
+
+* Alternatively, we can construct matrices and determinants of order $n$ rather
+than $n-m$.
+
+* For simplicity, let $\bm{A} = \nabla \bm{h}$, which has full row rank.
+* Any $\bm{x}$ satisfying $\bm{Ax} = \bm{0}$ can be expressed as 
+$$ \bm{x} = (\bm{I} - \bm{A}^\top(\bm{AA}^\top)^{-1}\bm{A})\bm{z} \triangleq
+\bm{P}_{\bm{A}}\bm{z}, \qquad \bm{z} \in \mathbb{R}^n. $$
+* $\bm{P}_\bm{A}$ is the so-called projection matrix onto the nullspace of
+$\bm{A}$ (i.e. onto $M$)
+  - If $\bm{x}^\top \bm{L}\bm{x} \geq 0, \;\; \forall \bm{x} \in M$, then
+    $\bm{z}^\top \bm{P}_\bm{A}\bm{LP}_\bm{A}\bm{z} \geq 0, \;\; \forall \bm{z}
+    \in \mathbb{R}^n$ or the matrix $\bm{P}_\bm{A}\bm{L}\bm{P}_\bm{A} \succeq
+    \bm{0}$.
+  - Furthermore, if $\bm{P}_\bm{A}\bm{LP}_\bm{A}$ has rank $n-m$, then
+    $\bm{L}_M$ is positive definite.
+
+::: {.callout-warning icon=false}
+## Projected Hessian Test
+The matrix $\bm{L}$ is positive definite on $M$ iff the projected Hessian matrix
+to $M$ is positive semidefinite with rank $n-m$.
+:::
+
+In the previous example we had $\bm{A} = \nabla \bm{h} = \begin{bmatrix} 1 & 0 &
+0 \end{bmatrix}$. Hence 
+
+<span style="font-size:70%">
+$$
+\bm{P}_\bm{A} = \bm{I} - \begin{bmatrix} 1 \\ 0 \\ 0 \\
+\end{bmatrix}\begin{bmatrix} 1 \\ 0 \\ 0 \\ \end{bmatrix}^\top = \begin{bmatrix}
+0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix} \quad \Rightarrow \quad
+\bm{P}_\bm{A}\bm{LP}_\bm{A} = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 1 & 1 \\ 0 & 1 &
+3 \end{bmatrix}.
+$$
+</span>

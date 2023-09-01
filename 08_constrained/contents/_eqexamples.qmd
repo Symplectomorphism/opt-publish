@@ -1,0 +1,10 @@
+# Equality Constrained Optimization Examples
+
+## Example 1 &ndash; Geometric Prog.: Max Volume {.smaller}
+
+
+
+## Example 2 &ndash; Hanging Chain {.smaller}
+
+
+## Example 3 &ndash; Compressed Sensing {.smaller}

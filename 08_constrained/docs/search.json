@@ -4,7 +4,7 @@
     "href": "08_constrained.html#optimization-theory-and-practice",
     "title": "08_constrained",
     "section": "Optimization Theory and Practice",
-    "text": "Optimization Theory and Practice\n\n\nConstrained Optimization Conditions\n\n\n\n\nInstructor: Aykut Satici, Ph.D.   Mechanical and Biomedical Engineering  Electrical and Computer Engineering  Boise State University, Boise, ID, USA\n\n\nTopics:  Constraints and Tangent Plane  First-Order Necessary Conditions (Equality)  Equality Constrained Examples  Second Order Conditions (Equality)  Inequality Constraints  Mix-Constrained Examples"
+    "text": "Optimization Theory and Practice\n\n\nConstrained Optimization Conditions\n\n\n\n\nInstructor: Aykut Satici, Ph.D.   Mechanical and Biomedical Engineering  Electrical and Computer Engineering  Boise State University, Boise, ID, USA\n\n\nTopics:  Constraints and Tangent Plane  First-Order Necessary Conditions (Equality)  Equality Constrained Examples  Second Order Conditions (Equality)  Inequality Constraints"
   },
   {
     "objectID": "08_constrained.html#constraints",
@@ -24,14 +24,98 @@
     "objectID": "08_constrained.html#tangent-plane-2",
     "href": "08_constrained.html#tangent-plane-2",
     "title": "08_constrained",
-    "section": "Tangent plane",
-    "text": "Tangent plane\n\n\n\n\n\nDefinition (Regular Point)\n\n\nA point 𝐱*\\bm{x}^\\ast satisfying the constraint 𝐡(𝐱*)=𝟎\\bm{h}(\\bm{x}^\\ast) = \\bm{0} is said to be a regular point of the constraint if the gradient vectors ∇h1(𝐱*),∇h2(𝐱*),…,∇hm(𝐱*)\\nabla h_1(\\bm{x}^\\ast), \\nabla h_2(\\bm{x}^\\ast), \\ldots, \\nabla h_m(\\bm{x}^\\ast) are linearly independent."
+    "section": "Tangent Plane",
+    "text": "Tangent Plane\n\n\n\n\n\nDefinition (Regular Point)\n\n\nA point 𝐱*\\bm{x}^\\ast satisfying the constraint 𝐡(𝐱*)=𝟎\\bm{h}(\\bm{x}^\\ast) = \\bm{0} is said to be a regular point of the constraint if the gradient vectors ∇h1(𝐱*),∇h2(𝐱*),…,∇hm(𝐱*)\\nabla h_1(\\bm{x}^\\ast), \\nabla h_2(\\bm{x}^\\ast), \\ldots, \\nabla h_m(\\bm{x}^\\ast) are linearly independent."
   },
   {
     "objectID": "08_constrained.html#first-order-necessary-conditions-1",
     "href": "08_constrained.html#first-order-necessary-conditions-1",
     "title": "08_constrained",
     "section": "First-Order Necessary Conditions",
-    "text": "First-Order Necessary Conditions\n\n\nOptimization Theory and Practice • Aykut C. Satici"
+    "text": "First-Order Necessary Conditions\n\n\n\n\n\nLemma\n\n\nLet 𝐱*\\bm{x}^\\ast be a regular point of the constraints 𝐡(𝐱)=𝟎\\bm{h}(\\bm{x}) = \\bm{0} and a local extremum point of ff subject to these constraints. Then for all 𝐝∈ℝn\\bm{d} \\in \\mathbb{R}^n, we have ∇𝐡(𝐱*)𝐝=𝟎⇒∇f(𝐱*)𝐝=0. \\nabla \\bm{h}(\\bm{x}^\\ast) \\bm{d} = \\bm{0} \\;\\; \\Rightarrow \\;\\; \\nabla\nf(\\bm{x}^\\ast)\\bm{d} = 0. \n\n\n\n\n\n\nProof\n\n\nLet 𝐝∈T𝐱*S\\bm{d} \\in T_{\\bm{x}^\\ast}S and let 𝐱(t)∈S\\bm{x}(t) \\in S such that 𝐱(0)=𝐱*\\bm{x}(0) = \\bm{x}^\\ast and 𝐱̇(0)=𝐝\\dot{\\bm{x}}(0) = \\bm{d} for −a≤t≤a-a \\leq t \\leq a for some a&gt;0a &gt; 0.\nSince 𝐱*\\bm{x}^\\ast is a constrained local minimum point of ff, we have\nddtf(𝐱(t))|t=0=∇f(𝐱*)𝐝=0. \\frac{d}{dt}f(\\bm{x}(t))\\Bigg\\rvert_{t=0} = \\nabla f(\\bm{x}^\\ast) \\bm{d} = 0.\n\n\n\n\n\n\n\nThis lemma says that ∇f(𝐱*)⊥T𝐱*S\\quad \\nabla f(\\bm{x}^\\ast) \\perp T_{\\bm{x}^\\ast}S.\n\n\n\n\n\n\n\nTheorem (FONC)\n\n\nLet 𝐱*\\bm{x}^\\ast be a regular local minimum point of ff subject to the constraint 𝐡(𝐱)=𝟎\\bm{h}(\\bm{x}) = \\bm{0}. Then there is a 𝛌∈ℝm\\bm{\\lambda} \\in \\mathbb{R}^m such that\n∇f(𝐱*)−𝛌⊤∇𝐡(𝐱*)=𝟎.(1) \\nabla f(\\bm{x}^\\ast) - \\bm{\\lambda}^\\top \\nabla \\bm{h}(\\bm{x}^\\ast) =\n\\bm{0}.  \\qquad(1)\n\n\n\n\n\n\nProof\n\n\nFrom the lemma, we may conclude that the linear system\n∇f(𝐱*)𝐝≠0,and∇𝐡(𝐱*)𝐝=𝟎 \\nabla f(\\bm{x}^\\ast) \\bm{d} \\neq 0, \\;\\; \\text{and} \\;\\; \\nabla\n\\bm{h}(\\bm{x}^\\ast)\\bm{d} = \\bm{0} \nHas no feasible solution 𝐝\\bm{d}. Then, by Farkas’s lemma, its alternative system must have a solution. Specifically, there is a 𝛌∈ℝm\\bm{\\lambda} \\in \\mathbb{R}^m such that ∇f(𝐱*)−𝛌⊤∇𝐡(𝐱*)=𝟎\\nabla f(\\bm{x}^\\ast) - \\bm{\\lambda}^\\top \\nabla \\bm{h}(\\bm{x}^\\ast) = \\bm{0}.\n\n\n\n\n\n\nThe FONC Equation 1 together with the constraints 𝐡(𝐱*)=𝟎\\bm{h}(\\bm{x}^\\ast) = \\bm{0} give a total of n+mn+m equations in the n+mn+m variables comprising 𝐱*,𝛌\\bm{x}^\\ast, \\bm{\\lambda}."
+  },
+  {
+    "objectID": "08_constrained.html#lagrangian",
+    "href": "08_constrained.html#lagrangian",
+    "title": "08_constrained",
+    "section": "Lagrangian",
+    "text": "Lagrangian\n\nIntroduce the Lagrangian associated with the constrained problem, defined as\n\nℓ(𝐱,𝛌)=f(𝐱)−𝛌⊤𝐡(𝐱).(2) \\ell(\\bm{x}, \\bm{\\lambda}) = f(\\bm{x}) - \\bm{\\lambda}^\\top \\bm{h}(\\bm{x}).  \\qquad(2)\n\nThe FONC can then be expressed as the Lagrangian derivatives\n\n∇𝐱ℓ(𝐱,𝛌)=𝟎,∇𝛌ℓ(𝐱,𝛌)=𝟎.(3)\n\\nabla_{\\bm{x}} \\ell(\\bm{x}, \\bm{\\lambda}) = \\bm{0}, \\qquad\n\\nabla_{\\bm{\\lambda}} \\ell(\\bm{x}, \\bm{\\lambda}) = \\bm{0}.\n \\qquad(3)\n\nThe Lagrangian can be viewed as a combined objective function with a penlized term on the cosntraint violations.\n\nEach λi\\lambda_i is the penalty weight on equality constraint hi(𝐱)=0h_i(\\bm{x}) = 0.\nWith appropriate λi\\lambda_i’s, a constrained problem could then be solved as an unconstrained optimization problem.\nIf ff is convex and 𝐡(𝐱)\\bm{h}(\\bm{x}) is affine 𝐀𝐱−𝐛\\bm{Ax} - \\bm{b}, then ℓ(⋅)\\ell(\\cdot) is convex in 𝐱\\bm{x} for every fixed 𝛌\\bm{\\lambda}.\n\n\n\n\n\nTheorem\n\n\nThe first-order necessary conditions are sufficient if ff is convex and 𝐡\\bm{h} is affine."
+  },
+  {
+    "objectID": "08_constrained.html#sensitivity",
+    "href": "08_constrained.html#sensitivity",
+    "title": "08_constrained",
+    "section": "Sensitivity",
+    "text": "Sensitivity\n\nThe Lagrange multipliers associated with a constrained minimization problem have an interpretation as prices, similar to the prices in LP.\nLet a minimal solution 𝐱*\\bm{x}^\\ast be a regular point and 𝛌*\\bm{\\lambda}^\\ast be the corresponding Lagrange multiplier vector. Consider the family of problems\n\nz(𝐛)=minimizef(𝐱)1234subject to𝐡(𝐱)=𝐛,𝐛∈ℝm.(4)\n\\begin{align}\nz(\\bm{b}) = &\\operatorname{minimize} &f(\\bm{x}) \\phantom{1234} & \\\\\n& \\text{subject to} & \\bm{h}(\\bm{x}) = \\bm{b}, & \\bm{b} \\in \\mathbb{R}^m.\n\\end{align}\n \\qquad(4)\n\nFor sufficiently small |𝐛||\\bm{b}|, the problem will have a solution point 𝐱(𝐛)\\bm{x}(\\bm{b}) near 𝐱(𝟎)=𝐱*\\bm{x}(\\bm{0}) = \\bm{x}^\\ast.\n\nFor each of these solutions, there is a corresponding minimum value z(𝐛)=f(𝐱(𝐛))z(\\bm{b}) = f(\\bm{x}(\\bm{b})).\nThe components of the gradient of this function can be regarded as the incremental rate of change in value per unit change in the constraint requirement.\n\n\n\n\n\nSensitivity Theorem\n\n\nConsider the family of problems Equation 4. Suppose that for every 𝐛∈ℝm\\bm{b} \\in \\mathbb{R}^m in a region containing 𝟎\\bm{0}, its minimizer 𝐱(𝐛)\\bm{x}(\\bm{b}) is continuously differentiable depending on 𝐛\\bm{b}. Let 𝐱*=𝐱(𝟎)\\bm{x}^\\ast = \\bm{x}(\\bm{0}) with the corresponding Lagrange multiplier 𝛌*\\bm{\\lambda}^\\ast. Then\n∇z(𝟎)=∇𝐛f(𝐱(𝐛))|𝐛=𝟎=(𝛌*)⊤. \\nabla z(\\bm{0}) = \\nabla_\\bm{b} f(\\bm{x}(\\bm{b}))\n\\Bigg\\rvert_{\\bm{b}=\\bm{0}} = \\left(\\bm{\\lambda}^\\ast\\right)^\\top."
+  },
+  {
+    "objectID": "08_constrained.html#sensitivity-1",
+    "href": "08_constrained.html#sensitivity-1",
+    "title": "08_constrained",
+    "section": "Sensitivity",
+    "text": "Sensitivity\n\n\n\nSensitivity Theorem\n\n\nConsider the family of problems Equation 4. Suppose that for every 𝐛∈ℝm\\bm{b} \\in \\mathbb{R}^m in a region containing 𝟎\\bm{0}, its minimizer 𝐱(𝐛)\\bm{x}(\\bm{b}) is continuously differentiable depending on 𝐛\\bm{b}. Let 𝐱*=𝐱(𝟎)\\bm{x}^\\ast = \\bm{x}(\\bm{0}) with the corresponding Lagrange multiplier 𝛌*\\bm{\\lambda}^\\ast. Then\n∇z(𝟎)=∇𝐛f(𝐱(𝐛))|𝐛=𝟎=(𝛌*)⊤. \\nabla z(\\bm{0}) = \\nabla_\\bm{b} f(\\bm{x}(\\bm{b}))\n\\Bigg\\rvert_{\\bm{b}=\\bm{0}} = \\left(\\bm{\\lambda}^\\ast\\right)^\\top. \n\n\n\n\n\n\nProof\n\n\nUsing the chain rule and taking derivatives with respect to 𝐛\\bm{b} on both sides of\n𝐛=𝐡(𝐱(𝐛)) \\bm{b} = \\bm{h}(\\bm{x}(\\bm{b})) \nat 𝐛=𝟎\\bm{b} = \\bm{0}, we have\n𝐈=∇𝐛𝐡(𝐱(𝐛))|𝐛=𝟎=∇𝐱𝐡(𝐱(𝟎))∇𝐛𝐱(𝟎)=∇𝐱𝐡(𝐱*)∇𝐛𝐱(𝟎). \\bm{I} = \\nabla_\\bm{b} \\bm{h}(\\bm{x}(\\bm{b})) \\Bigg\\rvert_{\\bm{b}=\\bm{0}} =\n\\nabla_\\bm{x} \\bm{h}(\\bm{x}(\\bm{0}))\\nabla_\\bm{b}\\bm{x}(\\bm{0}) =\n\\nabla_\\bm{x}\\bm{h}(\\bm{x}^\\ast)\\nabla_\\bm{b}\\bm{x}(\\bm{0}). \nOn the other hand, using the chain rule and the first-order condition for 𝐱*\\bm{x}^\\ast and the above matrix equality\n∇𝐛f(𝐱(𝐛))|𝐛=𝟎=∇f(𝐱(𝟎))∇𝐛𝐱(𝟎)=∇f(𝐱*)∇𝐛𝐱(𝟎)=(𝛌*)⊤∇𝐱𝐡(𝐱*)∇𝐛𝐱(𝟎)=(𝛌*)⊤. \\nabla_\\bm{b} f(\\bm{x}(\\bm{b})) \\Bigg\\rvert_{\\bm{b}=\\bm{0}} = \\nabla\nf(\\bm{x}(\\bm{0})) \\nabla_{\\bm{b}}\\bm{x}(\\bm{0}) = \\nabla f(\\bm{x}^\\ast)\n\\nabla_{\\bm{b}}\\bm{x}(\\bm{0}) = \\left(\\bm{\\lambda}^\\ast\\right)^\\top \\nabla_\\bm{x}\n\\bm{h}(\\bm{x}^\\ast) \\nabla_\\bm{b} \\bm{x}(\\bm{0}) =\n\\left(\\bm{\\lambda}^\\ast\\right)^\\top."
+  },
+  {
+    "objectID": "08_constrained.html#example-1-geometric-prog.-max-volume",
+    "href": "08_constrained.html#example-1-geometric-prog.-max-volume",
+    "title": "08_constrained",
+    "section": "Example 1 – Geometric Prog.: Max Volume",
+    "text": "Example 1 – Geometric Prog.: Max Volume"
+  },
+  {
+    "objectID": "08_constrained.html#example-2-hanging-chain",
+    "href": "08_constrained.html#example-2-hanging-chain",
+    "title": "08_constrained",
+    "section": "Example 2 – Hanging Chain",
+    "text": "Example 2 – Hanging Chain"
+  },
+  {
+    "objectID": "08_constrained.html#example-3-compressed-sensing",
+    "href": "08_constrained.html#example-3-compressed-sensing",
+    "title": "08_constrained",
+    "section": "Example 3 – Compressed Sensing",
+    "text": "Example 3 – Compressed Sensing"
+  },
+  {
+    "objectID": "08_constrained.html#second-order-conditions-1",
+    "href": "08_constrained.html#second-order-conditions-1",
+    "title": "08_constrained",
+    "section": "Second-Order Conditions",
+    "text": "Second-Order Conditions\n\n\n\n\n\nTheorem (SONC)\n\n\nSuppose that 𝐱*\\bm{x}^\\ast is a regular local minimum of ff subject to 𝐡(𝐱)=𝟎\\bm{h}(\\bm{x}) = \\bm{0}. Then there is a 𝛌∈ℝm\\bm{\\lambda} \\in \\mathbb{R}^m such that ∇f(𝐱*)−𝛌⊤∇𝐡(𝐱*)=𝟎.(5) \\nabla f(\\bm{x}^\\ast) - \\bm{\\lambda}^\\top \\nabla \\bm{h}(\\bm{x}^\\ast) =\n\\bm{0}.  \\qquad(5) If we denote by MM, the tangent plane, then the matrix 𝐋(𝐱*)=𝐅(𝐱*)−𝛌⊤𝐇(𝐱*)≽𝟎(6) \\bm{L}(\\bm{x}^\\ast) = \\bm{F}(\\bm{x}^\\ast) - \\bm{\\lambda}^\\top\n\\bm{H}(\\bm{x}^\\ast) \\succeq \\bm{0}  \\qquad(6) on MM, that is, 𝐝⊤𝐋(𝐱*)𝐝≥𝟎\\bm{d}^\\top \\bm{L}(\\bm{x}^\\ast) \\bm{d} \\geq \\bm{0}, ∀𝐝∈M\\forall \\bm{d} \\in M.\n\n\n\n\n\n\nProof\n\n\nFrom elementary calculus for every twice differentiable curve 𝐱(t)∈S\\bm{x}(t) \\in S through 𝐱*\\bm{x}^\\ast we have 0≤d2dt2f(𝐱(t))|t=0=𝐱̇(0)⊤𝐅(𝐱*)𝐱̇(0)+∇f(𝐱*)𝐱̈(0). 0 \\leq \\frac{d^2}{dt^2}f(\\bm{x}(t))\n\\Bigg\\rvert_{t=0} = \\dot{\\bm{x}}(0)^\\top \\bm{F}(\\bm{x}^\\ast) \\dot{\\bm{x}}(0) +\n\\nabla f(\\bm{x}^\\ast) \\ddot{\\bm{x}}(0).  Furthermore, differentiating the relation 𝛌⊤𝐡(𝐱(t))=0\\bm{\\lambda}^\\top \\bm{h}(\\bm{x}(t)) = 0 twice, we obtain 𝐱̇(0)⊤𝛌⊤𝐇(𝐱*)𝐱̇(0)−𝛌⊤∇𝐡(𝐱*)𝐱̈(0)=0.\n\\dot{\\bm{x}}(0)^\\top \\bm{\\lambda}^\\top \\bm{H}(\\bm{x}^\\ast)\\dot{\\bm{x}}(0) -\n\\bm{\\lambda}^\\top \\nabla \\bm{h}(\\bm{x}^\\ast) \\ddot{\\bm{x}}(0) = 0.  Additing these two equations yields the result d2dt2f(𝐱(t))|t=0=𝐱̇(0)⊤𝐋(𝐱*)𝐱̇(0)≥0. \\frac{d^2}{dt^2}f(\\bm{x}(t)) \\Bigg\\rvert_{t=0} = \\dot{\\bm{x}}(0)^\\top\n\\bm{L}(\\bm{x}^\\ast) \\dot{\\bm{x}}(0) \\geq 0.  Since 𝐱̇(0)\\dot{\\bm{x}}(0) is arbitrary in MM, we have the stated conclusion.\n\n\n\n\n\n\n\nTheorem (SOSC)\n\n\nSuppose there is a point 𝐱*\\bm{x}^\\ast satisfying 𝐡(𝐱*)=𝟎\\bm{h}(\\bm{x}^\\ast) = \\bm{0}, and a 𝛌\\bm{\\lambda} such that Equation 5 holds. Suppose also that the matrix 𝐋(𝐱*)≻𝟎\\bm{L}(\\bm{x}^\\ast) \\succ \\bm{0} on MM. Then 𝐱*\\bm{x}^\\ast is a strict local minimum of ff subject to 𝐡(𝐱)=𝟎\\bm{h}(\\bm{x}) = \\bm{0}.\n\n\n\n\n\n\nProof\n\n\nIf 𝐱*\\bm{x}^\\ast is not a strict relative minimum point, ∃\\exists a sequence of feasible points {𝐲k}\\{\\bm{y}_k\\} converging to 𝐱*\\bm{x}^\\ast s.t. for each kk, f(𝐲k)≤f(𝐱*)f(\\bm{y}_k) \\leq f(\\bm{x}^\\ast). Write 𝐲k=𝐱*+δk𝐬k\\bm{y}_k = \\bm{x}^\\ast + \\delta_k \\bm{s}_k, where |𝐬k|=1|\\bm{s}_k| = 1 and δk&gt;0\\delta_k &gt; 0, ∀k\\forall k. By Bolzano-Weierstrass some subsequence of {𝐬k}\\{\\bm{s}_k\\} converges. WLOG assume 𝐬k→𝐬*\\bm{s}_k \\rightarrow \\bm{s}^\\ast. We also have 𝐡(𝐲k)−𝐡(𝐱*)=𝟎\\bm{h}(\\bm{y}_k) - \\bm{h}(\\bm{x}^\\ast) = \\bm{0} which implies ∇𝐡(𝐱*)𝐬*=𝟎\\nabla \\bm{h}(\\bm{x}^\\ast)\\bm{s}^\\ast = \\bm{0}. We have\n0=hi(𝐲k)=hi(𝐱*)+δk∇hi(𝐱*)𝐬k+δk22𝐬k⊤∇2hi(𝛈i)𝐬k(7) 0 = h_i(\\bm{y}_k) = h_i(\\bm{x}^\\ast) + \\delta_k \\nabla\nh_i(\\bm{x}^\\ast)\\bm{s}_k + \\frac{\\delta_k^2}{2}\\bm{s}_k^\\top \\nabla^2\nh_i(\\bm{\\eta}_i) \\bm{s}_k  \\qquad(7) 0≥f(𝐲k)−f(𝐱*)=δk∇f(𝐱*)𝐬k+δk22𝐬k⊤∇2f(𝛈0)𝐬k(8) 0 \\geq f(\\bm{y}_k) - f(\\bm{x}^\\ast) =  \\delta_k \\nabla\nf(\\bm{x}^\\ast)\\bm{s}_k + \\frac{\\delta_k^2}{2}\\bm{s}_k^\\top \\nabla^2\nf(\\bm{\\eta}_0) \\bm{s}_k  \\qquad(8)\nMultiply Equation 7 by −λi-\\lambda_i and add to Equation 8 to obtain\n0≥δk22𝐬k⊤{∇2f(𝛈0)−∑i=1mλi∇2hi(𝛈i)}𝐬k,⇒⇐ask→∞. 0 \\geq \\frac{\\delta_k^2}{2}\\bm{s}_k^\\top \\left\\{ \\nabla^2 f(\\bm{\\eta}_0) -\n\\sum_{i=1}^m \\lambda_i \\nabla^2 h_i(\\bm{\\eta}_i) \\right\\}\\bm{s}_k, \\quad\n\\Rightarrow\\!\\Leftarrow \\;\\; \\text{as} \\;\\; k \\rightarrow \\infty."
+  },
+  {
+    "objectID": "08_constrained.html#example",
+    "href": "08_constrained.html#example",
+    "title": "08_constrained",
+    "section": "Example",
+    "text": "Example\n\n\nConsider the problem\nmaximize(x1−1)2+(x2−1)2subject tox12+x22−1=0.\n\\begin{align}\n\\operatorname{maximize} & (x_1 - 1)^2 + (x_2 - 1)^2 \\\\\n\\text{subject to} & x_1^2 + x_2^2 - 1 = 0.\n\\end{align}\n\nThe Lagrangian and subsection FONC would be\nℓ(x1,x2,λ)=(x1−1)2+(x2−1)2−λ(x12+x22−1),∇𝐱ℓ(x1,x2,λ)=(2x1(1−λ)−22x2(1−λ)−2)=𝟎.\n\\begin{align}\n\\ell(x_1, x_2, \\lambda) &= (x_1 - 1)^2 + (x_2 - 1)^2 - \\lambda(x_1^2 + x_2^2 -\n1), \\\\\n\\nabla_{\\bm{x}}\\ell(x_1, x_2, \\lambda) &= \\begin{pmatrix} 2x_1(1-\\lambda) - 2 \\\\\n2x_2(1-\\lambda) - 2 \\end{pmatrix} = \\bm{0}.\n\\end{align}\n\nFrom the two equations we conclude x1=x2x_1 = x_2, together with x12+x22−1=0x_1^2 + x_2^2 - 1= 0.\nWe have the two first-order stationary solutions x1=x2=12,λ=1−2x1=x2=−12,λ=1+2. \n\\begin{align}\nx_1 &= x_2 = \\frac{1}{\\sqrt{2}}, \\quad \\lambda = 1-\\sqrt{2} \\\\\nx_1 &= x_2 = -\\frac{1}{\\sqrt{2}}, \\quad \\lambda = 1+\\sqrt{2}. \n\\end{align}\n\n\n\n\n\nThe Lagrangian Hessian matrix 𝐅−𝛌⊤𝐇\\bm{F}-\\bm{\\lambda}^\\top \\bm{H} at these λ\\lambdas becomes\n[2(1−λ)002(1−λ)]|λ=1−2=[220022][2(1−λ)002(1−λ)]|λ=1+2=[−2200−22]\n\\begin{align}\n\\left. \\begin{bmatrix}\n2(1-\\lambda) & 0 \\\\ 0 & 2(1-\\lambda)\n\\end{bmatrix}\\right\\rvert_{\\lambda = 1-\\sqrt{2}} &= \n\\begin{bmatrix}\n2\\sqrt{2} & 0 \\\\ 0 & 2\\sqrt{2}\n\\end{bmatrix} \\\\\n\\left. \\begin{bmatrix}\n2(1-\\lambda) & 0 \\\\ 0 & 2(1-\\lambda)\n\\end{bmatrix}\\right\\rvert_{\\lambda = 1+\\sqrt{2}} &= \n\\begin{bmatrix}\n-2\\sqrt{2} & 0 \\\\ 0 & -2\\sqrt{2}\n\\end{bmatrix}\n\\end{align}\n\n\n\n\nSo which is minimum, which is maximum?"
+  },
+  {
+    "objectID": "08_constrained.html#eigenvalues-in-the-tangent-subspace",
+    "href": "08_constrained.html#eigenvalues-in-the-tangent-subspace",
+    "title": "08_constrained",
+    "section": "Eigenvalues in the Tangent Subspace",
+    "text": "Eigenvalues in the Tangent Subspace\n\n\n\nGiven any vector 𝐝∈M\\bm{d} \\in M, the vector 𝐋𝐝∈ℝn\\bm{Ld} \\in \\mathbb{R}^n, but not necessarily in MM.\nWe project 𝐋𝐝\\bm{Ld} orthogonally back onto MM as in figure.\n\nThis is the restriction of 𝐋\\bm{L} to MM operating on 𝐝\\bm{d}.\nIn this way, we obtain a linear transformation 𝐋M:M→M\\bm{L}_M: M \\rightarrow M.\n\nA vector 𝐲∈M\\bm{y} \\in M is an eigenvector of 𝐋M\\bm{L}_M if ∃λ\\exists \\lambda s.t. 𝐋M𝐲=λ𝐲\\bm{L}_M\\bm{y} = \\lambda \\bm{y} (λ\\lambda: eigenvalue of 𝐋M\\bm{L}_M).\n\nIn terms of 𝐋\\bm{L}, we see that 𝐲\\bm{y} is an eigenvector of 𝐋M\\bm{L}_M if 𝐋𝐲\\bm{Ly} can be written as a sum of λ𝐲\\lambda \\bm{y} and a vector orthogonal to MM.\n\nIntroduce an orthonormal basis {𝐞1,…,𝐞n−m}\\{\\bm{e}_1, \\ldots, \\bm{e}_{n-m}\\} of MM.\n\nDefine 𝐄≜[𝐞1𝐞2⋯𝐞n−m]\\bm{E} \\triangleq \\begin{bmatrix} \\bm{e}_1 & \\bm{e}_2 & \\cdots \\bm{e}_{n-m} \\end{bmatrix}.\nAny vector 𝐲∈M\\bm{y} \\in M can be written as 𝐲=𝐄𝐳\\bm{y} = \\bm{Ez} for some 𝐳∈ℝn−m\\bm{z} \\in \\mathbb{R}^{n-m}.\n𝐋𝐄𝐳\\bm{LEz} represents the action of LL on such a vector.\n\n\n\n\n\n\n\n\n\n\n\nTo project the result back to MM and express the result back in terms of the basis {𝐞1,𝐞2,…,𝐞n−m}\\{\\bm{e}_1, \\bm{e}_2, \\ldots, \\bm{e}_{n-m}\\}, we multiply by 𝐄⊤\\bm{E}^\\top: 𝐄⊤𝐋𝐄\\bm{E}^\\top \\bm{LE} is the matrix representation of 𝐋\\bm{L} restricted to MM."
+  },
+  {
+    "objectID": "08_constrained.html#example-1",
+    "href": "08_constrained.html#example-1",
+    "title": "08_constrained",
+    "section": "Example",
+    "text": "Example\n\n\n\n\n\nProblem\n\n\nminimizex1+x22+x2x3+2x32subject to12(x12+x22+x32)=1.\n\\begin{align}\n\\operatorname{minimize} & x_1 + x_2^2 + x_2x_3 + 2x_3^2 \\\\\n\\text{subject to} & \\frac{1}{2}\\left(x_1^2 + x_2^2 + x_3^2 \\right) = 1.\n\\end{align}\n\n\n\n\n\n\n\nFONC\n\n\n1−λx1=0,2x2+x3−λx2=0,x2+4x3−λx3=0.\n\\begin{align}\n1 - \\lambda x_1 &= 0, \\\\\n2x_2 + x_3 - \\lambda x_2 &= 0, \\\\\nx_2 + 4x_3 - \\lambda x_3 &= 0.\n\\end{align}\n\nwith one solution x1=1x_1 = 1, x2=0x_2 = 0, x3=0x_3 = 0, λ=1\\lambda = 1.\n\n\n\n\n\n\nSOC\n\n\n𝐋=[−100011013]\n\\bm{L} = \\begin{bmatrix}\n-1 & 0 & 0 \\\\ 0 & 1 & 1 \\\\ 0 & 1 & 3\n\\end{bmatrix}\n\nand the corresponding subspace MM is\nM={𝐲:y1=0}. M = \\{ \\bm{y}: y_1 = 0 \\}. \n\n\n\n\n \n\nIn this case MM is the subspace spanned by the standard bases 𝐞2\\bm{e}_2 and 𝐞3\\bm{e}_3 of ℝ3\\mathbb{R}^3.\nTherefore the restriction of 𝐋\\bm{L} is computed to be\n\n𝐋M=[010001][−100011013][001001]=[1113].\n\\bm{L}_M = \\begin{bmatrix} 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} \\begin{bmatrix}\n-1 & 0 & 0 \\\\ 0 & 1 & 1 \\\\ 0 & 1 & 3\n\\end{bmatrix}\n\\begin{bmatrix} 0 & 0 \\\\ 1 & 0 \\\\ 0 & 1 \\end{bmatrix} = \\begin{bmatrix} 1 & 1 \\\\\n1 & 3 \\end{bmatrix}.\n\n\n𝐋M\\bm{L}_M is seen to be positive definite.\n\nTherefore the point in question is a relative minimum point."
+  },
+  {
+    "objectID": "08_constrained.html#projected-hessians",
+    "href": "08_constrained.html#projected-hessians",
+    "title": "08_constrained",
+    "section": "Projected Hessians",
+    "text": "Projected Hessians\n\nAlternatively, we can construct matrices and determinants of order nn rather than n−mn-m.\nFor simplicity, let 𝐀=∇𝐡\\bm{A} = \\nabla \\bm{h}, which has full row rank.\nAny 𝐱\\bm{x} satisfying 𝐀𝐱=𝟎\\bm{Ax} = \\bm{0} can be expressed as 𝐱=(𝐈−𝐀⊤(𝐀𝐀⊤)−1𝐀)𝐳≜𝐏𝐀𝐳,𝐳∈ℝn. \\bm{x} = (\\bm{I} - \\bm{A}^\\top(\\bm{AA}^\\top)^{-1}\\bm{A})\\bm{z} \\triangleq\n\\bm{P}_{\\bm{A}}\\bm{z}, \\qquad \\bm{z} \\in \\mathbb{R}^n. \n𝐏𝐀\\bm{P}_\\bm{A} is the so-called projection matrix onto the nullspace of 𝐀\\bm{A} (i.e. onto MM)\n\nIf 𝐱⊤𝐋𝐱≥0,∀𝐱∈M\\bm{x}^\\top \\bm{L}\\bm{x} \\geq 0, \\;\\; \\forall \\bm{x} \\in M, then 𝐳⊤𝐏𝐀𝐋𝐏𝐀𝐳≥0,∀𝐳∈ℝn\\bm{z}^\\top \\bm{P}_\\bm{A}\\bm{LP}_\\bm{A}\\bm{z} \\geq 0, \\;\\; \\forall \\bm{z} \\in \\mathbb{R}^n or the matrix 𝐏𝐀𝐋𝐏𝐀≽𝟎\\bm{P}_\\bm{A}\\bm{L}\\bm{P}_\\bm{A} \\succeq \\bm{0}.\nFurthermore, if 𝐏𝐀𝐋𝐏𝐀\\bm{P}_\\bm{A}\\bm{LP}_\\bm{A} has rank n−mn-m, then 𝐋M\\bm{L}_M is positive definite.\n\n\n\n\n\nProjected Hessian Test\n\n\nThe matrix 𝐋\\bm{L} is positive definite on MM iff the projected Hessian matrix to MM is positive semidefinite with rank n−mn-m.\n\n\n\nIn the previous example we had 𝐀=∇𝐡=[100]\\bm{A} = \\nabla \\bm{h} = \\begin{bmatrix} 1 & 0 & 0 \\end{bmatrix}. Hence\n 𝐏𝐀=𝐈−[100][100]⊤=[000010001]⇒𝐏𝐀𝐋𝐏𝐀=[000011013].\n\\bm{P}_\\bm{A} = \\bm{I} - \\begin{bmatrix} 1 \\\\ 0 \\\\ 0 \\\\\n\\end{bmatrix}\\begin{bmatrix} 1 \\\\ 0 \\\\ 0 \\\\ \\end{bmatrix}^\\top = \\begin{bmatrix}\n0 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix} \\quad \\Rightarrow \\quad\n\\bm{P}_\\bm{A}\\bm{LP}_\\bm{A} = \\begin{bmatrix} 0 & 0 & 0 \\\\ 0 & 1 & 1 \\\\ 0 & 1 &\n3 \\end{bmatrix}."
+  },
+  {
+    "objectID": "08_constrained.html#example-soft-margin-minimization-in-svm",
+    "href": "08_constrained.html#example-soft-margin-minimization-in-svm",
+    "title": "08_constrained",
+    "section": "Example – Soft-Margin Minimization in SVM",
+    "text": "Example – Soft-Margin Minimization in SVM\n\n\n\nOptimization Theory and Practice • Aykut C. Satici"
   }
 ]
