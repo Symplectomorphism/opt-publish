@@ -18,6 +18,20 @@
     "href": "08_constrained.html#tangent-plane",
     "title": "08_constrained",
     "section": "Tangent Plane",
-    "text": "Tangent Plane\n\n\nOptimization Theory and Practice • Aykut C. Satici"
+    "text": "Tangent Plane\n\nThe equality constraints define a (hyper)surface S={𝐱:h1(𝐱)=h2(𝐱)=⋯=hm(𝐱)=0}S = \\{\\bm{x}: h_1(\\bm{x}) = h_2(\\bm{x}) = \\cdots = h_m(\\bm{x}) = 0\\} of ℝn\\mathbb{R}^n.\n\nThis hypersurface is of dimension n−mn-m (subject to a regularity assumption).\nIf the functions hih_i are continuously differentiable, the surface is said to be smooth.\n\nAssociated with a point on a smooth surface is the tangent plane at that point.\n\nA curve on a surface SS is a familty of points 𝐱(t)∈S\\bm{x}(t) \\in S, a≤t≤ba \\leq t \\leq b.\nThe curve is differentiable if 𝐱̇(t)=ddt𝐱(t)\\dot{\\bm{x}}(t) = \\frac{d}{d t}\\bm{x}(t) exists, and is twice differentiable if 𝐱̈(t)\\ddot{\\bm{x}}(t) exists.\nA curve 𝐱(t)\\bm{x}(t) is said to pass through the point 𝐱*\\bm{x}^\\ast if 𝐱*=𝐱(t*)\\bm{x}^\\ast = \\bm{x}(t^\\ast) for some a≤t*≤ba \\leq t^\\ast \\leq b.\n\n\n\n\n\nTangent Plane\n\n\nConsider all differentiable curves on SS passing through a point 𝐱*\\bm{x}^\\ast. The tangent plane Tx*ST_{x^\\ast}S at 𝐱*\\bm{x}^\\ast of SS is defined as the collection of hte derivatives at 𝐱*\\bm{x}^\\ast of all these differentiable curves.\nIf 𝐱*\\bm{x}^\\ast is a regular point (to be defined) then we can make the following identification:\nT𝐱*S=M≜{𝐝:∇𝐡(𝐱*)𝐝=𝟎}. T_{\\bm{x}^\\ast}S = M \\triangleq \\{\\bm{d}: \\nabla \\bm{h}(\\bm{x}^\\ast)\\bm{d} =\n\\bm{0} \\}."
+  },
+  {
+    "objectID": "08_constrained.html#tangent-plane-2",
+    "href": "08_constrained.html#tangent-plane-2",
+    "title": "08_constrained",
+    "section": "Tangent plane",
+    "text": "Tangent plane\n\n\n\n\n\nDefinition (Regular Point)\n\n\nA point 𝐱*\\bm{x}^\\ast satisfying the constraint 𝐡(𝐱*)=𝟎\\bm{h}(\\bm{x}^\\ast) = \\bm{0} is said to be a regular point of the constraint if the gradient vectors ∇h1(𝐱*),∇h2(𝐱*),…,∇hm(𝐱*)\\nabla h_1(\\bm{x}^\\ast), \\nabla h_2(\\bm{x}^\\ast), \\ldots, \\nabla h_m(\\bm{x}^\\ast) are linearly independent."
+  },
+  {
+    "objectID": "08_constrained.html#first-order-necessary-conditions-1",
+    "href": "08_constrained.html#first-order-necessary-conditions-1",
+    "title": "08_constrained",
+    "section": "First-Order Necessary Conditions",
+    "text": "First-Order Necessary Conditions\n\n\nOptimization Theory and Practice • Aykut C. Satici"
   }
 ]

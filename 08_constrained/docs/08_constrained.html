@@ -386,6 +386,67 @@
 </section>
 <section id="tangent-plane" class="slide level2 smaller">
 <h2>Tangent Plane</h2>
+<ul>
+<li>The equality constraints define a (hyper)surface <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>𝐱</mi><mo>:</mo><msub><mi>h</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>h</mi><mn>2</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>⋯</mi><mo>=</mo><msub><mi>h</mi><mi>m</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">S = \{\bm{x}: h_1(\bm{x}) = h_2(\bm{x}) = \cdots = h_m(\bm{x}) = 0\}</annotation></semantics></math> of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mi>n</mi></msup><annotation encoding="application/x-tex">\mathbb{R}^n</annotation></semantics></math>.
+<ul>
+<li>This hypersurface is of dimension <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n-m</annotation></semantics></math> (subject to a regularity assumption).</li>
+<li>If the functions <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>h</mi><mi>i</mi></msub><annotation encoding="application/x-tex">h_i</annotation></semantics></math> are continuously differentiable, the surface is said to be <em>smooth</em>.</li>
+</ul></li>
+<li>Associated with a point on a smooth surface is the <em>tangent plane</em> at that point.
+<ul>
+<li>A <em>curve</em> on a surface <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math> is a familty of points <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">\bm{x}(t) \in S</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>≤</mo><mi>t</mi><mo>≤</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a \leq t \leq b</annotation></semantics></math>.</li>
+<li>The curve is <em>differentiable</em> if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>𝐱</mi><mo accent="true">̇</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mi>d</mi><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\dot{\bm{x}}(t) = \frac{d}{d t}\bm{x}(t)</annotation></semantics></math> exists, and is <em>twice differentiable</em> if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>𝐱</mi><mo accent="true">̈</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\ddot{\bm{x}}(t)</annotation></semantics></math> exists.</li>
+<li>A curve <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}(t)</annotation></semantics></math> is said to pass through the point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math> if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝐱</mi><mo>*</mo></msup><mo>=</mo><mi>𝐱</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>t</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}^\ast = \bm{x}(t^\ast)</annotation></semantics></math> for some <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>≤</mo><msup><mi>t</mi><mo>*</mo></msup><mo>≤</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a \leq t^\ast \leq b</annotation></semantics></math>.</li>
+</ul></li>
+</ul>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Tangent Plane</strong></p>
+</div>
+<div class="callout-content">
+<p>Consider all differentiable curves on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math> passing through a point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math>. The <em>tangent plane</em> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><msup><mi>x</mi><mo>*</mo></msup></msub><mi>S</mi></mrow><annotation encoding="application/x-tex">T_{x^\ast}S</annotation></semantics></math> at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math> of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math> is defined as the collection of hte derivatives at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math> of all these differentiable curves.</p>
+<p>If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math> is a <em>regular point</em> (to be defined) then we can make the following identification:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><msup><mi>𝐱</mi><mo>*</mo></msup></msub><mi>S</mi><mo>=</mo><mi>M</mi><mo>≜</mo><mo stretchy="false" form="prefix">{</mo><mi>𝐝</mi><mo>:</mo><mi>∇</mi><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝐝</mi><mo>=</mo><mn>𝟎</mn><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex"> T_{\bm{x}^\ast}S = M \triangleq \{\bm{d}: \nabla \bm{h}(\bm{x}^\ast)\bm{d} =
+\bm{0} \}. </annotation></semantics></math></p>
+</div>
+</div>
+</div>
+</section>
+<section id="tangent-plane-2" class="slide level2 smaller">
+<h2>Tangent plane</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definition (Regular Point)</strong></p>
+</div>
+<div class="callout-content">
+<p>A point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math> satisfying the constraint <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>𝟎</mn></mrow><annotation encoding="application/x-tex">\bm{h}(\bm{x}^\ast) = \bm{0}</annotation></semantics></math> is said to be a <em>regular point</em> of the constraint if the gradient vectors <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><msub><mi>h</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mi>∇</mi><msub><mi>h</mi><mn>2</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mi>…</mi><mo>,</mo><mi>∇</mi><msub><mi>h</mi><mi>m</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\nabla h_1(\bm{x}^\ast), \nabla h_2(\bm{x}^\ast), \ldots, \nabla h_m(\bm{x}^\ast)</annotation></semantics></math> are linearly independent.</p>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<center>
+<img src="./contents/assets/tangentplane1.png" width="75%" img="">
+</center>
+</div><div class="column" style="width:50%;">
+<center>
+<p><img src="./contents/assets/tangentplane2.png" width="55%" img=""></p>
+<img src="./contents/assets/tangentplane3.png" width="55%" img="">
+</center>
+</div>
+</div>
+</section></section>
+<section>
+<section id="first-order-necessary-conditions" class="title-slide slide level1 center">
+<h1>First-Order Necessary Conditions</h1>
+
+</section>
+<section id="first-order-necessary-conditions-1" class="slide level2 smaller">
+<h2>First-Order Necessary Conditions</h2>
 
 <div class="footer footer-default">
 <p>Optimization Theory and Practice • Aykut C. Satici</p>

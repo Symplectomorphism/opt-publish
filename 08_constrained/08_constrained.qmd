@@ -29,3 +29,4 @@ revealjs-plugins:
 
 {{< include contents/_frontmatter.qmd >}}
 {{< include contents/_cons_tang.qmd >}}
+{{< include contents/_fonc.qmd >}}
