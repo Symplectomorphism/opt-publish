@@ -84,7 +84,7 @@ $$
 \nabla_{\bm{\lambda}} \ell(\bm{x}, \bm{\lambda}) = \bm{0}.
 $$ {#eq-fonc-lagrangian}
 
-* The Lagrangian can be viewed as a combined objective function with a penlized
+* The Lagrangian can be viewed as a combined objective function with a penalized
 term on the cosntraint violations.
   - Each $\lambda_i$ is the penalty weight on equality constraint $h_i(\bm{x}) =
     0$.
