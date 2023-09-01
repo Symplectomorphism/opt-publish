@@ -1,0 +1,176 @@
+# First-Order Necessary Conditions
+
+## First-Order Necessary Conditions {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## Lemma
+Let $\bm{x}^\ast$ be a regular point of the constraints $\bm{h}(\bm{x}) =
+\bm{0}$ and a local extremum point of $f$ subject to these constraints. Then for
+all $\bm{d} \in \mathbb{R}^n$, we have
+$$ \nabla \bm{h}(\bm{x}^\ast) \bm{d} = \bm{0} \;\; \Rightarrow \;\; \nabla
+f(\bm{x}^\ast)\bm{d} = 0. $$
+:::
+
+::: {.callout-note icon=false}
+## Proof
+Let $\bm{d} \in T_{\bm{x}^\ast}S$ and let $\bm{x}(t) \in S$ such that $\bm{x}(0)
+= \bm{x}^\ast$ and $\dot{\bm{x}}(0) = \bm{d}$ for $-a \leq t \leq a$ for some $a
+> 0$.
+
+Since $\bm{x}^\ast$ is a constrained local minimum point of $f$, we have 
+
+$$ \frac{d}{dt}f(\bm{x}(t))\Bigg\rvert_{t=0} = \nabla f(\bm{x}^\ast) \bm{d} = 0.
+$$
+:::
+
+::: {.callout-important appearance="minimal"}
+This lemma says that $\quad \nabla f(\bm{x}^\ast) \perp T_{\bm{x}^\ast}S$.
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## Theorem (FONC)
+Let $\bm{x}^\ast$ be a regular local minimum point of $f$ subject to the
+constraint $\bm{h}(\bm{x}) = \bm{0}$. Then there is a $\bm{\lambda} \in
+\mathbb{R}^m$ such that 
+
+$$ \nabla f(\bm{x}^\ast) - \bm{\lambda}^\top \nabla \bm{h}(\bm{x}^\ast) =
+\bm{0}. $$ {#eq-fonc}
+:::
+
+::: {.callout-note icon=false}
+## Proof
+From the lemma, we may conclude that the linear system 
+
+$$ \nabla f(\bm{x}^\ast) \bm{d} \neq 0, \;\; \text{and} \;\; \nabla
+\bm{h}(\bm{x}^\ast)\bm{d} = \bm{0} $$ 
+
+Has no feasible solution $\bm{d}$. Then, by Farkas's lemma, its alternative
+system must have a solution. Specifically, there is a $\bm{\lambda} \in
+\mathbb{R}^m$ such that $\nabla f(\bm{x}^\ast) - \bm{\lambda}^\top \nabla
+\bm{h}(\bm{x}^\ast) = \bm{0}$.
+:::
+
+
+::: {.callout-important appearance="minimal"}
+The FONC @eq-fonc together with the constraints $\bm{h}(\bm{x}^\ast) = \bm{0}$
+give a total of $n+m$ equations in the $n+m$ variables comprising $\bm{x}^\ast,
+\bm{\lambda}$.
+:::
+
+:::
+
+::::
+
+
+## Lagrangian {.smaller}
+
+* Introduce the _Lagrangian_  associated with the constrained problem, defined
+as
+
+$$ \ell(\bm{x}, \bm{\lambda}) = f(\bm{x}) - \bm{\lambda}^\top \bm{h}(\bm{x}). $$ {#eq-lagrangian} 
+
+* The FONC can then be expressed as the Lagrangian derivatives
+
+$$
+\nabla_{\bm{x}} \ell(\bm{x}, \bm{\lambda}) = \bm{0}, \qquad
+\nabla_{\bm{\lambda}} \ell(\bm{x}, \bm{\lambda}) = \bm{0}.
+$$ {#eq-fonc-lagrangian}
+
+* The Lagrangian can be viewed as a combined objective function with a penalized
+term on the cosntraint violations.
+  - Each $\lambda_i$ is the penalty weight on equality constraint $h_i(\bm{x}) =
+    0$.
+  - With appropriate $\lambda_i$'s, a constrained problem could then be solved
+    as an unconstrained optimization problem.
+  - If $f$ is convex and $\bm{h}(\bm{x})$ is affine $\bm{Ax} - \bm{b}$, then
+    $\ell(\cdot)$ is convex in $\bm{x}$ for every fixed $\bm{\lambda}$.
+
+::: {.callout-tip icon=false}
+## Theorem
+The first-order necessary conditions are sufficient if $f$ is convex and
+$\bm{h}$ is affine.
+:::
+
+
+## Sensitivity {.smaller}
+
+* The Lagrange multipliers associated with a constrained minimization problem
+have an interpretation as prices, similar to the prices in LP.
+
+* Let a minimal solution $\bm{x}^\ast$ be a regular point and
+$\bm{\lambda}^\ast$ be the corresponding Lagrange multiplier vector. Consider
+the family of problems
+
+$$
+\begin{align}
+z(\bm{b}) = &\operatorname{minimize} &f(\bm{x}) \phantom{1234} & \\
+& \text{subject to} & \bm{h}(\bm{x}) = \bm{b}, & \bm{b} \in \mathbb{R}^m.
+\end{align}
+$$ {#eq-family}
+
+* For sufficiently small $|\bm{b}|$, the problem will have a solution point
+$\bm{x}(\bm{b})$ near $\bm{x}(\bm{0}) = \bm{x}^\ast$.
+  - For each of these solutions, there is a corresponding minimum value
+    $z(\bm{b}) = f(\bm{x}(\bm{b}))$.
+  - The components of the gradient of this function can be regarded as the
+    incremental rate of change in value per unit change in the constraint
+    requirement.
+
+::: {.callout-tip icon=false}
+## Sensitivity Theorem
+Consider the family of problems @eq-family. Suppose that for every $\bm{b} \in
+\mathbb{R}^m$ in a region containing $\bm{0}$, its minimizer $\bm{x}(\bm{b})$ is
+continuously differentiable depending on $\bm{b}$. Let $\bm{x}^\ast =
+\bm{x}(\bm{0})$ with the corresponding Lagrange multiplier $\bm{\lambda}^\ast$.
+Then 
+
+$$ \nabla z(\bm{0}) = \nabla_\bm{b} f(\bm{x}(\bm{b}))
+\Bigg\rvert_{\bm{b}=\bm{0}} = \left(\bm{\lambda}^\ast\right)^\top. $$
+:::
+
+
+## Sensitivity {.smaller}
+
+::: {.callout-tip icon=false}
+## Sensitivity Theorem
+Consider the family of problems @eq-family. Suppose that for every $\bm{b} \in
+\mathbb{R}^m$ in a region containing $\bm{0}$, its minimizer $\bm{x}(\bm{b})$ is
+continuously differentiable depending on $\bm{b}$. Let $\bm{x}^\ast =
+\bm{x}(\bm{0})$ with the corresponding Lagrange multiplier $\bm{\lambda}^\ast$.
+Then 
+
+$$ \nabla z(\bm{0}) = \nabla_\bm{b} f(\bm{x}(\bm{b}))
+\Bigg\rvert_{\bm{b}=\bm{0}} = \left(\bm{\lambda}^\ast\right)^\top. $$
+:::
+
+
+::: {.callout-note icon=false}
+## Proof
+Using the chain rule and taking derivatives with respect to $\bm{b}$ on both
+sides of 
+
+$$ \bm{b} = \bm{h}(\bm{x}(\bm{b})) $$
+
+at $\bm{b} = \bm{0}$, we have
+
+$$ \bm{I} = \nabla_\bm{b} \bm{h}(\bm{x}(\bm{b})) \Bigg\rvert_{\bm{b}=\bm{0}} =
+\nabla_\bm{x} \bm{h}(\bm{x}(\bm{0}))\nabla_\bm{b}\bm{x}(\bm{0}) =
+\nabla_\bm{x}\bm{h}(\bm{x}^\ast)\nabla_\bm{b}\bm{x}(\bm{0}). $$
+
+On the other hand, using the chain rule and the first-order condition for
+$\bm{x}^\ast$ and the above matrix equality
+
+$$ \nabla_\bm{b} f(\bm{x}(\bm{b})) \Bigg\rvert_{\bm{b}=\bm{0}} = \nabla
+f(\bm{x}(\bm{0})) \nabla_{\bm{b}}\bm{x}(\bm{0}) = \nabla f(\bm{x}^\ast)
+\nabla_{\bm{b}}\bm{x}(\bm{0}) = \left(\bm{\lambda}^\ast\right)^\top \nabla_\bm{x}
+\bm{h}(\bm{x}^\ast) \nabla_\bm{b} \bm{x}(\bm{0}) =
+\left(\bm{\lambda}^\ast\right)^\top. $$
+:::

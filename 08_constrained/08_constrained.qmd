@@ -28,3 +28,9 @@ revealjs-plugins:
 
 
 {{< include contents/_frontmatter.qmd >}}
+{{< include contents/_cons_tang.qmd >}}
+{{< include contents/_fonc.qmd >}}
+{{< include contents/_eqexamples.qmd >}}
+{{< include contents/_soc.qmd >}}
+{{< include contents/_inequality.qmd >}}
+<!-- {{< include contents/_mixexamples.qmd >}} -->

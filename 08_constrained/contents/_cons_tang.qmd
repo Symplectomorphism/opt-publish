@@ -1,0 +1,108 @@
+# Constraints and the Tangent Plane
+
+## Constraints {.smaller}
+
+General nonlinear programming problems are of the form
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+$$
+\begin{align}
+\operatorname{minimize} & f(\bm{x}) \\
+\text{subject to} & \bm{h}(\bm{x}) = \bm{0}, \;\; \bm{g}(\bm{x}) \geq \bm{0}, \\ 
+& \bm{x} \in \Omega.
+\end{align}
+$$
+
+* An inequality constraint is said to be _active_ at $\bm{x}$ if $g_i(\bm{x}) =
+0$.
+* It is said to be _inactive_ if $g_i(\bm{x}) > 0$.
+* Any equality constraint $h_i(\bm{x}) = 0$ is _active_.
+* In the figure, $g_1$ is active, $g_2$ and $g_3$ are not.
+* If it were known a priori which constraints were active at an optimal solution
+then it would be a local minimum point of the problem defined by ignoring the
+inactive constraints.
+:::
+
+::: {.column width="50%"}
+* $\bm{h} = (h_1, h_2, \ldots, h_m)$, $\;\;\bm{g} = (g_1, g_2, \ldots, g_p)$ are
+_functional constraints_.
+* $\bm{x} \in \Omega$: set constraint.
+
+<center>
+<img src="./contents/assets/inactive.png" width="75%" /img>
+</center>
+:::
+
+::::
+
+* We will therefore start by ignoring the inequality constraints and come back
+to them later.
+
+
+## Tangent Plane {.smaller}
+
+* The equality constraints define a (hyper)surface $S = \{\bm{x}: h_1(\bm{x}) =
+h_2(\bm{x}) = \cdots = h_m(\bm{x}) = 0\}$ of $\mathbb{R}^n$.
+  - This hypersurface is of dimension $n-m$ (subject to a regularity assumption).
+  - If the functions $h_i$ are continuously differentiable, the surface is said
+    to be _smooth_.
+* Associated with a point on a smooth surface is the _tangent plane_ at that
+point.
+  - A _curve_ on a surface $S$ is a familty of points $\bm{x}(t) \in S$, $a \leq
+    t \leq b$.
+  - The curve is _differentiable_ if $\dot{\bm{x}}(t) = \frac{d}{d
+    t}\bm{x}(t)$ exists, and is _twice differentiable_ if $\ddot{\bm{x}}(t)$
+    exists.
+  - A curve $\bm{x}(t)$ is said to pass through the point $\bm{x}^\ast$ if
+    $\bm{x}^\ast = \bm{x}(t^\ast)$ for some $a \leq t^\ast \leq b$.
+
+::: {.callout-tip icon=false}
+## Tangent Plane
+Consider all differentiable curves on $S$ passing through a point $\bm{x}^\ast$.
+The _tangent plane_ $T_{x^\ast}S$ at $\bm{x}^\ast$ of $S$ is defined as the
+collection of hte derivatives at $\bm{x}^\ast$ of all these differentiable
+curves.
+
+If $\bm{x}^\ast$ is a _regular point_ (to be defined) then we can make the
+following identification:
+
+$$ T_{\bm{x}^\ast}S = M \triangleq \{\bm{d}: \nabla \bm{h}(\bm{x}^\ast)\bm{d} =
+\bm{0} \}. $$
+:::
+
+
+## Tangent Plane {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## Definition (Regular Point)
+A point $\bm{x}^\ast$ satisfying the constraint $\bm{h}(\bm{x}^\ast) = \bm{0}$
+is said to be a _regular point_ of the constraint if the gradient vectors
+$\nabla h_1(\bm{x}^\ast), \nabla h_2(\bm{x}^\ast), \ldots, \nabla
+h_m(\bm{x}^\ast)$ are linearly independent.
+:::
+
+&nbsp;
+
+&nbsp;
+
+<center>
+<img src="./contents/assets/tangentplane1.png" width="75%" /img>
+</center>
+:::
+
+::: {.column width="50%"}
+<center>
+<img src="./contents/assets/tangentplane2.png" width="55%" /img>
+
+<img src="./contents/assets/tangentplane3.png" width="55%" /img>
+</center>
+:::
+
+::::
