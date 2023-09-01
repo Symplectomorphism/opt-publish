@@ -107,4 +107,120 @@ where $n = 20$ in our example.
 ::::
 
 
+## Example 2 &ndash; Hanging Chain {.smaller}
+
+::: {.callout-important appearance="minimal"}
+__Constraints__: The total $y$ displacement is zero and the total $x$
+displacement is $16$.
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-warning appearance="minimal"}
+## Formulation
+$$
+\begin{align}
+\operatorname{minimize} & \sum_{i=1}^n (n-i + \frac{1}{2})y_i \\
+\text{subject to} & \sum_{i=1}^n y_i = 0, \quad \sum_{i=1}^n \sqrt{1 - y_i^2} = 16.
+\end{align}
+$$
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.callout-warning appearance="minimal"}
+## First-Order Necessary Conditions
+$$
+\begin{align}
+&(n-i + \frac{1}{2}) - \lambda + \frac{\mu y_i}{\sqrt{1-y_i^2}} = 0, \;\; i = 1,
+2, \ldots, n. \\
+\end{align}
+$$
+:::
+
+:::
+
+::::
+
+* FONC directly leads to 
+
+$$
+y_i = -\frac{n - i + \frac{1}{2} - \lambda}{\sqrt{\mu^2 + (n - i + \frac{1}{2} -
+\lambda)^2}}.
+$$
+
+* The solution is determined once the Lagrange multiplier are known.
+  - They must be selected so that the solution satisfies the two constraints.
+
 ## Example 3 &ndash; Compressed Sensing {.smaller}
+
+::: {.callout-important appearance="minimal"}
+* We often want to find the sparsest solution to fit exact data measurements in
+regression.
+* That is, we want to minimize the number of nonzero entries in $\bm{x}$ that
+satisfies a system of linear equations $\bm{Ax} = \bm{b}$.
+  - This discrete cardinality function is not continuous so we approximate it by
+    a continuous and mostly differentiable pseudo-norm function.
+$$ \left(|\bm{x}|_p \right)^p = \sum_{j=1}^n |x_j|^p, \quad 0 < p \leq 1. $$
+  - This becomes the L$_1$ norm function when $p = 1$.
+:::
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-warning appearance="minimal"}
+We want to solve the lienar equality constrained minimization problem.
+
+$$
+\begin{align}
+\operatorname{minimize} & \sum_{j=1}^n |x_j|^p \\
+\text{subject to} & \bm{Ax} - \bm{b} = \bm{0}.
+\end{align}
+$$
+
+* The derivative of $|x_j|^p$, when $x_j \neq 0$ is $p(|x_j|^{p-1}
+\operatorname{sign}(x_j))$.
+
+* Let us remove those zero entries in $\bm{x}$, then the remaining nonzero
+variables must still meet the FONC: for the $j^{\text{th}}$ column $\bm{a}_j$ of
+$\bm{A}$ and some $\bm{\lambda}$
+
+$$ p ( |x_j|^{p-1} \operatorname{sign}(x_j) ) - \bm{\lambda}^\top\bm{a}_j = 0,
+\;\; \forall x_j \neq 0. $$
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.callout-warning appearance="minimal"}
+
+* Multiplying each equation by $x_j$ from the right and summing them up, we have
+
+$$ p \sum_{j: x_j \neq 0} |x_j|^p = \bm{\lambda}^\top \left(\sum_{j: x_j \neq 0}
+\bm{a}_j x_j \right) = \bm{\lambda}^\top\bm{b} \leq |\bm{\lambda}| |\bm{b}|. $$
+
+This means that the sum of the $p^{\text{th}}$ power of absolute values of the
+nonzero entries is bounded above. For $p = \frac{1}{2}$, we have $\sum
+\sqrt{|x_j|} \leq 2 |\bm{\lambda}| |\bm{b}|$. Moreover,
+
+$$
+|x_j|^{-\frac{1}{2}} \operatorname{sign}(x_j) = 2\bm{\lambda}^\top \bm{a}_j,
+\;\; \Longrightarrow \;\; \frac{1}{\sqrt{|x_j|}} \leq 2 |\bm{\lambda}|
+|\bm{a}_j|.
+$$
+
+* This establishes a lower bound on the absolute values of each nonzero entry of
+any possible local minimizer of the problem.
+
+:::
+
+:::
+
+::::

@@ -297,4 +297,78 @@ $$ {#eq-sensitivity-grad-nlp}
 
 
 
-## Example &ndash; Soft-Margin Minimization in SVM
+## Example &ndash; Soft-Margin Minimization in SVM {.smaller}
+
+::: {.callout-important appearance="minimal"}
+* In the original SVM example, the two data sets were separable, but in reality
+data may come in as inseparable.
+* An objective function would need to be added to the model.
+* Let $\bm{A}$ represent the data matrix for $\bm{a}_i$ and $\bm{B}$ represent
+the data for $\bm{b}_j$. Also let $\bm{1}$ denote the vector of all ones.
+:::
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-warning icon=false}
+## Optimization problem
+$$
+\begin{align}
+\operatorname{minimize} & \frac{1}{2}|\bm{x}|^2 + \beta(\bm{1}^\top\bm{u} +
+\bm{1}^\top \bm{v}) \\
+\text{subject to} & \bm{A}^\top \bm{x} + \bm{1}x_0 + \bm{u} \geq 1 \\
+& -\bm{B}^\top \bm{x} - \bm{1}x_0 + \bm{v} \geq \bm{1} \\
+& \bm{u} \geq \bm{0}, \; \bm{v} \geq \bm{0}.
+\end{align}
+$$
+
+* $\{\bm{y}: \bm{x}^\top \bm{y} + x_0 = 0\}$ is the desired hyperplane.
+* $u_i$ and $v_j$ represent possible error margins of $\bm{a}_i$ and $\bm{b}_j$.
+:::
+::: {.callout-warning icon=false}
+## Lagrangian
+$$
+\begin{align}
+&\ell(\bm{x},x_0, \bm{u}, \bm{v}, \bm{\xi}_A, \bm{\xi}_B) =
+\frac{1}{2}|\bm{x}|^2 + \beta(\bm{1}^\top \bm{u} + \bm{1}^\top \bm{v}) \\
+&\phantom{234} - \bm{\xi}_A^\top (\bm{A}^\top \bm{x} + \bm{1}x_0 + \bm{u} -
+\bm{1}) - \bm{\xi}_B^\top (-\bm{B}^\top \bm{x} - \bm{1}x_0 + \bm{v} -
+\bm{1}).
+\end{align}
+$$
+:::
+:::
+
+
+::: {.column width="50%"}
+
+::: {.callout-important icon=false}
+## First-Order Conditions
+* (MSC): $\phantom{231445}\bm{\xi}_A \geq \bm{0} \;\; \bm{\xi}_B \geq \bm{0}$.
+* (LDC): 
+$$
+\begin{align}
+\nabla_\bm{x}\ell(\cdot) &= \bm{x} - \bm{A\xi}_A + \bm{B\xi}_B = \bm{0}, \\
+\nabla_{x_0}\ell(\cdot) &= -\bm{1}^\top \bm{\xi}_A + \bm{1}^\top \bm{x}_B = 0,
+\\
+\nabla_\bm{u} \ell(\cdot) &= \beta \bm{1} - \bm{\xi}_A \geq \bm{0}, \\
+\nabla_\bm{v} \ell(\cdot) &= \beta \bm{1} - \bm{\xi}_B \geq \bm{0}.
+\end{align}
+$$
+
+* (CSC): 
+$$
+\begin{align}
+\bm{\xi}_A^\top (\bm{A}^\top \bm{x} + \bm{1}x_0 + \bm{u} - \bm{1}) &= 0, \\ 
+\bm{\xi}_B^\top (-\bm{B}^\top \bm{x} - \bm{1}x_0 + \bm{v} - \bm{1}) &= 0, \\ 
+\bm{u}^\top(\beta \bm{1} - \bm{\xi}_A) &= 0, \\
+\bm{v}^\top(\beta \bm{1} - \bm{\xi}_B) &= 0.
+\end{align}
+$$
+:::
+
+:::
+
+::::
