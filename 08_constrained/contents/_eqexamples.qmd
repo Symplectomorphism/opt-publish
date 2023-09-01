@@ -60,5 +60,51 @@ $$ \lambda(x-y)z = 0. $$
 
 ## Example 2 &ndash; Hanging Chain {.smaller}
 
+::: {.callout-important appearance="minimal"}
+A chain is suspended from two thin hooks that are $16$ ft. apart on a horizontal
+line. Each link is one foot in length (measured inside). We wish to formulate
+the problem to determine the equilibrium shape of the chain.
+
+<center>
+<img src="./contents/assets/hangingchain.png" width="70%" /img>
+</center>
+
+The solution can be found by minimizing the potential energy of the chain.
+
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-warning appearance="minimal"}
+* Let link $i$ span an $x$ distance of $x_i$ and a $y$ distance of $y_i$.
+* Then $x_i^2 + y_i^2 = 1$.
+* The potential energy of a link is its weight times its height.
+* The total potential energy of the chain is the sum of those of each link.
+:::
+
+:::
+
+::: {.column width="50%"}
+::: {.callout-warning appearance="minimal"}
+* With the top of the chain as reference and assuming the mass of each link is
+concentrated at its center
+
+$$
+\begin{align}
+P &= \frac{y_1}{2} + (y_1 + \frac{y_2}{2}) + (y_1 + y_2 + \frac{y_3}{2}) +
+\cdots \\
+&+ \, (y_1 + y_2 + \cdots + y_{n-1} + \frac{y_n}{2}) = \sum_{i=1}^n
+(n-i+\frac{1}{2})y_i.
+\end{align}
+$$
+
+where $n = 20$ in our example.
+:::
+:::
+
+::::
+
 
 ## Example 3 &ndash; Compressed Sensing {.smaller}

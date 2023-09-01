@@ -67,7 +67,7 @@
     "href": "08_constrained.html#example-2-hanging-chain",
     "title": "08_constrained",
     "section": "Example 2 – Hanging Chain",
-    "text": "Example 2 – Hanging Chain"
+    "text": "Example 2 – Hanging Chain\n\n\n\nA chain is suspended from two thin hooks that are 1616 ft. apart on a horizontal line. Each link is one foot in length (measured inside). We wish to formulate the problem to determine the equilibrium shape of the chain.\n\n\n\nThe solution can be found by minimizing the potential energy of the chain.\n\n\n\n\n\n\n\n\n\nLet link ii span an xx distance of xix_i and a yy distance of yiy_i.\nThen xi2+yi2=1x_i^2 + y_i^2 = 1.\nThe potential energy of a link is its weight times its height.\nThe total potential energy of the chain is the sum of those of each link.\n\n\n\n\n\n\n\n\n\nWith the top of the chain as reference and assuming the mass of each link is concentrated at its center\n\nP=y12+(y1+y22)+(y1+y2+y32)+⋯+(y1+y2+⋯+yn−1+yn2)=∑i=1n(n−i+12)yi.\n\\begin{align}\nP &= \\frac{y_1}{2} + (y_1 + \\frac{y_2}{2}) + (y_1 + y_2 + \\frac{y_3}{2}) +\n\\cdots \\\\\n&+ \\, (y_1 + y_2 + \\cdots + y_{n-1} + \\frac{y_n}{2}) = \\sum_{i=1}^n\n(n-i+\\frac{1}{2})y_i.\n\\end{align}\n\nwhere n=20n = 20 in our example."
   },
   {
     "objectID": "08_constrained.html#example-3-compressed-sensing",
