@@ -2,6 +2,60 @@
 
 ## Example 1 &ndash; Geometric Prog.: Max Volume {.smaller}
 
+::: {.callout-important appearance="minimal"}
+We seek to construct a cardboard box of maximum volume, given a fixed area of
+the cardboard.
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<br>
+
+::: {.callout-warning appearance="minimal"}
+$$
+\begin{align}
+\operatorname{maximize} & xyz \\
+\text{subject to} & (xy + yz + xz) = \frac{c}{2}, \quad c > 0 \,(\text{area}).
+\end{align}
+$$
+:::
+
+
+::: {.callout-important icon=false}
+## First-Order Necessary Conditions
+$$
+\begin{align}
+yz - \lambda (y+z) &= 0, \\
+xz - \lambda (x+z) &= 0, \\
+xy - \lambda (x+y) &= 0.
+\end{align}
+$$
+:::
+
+::: {.callout-important appearance="minimal"}
+Since no variables can be zero, we have 
+$$x = y = z = \sqrt{\frac{c}{6}} \quad \text{and} \quad \lambda =
+\frac{\sqrt{6c}}{12}. $$
+:::
+
+:::
+
+::: {.column width="50%"}
+* Summing the FONC gives $(xy + yz + xz) - 2\lambda(x+y+z) = 0$.
+* Using the constraint with this implies
+$$ \frac{c}{2} - 2\lambda(x+y+z) = 0. $$
+  - From this it is clear that $\lambda \neq 0$.
+* Next, we see that none of $x$, $y$, and $z$ are zero.
+  - This is because if, say, $x=0$, then $z$ becomes zero (second eq.), which
+    implies $y=0$ from the first equation.
+* Multiply the first by $x$, second by $y$ and subtract to obtain 
+$$ \lambda(x-y)z = 0. $$
+* Similarly operate on second and third to obtain $\lambda (y-z)x = 0$.
+:::
+
+::::
 
 
 ## Example 2 &ndash; Hanging Chain {.smaller}
