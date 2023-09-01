@@ -25,7 +25,7 @@ $$
 \operatorname{minimize} & f(\bm{x}) \\
 \text{subject to} & \bm{h}(\bm{x}) = \bm{0}, \quad \bm{g}(\bm{x}) \geq \bm{0},
 \end{align}
-$$
+$$ {#eq-nlp}
 
 and suppose $\bm{x}^\ast$ is a regular point for the constraints. Then there is
 a vector $\bm{\lambda} \in \mathbb{R}^m$ and a vector $\bm{\mu} \in
@@ -202,6 +202,98 @@ which completes the proof.
 
 
 ## Second-Order Conditions {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<br> <br>
+
+::: {.callout-tip icon=false}
+## SONC
+Suppose $\bm{x}^\ast$ is a regular point of the constraints. If $\bm{x}^\ast$ is
+a relative minimum point for the problem @eq-nlp, then there is a $\bm{\lambda}
+\in \mathbb{R}^m$, $\bm{\mu} \in \mathbb{R}^p$, $\bm{\mu} \geq 0$ such that
+@eq-kkt hold and such that $$ \bm{L}(\bm{x}^\ast) = \bm{F}(\bm{x}^\ast) -
+\bm{\lambda}^\top \bm{H}(\bm{x}^\ast) - \bm{\mu}^\top \bm{G}(\bm{x}^\ast) $$ {#eq-sonc-nlp} 
+is positive semidefinite on the tangent subspace of the active constraints in
+$\bm{x}^\ast$.
+:::
+
+:::
+
+::: {.column width="50%"}
+::: {.callout-tip icon=false}
+## SOSC
+Sufficient conditions that a point satisfying @eq-mix-cons be a strict relative
+point of the problem @eq-nlp is that there exist $\bm{\lambda} \in
+\mathbb{R}^m$, $\bm{\mu} \in \mathbb{R}^p$ such that 
+
+$$
+\begin{align}
+\bm{\mu} &\geq 0 \\
+\bm{\mu}^\top \bm{g}(\bm{x}^\ast) &= 0 \\
+\nabla f(\bm{x}^\ast) - \bm{\lambda}^\top \nabla \bm{h}(\bm{x}^\ast) -
+\bm{\mu}^\top \nabla \bm{g}(\bm{x}^\ast) &= 0,
+\end{align}
+$$
+
+and the Hessian matrix 
+
+$$ \bm{L}(\bm{x}^\ast) = \bm{F}(\bm{x}^\ast) -
+\bm{\lambda}^\top \bm{H}(\bm{x}^\ast) - \bm{\mu}^\top \bm{G}(\bm{x}^\ast) $$
+
+is positive definite on the subspace
+
+
+$$
+M' = \left\{ \bm{d}: \nabla \bm{h}(\bm{x}^\ast)\bm{d} = 0, \nabla
+g_j(\bm{x}^\ast) \bm{d} = 0 \;\; \forall j \in J \right\}, 
+$$
+
+where $J = \{j; g_j(\bm{x}^\ast) = 0, \; \mu_j > 0\}$.
+
+:::
+:::
+
+::::
+
+
+## Sensitivity {.smaller}
+
+::: {.callout-tip icon=false}
+## Sensitivity Theorem
+Consider the family of problems
+
+$$
+\begin{align}
+\operatorname{minimize} & f(\bm{x}) \\
+\text{subject to} & \bm{h}(\bm{x}) = \bm{b}, \quad \bm{g}(\bm{x}) \geq \bm{c}.
+\end{align}
+$$ {#eq-sensitivity-nlp}
+
+Suppose that for $\bm{b} = \bm{0}$, $\bm{c} = \bm{0}$, there is a local solution
+$\bm{x}^\ast$ that is a regular point and that together with the associated
+Lagrange multipliers, $\bm{\lambda}, \bm{\mu} \geq \bm{0}$, satisfies the SOSC
+for a strict local minimum. Assume further that no active inequality constraints
+is degenerate.
+
+Then for every $(\bm{b}, \bm{c}) \in \mathbb{R}^{m+p}$ in a region containing
+$(\bm{0}, \bm{0})$, there is a solution $\bm{x}(\bm{b}, \bm{c})$, depending
+continuously on $(\bm{b}, \bm{c})$, such that $\bm{x}(\bm{0}, \bm{0}) =
+\bm{x}^\ast$ and $\bm{x}(\bm{b}, \bm{c})$ is a relative minimum of
+@eq-sensitivity-nlp. Furthermore
+
+$$
+\begin{align}
+\nabla_\bm{b} f(\bm{x}(\bm{b}, \bm{c}))\Bigg\rvert_{(\bm{0}, \bm{0})} &=
+\bm{\lambda}^\top, \\
+\nabla_\bm{c} f(\bm{x}(\bm{b}, \bm{c}))\Bigg\rvert_{(\bm{0}, \bm{0})} &=
+\bm{\mu}^\top. \\
+\end{align} 
+$$ {#eq-sensitivity-grad-nlp}
+
+:::
 
 
 
