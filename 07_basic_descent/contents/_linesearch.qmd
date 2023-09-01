@@ -1,0 +1,19 @@
+# Line Search Algorithms
+
+$$
+\begin{align}
+\operatorname{minimize}_{x \in [a_0, b_0]} & f(x) \in \mathbb{R}
+\end{align}
+$$
+
+## $0$th-Order Method: Golden Search {.smaller}
+
+
+## $1$st-Order Method: Bisection Method {.smaller}
+
+::: {.callout-important appearance="minimal"}
+__Assumptions__: $f$ is unimodal and continuously differentiable. 
+:::
+
+
+## $2$nd-Order Method: Newton's Method {.smaller}
