@@ -1,3 +1,57 @@
 # Inequality Constraints
 
+## First-Order Necessary Conditions {.smaller}
+
+::: {.callout-tip icon=false}
+## Definition
+Let $\bm{x}^\ast$ be a point satisfying the constraints 
+
+$$ \bm{h}(\bm{x}^\ast) = \bm{0}, \;\; \bm{g}(\bm{x}^\ast) \geq \bm{0}, $$ {#eq-mix-cons} 
+
+and let $J$ be
+the set of indices $j$ for which $g_j(\bm{x}^\ast) = 0$. Then $\bm{x}^\ast$ is
+said to be a _regular point_ of the constraints @eq-mix-cons if the gradient
+vectors $\nabla h_i(\bm{x}^\ast)$, $\nabla g_j(\bm{x}^\ast)$, $1 \leq i \leq m$,
+$j \in J$ are linearly independent.
+:::
+
+
+::: {.callout-tip icon=false}
+## Karush-Kuhn-Tucker (KKT) Conditions
+Let $\bm{x}^\ast$ be a relative minimum point for the problem 
+
+$$
+\begin{align}
+\operatorname{minimize} & f(\bm{x}) \\
+\text{subject to} & \bm{h}(\bm{x}) = \bm{0}, \quad \bm{g}(\bm{x}) \geq \bm{0},
+\end{align}
+$$
+
+and suppose $\bm{x}^\ast$ is a regular point for the constraints. Then there is
+a vector $\bm{\lambda} \in \mathbb{R}^m$ and a vector $\bm{\mu} \in
+\mathbb{R}^p$ with $\bm{\mu} \geq \bm{0}$ such that 
+
+$$
+\begin{align}
+\nabla f(\bm{x}^\ast) - \bm{\lambda}^\top \nabla \bm{h}(\bm{x}^\ast) -
+\bm{\mu}^\top \nabla \bm{g}(\bm{x}^\ast) &= \bm{0}, \\
+\bm{\mu}^\top \bm{g}(\bm{x}^\ast) = 0.
+\end{align}
+$$ {#eq-kkt}
+:::
+
+
+## Karush-Kuhn-Tucker (KKT) Proof
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+
+:::
+
+::: {.column width="50%"}
+:::
+::::
+
 ## Example &ndash; Soft-Margin Minimization in SVM
