@@ -1,0 +1,240 @@
+# The Method of Steepest Descent: First-Order
+
+Often the first tried method on a new problem.
+
+
+## The Method and Convergence {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal"}
+* The gradient $\nabla f(\bm{x})$ is defined as a $n$-dim. _row_ vector.
+* We define the $n$-dim. _column_ vector $g(\bm{x}) = \nabla f(\bm{x})^\top$.
+:::
+
+::: {.callout-tip icon=false}
+## The Method of Steepest Descent (SDM)
+
+The iterative algorithm is 
+
+$$ \bm{x}_{k+1} = \bm{x}_k - \alpha_k \bm{g}_k, $$
+
+where the stepsize $\alpha_k$ is a nonnegative scalar possible minimizing
+$f(\bm{x}_k - \alpha \bm{g}_k)$.
+:::
+
+::: {.callout-warning icon=false}
+## The Algorithm
+Define the mapping $\phantom{1} \bm{S}: \mathbb{R}^{2n} \rightarrow
+\mathbb{R}^n$ by $$ \bm{S}(\bm{x}, \bm{d}) = \{\bm{y}: \bm{y} = \bm{x} + \alpha
+\bm{d}, \;\; \alpha \geq 0, \; f(\bm{y}) =
+\operatorname{min}_{0 \leq \alpha < \infty} f(\bm{x} + \alpha \bm{d}) \}. $$
+
+This is a closed map if $\bm{d} \neq \bm{0}$. 
+
+The overall algorithm is $\; \bm{A}: \mathbb{R}^n \rightarrow
+\mathbb{R}^n$ which gives $\bm{x}_{k+1} \in \bm{A}(\bm{x}_k)$ can be decomposed
+in the form 
+
+$$ \bm{A} = \bm{SG}, \quad \bm{G}(\bm{x}) = (\bm{x}, -\bm{g}(\bm{x})). $$
+:::
+
+
+:::
+
+::: {.column width="50%"}
+
+::: {.callout-important icon=false}
+## Global Convergence
+
+* Define the solution set $\Gamma = \{\bm{x} \in \mathbb{R}^n: \nabla f(\bm{x})
+= \bm{0}\}$.
+* $Z(\bm{x}) = f(\bm{x})$ is a descent function for $\bm{A}$, since for $\nabla
+f(\bm{x}) \neq \bm{0}$
+$$ \operatorname{min}_{0 \leq \alpha < \infty} f(\bm{x} - \alpha \bm{g}(\bm{x}))
+< f(\bm{x}). $$
+
+* Thus by the Global Convergence Theorem, if the sequence $\{\bm{x}_k\}$ is
+bounded, it will have limit points and each of these is a solution.
+:::
+
+::: {.callout-tip icon=false}
+## Definition (First-order $\beta$-Lipschitz Function)
+For any two points $\bm{x}$ and $\bm{y}$, $|\nabla f(\bm{y}) - \nabla f(\bm{x})|
+\leq \beta |\bm{y} - \bm{x}|$, for a positive real number $\beta$.
+:::
+
+::: {.callout-important icon=false}
+## Convergence Speed for fixed stepsize $\alpha_k = \frac{1}{\beta}$ is arithmetic.
+We may not know $\frac{1}{\beta}$ so we employ a _backtracking
+line search_: start with a guess of $\beta$; if sufficient obj. reduction is
+achieved, halve $\beta$; otherwise double $\beta$. Stop when the process is
+reversed.
+:::
+
+:::
+
+::::
+
+
+## The Quadratic Case {.smaller}
+
+::: {.callout-important appearance="minimal"}
+When $f(\bm{x})$ is strongly convex, the convergence speed can be increased from
+arithmetic to geometric or linear convergence.
+:::
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-warning appearance="minimal"}
+We focus on the quadratic problem 
+
+$$ f(\bm{x}) = \frac{1}{2}\bm{x}^\top \bm{Q} \bm{x} - \bm{x}^\top \bm{b}, \;\;
+\bm{Q} \succ \bm{0}. $$ {#eq-quadratic}
+
+* The unique minimum of $f$ can be found directly by setting the gradient to
+zero: $$ \bm{Q}\bm{x}^\ast = \bm{b}. $$
+* Let's introduce the function $$ E(\bm{x}) = \frac{1}{2}(\bm{x} -
+\bm{x}^\ast)\bm{Q}(\bm{x} - \bm{x}^\ast), $$ so that we have $E(\bm{x}) =
+f(\bm{x}) + \frac{1}{2}\bm{x}^\ast \bm{Q} \bm{x}^\ast$. Hence
+$\operatorname{min} f \; \Leftrightarrow \; \operatorname{min} E$.
+
+* The method of SD can be expressed as $\bm{x}_{k+1} = \bm{x}_k - \alpha_k
+\bm{g}_k$, where $\bm{g}_k = \bm{Q}\bm{x}_k - \bm{b}$ and $\alpha_k$ minimizes
+$f(\bm{x}_k - \alpha \bm{g}_k)$.
+* We have by definition @eq-quadratic
+$$ f(\bm{x}_k -\alpha \bm{g}_k) = \frac{1}{2}(\bm{x}_k - \alpha \bm{g}_k)^\top
+\bm{Q} (\bm{x}_k - \alpha \bm{g}_k) - (\bm{x}_k - \alpha \bm{g}_k)^\top \bm{b}.
+$$
+
+This is minimized at $$ \alpha_k = \frac{\bm{g}_k^\top \bm{g}_k}{\bm{g}_k^\top
+\bm{Q} \bm{g}_k}. $$
+:::
+
+:::
+
+::: {.column width="50%"}
+<center>
+<img src="./contents/assets/steepestdesc.png" width="70%" /img>
+</center>
+
+::: {.callout-note appearance="minimal"}
+* The function $f$ and the SD process is illustrated by showing the contours of
+constant values of $f$ and a typical sequence developed by the process.
+
+* The contours of $f$ are $n$-dim. ellipsoids with axes in the directions of the
+$n$-mutually orthogonal eigenvectors of $\bm{Q}$.
+
+* The axis corresponding to the $i^{\text{th}}$ eigenvector has length
+proportional to $\frac{1}{\lambda_i}$.
+:::
+
+:::
+
+::::
+
+
+## Nonquadratic Case {.smaller}
+
+::: {.callout-important appearance="minimal"}
+For nonquadratic functions, SD still does well if the condition number is
+modest. To establish estimates, assume that the Hessian matrix is positive
+definite: $\alpha \bm{I} \leq \bm{F}(\bar{\bm{x}}) \leq A\bm{I}$.
+:::
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-warning icon=false}
+## Exact Line Search
+$$ f(\bm{x}_k - \alpha g(\bm{x}_k)) \leq f(\bm{x}_k) - \alpha
+\bm{g}(\bm{x}_k)^\top \bm{g}(\bm{x}_k) +
+\frac{A\alpha^2}{2}\bm{g}(\bm{x}_k)^\top \bm{g}(\bm{x}_k). $$
+
+Minimizing both sides w.r.t. $\alpha$ yields
+$$ f(\bm{x}_{k+1}) \leq f(\bm{x}_k) - \frac{1}{2A}|\bm{g}(\bm{x}_k)|^2. $$
+
+Subtracting the optimal value $f^\ast = f(\bm{x}^\ast)$ from both sides
+$$ f(\bm{x}_{k+1}) - f^\ast \leq f(\bm{x}_k) - f^\ast -
+\frac{1}{2A}|\bm{g}(\bm{x}_k)|^2. $$ {#eq-A}
+
+Similarly, for any $\bm{x}$ there holds
+$$ f(\bm{x}) \geq f(\bm{x}_k) + \bm{g}(\bm{x}_k)^\top (\bm{x} - \bm{x}_k) +
+\frac{a}{2} | \bm{x} - \bm{x}_k |^2. $$
+:::
+
+:::
+
+::: {.column width="50%"}
+
+
+::: {.callout-warning appearance="minimal"}
+Again, minimize both sides: the left-hand side is minimized at $f^\ast$ and the
+right-hand side is minimized at $\bar{\bm{x}} = \bm{x}_k -
+\frac{\bm{g}(\bm{x}_k)}{a}$. Subsituting this $\bar{\bm{x}}$ in the right-hand
+side gives
+$$ f^\ast \geq f(\bm{x}_k) - \frac{1}{2a}|\bm{g}(\bm{x}_k)|^2. $$ {#eq-a}
+
+From @eq-a, we have 
+$$ - |\bm{g}(\bm{x}_k)|^2 \leq 2a [f^\ast - f(\bm{x}_k)]. $$
+
+Substituting this in @eq-A gives 
+$$ f(\bm{x}_{k+1}) - f^\ast \leq (1-\frac{a}{A})[f(\bm{x}_k - f^\ast)]. $$
+
+This shows that SD makes progress even when it is not close to the solution.
+:::
+
+:::
+
+::::
+
+
+::: {.callout-tip appearance="minimal"}
+__Theorem__. Suppose that the Hessian matrix $\bm{F}(\bm{x}^\ast)$ of $f$ at a
+relative minimum $\bm{x}^\ast$ has the smallest and largest eigenvalues $a, A >
+0$, respectively. If $\{\bm{x}_k\}$ is a sequence generated by the method of
+steepest descent that converges to $\bm{x}^\ast$, then the sequence of objective
+values $\{f(\bm{x}_k)\}$ converges to $f(\bm{x}^\ast)$ linearly with a
+convergence ratio no greater than $(\frac{A-a}{A+a})^2$.
+:::
+
+
+
+## Accelerated Steepest Descent {.smaller}
+
+<br><br>
+
+::: {.callout-important appearance="minimal"}
+There is an _accelerated_ steepest descent method that works as follows:
+
+$$
+\begin{align}
+&\lambda^0 = 0, & \lambda_{k+1} = \frac{1}{2}(1 + \sqrt{1+4\lambda_k^2}), &
+\alpha_k = \frac{1 - \lambda_k}{\lambda_{k+1}}, & \tilde{\bm{x}}_{k+1} =
+\bm{x}_k - \frac{1}{\beta}\nabla f(\bm{x}_k)^\top, & \bm{x}_{k+1} = (1 -
+\alpha_k) \tilde{\bm{x}}_{k+1} + \alpha_k \tilde{\bm{x}}_k.
+\end{align}
+$$
+
+Note that $\lambda_k^2 = \lambda_{k+1}(\lambda_{k+1} -1)$, $\lambda_k >
+\frac{k}{2}$, and $\alpha_k \leq 0$.
+:::
+
+::: {.callout-tip icon=false}
+## Theorem (Accelerated Steepest Descent)
+Let $f(\bm{x})$ be convex and differentiable everywhere, satisfies the
+(first-order) $\beta$-Lipschitz condition, and admits a minimizer $\bm{x}^\ast$.
+Then, the method of accelerated steepest descent generates a sequence of
+solutions such that
+
+$$
+f(\tilde{\bm{x}}_{k+1}) - f(\bm{x}^\ast) \leq \frac{2\beta}{k^2}|\bm{x}_0 -
+\bm{x}^\ast|^2, \quad \forall k \geq 1. 
+$$
+:::

@@ -1,0 +1,97 @@
+# Coordinate and Stochastic Gradient Descent
+
+::: {.callout-important appearance="minimal"}
+The algorithms in this section are sometimes attractive because of their easy
+implementation. Generally, however, their convergence properties are poorer than
+SD.
+:::
+
+## Coordinate Descent {.smaller}
+
+::: {.callout-important appearance="minimal"}
+Given a point $\bm{x} = (x_1, x_2, \ldots, x_n)$, descent w.r.t. the coordinate
+$x_i$ ($i$ fixed) means that one solves 
+
+$$ \operatorname{minimize}_{x_i} \quad f(x_1, x_2, \ldots, x_n). $$
+:::
+
+* Only changes in the single component $x_i$ are allowed in seeking a new and
+better vector $\bm{x}$.
+  - One can also consider $\bm{x}_i$ the $i^{\text{th}}$ block of variables
+    (block coordinate method).
+* In our general terminology, each such descent can be regarded as a descent in
+the direction $\bm{e}_i$.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.callout-warning icon=false}
+## Cyclic methods
+* $\operatorname{min}\;\; x_1, x_2, \ldots, x_n \quad$ then $\quad
+\operatorname{min}\;\; x_{n-1}, x_{n-2}, \ldots, x_1$ 
+* $\operatorname{min}\;\; x_1, x_2, \ldots, x_n \quad$ then $\quad
+\operatorname{min}\;\; x_{1}, x_{2}, \ldots, x_n$
+
+They have the advantage of not requiring any information about $\nabla f$ to
+determine descent directions.
+:::
+:::
+
+::: {.column width="50%"}
+
+::: {.callout-warning icon=false}
+## Gauss-Southwell Method
+
+* If the gradient of $f$ is available, then it is possible to select the order
+of descent coordinates on the basis of the gradient.
+
+* At each stage, the coordinate corresponding to the largest component of the
+gradient vector is selected for descent.
+:::
+
+
+:::
+
+::::
+
+
+
+## Stochastic Gradient Descent (SGD) Method {.smaller}
+
+::: {.callout-warning appearance="minimal"}
+Imagine we are solving a stochastic optimization problem or its simple average
+approximation
+
+$$ f(\bm{x}) = \mathbb{E}[\phi(\bm{x}, \bm{\xi})] \qquad \text{or} \qquad
+f(\bm{x}) = \frac{1}{M} \sum_{i=1}^M \phi(\bm{x}, \bm{\xi_i}), $$
+
+where $\bm{\xi}$ is a random parameter and $\xi_i$ is a randomly chosen sample.
+
+* If we simply apply the SD, the evaluation of the gradient vector would be
+costly, involving a large sum computation.
+* The SGD would, at the current iterate $\bm{x}_k$, randomly select a sample
+point $\xi_k$ and compute its (sub)gradient vector $\bm{g}_k := \bm{g}(\bm{x}_k,
+\xi_k)$, which satisfies, in expectation, $\mathbb{E}[\bm{g}_k | \bm{x}_k] \in
+\partial f(\bm{x}_k)$.
+* Then the method would update, starting from an initial solution $\bm{x}_0$,
+
+$$ \bm{x}_{k+1} = \bm{x}_k - \alpha_k \bm{g}_k, $$
+
+until $k = K-1$ and return the average solution: $\bar{\bm{x}} =
+\frac{1}{K}\sum_{k=0}^{K-1} \bm{x}_k$.
+:::
+
+::: {.callout-tip icon=false}
+## Theorem (SGD)
+Let $f(\bm{x})$ be a convex function that admits a minimizer $\bm{x}^\ast$.
+Assume the following two conditions hold:
+
+1. The sample (sub)gradients at $\bm{x}_k$ satisfy $|\bm{g}_k| \leq \beta (>0)$
+with probability $1$ for all $k = 0, \ldots, K-1$.
+2. The initial solution satisfies, for simplicity, $|\bm{x}_0 - \bm{x}^\ast|
+\leq 1$.
+
+Then, with (fixed) stepsize $\alpha_k = \alpha = \frac{1}{\beta\sqrt{K}}$, the
+returned solution $\bar{\bm{x}}$ satisfies:
+$\qquad \mathbb{E}[f(\bar{\bm{x}}) - f(\bm{x}^\ast)] \leq \frac{\beta}{\sqrt{K}}$.
+:::

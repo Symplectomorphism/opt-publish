@@ -29,3 +29,6 @@ revealjs-plugins:
 
 {{< include contents/_frontmatter.qmd >}}
 {{< include contents/_linesearch.qmd >}}
+{{< include contents/_steepest.qmd >}}
+{{< include contents/_newton.qmd >}}
+{{< include contents/_coord_sgd.qmd >}}

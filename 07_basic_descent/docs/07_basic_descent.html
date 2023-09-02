@@ -5,9 +5,10 @@
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.2.313">
+  <meta name="generator" content="quarto-1.3.450">
 
   <meta name="author" content="Aykut C. Satici">
   <title>Optimization Theory and Practice</title>
@@ -25,11 +26,11 @@
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
       width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="styles.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -76,44 +77,44 @@
     font-weight: 400;
   }
 
-  .callout.callout-captioned.callout-style-simple .callout-body {
+  .callout.callout-titled.callout-style-simple .callout-body {
     margin-top: 0.2em;
   }
 
-  .callout:not(.callout-captioned) .callout-body {
+  .callout:not(.callout-titled) .callout-body {
       display: flex;
   }
 
-  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
     padding-left: 1.6em;
   }
 
-  .callout.callout-captioned .callout-header {
+  .callout.callout-titled .callout-header {
     padding-top: 0.2em;
     margin-bottom: -0.2em;
   }
 
-  .callout.callout-captioned .callout-caption  p {
+  .callout.callout-titled .callout-title  p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
     
-  .callout.callout-captioned.callout-style-simple .callout-content  p {
+  .callout.callout-titled.callout-style-simple .callout-content  p {
     margin-top: 0;
   }
 
-  .callout.callout-captioned.callout-style-default .callout-content  p {
+  .callout.callout-titled.callout-style-default .callout-content  p {
     margin-top: 0.7em;
   }
 
-  .callout.callout-style-simple div.callout-caption {
+  .callout.callout-style-simple div.callout-title {
     border-bottom: none;
     font-size: .9rem;
     font-weight: 600;
     opacity: 75%;
   }
 
-  .callout.callout-style-default  div.callout-caption {
+  .callout.callout-style-default  div.callout-title {
     border-bottom: none;
     font-weight: 600;
     opacity: 85%;
@@ -145,7 +146,7 @@
     background-size: 0.9rem 0.9rem;
   }
 
-  .callout-caption {
+  .callout-title {
     display: flex
   }
     
@@ -158,16 +159,16 @@
     display: none !important;
   }
 
-  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
     margin-bottom: 0.5rem;
   }
 
-  .callout.callout-captioned .callout-icon::before {
+  .callout.callout-titled .callout-icon::before {
     margin-top: .5rem;
     padding-right: .5rem;
   }
 
-  .callout:not(.callout-captioned) .callout-icon::before {
+  .callout:not(.callout-titled) .callout-icon::before {
     margin-top: 1rem;
     padding-right: .5rem;
   }
@@ -182,7 +183,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
   }
 
-  div.callout-note.callout-style-default .callout-caption {
+  div.callout-note.callout-style-default .callout-title {
     background-color: #dae6fb
   }
 
@@ -194,7 +195,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
   }
 
-  div.callout-important.callout-style-default .callout-caption {
+  div.callout-important.callout-style-default .callout-title {
     background-color: #f7dddc
   }
 
@@ -206,7 +207,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
   }
 
-  div.callout-warning.callout-style-default .callout-caption {
+  div.callout-warning.callout-style-default .callout-title {
     background-color: #fcefdc
   }
 
@@ -218,7 +219,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
   }
 
-  div.callout-tip.callout-style-default .callout-caption {
+  div.callout-tip.callout-style-default .callout-title {
     background-color: #ccf1e3
   }
 
@@ -230,7 +231,7 @@
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
   }
 
-  div.callout-caution.callout-style-default .callout-caption {
+  div.callout-caution.callout-style-default .callout-title {
     background-color: #ffe5d0
   }
 
@@ -336,11 +337,11 @@
 <p><br></p>
 <div class="quarto-layout-panel">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 44.4%;justify-content: center;">
-<p><strong>Instructor</strong>: Aykut Satici, Ph.D.&nbsp;<br> <br> <br> Mechanical and Biomedical Engineering <br> Electrical and Computer Engineering <br> Boise State University, Boise, ID, USA</p>
+<div class="quarto-layout-cell" style="flex-basis: 52.2%;justify-content: center;">
+<p><strong>Instructor</strong>: Aykut Satici, Ph.D.&nbsp;<br> <br> Mechanical and Biomedical Engineering <br> Electrical and Computer Engineering <br> Boise State University, Boise, ID, USA</p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 55.6%;justify-content: center;">
-<p><strong>Topics</strong>: <br> Line Search Algorithms <br> The Method of Steepest Descent <br> Accelerated Steepest Descent <br> Multiplicative Steepest Descent <br> Newton’s Method: Second-Order <br> Sequential Quadratic Optimization Methods <br> Coordinate and Stochastic Gradient Descent <br></p>
+<div class="quarto-layout-cell" style="flex-basis: 47.8%;justify-content: center;">
+<p><strong>Topics</strong>: <br> Line Search Algorithms <br> The Method of Steepest Descent <br> Newton’s Method: Second-Order <br> <!-- Sequential Quadratic Optimization Methods <br> --> Coordinate and Stochastic Gradient Descent <br></p>
 </div>
 </div>
 </div>
@@ -348,7 +349,7 @@
 <section>
 <section id="line-search-algorithms" class="title-slide slide level1 center">
 <h1>Line Search Algorithms</h1>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right"><msub><mo>minimize</mo><mrow><mi>x</mi><mo>∈</mo><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>a</mi><mn>0</mn></msub><mo>,</mo><msub><mi>b</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">]</mo></mrow></mrow></msub></mtd><mtd columnalign="left"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><mstyle mathvariant="double-struck"><mi>ℝ</mi></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mo>minimize</mo><mrow><mi>x</mi><mo>∈</mo><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>a</mi><mn>0</mn></msub><mo>,</mo><msub><mi>b</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">]</mo></mrow></mrow></msub></mtd><mtd columnalign="left" style="text-align: left"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><mi>ℝ</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
 \begin{align}
 \operatorname{minimize}_{x \in [a_0, b_0]} &amp; f(x) \in \mathbb{R}
 \end{align}
@@ -410,16 +411,15 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <center>
-<img src="./contents/assets/twointermediate.png" width="75%" img="">
+<img src="./contents/assets/findingrho.png" width="75%" img="">
 </center>
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <p><strong>Finding <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math></strong></p>
 </div>
 <div class="callout-content">
-<p>We choose <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math> so that</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>b</mi><mn>1</mn></msub><mo>−</mo><msub><mi>a</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>b</mi><mn>1</mn></msub><mo>−</mo><msub><mi>b</mi><mn>2</mn></msub><mo>=</mo><mn>1</mn><mo>−</mo><mn>2</mn><mi>ρ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex"> \rho (b_1 - a_0) = b_1 - b_2 = 1-2\rho. </annotation></semantics></math></p>
+<p>We choose <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math> so that: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mphantom><mn>2345</mn></mphantom><mi>ρ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>b</mi><mn>1</mn></msub><mo>−</mo><msub><mi>a</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>b</mi><mn>1</mn></msub><mo>−</mo><msub><mi>b</mi><mn>2</mn></msub><mo>=</mo><mn>1</mn><mo>−</mo><mn>2</mn><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\phantom{2345} \rho (b_1 - a_0) = b_1 - b_2 = 1-2\rho</annotation></semantics></math>.</p>
 <p>This has the two solutions: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mphantom><mn>123</mn></mphantom><msub><mi>ρ</mi><mrow><mn>1</mn><mo>,</mo><mn>2</mn></mrow></msub><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mo>±</mo><msqrt><mn>5</mn></msqrt><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\phantom{123} \rho_{1,2} = \frac{1}{2}(3 \pm \sqrt{5})</annotation></semantics></math>.</p>
 <ul>
 <li><p>Since we require that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>&lt;</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\rho &lt; \frac{1}{2}</annotation></semantics></math>, we must take <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mfrac><mrow><mn>3</mn><mo>−</mo><msqrt><mn>5</mn></msqrt></mrow><mn>2</mn></mfrac><mo>≈</mo><mn>0.382</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">\rho =
@@ -438,7 +438,33 @@
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Example: locate <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> to within the range <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac><mn>3</mn><mn>10</mn></mfrac><annotation encoding="application/x-tex">\frac{3}{10}</annotation></semantics></math></strong></p>
+</div>
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mi>x</mi><mn>4</mn></msup><mo>−</mo><mn>14</mn><msup><mi>x</mi><mn>3</mn></msup><mo>+</mo><mn>60</mn><msup><mi>x</mi><mn>6</mn></msup><mo>−</mo><mn>70</mn><mi>x</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>x</mi><mo>∈</mo><mrow><mo stretchy="true" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> f(x) = x^4 - 14x^3 + 60x^6 - 70x, \quad x \in [0, 2]. </annotation></semantics></math></p>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>ρ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>N</mi></msup><mo>≤</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mfrac><mn>3</mn><mn>10</mn></mfrac><mspace width="0.278em"></mspace><mo>⇒</mo><mspace width="0.278em"></mspace><mi>N</mi><mo>&gt;</mo><mn>3.94</mn></mrow><annotation encoding="application/x-tex">(1-\rho)^N \leq \frac{1}{2}\frac{3}{10} \; \Rightarrow \; N &gt; 3.94</annotation></semantics></math> so <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">N=4</annotation></semantics></math>.</li>
+</ul>
+<p><strong>Iteration 1</strong>. Evaluate <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> at two intermediate points. We have <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>a</mi><mn>1</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msub><mi>a</mi><mn>0</mn></msub><mo>+</mo><mi>ρ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>b</mi><mn>0</mn></msub><mo>−</mo><msub><mi>a</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0.7639</mn><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>a</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>−</mo><mn>24.36</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>b</mi><mn>1</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msub><mi>a</mi><mn>0</mn></msub><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mi>ρ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>b</mi><mn>0</mn></msub><mo>−</mo><msub><mi>a</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1.236</mn></mtd><mtd columnalign="right" style="text-align: right"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>b</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>−</mo><mn>18.96</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex"> 
+\begin{align}
+a_1 &amp;= a_0 + \rho(b_0 - a_0) = 0.7639, &amp; f(a_1) = -24.36, \\ 
+b_1 &amp;= a_0 + (1-\rho)(b_0 - a_0) = 1.236 &amp; f(b_1) = -18.96. 
+\end{align}
+</annotation></semantics></math> Since <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>a</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>&lt;</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>b</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(a_1) &lt; f(b_1)</annotation></semantics></math>, the uncertainty interval is reduced to <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>a</mi><mn>0</mn></msub><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mn>0</mn><mo>,</mo><mn>1.236</mn><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> [a_0, b_1] = [0, 1.236]. </annotation></semantics></math></p>
+<p><strong>Iteration 2</strong>. We choose <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>b</mi><mn>2</mn></msub><mo>=</mo><msub><mi>a</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">b_2 = a_1</annotation></semantics></math> and so the new point is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>a</mi><mn>2</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msub><mi>a</mi><mn>0</mn></msub><mo>+</mo><mi>ρ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>b</mi><mn>1</mn></msub><mo>−</mo><msub><mi>a</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0.4721</mn><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>a</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>−</mo><mn>21.10</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>b</mi><mn>2</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msub><mi>a</mi><mn>1</mn></msub><mo>=</mo><mn>0.7639</mn><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>b</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>−</mo><mn>24.36</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+a_2 &amp;= a_0 + \rho(b_1 - a_0) = 0.4721, &amp; f(a_2) = -21.10, \\
+b_2 &amp;= a_1 = 0.7639, &amp; f(b_2) = -24.36.
+\end{align}
+</annotation></semantics></math> Since <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>a</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>&gt;</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>b</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(a_2) &gt; f(b_2)</annotation></semantics></math> the uncertainty interval is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mn>0.4721</mn><mo>,</mo><mn>1.236</mn><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> [a_2, b_1] = [0.4721, 1.236]. </annotation></semantics></math></p>
+<p><strong>Iteration 3</strong>. We choose <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>3</mn></msub><mo>=</mo><msub><mi>b</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">a_3 = b_2</annotation></semantics></math> and continue …</p>
+<p><strong>Iteration 4</strong>. Final iteration results in <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>a</mi><mn>4</mn></msub><mo>,</mo><msub><mi>b</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mn>0.6525</mn><mo>,</mo><mn>0.9443</mn><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> [a_4, b_3] = [0.6525, 0.9443]. </annotation></semantics></math></p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -453,9 +479,9 @@
 </div>
 <div class="columns">
 <div class="column" style="width:55%;">
-<div class="callout callout-tip no-icon callout-captioned callout-style-default">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <p><strong>Algorithm</strong></p>
 </div>
 <div class="callout-content">
@@ -483,9 +509,9 @@
 </div>
 </div>
 </div><div class="column" style="width:45%;">
-<div class="callout callout-warning no-icon callout-captioned callout-style-default">
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <p><strong>Salient features</strong></p>
 </div>
 <div class="callout-content">
@@ -500,9 +526,9 @@
 </div>
 </div>
 </div>
-<div class="callout callout-note no-icon callout-captioned callout-style-default">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
-<div class="callout-caption">
+<div class="callout-title">
 <p><strong>Example</strong></p>
 </div>
 <div class="callout-content">
@@ -518,6 +544,562 @@
 </section>
 <section id="nd-order-method-newtons-method" class="slide level2 smaller">
 <h2><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>nd-Order Method: Newton’s Method</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>Construct a quadratic function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math> which at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>k</mi></msub><annotation encoding="application/x-tex">x_k</annotation></semantics></math> agrees with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> up to second derivatives, that is</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>f</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>f</mi><mi>″</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex"> q(x) = f(x_k) + f'(x_k)(x-x_k) + \frac{1}{2}f''(x_k)(x-x_k)^2. </annotation></semantics></math></p>
+<ul>
+<li>Calculate an estimate <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">x_{k+1}</annotation></semantics></math> of the minimum point of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> by finding the point where the derivative of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math> vanishes.</li>
+</ul>
+<p><span id="eq-newton"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right"><mn>0</mn></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mi>q</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>f</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>f</mi><mi>″</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mo>⇒</mo><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>x</mi><mi>k</mi></msub><mo>−</mo><mfrac><mrow><mi>f</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mi>f</mi><mi>″</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> 
+\begin{align}
+0 &amp;= q'(x_{k+1}) = f'(x_k) + f''(x_k)(x_{k+1}-x_k) \\ 
+&amp;\Rightarrow x_{k+1} = x_k - \frac{f'(x_k)}{f''(x_k)}. 
+\end{align}
+ \qquad(1)</annotation></semantics></math></span></p>
+<center>
+<img src="./contents/assets/newtonmin.png" width="60%" img="">
+</center>
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">x_{k+1}</annotation></semantics></math> resulting from Newton’s method does not depend on the value <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(x_k)</annotation></semantics></math>.</li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>Newton’s method may be viewed as a technique for iteratively solving equations of the form</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn><mo>,</mo></mrow><annotation encoding="application/x-tex"> g(x) = 0, </annotation></semantics></math></p>
+<p>where, when applied to minimization, we put <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>f</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">g(x) = f'(x)</annotation></semantics></math>.</p>
+<center>
+<img src="./contents/assets/newtoneqn.png" width="60%" img="">
+</center>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Proposition</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mo>*</mo></msup><annotation encoding="application/x-tex">x^\ast</annotation></semantics></math> satisfy <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>x</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g(x^\ast) = 0</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>x</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g'(x^\ast) \neq 0</annotation></semantics></math>. Then, provided <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>0</mn></msub><annotation encoding="application/x-tex">x_0</annotation></semantics></math> is sufficiently close to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mo>*</mo></msup><annotation encoding="application/x-tex">x^\ast</annotation></semantics></math>, the sequence <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>x</mi><mi>k</mi></msub><msubsup><mo stretchy="false" form="postfix">}</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mi>∞</mi></msubsup></mrow><annotation encoding="application/x-tex">\{x_k\}_{k=0}^\infty</annotation></semantics></math> generated by Newton’s method <a href="#/nd-order-method-newtons-method">Equation&nbsp;1</a> converges to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mo>*</mo></msup><annotation encoding="application/x-tex">x^\ast</annotation></semantics></math> with an order of convergence at least two.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-newtons-method" class="slide level2">
+<h2>Example – Newton’s Method</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>We want to find the minimizer of</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mo>sin</mo><mi>x</mi><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>x</mi><mn>0</mn></msub><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex"> f(x) = \frac{1}{2}x^2 - \sin{x}, \quad x_0 = \frac{1}{2}. </annotation></semantics></math></p>
+<ul>
+<li>We want an accuracy of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>=</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>5</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\varepsilon = 10^{-5}</annotation></semantics></math>, i.e., stop when</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>x</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mo>&lt;</mo><mi>ε</mi><mi>.</mi></mrow><annotation encoding="application/x-tex"> |x_{k+1} - x_k | &lt; \varepsilon. </annotation></semantics></math></p>
+<ul>
+<li>We compute</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>x</mi><mo>−</mo><mo>cos</mo><mi>x</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>f</mi><mi>″</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn><mo>+</mo><mo>sin</mo><mi>x</mi><mi>.</mi></mrow><annotation encoding="application/x-tex"> f'(x) = x - \cos{x}, \quad f''(x) = 1 + \sin{x}. </annotation></semantics></math></p>
+</div><div class="column" style="width:50%;">
+<p><br> <br> <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>x</mi><mn>1</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>−</mo><mfrac><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>−</mo><mo>cos</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow><mrow><mn>1</mn><mo>+</mo><mo>sin</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></mfrac><mo>=</mo><mn>0.7552</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>x</mi><mn>2</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><mfrac><mrow><mi>f</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mi>f</mi><mi>″</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><mfrac><mn>0.02710</mn><mn>1.685</mn></mfrac><mo>=</mo><mn>0.7391</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>x</mi><mn>3</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><mfrac><mrow><mi>f</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mi>f</mi><mi>″</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo>=</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><mfrac><mrow><mn>9.461</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>5</mn></mrow></msup></mrow><mn>1.673</mn></mfrac><mo>=</mo><mn>0.7390</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>x</mi><mn>4</mn></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><msub><mi>x</mi><mn>3</mn></msub><mo>−</mo><mfrac><mrow><mi>f</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mrow><mi>f</mi><mi>″</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>3</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><mo>=</mo><msub><mi>x</mi><mn>3</mn></msub><mo>−</mo><mfrac><mrow><mn>1.17</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>9</mn></mrow></msup></mrow><mn>1.673</mn></mfrac><mo>=</mo><mn>0.7390</mn><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+x_1 &amp;= \frac{1}{2} - \frac{\frac{1}{2} - \cos{\frac{1}{2}}}{1 +
+\sin{\frac{1}{2}}} = 0.7552, \\
+x_2 &amp;= x_1 - \frac{f'(x_1)}{f''(x_1)} = x_1 - \frac{0.02710}{1.685} = 0.7391, \\
+x_3 &amp;= x_2 - \frac{f'(x_2)}{f''(x_2)} = x_2 - \frac{9.461 \times 10^{-5}}{1.673}
+= 0.7390, \\
+x_4 &amp;= x_3 - \frac{f'(x_3)}{f''(x_3)} = x_3 - \frac{1.17 \times 10^{-9}}{1.673}
+= 0.7390.
+\end{align}
+</annotation></semantics></math></p>
+</div>
+</div>
+</section>
+<section id="inaccurate-line-search" class="slide level2 smaller">
+<h2>Inaccurate Line Search</h2>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>In practice, we do not bend over backwards to find the exact minimum when performing line search.
+<ul>
+<li>It is often desirable to sacrifice accuracy in the line search routine in order to conserve overall computation time.</li>
+<li>Most functions to not attain their minimum along the line we’re searching at a particular iteration anyway!</li>
+</ul></li>
+<li>Inaccuracy is introduced in a line search algorithm by simply terminating the search before it has converged.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Armijo’s Rule</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>A practical and popular criterion for terminating a line search is Armijo’s rule.</p></li>
+<li><p>The idea is that the rule should first guarantee that the selected <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> is not too large, and next it should not be too small. <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>+</mo><mi>α</mi><msub><mi>𝐝</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> \phi(\alpha) = f(\bm{x}_k + \alpha \bm{d}_k). </annotation></semantics></math></p></li>
+<li><p>Consider the function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>ε</mi><mi>ϕ</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\phi(0) + \varepsilon \phi'(0)\alpha</annotation></semantics></math>, for fixed <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>ε</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 &lt; \varepsilon &lt; 1</annotation></semantics></math>.</p></li>
+<li><p>A value of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> is consered to be not too large if the corresponding function value lies below the dashed line; that is, if <span id="eq-armijo1"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>ε</mi><mi>ϕ</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>α</mi><mi>.</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \phi(\alpha) \leq \phi(0) + \varepsilon \phi'(0)\alpha.  \qquad(2)</annotation></semantics></math></span></p></li>
+<li><p>To ensure that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> is not too small, a value <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\eta &gt; 1</annotation></semantics></math> is selected, and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> is then considered to be not too small if <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>η</mi><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>&gt;</mo><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>ε</mi><mi>ϕ</mi><mi>′</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>η</mi><mi>α</mi><mi>.</mi></mrow><annotation encoding="application/x-tex"> \phi(\eta \alpha) &gt; \phi(0) + \varepsilon \phi'(0)\eta \alpha. </annotation></semantics></math></p></li>
+<li><p>This means that if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> is increased by a factor <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>, it will fail to meet the test <a href="#/inaccurate-line-search">Equation&nbsp;2</a>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<center>
+<img src="./contents/assets/armijo.png" width="80%" img="">
+</center>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>The acceptable region defined by the Armijo rule when <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\eta = 2</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="the-method-of-steepest-descent-first-order" class="title-slide slide level1 center">
+<h1>The Method of Steepest Descent: First-Order</h1>
+<p>Often the first tried method on a new problem.</p>
+</section>
+<section id="the-method-and-convergence" class="slide level2 smaller">
+<h2>The Method and Convergence</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li>The gradient <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\nabla f(\bm{x})</annotation></semantics></math> is defined as a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-dim. <em>row</em> vector.</li>
+<li>We define the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-dim. <em>column</em> vector <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>∇</mi><mi>f</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup></mrow><annotation encoding="application/x-tex">g(\bm{x}) = \nabla f(\bm{x})^\top</annotation></semantics></math>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>The Method of Steepest Descent (SDM)</strong></p>
+</div>
+<div class="callout-content">
+<p>The iterative algorithm is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><msub><mi>α</mi><mi>k</mi></msub><msub><mi>𝐠</mi><mi>k</mi></msub><mo>,</mo></mrow><annotation encoding="application/x-tex"> \bm{x}_{k+1} = \bm{x}_k - \alpha_k \bm{g}_k, </annotation></semantics></math></p>
+<p>where the stepsize <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\alpha_k</annotation></semantics></math> is a nonnegative scalar possible minimizing <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><mi>α</mi><msub><mi>𝐠</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(\bm{x}_k - \alpha \bm{g}_k)</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>The Algorithm</strong></p>
+</div>
+<div class="callout-content">
+<p>Define the mapping <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mphantom><mn>1</mn></mphantom><mi>𝐒</mi><mo>:</mo><msup><mi>ℝ</mi><mrow><mn>2</mn><mi>n</mi></mrow></msup><mo>→</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">\phantom{1} \bm{S}: \mathbb{R}^{2n} \rightarrow \mathbb{R}^n</annotation></semantics></math> by <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐒</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><mi>𝐝</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>𝐲</mi><mo>:</mo><mi>𝐲</mi><mo>=</mo><mi>𝐱</mi><mo>+</mo><mi>α</mi><mi>𝐝</mi><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mi>α</mi><mo>≥</mo><mn>0</mn><mo>,</mo><mspace width="0.278em"></mspace><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munder><mo>min</mo><mrow><mn>0</mn><mo>≤</mo><mi>α</mi><mo>&lt;</mo><mi>∞</mi></mrow></munder><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>+</mo><mi>α</mi><mi>𝐝</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex"> \bm{S}(\bm{x}, \bm{d}) = \{\bm{y}: \bm{y} = \bm{x} + \alpha
+\bm{d}, \;\; \alpha \geq 0, \; f(\bm{y}) =
+\operatorname{min}_{0 \leq \alpha &lt; \infty} f(\bm{x} + \alpha \bm{d}) \}. </annotation></semantics></math></p>
+<p>This is a closed map if <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐝</mi><mo>≠</mo><mn>𝟎</mn></mrow><annotation encoding="application/x-tex">\bm{d} \neq \bm{0}</annotation></semantics></math>.</p>
+<p>The overall algorithm is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mi>𝐀</mi><mo>:</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mo>→</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">\; \bm{A}: \mathbb{R}^n \rightarrow \mathbb{R}^n</annotation></semantics></math> which gives <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>∈</mo><mi>𝐀</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}_{k+1} \in \bm{A}(\bm{x}_k)</annotation></semantics></math> can be decomposed in the form</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐀</mi><mo>=</mo><mrow><mi>𝐒</mi><mi>𝐆</mi></mrow><mo>,</mo><mspace width="1.0em"></mspace><mi>𝐆</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><mo>−</mo><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> \bm{A} = \bm{SG}, \quad \bm{G}(\bm{x}) = (\bm{x}, -\bm{g}(\bm{x})). </annotation></semantics></math></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Global Convergence</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>Define the solution set <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Γ</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>𝐱</mi><mo>∈</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mo>:</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>𝟎</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\Gamma = \{\bm{x} \in \mathbb{R}^n: \nabla f(\bm{x}) = \bm{0}\}</annotation></semantics></math>.</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">Z(\bm{x}) = f(\bm{x})</annotation></semantics></math> is a descent function for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\bm{A}</annotation></semantics></math>, since for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≠</mo><mn>𝟎</mn></mrow><annotation encoding="application/x-tex">\nabla f(\bm{x}) \neq \bm{0}</annotation></semantics></math> <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>min</mo><mrow><mn>0</mn><mo>≤</mo><mi>α</mi><mo>&lt;</mo><mi>∞</mi></mrow></munder><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>−</mo><mi>α</mi><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>&lt;</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> \operatorname{min}_{0 \leq \alpha &lt; \infty} f(\bm{x} - \alpha \bm{g}(\bm{x}))
+&lt; f(\bm{x}). </annotation></semantics></math></p></li>
+<li><p>Thus by the Global Convergence Theorem, if the sequence <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{\bm{x}_k\}</annotation></semantics></math> is bounded, it will have limit points and each of these is a solution.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definition (First-order <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>-Lipschitz Function)</strong></p>
+</div>
+<div class="callout-content">
+<p>For any two points <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐲</mi><annotation encoding="application/x-tex">\bm{y}</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐲</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><mi>β</mi><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐲</mi><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">|</mo></mrow></mrow><annotation encoding="application/x-tex">|\nabla f(\bm{y}) - \nabla f(\bm{x})| \leq \beta |\bm{y} - \bm{x}|</annotation></semantics></math>, for a positive real number <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Convergence Speed for fixed stepsize <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>k</mi></msub><mo>=</mo><mfrac><mn>1</mn><mi>β</mi></mfrac></mrow><annotation encoding="application/x-tex">\alpha_k = \frac{1}{\beta}</annotation></semantics></math> is arithmetic.</strong></p>
+</div>
+<div class="callout-content">
+<p>We may not know <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac><mn>1</mn><mi>β</mi></mfrac><annotation encoding="application/x-tex">\frac{1}{\beta}</annotation></semantics></math> so we employ a <em>backtracking line search</em>: start with a guess of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>; if sufficient obj. reduction is achieved, halve <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>; otherwise double <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>. Stop when the process is reversed.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-quadratic-case" class="slide level2 smaller">
+<h2>The Quadratic Case</h2>
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>When <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(\bm{x})</annotation></semantics></math> is strongly convex, the convergence speed can be increased from arithmetic to geometric or linear convergence.</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>We focus on the quadratic problem</p>
+<p><span id="eq-quadratic"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mi>𝐱</mi><mi>⊤</mi></msup><mi>𝐐</mi><mi>𝐱</mi><mo>−</mo><msup><mi>𝐱</mi><mi>⊤</mi></msup><mi>𝐛</mi><mo>,</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><mi>𝐐</mi><mo>≻</mo><mn>𝟎</mn><mi>.</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> f(\bm{x}) = \frac{1}{2}\bm{x}^\top \bm{Q} \bm{x} - \bm{x}^\top \bm{b}, \;\;
+\bm{Q} \succ \bm{0}.  \qquad(3)</annotation></semantics></math></span></p>
+<ul>
+<li><p>The unique minimum of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> can be found directly by setting the gradient to zero: <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐐</mi><msup><mi>𝐱</mi><mo>*</mo></msup><mo>=</mo><mi>𝐛</mi><mi>.</mi></mrow><annotation encoding="application/x-tex"> \bm{Q}\bm{x}^\ast = \bm{b}. </annotation></semantics></math></p></li>
+<li><p>Let’s introduce the function <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝐐</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex"> E(\bm{x}) = \frac{1}{2}(\bm{x} -
+\bm{x}^\ast)\bm{Q}(\bm{x} - \bm{x}^\ast), </annotation></semantics></math> so that we have <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mi>𝐱</mi><mo>*</mo></msup><mi>𝐐</mi><msup><mi>𝐱</mi><mo>*</mo></msup></mrow><annotation encoding="application/x-tex">E(\bm{x}) = f(\bm{x}) + \frac{1}{2}\bm{x}^\ast \bm{Q} \bm{x}^\ast</annotation></semantics></math>. Hence <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>min</mo><mi>f</mi><mspace width="0.278em"></mspace><mo>⇔</mo><mspace width="0.278em"></mspace><mo>min</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">\operatorname{min} f \; \Leftrightarrow \; \operatorname{min} E</annotation></semantics></math>.</p></li>
+<li><p>The method of SD can be expressed as <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><msub><mi>α</mi><mi>k</mi></msub><msub><mi>𝐠</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\bm{x}_{k+1} = \bm{x}_k - \alpha_k \bm{g}_k</annotation></semantics></math>, where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐠</mi><mi>k</mi></msub><mo>=</mo><mi>𝐐</mi><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><mi>𝐛</mi></mrow><annotation encoding="application/x-tex">\bm{g}_k = \bm{Q}\bm{x}_k - \bm{b}</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\alpha_k</annotation></semantics></math> minimizes <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><mi>α</mi><msub><mi>𝐠</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(\bm{x}_k - \alpha \bm{g}_k)</annotation></semantics></math>.</p></li>
+<li><p>We have by definition <a href="#/the-quadratic-case">Equation&nbsp;3</a> <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><mi>α</mi><msub><mi>𝐠</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><mi>α</mi><msub><mi>𝐠</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>𝐐</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><mi>α</mi><msub><mi>𝐠</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><mi>α</mi><msub><mi>𝐠</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>𝐛</mi><mi>.</mi></mrow><annotation encoding="application/x-tex"> f(\bm{x}_k -\alpha \bm{g}_k) = \frac{1}{2}(\bm{x}_k - \alpha \bm{g}_k)^\top
+\bm{Q} (\bm{x}_k - \alpha \bm{g}_k) - (\bm{x}_k - \alpha \bm{g}_k)^\top \bm{b}.
+</annotation></semantics></math></p></li>
+</ul>
+<p>This is minimized at <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>k</mi></msub><mo>=</mo><mfrac><mrow><msubsup><mi>𝐠</mi><mi>k</mi><mi>⊤</mi></msubsup><msub><mi>𝐠</mi><mi>k</mi></msub></mrow><mrow><msubsup><mi>𝐠</mi><mi>k</mi><mi>⊤</mi></msubsup><mi>𝐐</mi><msub><mi>𝐠</mi><mi>k</mi></msub></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex"> \alpha_k = \frac{\bm{g}_k^\top \bm{g}_k}{\bm{g}_k^\top
+\bm{Q} \bm{g}_k}. </annotation></semantics></math></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<center>
+<img src="./contents/assets/steepestdesc.png" width="70%" img="">
+</center>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<ul>
+<li><p>The function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> and the SD process is illustrated by showing the contours of constant values of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> and a typical sequence developed by the process.</p></li>
+<li><p>The contours of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> are <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-dim. ellipsoids with axes in the directions of the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-mutually orthogonal eigenvectors of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐐</mi><annotation encoding="application/x-tex">\bm{Q}</annotation></semantics></math>.</p></li>
+<li><p>The axis corresponding to the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">i^{\text{th}}</annotation></semantics></math> eigenvector has length proportional to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac><mn>1</mn><msub><mi>λ</mi><mi>i</mi></msub></mfrac><annotation encoding="application/x-tex">\frac{1}{\lambda_i}</annotation></semantics></math>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="nonquadratic-case" class="slide level2 smaller">
+<h2>Nonquadratic Case</h2>
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>For nonquadratic functions, SD still does well if the condition number is modest. To establish estimates, assume that the Hessian matrix is positive definite: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mi>𝐈</mi><mo>≤</mo><mi>𝐅</mi><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>𝐱</mi><mo accent="true">‾</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>A</mi><mi>𝐈</mi></mrow><annotation encoding="application/x-tex">\alpha \bm{I} \leq \bm{F}(\bar{\bm{x}}) \leq A\bm{I}</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Exact Line Search</strong></p>
+</div>
+<div class="callout-content">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><mi>α</mi><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>α</mi><mi>𝐠</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mrow><mi>A</mi><msup><mi>α</mi><mn>2</mn></msup></mrow><mn>2</mn></mfrac><mi>𝐠</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> f(\bm{x}_k - \alpha g(\bm{x}_k)) \leq f(\bm{x}_k) - \alpha
+\bm{g}(\bm{x}_k)^\top \bm{g}(\bm{x}_k) +
+\frac{A\alpha^2}{2}\bm{g}(\bm{x}_k)^\top \bm{g}(\bm{x}_k). </annotation></semantics></math></p>
+<p>Minimizing both sides w.r.t. <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> yields <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>A</mi></mrow></mfrac><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex"> f(\bm{x}_{k+1}) \leq f(\bm{x}_k) - \frac{1}{2A}|\bm{g}(\bm{x}_k)|^2. </annotation></semantics></math></p>
+<p>Subtracting the optimal value <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mo>*</mo></msup><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f^\ast = f(\bm{x}^\ast)</annotation></semantics></math> from both sides <span id="eq-A"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>f</mi><mo>*</mo></msup><mo>≤</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>f</mi><mo>*</mo></msup><mo>−</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>A</mi></mrow></mfrac><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mi>.</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> f(\bm{x}_{k+1}) - f^\ast \leq f(\bm{x}_k) - f^\ast -
+\frac{1}{2A}|\bm{g}(\bm{x}_k)|^2.  \qquad(4)</annotation></semantics></math></span></p>
+<p>Similarly, for any <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> there holds <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>𝐠</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>−</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mi>a</mi><mn>2</mn></mfrac><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐱</mi><mo>−</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex"> f(\bm{x}) \geq f(\bm{x}_k) + \bm{g}(\bm{x}_k)^\top (\bm{x} - \bm{x}_k) +
+\frac{a}{2} | \bm{x} - \bm{x}_k |^2. </annotation></semantics></math></p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Again, minimize both sides: the left-hand side is minimized at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>f</mi><mo>*</mo></msup><annotation encoding="application/x-tex">f^\ast</annotation></semantics></math> and the right-hand side is minimized at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>𝐱</mi><mo accent="true">‾</mo></mover><mo>=</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><mfrac><mrow><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mi>a</mi></mfrac></mrow><annotation encoding="application/x-tex">\bar{\bm{x}} = \bm{x}_k - \frac{\bm{g}(\bm{x}_k)}{a}</annotation></semantics></math>. Subsituting this <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>𝐱</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{\bm{x}}</annotation></semantics></math> in the right-hand side gives <span id="eq-a"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mo>*</mo></msup><mo>≥</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>a</mi></mrow></mfrac><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mi>.</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>5</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> f^\ast \geq f(\bm{x}_k) - \frac{1}{2a}|\bm{g}(\bm{x}_k)|^2.  \qquad(5)</annotation></semantics></math></span></p>
+<p>From <a href="#/nonquadratic-case">Equation&nbsp;5</a>, we have <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mo>≤</mo><mn>2</mn><mi>a</mi><mrow><mo stretchy="true" form="prefix">[</mo><msup><mi>f</mi><mo>*</mo></msup><mo>−</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> - |\bm{g}(\bm{x}_k)|^2 \leq 2a [f^\ast - f(\bm{x}_k)]. </annotation></semantics></math></p>
+<p>Substituting this in <a href="#/nonquadratic-case">Equation&nbsp;4</a> gives <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>f</mi><mo>*</mo></msup><mo>≤</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><mfrac><mi>a</mi><mi>A</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><msup><mi>f</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> f(\bm{x}_{k+1}) - f^\ast \leq (1-\frac{a}{A})[f(\bm{x}_k - f^\ast)]. </annotation></semantics></math></p>
+<p>This shows that SD makes progress even when it is not close to the solution.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><strong>Theorem</strong>. Suppose that the Hessian matrix <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐅</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{F}(\bm{x}^\ast)</annotation></semantics></math> of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> at a relative minimum <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math> has the smallest and largest eigenvalues <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>,</mo><mi>A</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a, A &gt; 0</annotation></semantics></math>, respectively. If <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{\bm{x}_k\}</annotation></semantics></math> is a sequence generated by the method of steepest descent that converges to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math>, then the sequence of objective values <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{f(\bm{x}_k)\}</annotation></semantics></math> converges to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(\bm{x}^\ast)</annotation></semantics></math> linearly with a convergence ratio no greater than <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><mrow><mi>A</mi><mo>−</mo><mi>a</mi></mrow><mrow><mi>A</mi><mo>+</mo><mi>a</mi></mrow></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><annotation encoding="application/x-tex">(\frac{A-a}{A+a})^2</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="accelerated-steepest-descent" class="slide level2 smaller">
+<h2>Accelerated Steepest Descent</h2>
+<p><br><br></p>
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>There is an <em>accelerated</em> steepest descent method that works as follows:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>λ</mi><mn>0</mn></msup><mo>=</mo><mn>0</mn><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"><msub><mi>λ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><msqrt><mrow><mn>1</mn><mo>+</mo><mn>4</mn><msubsup><mi>λ</mi><mi>k</mi><mn>2</mn></msubsup></mrow></msqrt><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>α</mi><mi>k</mi></msub><mo>=</mo><mfrac><mrow><mn>1</mn><mo>−</mo><msub><mi>λ</mi><mi>k</mi></msub></mrow><msub><mi>λ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub></mfrac><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"><msub><mover><mi>𝐱</mi><mo accent="true">̃</mo></mover><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><mfrac><mn>1</mn><mi>β</mi></mfrac><mi>∇</mi><mi>f</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>−</mo><msub><mi>α</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><msub><mover><mi>𝐱</mi><mo accent="true">̃</mo></mover><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>α</mi><mi>k</mi></msub><msub><mover><mi>𝐱</mi><mo accent="true">̃</mo></mover><mi>k</mi></msub><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+&amp;\lambda^0 = 0, &amp; \lambda_{k+1} = \frac{1}{2}(1 + \sqrt{1+4\lambda_k^2}), &amp;
+\alpha_k = \frac{1 - \lambda_k}{\lambda_{k+1}}, &amp; \tilde{\bm{x}}_{k+1} =
+\bm{x}_k - \frac{1}{\beta}\nabla f(\bm{x}_k)^\top, &amp; \bm{x}_{k+1} = (1 -
+\alpha_k) \tilde{\bm{x}}_{k+1} + \alpha_k \tilde{\bm{x}}_k.
+\end{align}
+</annotation></semantics></math></p>
+<p>Note that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>λ</mi><mi>k</mi><mn>2</mn></msubsup><mo>=</mo><msub><mi>λ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>λ</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\lambda_k^2 = \lambda_{k+1}(\lambda_{k+1} -1)</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mi>k</mi></msub><mo>&gt;</mo><mfrac><mi>k</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\lambda_k &gt; \frac{k}{2}</annotation></semantics></math>, and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>k</mi></msub><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\alpha_k \leq 0</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem (Accelerated Steepest Descent)</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(\bm{x})</annotation></semantics></math> be convex and differentiable everywhere, satisfies the (first-order) <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>-Lipschitz condition, and admits a minimizer <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math>. Then, the method of accelerated steepest descent generates a sequence of solutions such that</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>𝐱</mi><mo accent="true">̃</mo></mover><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mfrac><mrow><mn>2</mn><mi>β</mi></mrow><msup><mi>k</mi><mn>2</mn></msup></mfrac><msup><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>𝐱</mi><mn>0</mn></msub><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mo>,</mo><mspace width="1.0em"></mspace><mo>∀</mo><mi>k</mi><mo>≥</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+f(\tilde{\bm{x}}_{k+1}) - f(\bm{x}^\ast) \leq \frac{2\beta}{k^2}|\bm{x}_0 -
+\bm{x}^\ast|^2, \quad \forall k \geq 1. 
+</annotation></semantics></math></p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="newtons-method-second-order" class="title-slide slide level1 center">
+<h1>Newton’s Method: <br> Second-Order</h1>
+<p><br></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≃</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>−</mo><mi>𝐱</mi><mo>−</mo><mi>k</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>−</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>𝐅</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>−</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> f(\bm{x}) \simeq f(\bm{x}_k) + \nabla f(\bm{x}_k)(\bm{x} - \bm{x}-k) +
+\frac{1}{2} (\bm{x} - \bm{x}_k)^\top \bm{F}(\bm{x}_k)(\bm{x} - \bm{x}_k). </annotation></semantics></math></p>
+<p>The rhs is minimized at</p>
+<p><span id="eq-newton-method"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><menclose notation="box"><mrow><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><msup><mrow><mo stretchy="true" form="prefix">[</mo><mi>𝐅</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>∇</mi><mi>f</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mi>.</mi></mrow></menclose><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>6</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \boxed{\bm{x}_{k+1} = \bm{x}_k - [\bm{F}(\bm{x}_k)]^{-1} \nabla f(\bm{x}_k)^\top.}  \qquad(6)</annotation></semantics></math></span></p>
+</section>
+<section id="order-two-convergence" class="slide level2 smaller">
+<h2>Order Two Convergence</h2>
+<p><br></p>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem (Newton’s Method)</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>∈</mo><msup><mi>C</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">f \in C^3</annotation></semantics></math> on <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mi>n</mi></msup><annotation encoding="application/x-tex">\mathbb{R}^n</annotation></semantics></math> and assume that at the local minimum point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math>, the Hessian <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐅</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{F}(\bm{x}^\ast)</annotation></semantics></math> is positive definite. Then if started sufficiently close to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math>, the points generated by Newton’s method converge to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math>. The order of convergence is at least two.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Proof</strong></p>
+</div>
+<div class="callout-content">
+<p>There are <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>,</mo><msub><mi>β</mi><mn>1</mn></msub><mo>,</mo><msub><mi>β</mi><mn>2</mn></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\rho, \beta_1, \beta_2 &gt; 0</annotation></semantics></math> such that for all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>𝐱</mi><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo>&lt;</mo><mi>ρ</mi></mrow><annotation encoding="application/x-tex">|\bm{x} - \bm{x}^\ast &lt; \rho</annotation></semantics></math>, there holds <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐅</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="true" form="postfix">|</mo></mrow><mo>&lt;</mo><msub><mi>β</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">|\bm{F}(\bm{x})^{-1}| &lt; \beta_1</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>∇</mi><mi>f</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo mathvariant="bold">*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mo>−</mo><mi>∇</mi><mi>f</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mo>−</mo><mi>𝐅</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo>−</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><msub><mi>β</mi><mn>2</mn></msub><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐱</mi><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|\nabla f(\bm{x^\ast})^\top - \nabla f(\bm{x})^\top - \bm{F}(\bm{x})(\bm{x}^\ast - \bm{x})| \leq \beta_2 |\bm{x} - \bm{x}^\ast|^2</annotation></semantics></math>. now suppose <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\bm{x}_k</annotation></semantics></math> is selected with <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>β</mi><mn>1</mn></msub><msub><mi>β</mi><mn>2</mn></msub><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">|</mo></mrow><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\beta_1\beta_2|\bm{x}_k - \bm{x}^\ast| &lt; 1</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">|</mo></mrow><mo>&lt;</mo><mi>ρ</mi></mrow><annotation encoding="application/x-tex">|\bm{x}_k - \bm{x}^\ast| &lt; \rho</annotation></semantics></math>. Then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">|</mo></mrow></mtd><mtd columnalign="left" style="text-align: left"><mo>=</mo><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo>−</mo><mi>𝐅</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>∇</mi><mi>f</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐅</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mrow><mo stretchy="true" form="prefix">[</mo><mi>∇</mi><mi>f</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mo>−</mo><mi>∇</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>𝐅</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo>−</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mo stretchy="true" form="postfix">|</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mo>≤</mo><mrow><mo stretchy="true" form="prefix">|</mo><mi>𝐟</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="true" form="postfix">|</mo></mrow><msub><mi>β</mi><mn>2</mn></msub><msup><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mo>≤</mo><msub><mi>β</mi><mn>1</mn></msub><msub><mi>β</mi><mn>2</mn></msub><msup><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mo>&lt;</mo><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">|</mo></mrow><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+|\bm{x}_{k+1} - \bm{x}^\ast| &amp;= |\bm{x}_k - \bm{x}^\ast -
+\bm{F}(\bm{x}_k)^{-1}\nabla f(\bm{x}_k)^\top| = |\bm{F}(\bm{x}_k)^{-1}[\nabla
+f(\bm{x}^\ast)^\top - \nabla f(\bm{x}_k) - \bm{F}(\bm{x}_k)(\bm{x}^\ast -
+\bm{x}_k)]| \\ &amp;\leq |\bm{f}(\bm{x}_k)^{-1}|\beta_2|\bm{x}_k - \bm{x}^\ast|^2
+\leq \beta_1\beta_2|\bm{x}_k - \bm{x}^\ast|^2 &lt; |\bm{x}_k - \bm{x}^\ast|.
+\end{align}
+</annotation></semantics></math></p>
+<p>The final inequality shows that the new point is closer to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math> than the old point, and hence all conditions apply again to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">\bm{x}_{k+1}</annotation></semantics></math>. The previous inequality establishes that the convergence is second order.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="modifications" class="slide level2 smaller">
+<h2>Modifications</h2>
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Although Newton’s method is very attractive in terms of its convergence properties near the solution, it requires modification before it can be used at points that are remote from the solution.</p>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Damping</strong></p>
+</div>
+<div class="callout-content">
+<p>A search parameter <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> is introduced <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><msub><mi>α</mi><mi>k</mi></msub><mi>𝐅</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>∇</mi><mi>f</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mo>,</mo></mrow><annotation encoding="application/x-tex"> \bm{x}_{k+1} = \bm{x}_k - \alpha_k \bm{F}(\bm{x}_k)^{-1}\nabla
+f(\bm{x}_k)^\top, </annotation></semantics></math> where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\alpha_k</annotation></semantics></math> is selected to minimize <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Positive Definiteness and Scaling</strong></p>
+</div>
+<div class="callout-content">
+<p>General class of algorithms is given by <span id="eq-general"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>+</mo><mi>α</mi><msub><mi>𝐝</mi><mi>k</mi></msub><mo>=</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><mi>α</mi><msub><mi>𝐌</mi><mi>k</mi></msub><msub><mi>𝐠</mi><mi>k</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>7</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \bm{x}_{k+1} = \bm{x}_k + \alpha \bm{d}_k = \bm{x}_k - \alpha \bm{M}_k \bm{g}_k,  \qquad(7)</annotation></semantics></math></span></p>
+<ul>
+<li>SD: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐌</mi><mi>k</mi></msub><mo>=</mo><mi>𝐈</mi></mrow><annotation encoding="application/x-tex">\bm{M}_k = \bm{I}</annotation></semantics></math>, Newton: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐌</mi><mi>k</mi></msub><mo>=</mo><mi>𝐅</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\bm{M}_k = \bm{F}(\bm{x}_k)^{-1}</annotation></semantics></math>.</li>
+</ul>
+<p>For small <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>, it can be shown that <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>α</mi><msubsup><mi>𝐠</mi><mi>k</mi><mi>⊤</mi></msubsup><msub><mi>𝐌</mi><mi>k</mi></msub><msub><mi>𝐠</mi><mi>k</mi></msub><mo>+</mo><mi>O</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>α</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> f(\bm{x}_{k+1}) = f(\bm{x}_k) -
+\alpha \bm{g}_k^\top \bm{M}_k \bm{g}_k + O(\alpha^2). </annotation></semantics></math></p>
+<ul>
+<li>As <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\alpha \rightarrow 0</annotation></semantics></math>, the second term on the rhs dominates the third.</li>
+<li>To guarantee a descrese in <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>, we must have <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>𝐠</mi><mi>k</mi><mi>⊤</mi></msubsup><msub><mi>𝐌</mi><mi>k</mi></msub><msub><mi>𝐠</mi><mi>k</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\bm{g}_k^\top \bm{M}_k \bm{g}_k &gt; 0</annotation></semantics></math>.
+<ul>
+<li>Simplest way to ensure this is to require <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐌</mi><mi>k</mi></msub><mo>≻</mo><mn>𝟎</mn></mrow><annotation encoding="application/x-tex">\bm{M}_k \succ \bm{0}</annotation></semantics></math>.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>General Problems</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>In practice, Newton’s method must be modified to accommodate the possible nonpositive definiteness at regions remote from the solution.</p></li>
+<li><p>Common approach: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐌</mi><mi>k</mi></msub><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>μ</mi><mi>k</mi></msub><mi>𝐈</mi><mo>+</mo><mi>𝐅</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\bm{M}_k = [\mu_k\bm{I} + \bm{F}(\bm{x}_k)]^{-1}</annotation></semantics></math> for some <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mi>k</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mu_k &gt; 0</annotation></semantics></math>.</p></li>
+<li><p>This can be regarded as a compromise between SD (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>μ</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\mu_k</annotation></semantics></math> very large) and Newton’s method (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mi>k</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mu_k = 0</annotation></semantics></math>).</p></li>
+</ul>
+<p><strong>Levenberg-Marquardt</strong> performs Cholesky factorization for a given value of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>μ</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\mu_k</annotation></semantics></math> as follows <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mi>k</mi></msub><mi>𝐈</mi><mo>+</mo><mi>𝐅</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>𝐆</mi><msup><mi>𝐆</mi><mi>⊤</mi></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">\mu_k \bm{I} + \bm{F}(\bm{x}_k) = \bm{G}\bm{G}^\top. </annotation></semantics></math></p>
+<p>This checks for positive definiteness (not positive definite if factorization fails).</p>
+<p>If the factorization breaks down <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>μ</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\mu_k</annotation></semantics></math> is increased.</p>
+<p>Step direction is found by solving <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐆</mi><msup><mi>𝐆</mi><mi>⊤</mi></msup><msub><mi>𝐝</mi><mi>k</mi></msub><mo>=</mo><mo>−</mo><msub><mi>𝐠</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\bm{G}\bm{G}^\top \bm{d}_k = -\bm{g}_k</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="coordinate-and-stochastic-gradient-descent" class="title-slide slide level1 center">
+<h1>Coordinate and Stochastic Gradient Descent</h1>
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>The algorithms in this section are sometimes attractive because of their easy implementation. Generally, however, their convergence properties are poorer than SD.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="coordinate-descent" class="slide level2 smaller">
+<h2>Coordinate Descent</h2>
+<div class="callout callout-important no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Given a point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x} = (x_1, x_2, \ldots, x_n)</annotation></semantics></math>, descent w.r.t. the coordinate <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>i</mi></msub><annotation encoding="application/x-tex">x_i</annotation></semantics></math> (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math> fixed) means that one solves</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>minimize</mo><msub><mi>x</mi><mi>i</mi></msub></msub><mspace width="1.0em"></mspace><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex"> \operatorname{minimize}_{x_i} \quad f(x_1, x_2, \ldots, x_n). </annotation></semantics></math></p>
+</div>
+</div>
+</div>
+<ul>
+<li>Only changes in the single component <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>i</mi></msub><annotation encoding="application/x-tex">x_i</annotation></semantics></math> are allowed in seeking a new and better vector <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math>.
+<ul>
+<li>One can also consider <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\bm{x}_i</annotation></semantics></math> the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">i^{\text{th}}</annotation></semantics></math> block of variables (block coordinate method).</li>
+</ul></li>
+<li>In our general terminology, each such descent can be regarded as a descent in the direction <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐞</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\bm{e}_i</annotation></semantics></math>.</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Cyclic methods</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>min</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mspace width="1.0em"></mspace></mrow><annotation encoding="application/x-tex">\operatorname{min}\;\; x_1, x_2, \ldots, x_n \quad</annotation></semantics></math> then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1.0em"></mspace><mo>min</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><msub><mi>x</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>x</mi><mrow><mi>n</mi><mo>−</mo><mn>2</mn></mrow></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\quad \operatorname{min}\;\; x_{n-1}, x_{n-2}, \ldots, x_1</annotation></semantics></math></li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>min</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mspace width="1.0em"></mspace></mrow><annotation encoding="application/x-tex">\operatorname{min}\;\; x_1, x_2, \ldots, x_n \quad</annotation></semantics></math> then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="1.0em"></mspace><mo>min</mo><mspace width="0.278em"></mspace><mspace width="0.278em"></mspace><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\quad \operatorname{min}\;\; x_{1}, x_{2}, \ldots, x_n</annotation></semantics></math></li>
+</ul>
+<p>They have the advantage of not requiring any information about <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">\nabla f</annotation></semantics></math> to determine descent directions.</p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="callout callout-warning no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Gauss-Southwell Method</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>If the gradient of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> is available, then it is possible to select the order of descent coordinates on the basis of the gradient.</p></li>
+<li><p>At each stage, the coordinate corresponding to the largest component of the gradient vector is selected for descent.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="stochastic-gradient-descent-sgd-method" class="slide level2 smaller">
+<h2>Stochastic Gradient Descent (SGD) Method</h2>
+<div class="callout callout-warning no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Imagine we are solving a stochastic optimization problem or its simple average approximation</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>𝔼</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><mi>𝛏</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">or</mtext><mspace width="2.0em"></mspace><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mi>M</mi></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>M</mi></munderover><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo>,</mo><msub><mi>𝛏</mi><mi>𝐢</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex"> f(\bm{x}) = \mathbb{E}[\phi(\bm{x}, \bm{\xi})] \qquad \text{or} \qquad
+f(\bm{x}) = \frac{1}{M} \sum_{i=1}^M \phi(\bm{x}, \bm{\xi_i}), </annotation></semantics></math></p>
+<p>where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝛏</mi><annotation encoding="application/x-tex">\bm{\xi}</annotation></semantics></math> is a random parameter and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ξ</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\xi_i</annotation></semantics></math> is a randomly chosen sample.</p>
+<ul>
+<li>If we simply apply the SD, the evaluation of the gradient vector would be costly, involving a large sum computation.</li>
+<li>The SGD would, at the current iterate <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\bm{x}_k</annotation></semantics></math>, randomly select a sample point <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ξ</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\xi_k</annotation></semantics></math> and compute its (sub)gradient vector <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐠</mi><mi>k</mi></msub><mo>:=</mo><mi>𝐠</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>,</mo><msub><mi>ξ</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{g}_k := \bm{g}(\bm{x}_k, \xi_k)</annotation></semantics></math>, which satisfies, in expectation, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝔼</mi><mrow><mo stretchy="true" form="prefix">[</mo><msub><mi>𝐠</mi><mi>k</mi></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">]</mo></mrow><mo>∈</mo><mi>∂</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathbb{E}[\bm{g}_k | \bm{x}_k] \in \partial f(\bm{x}_k)</annotation></semantics></math>.</li>
+<li>Then the method would update, starting from an initial solution <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\bm{x}_0</annotation></semantics></math>,</li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>𝐱</mi><mi>k</mi></msub><mo>−</mo><msub><mi>α</mi><mi>k</mi></msub><msub><mi>𝐠</mi><mi>k</mi></msub><mo>,</mo></mrow><annotation encoding="application/x-tex"> \bm{x}_{k+1} = \bm{x}_k - \alpha_k \bm{g}_k, </annotation></semantics></math></p>
+<p>until <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>K</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k = K-1</annotation></semantics></math> and return the average solution: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>𝐱</mi><mo accent="true">‾</mo></mover><mo>=</mo><mfrac><mn>1</mn><mi>K</mi></mfrac><msubsup><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>K</mi><mo>−</mo><mn>1</mn></mrow></msubsup><msub><mi>𝐱</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\bar{\bm{x}} = \frac{1}{K}\sum_{k=0}^{K-1} \bm{x}_k</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem (SGD)</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">f(\bm{x})</annotation></semantics></math> be a convex function that admits a minimizer <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math>. Assume the following two conditions hold:</p>
+<ol type="1">
+<li>The sample (sub)gradients at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐱</mi><mi>k</mi></msub><annotation encoding="application/x-tex">\bm{x}_k</annotation></semantics></math> satisfy <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>𝐠</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><mi>β</mi><mrow><mo stretchy="true" form="prefix">(</mo><mo>&gt;</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">|\bm{g}_k| \leq \beta (&gt;0)</annotation></semantics></math> with probability <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math> for all <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>0</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>K</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k = 0, \ldots, K-1</annotation></semantics></math>.</li>
+<li>The initial solution satisfies, for simplicity, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>𝐱</mi><mn>0</mn></msub><mo>−</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|\bm{x}_0 - \bm{x}^\ast| \leq 1</annotation></semantics></math>.</li>
+</ol>
+<p>Then, with (fixed) stepsize <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>k</mi></msub><mo>=</mo><mi>α</mi><mo>=</mo><mfrac><mn>1</mn><mrow><mi>β</mi><msqrt><mi>K</mi></msqrt></mrow></mfrac></mrow><annotation encoding="application/x-tex">\alpha_k = \alpha = \frac{1}{\beta\sqrt{K}}</annotation></semantics></math>, the returned solution <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>𝐱</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{\bm{x}}</annotation></semantics></math> satisfies: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="2.0em"></mspace><mi>𝔼</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mover><mi>𝐱</mi><mo accent="true">‾</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mo>≤</mo><mfrac><mi>β</mi><msqrt><mi>K</mi></msqrt></mfrac></mrow><annotation encoding="application/x-tex">\qquad \mathbb{E}[f(\bar{\bm{x}}) - f(\bm{x}^\ast)] \leq \frac{\beta}{\sqrt{K}}</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
 
 <div class="footer footer-default">
 <p>Optimization Theory and Practice • Aykut C. Satici</p>
@@ -555,7 +1137,7 @@
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":false},
 'pointer': {"key":"q","color":"#32cd32","pointerSize":18,"alwaysVisible":false},
 'smaller': false,
@@ -743,9 +1325,23 @@
       tabsets.forEach(function(tabset) {
         const tabby = new Tabby('#' + tabset.id);
       });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
       const clipboard = new window.ClipboardJS('.code-copy-button', {
-        target: function(trigger) {
-          return trigger.previousElementSibling;
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
         }
       });
       clipboard.on('success', function(e) {
@@ -793,7 +1389,7 @@
           },
           interactive: true,
           interactiveBorder: 10,
-          theme: 'quarto-reveal',
+          theme: 'light-border',
           placement: 'bottom-start'
         };
           config['offset'] = [0,0];

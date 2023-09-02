@@ -62,14 +62,12 @@ $f$?
 
 ::: {.column width="50%"}
 <center>
-<img src="./contents/assets/twointermediate.png" width="75%" /img>
+<img src="./contents/assets/findingrho.png" width="75%" /img>
 </center>
 
 ::: {.callout-warning icon=false}
 ## Finding $\rho$
-We choose $\rho$ so that 
-
-$$ \rho (b_1 - a_0) = b_1 - b_2 = 1-2\rho. $$
+We choose $\rho$ so that:  $\phantom{2345} \rho (b_1 - a_0) = b_1 - b_2 = 1-2\rho$.
 
 This has the two solutions: $\phantom{123} \rho_{1,2} = \frac{1}{2}(3 \pm \sqrt{5})$.
 
@@ -91,6 +89,37 @@ This has the two solutions: $\phantom{123} \rho_{1,2} = \frac{1}{2}(3 \pm \sqrt{
 
 
 ::: {.column width="50%"}
+::: {.callout-note icon=false}
+## Example: locate $x$ to within the range $\frac{3}{10}$
+$$ f(x) = x^4 - 14x^3 + 60x^6 - 70x, \quad x \in [0, 2]. $$
+
+* $(1-\rho)^N \leq \frac{1}{2}\frac{3}{10} \; \Rightarrow \; N > 3.94$ so $N=4$.
+
+__Iteration 1__. Evaluate $f$ at two intermediate points. We have
+$$ 
+\begin{align}
+a_1 &= a_0 + \rho(b_0 - a_0) = 0.7639, & f(a_1) = -24.36, \\ 
+b_1 &= a_0 + (1-\rho)(b_0 - a_0) = 1.236 & f(b_1) = -18.96. 
+\end{align}
+$$
+Since $f(a_1) < f(b_1)$, the uncertainty interval is reduced to
+$$ [a_0, b_1] = [0, 1.236]. $$
+
+__Iteration 2__. We choose $b_2 = a_1$ and so the new point is
+$$
+\begin{align}
+a_2 &= a_0 + \rho(b_1 - a_0) = 0.4721, & f(a_2) = -21.10, \\
+b_2 &= a_1 = 0.7639, & f(b_2) = -24.36.
+\end{align}
+$$
+Since $f(a_2) > f(b_2)$ the uncertainty interval is
+$$ [a_2, b_1] = [0.4721, 1.236]. $$
+
+__Iteration 3__. We choose $a_3 = b_2$ and continue ...
+
+__Iteration 4__. Final iteration results in 
+$$ [a_4, b_3] = [0.6525, 0.9443]. $$
+:::
 :::
 ::::
 
@@ -151,3 +180,158 @@ $$ f(x) = x^4 - 14x^3 + 60x^2 - 70x, \quad x \in [0, 2]. $$
 
 
 ## $2$nd-Order Method: Newton's Method {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.callout-important appearance="minimal"}
+* Construct a quadratic function $q$ which at $x_k$ agrees with $f$ up to second
+derivatives, that is
+
+$$ q(x) = f(x_k) + f'(x_k)(x-x_k) + \frac{1}{2}f''(x_k)(x-x_k)^2. $$
+
+* Calculate an estimate $x_{k+1}$ of the minimum point of $f$ by finding the
+point where the derivative of $q$ vanishes.
+
+$$ 
+\begin{align}
+0 &= q'(x_{k+1}) = f'(x_k) + f''(x_k)(x_{k+1}-x_k) \\ 
+&\Rightarrow x_{k+1} = x_k - \frac{f'(x_k)}{f''(x_k)}. 
+\end{align}
+$$ {#eq-newton}
+
+<center>
+<img src="./contents/assets/newtonmin.png" width="60%" /img>
+</center>
+
+* $x_{k+1}$ resulting from Newton's method does not depend on the value
+$f(x_k)$.
+
+:::
+:::
+
+
+::: {.column width="50%"}
+
+::: {.callout-important appearance="minimal"}
+* Newton's method may be viewed as a technique for iteratively solving equations
+of the form 
+
+$$ g(x) = 0, $$
+
+where, when applied to minimization, we put $g(x) = f'(x)$.
+
+
+<center>
+<img src="./contents/assets/newtoneqn.png" width="60%" /img>
+</center>
+:::
+
+::: {.callout-tip icon=false}
+## Proposition
+Let $x^\ast$ satisfy $g(x^\ast) = 0$, $g'(x^\ast) \neq 0$. Then, provided $x_0$
+is sufficiently close to $x^\ast$, the sequence $\{x_k\}_{k=0}^\infty$ generated
+by Newton's method @eq-newton converges to $x^\ast$ with an order of convergence
+at least two.
+:::
+
+:::
+
+::::
+
+
+## Example &ndash; Newton's Method
+
+:::: {.columns}
+
+::: {.column width="50%"}
+* We want to find the minimizer of 
+
+$$ f(x) = \frac{1}{2}x^2 - \sin{x}, \quad x_0 = \frac{1}{2}. $$
+
+* We want an accuracy of $\varepsilon = 10^{-5}$, i.e., stop when 
+
+$$ |x_{k+1} - x_k | < \varepsilon. $$
+
+* We compute
+
+$$ f'(x) = x - \cos{x}, \quad f''(x) = 1 + \sin{x}. $$
+:::
+
+::: {.column width="50%"}
+<br>
+<br>
+$$
+\begin{align}
+x_1 &= \frac{1}{2} - \frac{\frac{1}{2} - \cos{\frac{1}{2}}}{1 +
+\sin{\frac{1}{2}}} = 0.7552, \\
+x_2 &= x_1 - \frac{f'(x_1)}{f''(x_1)} = x_1 - \frac{0.02710}{1.685} = 0.7391, \\
+x_3 &= x_2 - \frac{f'(x_2)}{f''(x_2)} = x_2 - \frac{9.461 \times 10^{-5}}{1.673}
+= 0.7390, \\
+x_4 &= x_3 - \frac{f'(x_3)}{f''(x_3)} = x_3 - \frac{1.17 \times 10^{-9}}{1.673}
+= 0.7390.
+\end{align}
+$$
+:::
+
+::::
+
+
+
+## Inaccurate Line Search {.smaller}
+
+::: {.callout-tip appearance="minimal"}
+* In practice, we do not bend over backwards to find the exact minimum when
+performing line search.
+  - It is often desirable to sacrifice accuracy in the line search routine in
+    order to conserve overall computation time.
+  - Most functions to not attain their minimum along the line we're searching
+    at a particular iteration anyway!
+* Inaccuracy is introduced in a line search algorithm by simply terminating the
+search before it has converged.
+:::
+
+
+:::: {.columns}
+
+::: {.column width="55%"}
+
+::: {.callout-tip icon=false}
+## Armijo's Rule
+
+* A practical and popular criterion for terminating a line search is Armijo's
+rule.
+
+* The idea is that the rule should first guarantee that the selected $\alpha$ is
+not too large, and next it should not be too small.
+$$ \phi(\alpha) = f(\bm{x}_k + \alpha \bm{d}_k). $$
+
+* Consider the function $\phi(0) + \varepsilon \phi'(0)\alpha$, for fixed
+$\varepsilon$, $0 < \varepsilon < 1$.
+
+* A value of $\alpha$ is consered to be not too large if the corresponding
+function value lies below the dashed line; that is, if 
+$$ \phi(\alpha) \leq \phi(0) + \varepsilon \phi'(0)\alpha. $$ {#eq-armijo1}
+
+* To ensure that $\alpha$ is not too small, a value $\eta > 1$ is selected, and
+$\alpha$ is then considered to be not too small if 
+$$ \phi(\eta \alpha) > \phi(0) + \varepsilon \phi'(0)\eta \alpha. $$
+
+* This means that if $\alpha$ is increased by a factor $\alpha$, it will fail to
+meet the test @eq-armijo1.
+:::
+
+:::
+
+::: {.column width="45%"}
+<center>
+<img src="./contents/assets/armijo.png" width="80%" /img>
+</center>
+
+::: {.callout-tip appearance="minimal"}
+The acceptable region defined by the Armijo rule when $\eta = 2$.
+:::
+
+:::
+
+::::
