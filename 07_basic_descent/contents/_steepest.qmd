@@ -79,6 +79,191 @@ reversed.
 ::::
 
 
+## Steepest Descent Analysis {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.callout-tip appearance="minimal"}
+__Lemma__.
+Let $f(\bm{x})$ be differentiable everywhere and satisfy the (first-order)
+$\beta$-Lipschitz condition. Then, for any two points $\bm{x}$ and $\bm{y}$ 
+$$ f(\bm{y}) - f(\bm{x}) - \nabla f(\bm{x})(\bm{y} - \bm{x}) \leq
+\frac{\beta}{2}|\bm{y} - \bm{x}|^2. $$
+:::
+
+::: {.callout-tip icon=false}
+## Steepest Descent &mdash; Lipschitz Convex Case.
+Let $f(\bm{x})$ be convex and differentiable everywhere, satisfy the
+(first-order) $\beta$-Lipschitz condition, and admit a minimizer $\bm{x}^\ast$.
+Then, the method of steepest descent
+$$ \bm{x}_{k+1} = \bm{x}_k - \frac{1}{\beta}\bm{g}_k = \bm{x}_k -
+\frac{1}{\beta}\nabla f(\bm{x}_k)^\top $$
+generates a sequence of solutions $\bm{x}_k$ such that 
+$$ |\nabla f(\bm{x}_k)| \leq \frac{\beta}{\sqrt{k(k+1)}}|\bm{x}_0 -
+\bm{x}^\ast|, $$ and 
+$$ f(\bm{x}_k) - f^\ast \leq \frac{\beta}{2(k+1)}|\bm{x}_0 - \bm{x}^\ast|^2. $$
+:::
+
+::: {.callout-note icon=false}
+## Proof
+Consider the function $g_\bm{x}(\bm{y}) = f(\bm{y}) - \nabla f(\bm{x})\bm{y}$ for any
+given $\bm{x}$.
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.callout-note appearance="minimal"}
+Note that $g_\bm{x}$ is convex and satisfies the $\beta$-Lipschitz condition.
+Moreover $\bm{x}$ is the minimizer of $g_\bm{x}(\bm{y})$ and $\nabla
+g_\bm{x}(\bm{y}) = \nabla f(\bm{y}) - \nabla f(\bm{x})$.
+
+Applying the Lemma to $g_\bm{x}$ and noting the relations of $g_\bm{x}$ and
+$f(\bm{x})$, we have
+
+$$
+\begin{align}
+&f(\bm{x}) - f(\bm{y}) - \nabla f(\bm{x})(\bm{x} - \bm{y}) = g_\bm{x}(\bm{x}) -
+g_\bm{x}(\bm{y}) \\
+&\phantom{123} \leq g_\bm{x}(\bm{y} - \frac{1}{\beta}\nabla g_\bm{x}(\bm{y})) -
+g_\bm{x}(\bm{y}) \\
+&\phantom{123}\leq \nabla g_{\bm{x}}(\bm{y})(-\frac{1}{\beta}\nabla g_\bm{x}(\bm{y})^\top) +
+\frac{\beta}{2}\frac{1}{\beta^2}|\nabla g_\bm{x}(\bm{y})|^2 \\
+&\phantom{123} = -\frac{1}{2\beta}|\nabla g_{\bm{x}}(y)|^2 = -\frac{1}{2\beta}|\nabla
+f(\bm{x}) - \nabla f(\bm{y})|^2.
+\end{align}
+$$ {#eq-8.20}
+
+Similarly, we have 
+
+$$ f(\bm{y}) - f(\bm{x}) - \nabla f(\bm{y})(\bm{y} - \bm{x}) \leq
+-\frac{1}{2\beta}|\nabla f(\bm{x}) - \nabla f(\bm{y})|^2. $$
+
+Adding the above two derived inequalities, we have for any $\bm{x}$ and $\bm{y}$
+
+$$
+(\nabla f(\bm{x}) - \nabla f(\bm{y}))(\bm{x} - \bm{y}) \geq
+\frac{1}{\beta}|\nabla f(\bm{x}) - \nabla f(\bm{y})|^2.
+$$ {#eq-8.21}
+
+For simplicity, let $\bm{d}_k = \bm{x}_k - \bm{x}^\ast$ and $\delta_k =
+f(\bm{x}_k) - f(\bm{x}^\ast) \geq 0$.
+:::
+
+:::
+
+::::
+
+
+## Steepest Descent Analysis {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-note icon=false}
+## Proof -- Continued --
+Now let $\bm{x} = \bm{x}_{k+1}$ and $\bm{y} = \bm{x}_k$ in @eq-8.21. Then
+
+<span style="font-size:95%">
+$$ -\frac{1}{\beta} \bm{g}_k^\top (\bm{g}_{k+1} - \bm{g}_k) = (\bm{x}_{k+1} -
+\bm{x}_k)^\top (\bm{g}_{k+1} - \bm{g}_k) \geq \frac{1}{\beta}|\bm{g}_{k+1} -
+\bm{g}_k|^2, $$
+</span>
+
+which leads to 
+
+$$
+|\bm{g}_{k+1}|^2 \leq \bm{g}_{k+1}^\top \bm{g}_k \leq |\bm{g}_{k+1}||\bm{g}_k|,
+\;\; \text{i.e.,} \;\; |\bm{g}_{k+1}| \leq |\bm{g}_k|.
+$$ {#eq-8.22}
+
+This inequality implies that $|\bm{g}_k| = |\nabla f(\bm{x}_k)|$ is monotonically
+decreasing.
+
+Applying inequality @eq-8.20 for $\bm{x} = \bm{x}_k$ and $\bm{y} = \bm{x}^\ast$
+and noting $\bm{g}^\ast = \bm{0}$ we have
+
+$$
+\begin{align}
+\delta_k &\leq \bm{g}_k^\top \bm{d}_k - \frac{1}{2\beta}|\bm{g}_k|^2 \\
+&= -\beta(\bm{x}_{k+1} - \bm{x}_k)\bm{d}_k - \frac{\beta}{2}|\bm{x}_{k+1} -
+\bm{x}_k|^2 \\
+&= -\frac{\beta}{2}(|\bm{x}_{k+1} - \bm{x}_k|^2 + 2(\bm{x}_{k+1} -
+\bm{x}_k)^\top \bm{d}_k) \\
+&= -\frac{\beta}{2}(|\bm{d}_{k+1} - \bm{d}_k|^2 + 2(\bm{d}_{k+1} - \bm{d}_k)^\top
+\bm{d}_k) \\
+&= \frac{\beta}{2}(|\bm{d}_k|^2 - |\bm{d}_{k+1}|^2).
+\end{align}
+$$ {#eq-8.23}
+:::
+
+:::
+
+::: {.column width="50%"}
+::: {.callout-note appearance="minimal"}
+Summing up @eq-8.23 from $0$ to $k$, we have
+
+$$
+\sum_{l=0}^k \delta_l \leq \frac{\beta}{2}(|\bm{d}_0|^2 - |\bm{d}_{k+1}|^2) \leq
+\frac{\beta}{2}|\bm{d}_0|^2.
+$$ {#eq-8.24}
+
+Using @eq-8.20 again for $\bm{x} = \bm{x}_{k+1}$ and $\bm{y} = \bm{x}_k$ and noting
+the SD rule we have
+
+$$
+\begin{align}
+\delta_{k+1} - \delta_k &= f(\bm{x}_{k+1}) - f(\bm{x}_k) \\
+&\leq \bm{g}_{k+1}^\top (-\frac{1}{\beta}\bm{g}_k) -
+\frac{1}{2\beta}|\bm{g}_{k+1} - \bm{g}_k|^2 \\
+&= -\frac{1}{2\beta}(|\bm{g}_{k+1}|^2 + |\bm{g}_k|^2).
+\end{align}
+$$ {#eq-8.25}
+
+Noting that @eq-8.25 holds for all $k$, we have
+
+<span style="font-size:95%">
+$$
+\begin{align}
+\sum_{l=0}^k \delta_l &= \sum_{l=0}^k \delta_l (l + 1 - l) = \sum_{l=0}^k
+\delta_l(l+1) - \sum_{l=0}^k \delta_l l \\
+&= \sum_{l=1}^{k+1} \delta_{l-1}l - \sum_{l=1}^k \delta_ll = \delta_k (k+1) +
+\sum_{l=1}^k (\delta_{l-1} - \delta_l)l \\
+&\geq \delta_k(k+1) + \sum_{l=1}^k \frac{l}{2\beta}(|\bm{g}_l^2| + |\bm{g}_{l-1}|^2) \\
+&\geq \delta_k (k+1) + \frac{k(k+1)}{2\beta}|\bm{g}_k|^2,
+\end{align}
+$$
+</span>
+
+where the last inequality comes from the fact that $|\bm{g}_k| = |\nabla
+f(\bm{x}_k)|$ is monotonically decreasing.
+
+:::
+:::
+
+::::
+
+
+## Steepest Descent Analysis 
+
+::: {.callout-note icon=false}
+## Proof -- Continued --
+Using @eq-8.24 we finally have 
+
+$$
+(k+1)\delta_k + \frac{k(k+1)}{2\beta} |\bm{g}_k|^2 \leq
+\frac{\beta}{2}|\bm{d}_0|^2
+$$ {#eq-8.26}
+
+Inequality @eq-8.26, from $\delta_k = f(\bm{x}_k) - f(\bm{x}^\ast) \geq 0$ and
+$\bm{d}_0 = \bm{x}_0 - \bm{x}^\ast$, proves the desired bounds.
+:::
+
+
+
 ## The Quadratic Case {.smaller}
 
 ::: {.callout-important appearance="minimal"}
