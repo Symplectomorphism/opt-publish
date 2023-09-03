@@ -146,7 +146,7 @@ equations.
 $$
 \begin{align}
 \operatorname{minimize} & x_1 + 3x_2 + 4x_3 \\
-\text{subject to} & x_1 + 2x_2 + 3x_3 = 5, \\
+\text{subject to} & x_1 + 2x_2 + x_3 = 5, \\
 & 2x_1 + 3x_2 + x_3 = 6, \\
 & x_2, x_3 \geq 0.
 \end{align}

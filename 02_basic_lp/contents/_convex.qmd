@@ -62,7 +62,7 @@ the nonzero components of $\bm{x}$ are the first $k$ components. Then
 $$ x_1\bm{a}_1 + x_2\bm{a}_2 + \cdots + x_k\bm{a}_k = \bm{b}, \quad x_i > 0,
 \quad i = 1, 2, \ldots, k. $$
 
-To show that $\bm{x}$ is a bsic feasible solution (BFS) it must be shown that
+To show that $\bm{x}$ is a basic feasible solution (BFS) it must be shown that
 the vectors $\bm{a}_1, \bm{a}_2, \ldots, \bm{a}_k$ are linearly independent. We
 do this by contradiction. Suppose they are linearly dependent. Then there is a
 nontrivial linear combination that is zero: 

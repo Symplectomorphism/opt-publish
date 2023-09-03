@@ -80,7 +80,7 @@ Multiplying this equation by a scalar $\varepsilon$ and subtracting it from
 $$ (x_1 - \varepsilon y_1)\bm{a}_1 + (x_2 - \varepsilon y_2)\bm{a}_2 + \cdots + 
    (x_p - \varepsilon y_p)\bm{a}_p = \bm{b}. $$ {#eq-p3}
 
-This equation hods for every $\varepsilon$, and for each $\varepsilon$ the
+This equation holds for every $\varepsilon$, and for each $\varepsilon$ the
 components $x_j - \varepsilon y_j$ correspond to a solution of the linear
 equalities &#8212; although they may violate $x_i - \varepsilon y_i \geq 0$.
 Denoting $\bm{y} = (y_1, y_2, \ldots, y_p, 0, 0, \ldots, 0)$, we see that for
