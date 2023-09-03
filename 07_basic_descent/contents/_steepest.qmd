@@ -127,11 +127,12 @@ $$
 \begin{align}
 &f(\bm{x}) - f(\bm{y}) - \nabla f(\bm{x})(\bm{x} - \bm{y}) = g_\bm{x}(\bm{x}) -
 g_\bm{x}(\bm{y}) \\
-&\phantom{123} \leq g_\bm{x}(\bm{y} - \frac{1}{\beta}\nabla g_\bm{x}(\bm{y})) -
+&\phantom{123} \leq g_\bm{x}(\bm{y} - \frac{1}{\beta}\nabla
+g_\bm{x}(\bm{y})^\top) -
 g_\bm{x}(\bm{y}) \\
 &\phantom{123}\leq \nabla g_{\bm{x}}(\bm{y})(-\frac{1}{\beta}\nabla g_\bm{x}(\bm{y})^\top) +
 \frac{\beta}{2}\frac{1}{\beta^2}|\nabla g_\bm{x}(\bm{y})|^2 \\
-&\phantom{123} = -\frac{1}{2\beta}|\nabla g_{\bm{x}}(y)|^2 = -\frac{1}{2\beta}|\nabla
+&\phantom{123} = -\frac{1}{2\beta}|\nabla g_{\bm{x}}(\bm{y})|^2 = -\frac{1}{2\beta}|\nabla
 f(\bm{x}) - \nabla f(\bm{y})|^2.
 \end{align}
 $$ {#eq-8.20}
