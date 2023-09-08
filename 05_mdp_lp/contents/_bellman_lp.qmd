@@ -66,8 +66,8 @@ $$ {#eq-mdp-lp}
 :::: {.columns}
 
 ::: {.column width="50%"}
-* When the number of states is very large or infinite, we may consdier finding
-an approximation to the optimal value fuinction.
+* When the number of states is very large or infinite, we may consider finding
+an approximation to the optimal value function.
   - This can be used, in turn, to obtain a (suboptimal) policy by maximization
   in Bellman's equation.
 :::
@@ -78,7 +78,8 @@ an approximation to the optimal value fuinction.
 $$ \tilde{J}(s; \theta) = \sum_{k=1}^s \theta_k \phi_k(s), $$
 
 * $\theta = (\theta_1, \theta_2, \ldots, \theta_s)$ is a vector of parameters.
-* $\phi_k: \mathcal{S} \rightarrow \mathbb{R}$ are some fixed known functions &ndash, called the _basis_ functions.
+* $\phi_k: \mathcal{S} \rightarrow \mathbb{R}$ are some fixed known functions
+&ndash; called the _basis_ functions.
 :::
 
 :::

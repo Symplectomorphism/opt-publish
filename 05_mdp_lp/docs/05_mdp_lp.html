@@ -392,7 +392,7 @@
 <li>At each time step <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>, the agent receives some respresentation of the environment’s <em>state</em>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>t</mi></msub><mo>∈</mo><mi>𝒮</mi></mrow><annotation encoding="application/x-tex">S_t \in \mathcal{S}</annotation></semantics></math>, and on that basis selects an action <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>t</mi></msub><mo>∈</mo><mi>𝒜</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">A_t \in \mathcal{A}(s)</annotation></semantics></math>.</li>
 <li>One time step later, in part as a consequence of its actions, the agent receives a numerical reward, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>∈</mo><mi>ℛ</mi><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">R_{t+1} \in \mathcal{R} \in \mathbb{R}</annotation></semantics></math> and finds itself in a new state, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">S_{t+1}</annotation></semantics></math>.</li>
 </ul></li>
-<li>The MDP and agent together give rise to a trajectory that begins like this: <span id="eq-traj"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>0</mn></msub><mo>,</mo><msub><mi>A</mi><mn>0</mn></msub><mo>,</mo><msub><mi>S</mi><mn>1</mn></msub><mo>,</mo><msub><mi>R</mi><mn>1</mn></msub><mo>,</mo><msub><mi>A</mi><mn>2</mn></msub><mo>,</mo><msub><mi>R</mi><mn>2</mn></msub><mo>,</mo><msub><mi>S</mi><mn>2</mn></msub><mo>,</mo><msub><mi>A</mi><mn>2</mn></msub><mo>,</mo><msub><mi>R</mi><mn>3</mn></msub><mo>,</mo><mi>…</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> S_0, A_0, S_1, R_1, A_2, R_2, S_2, A_2, R_3, \ldots  \qquad(1)</annotation></semantics></math></span></li>
+<li>The MDP and agent together give rise to a trajectory that begins like this: <span id="eq-traj"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>0</mn></msub><mo>,</mo><msub><mi>A</mi><mn>0</mn></msub><mo>,</mo><msub><mi>S</mi><mn>1</mn></msub><mo>,</mo><msub><mi>R</mi><mn>1</mn></msub><mo>,</mo><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><msub><mi>S</mi><mn>2</mn></msub><mo>,</mo><msub><mi>R</mi><mn>2</mn></msub><mo>,</mo><msub><mi>A</mi><mn>2</mn></msub><mo>,</mo><msub><mi>R</mi><mn>3</mn></msub><mo>,</mo><mi>…</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> S_0, A_0, S_1, R_1, A_1, S_2, R_2, A_2, R_3, \ldots  \qquad(1)</annotation></semantics></math></span></li>
 </ul>
 </div>
 </div>
@@ -473,7 +473,7 @@ s'] = \sum_{r \in \mathcal{R}} r \; \frac{p(s', r \mid s, a)}{p(s' \mid s, a)}.
 <li>For example, the agent often knows how its rewards are computed as a function of its actions and the states.</li>
 <li>Reward computation is external to the agent because it defines the task facing the agent and thus is beyond its ability to change arbitrarily.</li>
 </ul></li>
-<li>In fact, some agents know <em>everything</em> about how its environment.</li>
+<li>In fact, some agents know <em>everything</em> about its environment.</li>
 </ul>
 <div class="callout callout-tip no-icon callout-titled callout-style-default">
 <div class="callout-body">
@@ -667,7 +667,7 @@ s'] = \sum_{r \in \mathcal{R}} r \; \frac{p(s', r \mid s, a)}{p(s' \mid s, a)}.
 </div>
 </div>
 <ul>
-<li>The reward signal is no the place to impart to the agent prior knowledge about <em>how</em> to achieve what we want it to do (better places: initial policy, iniial value function).
+<li>The reward signal is no the place to impart to the agent prior knowledge about <em>how</em> to achieve what we want it to do (better places: initial policy, initial value function).
 <ul>
 <li>Otherwise the agent might find a way to achieve <em>subgoals</em> without achieving the real goal!</li>
 </ul></li>
@@ -741,7 +741,7 @@ s'] = \sum_{r \in \mathcal{R}} r \; \frac{p(s', r \mid s, a)}{p(s' \mid s, a)}.
 <h2>How good are a state and an action?</h2>
 <ul>
 <li>The rewards the agent can expect to receive in the future depend on what actions it will take.</li>
-<li>Value functions are defined with respect to paricular ways of acting, called <em>policies</em>.</li>
+<li>Value functions are defined with respect to particular ways of acting, called <em>policies</em>.</li>
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -751,7 +751,7 @@ s'] = \sum_{r \in \mathcal{R}} r \; \frac{p(s', r \mid s, a)}{p(s' \mid s, a)}.
 <p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>A <em>policy</em> is a mapping from states o probabilities of selecting each possible action.</p>
+<p>A <em>policy</em> is a mapping from states to probabilities of selecting each possible action.</p>
 <ul>
 <li>If the agent is following policy <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math> at time <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>, then <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="prefix">|</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\pi(a|s)</annotation></semantics></math> is the probability that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>t</mi></msub><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">A_t = a</annotation></semantics></math> given that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>t</mi></msub><mo>=</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">S_t = s</annotation></semantics></math>.</li>
 <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="prefix">|</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\pi(a|s)</annotation></semantics></math> defines a probability distribution over <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><mi>𝒜</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">a \in \mathcal{A}(s)</annotation></semantics></math> for each <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>∈</mo><mi>𝒮</mi></mrow><annotation encoding="application/x-tex">s \in \mathcal{S}</annotation></semantics></math>.</li>
@@ -838,7 +838,7 @@ v_\pi(s')\right],
 </div>
 <ul>
 <li>From each of these, the environment could respond with one of several next states, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>′</mi></mrow><annotation encoding="application/x-tex">s'</annotation></semantics></math> (two are shown), along with a reward, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>, depending on its dynamics, given by the function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>.</li>
-<li>Bellman equation averages over all the possibilites, weighing each by its probability of occuring: the value of the start state must equal the (discounted) value of the expected next state, plus the reward expected along the way.</li>
+<li>Bellman equation averages over all the possibilities, weighing each by its probability of occuring: the value of the start state must equal the (discounted) value of the expected next state, plus the reward expected along the way.</li>
 </ul>
 </section>
 <section id="example-gridworld" class="slide level2 smaller">
@@ -908,7 +908,7 @@ v_\pi(s')\right],
 \forall s \in \mathcal{S}. </annotation></semantics></math></p></li>
 <li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>∃</mo><annotation encoding="application/x-tex">\exists</annotation></semantics></math> always at least one policy that is better than or equal to all other policies: an <em>optimal policy</em>.</p>
 <ul>
-<li><p>Although there may be more than one, let us denot all the optimal policies by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>π</mi><mo>*</mo></msub><annotation encoding="application/x-tex">\pi_\ast</annotation></semantics></math>.</p></li>
+<li><p>Although there may be more than one, let us denote all the optimal policies by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>π</mi><mo>*</mo></msub><annotation encoding="application/x-tex">\pi_\ast</annotation></semantics></math>.</p></li>
 <li><p>They share the same state-value function, called the <em>optimal state-value function</em>:</p>
 <p><span id="eq-optimal-st-val"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mo>*</mo></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≜</mo><munder><mo>max</mo><mi>π</mi></munder><msub><mi>v</mi><mi>π</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><mo>∀</mo><mi>s</mi><mo>∈</mo><mi>𝒮</mi><mi>.</mi><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>13</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> v_\ast(s) \triangleq \operatorname{max}_\pi v_{\pi}(s), \quad
 \forall s \in \mathcal{S}.  \qquad(13)</annotation></semantics></math></span></p></li>
@@ -927,7 +927,7 @@ a].  \qquad(15)</annotation></semantics></math></span></li>
 <h2>Bellman Optimality Equation</h2>
 <ul>
 <li>Because <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mo>*</mo></msub><annotation encoding="application/x-tex">v_\ast</annotation></semantics></math> is the value function for a policy, it must satisfy the self-consistency condition given by the Bellman equation for state values <a href="#/bellman-equation">Equation&nbsp;12</a>.</li>
-<li>But it is also the optimal value function so <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mo>*</mo></msub><annotation encoding="application/x-tex">v_\ast</annotation></semantics></math>’s consistency condition can be written in a special form w/o reference to any specific policy!</li>
+<li>But it is also the optimal value function so <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mo>*</mo></msub><annotation encoding="application/x-tex">v_\ast</annotation></semantics></math>’s consistency condition can be written in a special form without reference to any specific policy!</li>
 </ul>
 <div class="callout callout-tip no-icon callout-style-simple">
 <div class="callout-body">
@@ -1022,7 +1022,7 @@ s, s' \in \mathcal{S}, \;\; a \in \mathcal{A}(s).
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>When the number of states is very large or infinite, we may consdier finding an approximation to the optimal value fuinction.
+<li>When the number of states is very large or infinite, we may consider finding an approximation to the optimal value function.
 <ul>
 <li>This can be used, in turn, to obtain a (suboptimal) policy by maximization in Bellman’s equation.</li>
 </ul></li>
@@ -1037,7 +1037,7 @@ s, s' \in \mathcal{S}, \;\; a \in \mathcal{A}(s).
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>J</mi><mo accent="true">̃</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo>;</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>s</mi></munderover><msub><mi>θ</mi><mi>k</mi></msub><msub><mi>ϕ</mi><mi>k</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex"> \tilde{J}(s; \theta) = \sum_{k=1}^s \theta_k \phi_k(s), </annotation></semantics></math></p>
 <ul>
 <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>θ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>θ</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>θ</mi><mi>s</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\theta = (\theta_1, \theta_2, \ldots, \theta_s)</annotation></semantics></math> is a vector of parameters.</li>
-<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>k</mi></msub><mo>:</mo><mi>𝒮</mi><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\phi_k: \mathcal{S} \rightarrow \mathbb{R}</annotation></semantics></math> are some fixed known functions &amp;ndash, called the <em>basis</em> functions.</li>
+<li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>k</mi></msub><mo>:</mo><mi>𝒮</mi><mo>→</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">\phi_k: \mathcal{S} \rightarrow \mathbb{R}</annotation></semantics></math> are some fixed known functions – called the <em>basis</em> functions.</li>
 </ul>
 </div>
 </div>

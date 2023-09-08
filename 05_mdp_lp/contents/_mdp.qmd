@@ -43,7 +43,7 @@ steps, $t = 0, 1, 2, \ldots$.
     receives a numerical reward, $R_{t+1} \in \mathcal{R} \in \mathbb{R}$ and
     finds itself in a new state, $S_{t+1}$.
 * The MDP and agent together give rise to a trajectory that begins like this:
-$$ S_0, A_0, S_1, R_1, A_2, R_2, S_2, A_2, R_3, \ldots $$ {#eq-traj}
+$$ S_0, A_0, S_1, R_1, A_1, S_2, R_2, A_2, R_3, \ldots $$ {#eq-traj}
 :::
 
 :::
@@ -120,7 +120,7 @@ outside of it and thus part of its environment.
     function of its actions and the states.
   - Reward computation is external to the agent because it defines the task
     facing the agent and thus is beyond its ability to change arbitrarily.
-* In fact, some agents know _everything_ about how its environment.
+* In fact, some agents know _everything_ about its environment.
 
 ::: {.callout-tip icon=false}
 ## MDP framework
@@ -282,7 +282,7 @@ widely applicable.
 
 * The reward signal is no the place to impart to the agent prior knowledge
 about _how_ to achieve what we want it to do (better places: initial policy,
-iniial value function).
+initial value function).
   - Otherwise the agent might find a way to achieve _subgoals_ without achieving
     the real goal!
 

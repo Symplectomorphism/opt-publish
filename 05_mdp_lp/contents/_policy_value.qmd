@@ -4,7 +4,7 @@
 
 * The rewards the agent can expect to receive in the future depend on what
 actions it will take.
-* Value functions are defined with respect to paricular ways of acting, called
+* Value functions are defined with respect to particular ways of acting, called
 _policies_.
 
 :::: {.columns}
@@ -13,7 +13,7 @@ _policies_.
 
 ::: {.callout-tip icon=false}
 ## Definition
-A _policy_ is a mapping from states o probabilities of selecting each possible
+A _policy_ is a mapping from states to probabilities of selecting each possible
 action.
 
 * If the agent is following policy $\pi$ at time $t$, then $\pi(a|s)$ is
@@ -103,7 +103,7 @@ some set of actions &mdash; three are shown &mdash; based on its policy $\pi$.
 * From each of these, the environment could respond with one of several next
 states, $s'$ (two are shown), along with a reward, $r$, depending on its
 dynamics, given by the function $p$.
-* Bellman equation averages over all the possibilites, weighing each by its
+* Bellman equation averages over all the possibilities, weighing each by its
 probability of occuring: the value of the start state must equal the
 (discounted) value of the expected next state, plus the reward expected along
 the way.
@@ -191,7 +191,7 @@ greater than or equal to that of $\pi'$ for all states.
   \forall s \in \mathcal{S}. $$
 * $\exists$ always at least one policy that is better than or equal to all other
 policies: an _optimal policy_.
-  - Although there may be more than one, let us denot all the optimal policies
+  - Although there may be more than one, let us denote all the optimal policies
     by $\pi_\ast$.
   - They share the same state-value function, called the _optimal state-value
     function_: 
@@ -215,7 +215,7 @@ a]. $$ {#eq-q-w-v}
 * Because $v_\ast$ is the value function for a policy, it must satisfy the
 self-consistency condition given by the Bellman equation for state values @eq-bellman.
 * But it is also the optimal value function so $v_\ast$'s consistency condition
-can be written in a special form w/o reference to any specific policy!
+can be written in a special form without reference to any specific policy!
 
 ::: {.callout-tip appearance="minimal"}
 The Bellman optimality equation expresses the fact that the value of a state
