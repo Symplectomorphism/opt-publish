@@ -14,10 +14,10 @@
 $\bm{b}$ is an $m$-vector, $\bm{c}$ is an $n$ vector, and $\bm{y}$ is an
 $m$-vector.
 
-* The vector $\bm{x}$ is the variable of the primal program, and $\bm{y}$ is he
+* The vector $\bm{x}$ is the variable of the primal program, and $\bm{y}$ is the
 variable of the dual program.
 
-::: {.callout-important}
+::: {.callout-important icon=false}
 The roles of the primal and the dual can be reversed!
 
 * Interchange cost and constraint vectors,
@@ -112,7 +112,7 @@ vector of the dual constraints,
 coefficient vector of the dual,
 3. The transpose of the constraint matrix of the primal becomes the constraint
 matrix of the dual,
-4. Every primal variable corresponds o a constraint in the dual, and its sign
+4. Every primal variable corresponds to a constraint in the dual, and its sign
 decides the sense of the dual constraint,
 5. Every primal constraint corresponds to a variable in the dual, and its sense
 decides the sign of the dual variable.
@@ -216,7 +216,7 @@ $$
 
 ::: {.callout-tip icon=false}
 ## Dual Interpretation
-Imagine a pharmaceutical company that prodcues in pill form each of the
+Imagine a pharmaceutical company that produces in pill form each of the
 nutrients considered important by the dietitian. The company tries to convince
 the dietitian to buy pills, and thereby supply the nutrients directly rather
 than through purchase of various foods.

@@ -32,7 +32,7 @@ $$
 $$ {#eq-dual}
 in terms of $\bm{B}$.
 
-* Define $\bm{y}^\top = \bm{c}_{\bm{B}}^\top \bm{B}^{-1}$, which i s adual basic
+* Define $\bm{y}^\top = \bm{c}_{\bm{B}}^\top \bm{B}^{-1}$, which is a dual basic
 solution (The components of $\bm{c}_{\bm{B}}$ are those of $\bm{c}$ assoc. w/
 the columns of the submatrix $\bm{B}$ according to the same index order.).
 :::
@@ -166,7 +166,7 @@ $\bm{B}$ can be correspondingly computed directly by:
 cost of any vector that is expressed in terms of the unit vectors $\bm{e}_i$'s.
 * The difference between the true cost of this vector and the synthetic cost is
 the relative cost.
-  - The process of calculating the syntheic cost of a vector w.r.t. a given
+  - The process of calculating the synthetic cost of a vector w.r.t. a given
     basis by using the simplex multipliers is sometimes referred to as _pricing
     out_ the vector.
 

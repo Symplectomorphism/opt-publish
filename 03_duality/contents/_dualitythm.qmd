@@ -92,9 +92,9 @@ from below, then the system
 
 $$
 \begin{align}
-\bm{Ax} = \bm{b}, &\quad \bm{x} \geq \bm{0}, \\
-\bm{A}^\top \bm{y} &\leq \bm{c}, \\
-\bm{c}^\top \bm{x} - &\bm{b}^\top \bm{y} \leq 0
+&\bm{Ax} = \bm{b}, \quad \bm{x} \geq \bm{0}, \\
+&\bm{A}^\top \bm{y} \leq \bm{c}, \\
+&\bm{c}^\top \bm{x} - \bm{b}^\top \bm{y} \leq 0
 \end{align}
 $$ {#eq-sys}
 
@@ -114,7 +114,7 @@ lemma the algernative system to the second system @eq-sys must be feasible, that
 is, there is $\bm{x}^\prime \geq \bm{0}$ such that $(\bm{Ax^\prime} = \bm{0}, \;
 \bm{c}^\top\bm{x}^\prime = -1)$. Let $\bm{x}$ be any given feasible solution for
 the primal, then the solution $\bm{x} + \alpha \bm{x}^\prime$ must also be
-feasible fro the primal for any scalar $\alpha > 0$. But the primal objective
+feasible for the primal for any scalar $\alpha > 0$. But the primal objective
 value at this solution is 
 $$
 \bm{c}^\top(x + \alpha \bm{x}^\prime) = \bm{c}^\top \bm{x} + \alpha \bm{c}^\top
