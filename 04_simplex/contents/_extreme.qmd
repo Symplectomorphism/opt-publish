@@ -74,7 +74,7 @@ current $0$ to a positive value, say $\varepsilon \geq 0$.
 
 ::: {.column width="50%"}
 * As $x_e$ value increases, the current basic variable $\bm{x}_{\bm{B}}$ needs
-to be adjusted accordingly ot keep the feasibility.
+to be adjusted accordingly to keep the feasibility.
 :::
 
 ::::
@@ -144,7 +144,7 @@ $$ \bm{a}_1x_1 + \bm{a}_2x_2 + \cdots + \bm{a}_nx_n = \bm{b}. $$
 
 * A feasible solution defines a representation of $\bm{b}$ as a conic
 combination of the $\bm{a}_i$'s.
-* A BFS will only use $m$ psoitive weights.
+* A BFS will only use $m$ positive weights.
 * Suppose we start with $\bm{a}_1$ and $\bm{a}_2$ as the initial basis.
   - Then an adjacent basis is found by bringing in some other vector.
   - If $\bm{a}_3$ is brought in, then clearly $\bm{a}_2$ must go out (why?).
@@ -197,7 +197,7 @@ $$
 \begin{pmatrix} \frac{3}{8} & \frac{1}{8} \\ -\frac{1}{8} & \frac{3}{8}
 \end{pmatrix}, \quad \bar{\bm{a}}_0 = \bm{B}^{-1}\bm{b} = \begin{pmatrix}
 \frac{1}{2} \\ \frac{1}{2} \end{pmatrix}, \quad \bar{\bm{a}}_3 =
-\bm{B}^{-1}\bm{a}_3 = \begin{pmatrix} -\frac{3}{4} \\ -\frac{1}{4}
+\bm{B}^{-1}\bm{a}_3 = \begin{pmatrix} -\frac{3}{4} \\ \frac{1}{4}
 \end{pmatrix}.
 \end{equation}
 $$

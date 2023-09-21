@@ -111,9 +111,9 @@ vector constraint is satisfied componentwise.
     inequality constraints @eq-con become equal.
   - Say the $e^{\text{th}}$ becomes equal. This indicates that the current
     nonbasic column $\bm{a}_e$ replaces $\bm{a}_o$ in the new basis $\bm{B}$.
-* The determination can be done by calculating the componentwise ratios
+* The determination can be done by calculating the comp.-wise ratios
 $\frac{(\bm{r_D})_j}{(-\bar{\bm{a}}^o)_j}$ for $(\bar{\bm{a}}^o)_j < 0$ and
-$j = m+1, \ldots, n$ (incoming col $\bar{a}_e$).
+$j = m+1, \ldots, n$ (inc. col. $\bar{\bm{a}}_e$).
 :::
 
 ::::

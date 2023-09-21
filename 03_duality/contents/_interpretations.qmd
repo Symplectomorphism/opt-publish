@@ -23,7 +23,6 @@ primal basic feasible solution $\bm{x}_{\bm{B}} = \bm{B}^{-1}\bm{b}$ is optimal.
 
 ::: {.column width="50%"}
 * We shall determine a solution of the dual program
-
 $$
 \begin{align}
 \operatorname{maximize} & \bm{y}^\top \bm{b} \\
@@ -33,8 +32,8 @@ $$ {#eq-dual}
 in terms of $\bm{B}$.
 
 * Define $\bm{y}^\top = \bm{c}_{\bm{B}}^\top \bm{B}^{-1}$, which is a dual basic
-solution (The components of $\bm{c}_{\bm{B}}$ are those of $\bm{c}$ assoc. w/
-the columns of the submatrix $\bm{B}$ according to the same index order.).
+solution (The components of $\bm{c}_{\bm{B}}$ are those of $\bm{c}$ associated with
+the columns of the submatrix $\bm{B}$ according to the same index order).
 :::
 
 ::::

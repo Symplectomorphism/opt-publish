@@ -145,7 +145,7 @@ $$
 
 $$
 \begin{align}
-\operatorname{minimize} & \bm{y}^\top \bm{b} \\
+\operatorname{maximize} & \bm{y}^\top \bm{b} \\
 \text{subject to} & \bm{y}^\top \bm{A} \leq \bm{c}^\top.
 \end{align}
 $$

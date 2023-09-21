@@ -542,7 +542,7 @@
 <td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>j</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">j^{\text{th}}</annotation></semantics></math> constraint sense: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>≤</mo><annotation encoding="application/x-tex">\leq</annotation></semantics></math></td>
 </tr>
 <tr class="odd">
-<td>$x_j free</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mi>j</mi></msub><annotation encoding="application/x-tex">x_j</annotation></semantics></math> free</td>
 <td>|</td>
 <td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>j</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">j^{\text{th}}</annotation></semantics></math> constraint sense: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>=</mo><annotation encoding="application/x-tex">=</annotation></semantics></math></td>
 </tr>
@@ -902,16 +902,13 @@
 </ul>
 </div><div class="column" style="width:50%;">
 <ul>
-<li>We shall determine a solution of the dual program</li>
-</ul>
-<p><span id="eq-dual"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>maximize</mo></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>𝐲</mi><mi>⊤</mi></msup><mi>𝐛</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>𝐲</mi><mi>⊤</mi></msup><mi>𝐀</mi><mo>≤</mo><msup><mi>𝐜</mi><mi>⊤</mi></msup><mo>,</mo></mtd></mtr></mtable><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+<li><p>We shall determine a solution of the dual program <span id="eq-dual"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>maximize</mo></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>𝐲</mi><mi>⊤</mi></msup><mi>𝐛</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>𝐲</mi><mi>⊤</mi></msup><mi>𝐀</mi><mo>≤</mo><msup><mi>𝐜</mi><mi>⊤</mi></msup><mo>,</mo></mtd></mtr></mtable><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
 \begin{align}
 \operatorname{maximize} &amp; \bm{y}^\top \bm{b} \\
 \text{subject to} &amp; \bm{y}^\top\bm{A} \leq \bm{c}^\top,
 \end{align}
- \qquad(4)</annotation></semantics></math></span> in terms of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐁</mi><annotation encoding="application/x-tex">\bm{B}</annotation></semantics></math>.</p>
-<ul>
-<li>Define <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝐲</mi><mi>⊤</mi></msup><mo>=</mo><msubsup><mi>𝐜</mi><mi>𝐁</mi><mi>⊤</mi></msubsup><msup><mi>𝐁</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\bm{y}^\top = \bm{c}_{\bm{B}}^\top \bm{B}^{-1}</annotation></semantics></math>, which is a dual basic solution (The components of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐜</mi><mi>𝐁</mi></msub><annotation encoding="application/x-tex">\bm{c}_{\bm{B}}</annotation></semantics></math> are those of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐜</mi><annotation encoding="application/x-tex">\bm{c}</annotation></semantics></math> assoc. w/ the columns of the submatrix <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐁</mi><annotation encoding="application/x-tex">\bm{B}</annotation></semantics></math> according to the same index order.).</li>
+ \qquad(4)</annotation></semantics></math></span> in terms of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐁</mi><annotation encoding="application/x-tex">\bm{B}</annotation></semantics></math>.</p></li>
+<li><p>Define <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝐲</mi><mi>⊤</mi></msup><mo>=</mo><msubsup><mi>𝐜</mi><mi>𝐁</mi><mi>⊤</mi></msubsup><msup><mi>𝐁</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\bm{y}^\top = \bm{c}_{\bm{B}}^\top \bm{B}^{-1}</annotation></semantics></math>, which is a dual basic solution (The components of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝐜</mi><mi>𝐁</mi></msub><annotation encoding="application/x-tex">\bm{c}_{\bm{B}}</annotation></semantics></math> are those of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐜</mi><annotation encoding="application/x-tex">\bm{c}</annotation></semantics></math> associated with the columns of the submatrix <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐁</mi><annotation encoding="application/x-tex">\bm{B}</annotation></semantics></math> according to the same index order).</p></li>
 </ul>
 </div>
 </div>
@@ -1199,9 +1196,9 @@ duality)} \\
 </annotation></semantics></math></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>𝐲</mi><mi>⊤</mi></msup><mi>𝐛</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>𝐲</mi><mi>⊤</mi></msup><mi>𝐀</mi><mo>≤</mo><msup><mi>𝐜</mi><mi>⊤</mi></msup><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>maximize</mo></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>𝐲</mi><mi>⊤</mi></msup><mi>𝐛</mi></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>𝐲</mi><mi>⊤</mi></msup><mi>𝐀</mi><mo>≤</mo><msup><mi>𝐜</mi><mi>⊤</mi></msup><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
 \begin{align}
-\operatorname{minimize} &amp; \bm{y}^\top \bm{b} \\
+\operatorname{maximize} &amp; \bm{y}^\top \bm{b} \\
 \text{subject to} &amp; \bm{y}^\top \bm{A} \leq \bm{c}^\top.
 \end{align}
 </annotation></semantics></math></p>

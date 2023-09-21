@@ -128,7 +128,7 @@ decides the sign of the dual variable.
 | Max model |\|| Min model |
 | $x_j \geq 0$ |\|| $j^{\text{th}}$ constraint sense: $\geq$|
 | $x_j \leq 0$ |\|| $j^{\text{th}}$ constraint sense: $\leq$|
-| $x_j free |\|| $j^{\text{th}}$ constraint sense: $=$|
+| $x_j$ free |\|| $j^{\text{th}}$ constraint sense: $=$|
 | $i^{\text{th}}$ constraint sense: $\leq$ |\|| $y_i \geq 0$|
 | $i^{\text{th}}$ constraint sense: $\geq$ |\|| $y_i \leq 0$|
 | $i^{\text{th}}$ constraint sense: $=$ |\|| $y_i$ free|

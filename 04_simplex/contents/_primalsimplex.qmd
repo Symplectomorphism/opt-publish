@@ -218,7 +218,7 @@ More precisely, let columns be permuted as $\bm{B} = \begin{bmatrix}
 \bm{a}_{\sigma(m+2)} & \cdots & \bm{a}_{\sigma(n)} \end{bmatrix}$. Then when
 $r_e$ is identified as the most negative coefficient in $\bm{r}_{\bm{D}}$ in
 _Step 2_, $\bm{a}_{\sigma(e)}$ is the entering column. Similarly, when $o$ is
-identified as the minmum ratio index in _Step 3_, $\bm{a}_{\sigma(o)}$ is the
+identified as the minimum ratio index in _Step 3_, $\bm{a}_{\sigma(o)}$ is the
 outgoing column.
 :::
 
@@ -265,7 +265,7 @@ $$
 \end{equation}
 $$
 
-_Step 2_. Then see $e = 2$, that is,$\bm{a}_2$ is the incoming column, and
+_Step 2_. Then see $e = 2$, that is, $\bm{a}_2$ is the incoming column, and
 calculate
 
 $$
