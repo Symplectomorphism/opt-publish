@@ -95,8 +95,8 @@ original dual.
 the dual objective function at basis $\bm{B}$.
   - If one entry of $\bar{\bm{a}}_{o0} < 0$, then one can decrease the variable
     $\bm{y}_o^\prime$ to some $-\varepsilon$ while keeping others at $0$'s.
-  - The new $\bm{y}^\prime$ reamins feasible, but its objective value would
-    decrease linearly in $\varepsilon$.
+  - The new $\bm{y}^\prime$ remains feasible, but its objective value would
+    increase linearly in $\varepsilon$.
   - The second block of constraints in @eq-trdl becomes
   $$ \varepsilon \bm{e}_o^\top\bm{B}^{-1}\bm{D} \leq \bm{r}_{\bm{D}}^\top \quad
   \text{or} \quad -\varepsilon \bar{\bm{a}}^o \leq \bm{r}_{\bm{D}}^\top. $$ {#eq-con}
@@ -268,7 +268,7 @@ and
 $$
 \begin{align}
 \operatorname{minimize} & \bm{y}^\top\bm{b} \\
-\text{subject to} & \bm{y}^\top\bm{A} = \bm{c}^\top.
+\text{subject to} & \bm{y}^\top\bm{A} \leq \bm{c}^\top.
 \end{align} 
 $$ {#eq-primal-dual}
 :::
