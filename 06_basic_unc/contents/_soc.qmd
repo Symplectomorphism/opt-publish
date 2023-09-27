@@ -75,7 +75,7 @@ with a solution at $x_1 = 6$, $x_2 = 9$.
 
 ::: {.fragment .fade-in-then-out}
 * Note that for $x_1$ fixed at $x_1 = 6$, the objective attains a relative
-minimum w.r.t. $x_2$ at $x_2 = 9.
+minimum w.r.t. $x_2$ at $x_2 = 9$.
 * Conversely, with $x_2$ fixed at $x_2 = 9$, the objective attains a relative
 minimum w.r.t. $x_1$ at $x_1 = 6$.
 :::
