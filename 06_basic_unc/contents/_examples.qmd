@@ -32,6 +32,40 @@ $$
 \right).
 $$
 
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-tip appearance="minimal"}
+
+$$
+\prod \left( \frac{e^{\bm{a}_i^\top \bm{y} + \beta}}{1 + e^{\bm{a}_i^\top
+\bm{y} + \beta}} \right) = \prod \left( \frac{1}{1 + e^{-\bm{a}_i^\top
+\bm{y} - \beta}} \right)
+$$
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.callout-tip appearance="minimal"}
+
+$$
+\prod \left( 1 - \frac{e^{\bm{b}_j^\top \bm{y} + \beta}}{1 + e^{\bm{b}_j^\top
+\bm{y} + \beta}} \right) = \prod \left( \frac{1}{1 + e^{\bm{b}_j^\top
+\bm{y} + \beta}} \right)
+$$
+
+:::
+
+
+:::
+
+::::
+
+
 
 ## Example 2 &ndash; Parametric Estimation (Convex) {.smaller}
 
@@ -48,8 +82,8 @@ approximation as the polynomial that minimizes the sum-of-squares of these
 errors
 
 $$ \operatorname{minimize}_\bm{a} f(\bm{a}) = \sum_{k=1}^n \varepsilon_k^2 =
-\sum_{k=1}^n \left[g(x_k) - \left(a_0 + a_1 x + \cdots + a_{n-1}x^{n-1} +
-a_nx^n\right) \right]^2.  $$
+\sum_{k=1}^n \left[g(x_k) - \left(a_0 + a_1 x_k + \cdots + a_{n-1}x_k^{n-1} +
+a_nx_k^n\right) \right]^2.  $$
 
 * To find a compact representation for this objective, define 
 
