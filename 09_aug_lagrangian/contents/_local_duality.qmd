@@ -147,10 +147,50 @@ $$
 $$
 
 Solving for $\nabla \bm{x}(\bm{\lambda})$ and substituting back to the first eqn., we are through.
-
 :::
-
 
 :::
 
 ::::
+
+
+## Local Duality Theorem {.smaller}
+
+<br>
+
+::: {.callout-tip icon=false}
+## Local Duality Theorem
+Suppose that the problem
+$$
+\begin{align}
+\operatorname{minimize} & f(\bm{x}) \\
+\text{subject to} & \bm{h}(\bm{x}) = \bm{0}
+\end{align}
+$$
+has a local solution at $\bm{x}^\ast$ with corresponding value $r^\ast$ and 
+Lagrange multiplier $\bm{\lambda}^\ast$. Suppose also that $\bm{x}^\ast$ is a 
+regular point of the constraints and that the corresponding Hessian of the 
+Lagrangian $\bm{L}^\ast = \bm{L}(\bm{x}^\ast)$ is positive definite. Then the 
+dual problem
+$$ 
+\begin{align}
+\operatorname{maximize} & \phi(\bm{\lambda})
+\end{align}
+$$
+has a local solution at $\bm{\lambda}^\ast$ with corresponding value $r^\ast$ 
+and $\bm{x}^\ast$ as the point corresponding to $\bm{\lambda}^\ast$ in the 
+definition of $\phi$.
+:::
+
+::: {.callout-note icon=false}
+## Proof
+It is clear that $\bm{x}^\ast$ corresponds to $\bm{\lambda}^\ast$ in the 
+definition of $\phi$. Now at $\bm{\lambda}^\ast$ we have by Lemma 1,
+$$
+\nabla \phi(\bm{\lambda}^\ast) = -\bm{h}(\bm{x}^\ast)^\top = \bm{0}, 
+$$
+and by Lemma 2, the Hessian of $\phi$ is negative definite. Thus 
+$\bm{\lambda}^\ast$ satisfies the SOSC for an unconstrained maximum point of 
+$\phi$. The corresponding value $\phi(\bm{\lambda}^\ast)$ is found from the 
+definition of $\phi$ to be $r^\ast$.
+:::

@@ -501,6 +501,41 @@
 </div>
 </div>
 </div>
+</section>
+<section id="local-duality-theorem" class="slide level2 smaller">
+<h2>Local Duality Theorem</h2>
+<p><br></p>
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Local Duality Theorem</strong></p>
+</div>
+<div class="callout-content">
+<p>Suppose that the problem <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><mi>𝐡</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝐱</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>𝟎</mn></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize} &amp; f(\bm{x}) \\
+\text{subject to} &amp; \bm{h}(\bm{x}) = \bm{0}
+\end{align}
+</annotation></semantics></math> has a local solution at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math> with corresponding value <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>r</mi><mo>*</mo></msup><annotation encoding="application/x-tex">r^\ast</annotation></semantics></math> and Lagrange multiplier <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝛌</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{\lambda}^\ast</annotation></semantics></math>. Suppose also that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math> is a regular point of the constraints and that the corresponding Hessian of the Lagrangian <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>𝐋</mi><mo>*</mo></msup><mo>=</mo><mi>𝐋</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{L}^\ast = \bm{L}(\bm{x}^\ast)</annotation></semantics></math> is positive definite. Then the dual problem <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>maximize</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝛌</mi><mo stretchy="true" form="postfix">)</mo></mrow></mtd></mtr></mtable><annotation encoding="application/x-tex"> 
+\begin{align}
+\operatorname{maximize} &amp; \phi(\bm{\lambda})
+\end{align}
+</annotation></semantics></math> has a local solution at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝛌</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{\lambda}^\ast</annotation></semantics></math> with corresponding value <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>r</mi><mo>*</mo></msup><annotation encoding="application/x-tex">r^\ast</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math> as the point corresponding to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝛌</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{\lambda}^\ast</annotation></semantics></math> in the definition of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Proof</strong></p>
+</div>
+<div class="callout-content">
+<p>It is clear that <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝐱</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{x}^\ast</annotation></semantics></math> corresponds to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝛌</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{\lambda}^\ast</annotation></semantics></math> in the definition of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>. Now at <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝛌</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{\lambda}^\ast</annotation></semantics></math> we have by Lemma 1, <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝛌</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>−</mo><mi>𝐡</mi><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>⊤</mi></msup><mo>=</mo><mn>𝟎</mn><mo>,</mo></mrow><annotation encoding="application/x-tex">
+\nabla \phi(\bm{\lambda}^\ast) = -\bm{h}(\bm{x}^\ast)^\top = \bm{0}, 
+</annotation></semantics></math> and by Lemma 2, the Hessian of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math> is negative definite. Thus <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝛌</mi><mo>*</mo></msup><annotation encoding="application/x-tex">\bm{\lambda}^\ast</annotation></semantics></math> satisfies the SOSC for an unconstrained maximum point of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math>. The corresponding value <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝛌</mi><mo>*</mo></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\phi(\bm{\lambda}^\ast)</annotation></semantics></math> is found from the definition of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math> to be <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>r</mi><mo>*</mo></msup><annotation encoding="application/x-tex">r^\ast</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
 </section></section>
 <section id="separable-problems-and-their-duals" class="title-slide slide level1 center">
 <h1>Separable Problems and Their Duals</h1>
