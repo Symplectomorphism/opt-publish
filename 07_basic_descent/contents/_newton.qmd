@@ -2,7 +2,7 @@
 
 <br>
 
-$$ f(\bm{x}) \simeq f(\bm{x}_k) + \nabla f(\bm{x}_k)(\bm{x} - \bm{x}-k) +
+$$ f(\bm{x}) \simeq f(\bm{x}_k) + \nabla f(\bm{x}_k)(\bm{x} - \bm{x}_k) +
 \frac{1}{2} (\bm{x} - \bm{x}_k)^\top \bm{F}(\bm{x}_k)(\bm{x} - \bm{x}_k). $$
 
 The rhs is minimized at 

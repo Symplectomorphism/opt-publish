@@ -81,8 +81,7 @@ This has the two solutions: $\phantom{123} \rho_{1,2} = \frac{1}{2}(3 \pm \sqrt{
     the sum of the two.
   - This rule is referred to as the _golden section_.
 * The uncertainty range reduction is $1-\rho$ at each stage.
-  - $N$ steps of reduction using the golden section method reduces the range by
-    the factor $(1-\rho)^N$.
+  - $N$ steps of the method reduces the range by factor $(1-\rho)^N$.
 :::
 
 :::
@@ -91,7 +90,7 @@ This has the two solutions: $\phantom{123} \rho_{1,2} = \frac{1}{2}(3 \pm \sqrt{
 ::: {.column width="50%"}
 ::: {.callout-note icon=false}
 ## Example: locate $x$ to within the range $\frac{3}{10}$
-$$ f(x) = x^4 - 14x^3 + 60x^6 - 70x, \quad x \in [0, 2]. $$
+$$ f(x) = x^4 - 14x^3 + 60x^2 - 70x, \quad x \in [0, 2]. $$
 
 * $(1-\rho)^N \leq \frac{1}{2}\frac{3}{10} \; \Rightarrow \; N > 3.94$ so $N=4$.
 
