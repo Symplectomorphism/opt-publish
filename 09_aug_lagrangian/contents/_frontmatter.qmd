@@ -16,7 +16,6 @@ Boise State University, Boise, ID, USA
 
 __Topics__: <br>
 Local Duality and the Lagrangian Method <br>
-Separable Problems and Their Duals <br>
 The Augmented Lagrangian <br>
 The Augmented Lagrangian M. of Multipliers <br>
 The Alternating Direction M. of Multipliers <br>

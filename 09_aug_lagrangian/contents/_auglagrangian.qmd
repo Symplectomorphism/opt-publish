@@ -1,0 +1,157 @@
+# The Augmented Lagrangian and Interpretations
+
+::: {.callout-tip appearance="minimal"}
+* One of the most effective general classes of NLP methods is the _augmented Lagrangian methods_.
+* Alternatively referred to as _methods of multiplier_.
+:::
+
+## The Augmented Lagrangian {.smaller}
+
+* These methods can be veiwed as a combination of penalty functions and 
+local duality methods.
+  - The two concepts work together to eliminate many of the disadvantages 
+  associated with either method alone.
+* The augmented Lagrangian for the equality constrained problem is the function
+$$ \ell_c(\bm{x}, \bm{\lambda}) = f(\bm{x}) - \bm{\lambda}^\top \bm{h}(\bm{x}) + \frac{c}{2}\left|\bm{h}(\bm{x})\right|^2 $$
+for some positive constant $c$.
+* From a penalty function viewpoint, the augmented Lagrangian, for a fixed value 
+of the vector $\bm{\lambda}$ is simply the Lagrange penalty function for the problem
+$$
+\begin{align}
+\operatorname{minimize} & f(\bm{x}) + \frac{1}{2}c\left|\bm{h}(\bm{x})\right|^2, \\
+\text{subject to} & \bm{h}(\bm{x}) = \bm{0}, \quad \bm{x} \in \Omega
+\end{align}
+$$
+* This problem is clearly equivalent to the original equality cosntrained problem 
+since the combinations of the constraints adjoined to $f(\bm{x})$ do not affect 
+the minimum point or the minimum value.
+* A typical step of an augmented Lagrangian method starts with a vector $\bm{\lambda}_k$.
+Then $\bm{x}(\bm{\lambda}_k)$ is found as the minimum point of
+$$
+\bm{x}(\bm{\lambda}_k) = \operatorname{arg} \operatorname{min} f(\bm{x}) - 
+\bm{\lambda}_k^\top \bm{h}(\bm{x}) + \frac{1}{2}c\left|\bm{h}(\bm{x})\right|^2, 
+\quad \text{subject to} \quad \bm{x} \in \Omega.
+$$
+* Next, $\bm{\lambda}_k$ is updated to $\bm{\lambda}_{k+1}$: $$\bm{\lambda}_{k+1} = \bm{\lambda}_k - c\bm{h}(\bm{x}(\bm{\lambda}_k)). $$
+
+
+## The Augmented Lagrangian {.smaller}
+
+* Whereas the original Lagrangian may not be convex near the solution, and hence 
+the standard duality method cannot be applied, the term $\frac{1}{2}c\left|\bm{h}(\bm{x})\right|^2$
+tends to "convexify" the Lagrangian.
+  - For sufficiently large $c$, the Lagrangian will indeed be locally convex.
+  - Thus, the duality method can be employed, and the corresponding dual problem 
+  can be solved by an iterative process in $\bm{\lambda}$.
+  - This viewpoint leads to the development of additional multiplier adjustment processes.
+* The main iteration in augmented Lagrangian methods is with respect to $\bm{\lambda}$.
+  - The penalty parameter $c$ may also be adjusted during the process!
+  - As in ordinary penalty function methods, the sequence of $c$'s is usually preselected;
+    + $c$ is either held fixed,
+    + is increased toward a finite value,
+    + or tends (slowly) toward infinity.
+  - In this method, it is not necessary for $c$ to go to infinity.
+    + In fact, it may remain of relatively modest value.
+    + The ill-conditioning usually associated with the penalty function approach 
+    is mediated.
+
+
+## The Penalty Viewpoint {.smaller}
+
+::: {.callout-tip icon=false}
+## Lemma
+Let $\bm{A}$ and $\bm{B}$ be $n$-by-$n$ symmetric matrices. Suppose that 
+$\bm{B}$ is positive semidefinite and $\bm{A}$ is positive definite on the subspace 
+$\bm{Bx} = \bm{0}$. Then there is a $c^\ast$ such that for all $c \geq c^\ast$ 
+the matrix $\bm{A} + c\bm{B}$ is positive definite.
+:::
+
+::: {.callout-note icon=false}
+## Proof
+Suppose to the contrary that for every $k$ there were an $\bm{x}_k$ with 
+$|\bm{x}_k| = 1$ such that $\bm{x}_k^\top (\bm{A} + k\bm{B})\bm{x}_k \leq 0$. The 
+sequence $\left\{\bm{x}_k\right\}$ must have a convergent subsequence converging 
+to a limit $\bar{\bm{x}}$. Now since $\bm{x}_k^\top \bm{B} \bm{x}_k \geq 0$, it 
+follows that $\bar{\bm{x}}^\top \bm{B} \bar{\bm{x}} = 0$. It also follows that 
+$\bar{\bm{x}}^\top \bm{A} \bar{\bm{x}} \leq 0$. However, this contradicts the 
+hypothesis of the lemma.
+:::
+
+* This lemma applies to the Hessian of the augmented Lagrangian, evaluated
+at the optimal solution pair $\bm{x}^\ast$, $\bm{\lambda}^\ast$.
+$$
+\begin{align}
+\bm{L}_c(\bm{x}^\ast, \bm{\lambda}^\ast) = \bm{F}(\bm{x}^\ast) - 
+\left(\bm{\lambda}^\ast\right)^\top\bm{H}(\bm{x}^\ast) + 
+c\nabla \bm{h}(\bm{x}^\ast)^\top \bm{h}(\bm{x}^\ast) = \bm{L}(\bm{x}^\ast) + 
+c\nabla \bm{h}(\bm{x}^\ast)^\top \nabla \bm{h}(\bm{x}^\ast).
+\end{align}
+$$
+
+  - The first term, the Hessian of the normal Lagrangian, is positive definite on 
+the  subspece $\nabla \bm{h}(\bm{x}^\ast) = \bm{0}$. This corresponds to the 
+matrix $\bm{A}$ in the lemma.
+  - The matrix $\nabla \bm{h}(\bm{x}^\ast)^\top \nabla \bm{h}(\bm{x}^\ast)$ is 
+  positive semidefinite and corresponds to $\bm{B}$ in the lemma.
+    + It follows that there is a $c^\ast$ such that for all $c > c^\ast$, 
+    $\bm{L}_c(\bm{x}^\ast, \bm{\lambda}^\ast)$ is positive definite.
+* This leads directly to the first basic result concerning augmented Lagrangian.
+
+
+## The Penalty Viewpoint {.smaller}
+
+::: {.callout-tip icon=false}
+## Proposition
+Assume that the second-order sufficiency conditions for a local minimum are 
+satisfied at $\bm{x}^\ast$, $\bm{\lambda}^\ast$. Then there is a $c^\ast$ such 
+that for all $c \geq c^\ast$, the augmented Lagrangian 
+$\ell_c(\bm{x}, \bm{\lambda}^\ast)$ has a local minimum point at $\bm{x}^\ast$.
+:::
+
+* By continuity, for any $\bm{\lambda}$ near $\bm{\lambda}^\ast$, the augmented
+Lagrangian has a unique local minimum point near $\bm{x}^\ast$.
+* This correspondence defines a continuous function.
+  - If a value of $\bm{\lambda}$ can be found such that $\bm{h}(\bm{x}(\bm{\lambda})) = \bm{0}$, 
+  then that $\bm{\lambda}$ must in fact be $\bm{\lambda}^\ast$.
+    + This is because $\bm{x}(\bm{\lambda})$ satisfies the necessary conditions 
+    of the original problem.
+* Therefore, the problem of determining the proper value of $\bm{\lambda}$ can 
+be viewed as one of solving the equation $$ \bm{h}(\bm{x}(\bm{\lambda})) = \bm{0}. $$
+* For this purpose the iterative process
+$$ \bm{\lambda}_{k+1} = \bm{\lambda}_k - c \bm{h}(\bm{x}(\bm{\lambda}_k)), $$
+is a method of successive approximation (such as fixed-point iteration).
+  - This process will converge linearly in a neighborhood around $\bm{\lambda}^\ast$
+  although a rigorous proof is somewhat complex.
+
+## Example {.smaller}
+
+$$
+\begin{align}
+\operatorname{minimize} & 2x^2 + 2xy + y^2 - 2y, \\
+\text{subject to} & x = 0.
+\end{align}
+$$
+
+* The augmented Lagrangian for this problem is 
+
+$$ \ell_c(x, y, \lambda) = 2x^2 + 2xy + y^2 - 2y - \lambda x + \frac{1}{2}cx^2. $$
+
+* The minimum can be found analytically to be
+
+$$
+x = \frac{-(2-\lambda)}{2+c}, \quad y = \frac{4+c-\lambda}{2+c}.
+$$
+
+* Since $h(x, y) = x$ in this example, it follows that the iterative process for 
+$\lambda_k$ is 
+
+$$
+\lambda_{k+1} = \lambda_k + \frac{c(2-\lambda_k)}{2+c} = \left(\frac{2}{2+c}\right)\lambda_k + \frac{2c}{2+c}.
+$$
+
+* This converges to $\lambda = 2$ for any $c > 0$. 
+* The coefficient $\frac{2}{2+c}$ governs the rate of convergence.
+  - The rate improves as $c$ is increased.
+
+
+## Geometric Interpretation {.smaller}

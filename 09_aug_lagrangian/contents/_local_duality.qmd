@@ -194,3 +194,148 @@ $\bm{\lambda}^\ast$ satisfies the SOSC for an unconstrained maximum point of
 $\phi$. The corresponding value $\phi(\bm{\lambda}^\ast)$ is found from the 
 definition of $\phi$ to be $r^\ast$.
 :::
+
+
+## Example 
+
+$$
+\begin{align}
+\operatorname{minimize} & -xy \\
+\text{subject to} & (x-3)^2 + y^2 = 5.
+\end{align}
+$$
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## First-Order Necessary Conditions
+$$
+\begin{align}
+-y - (2x - 6)\lambda &= 0 \\
+-x - 2y\lambda &= 0.
+\end{align}
+$$
+together with the constraint. These equations have a solution at
+$$
+x = 4, \quad y = 2, \quad \lambda = -1.
+$$
+The Hessian of the corresponding Lagrangian is
+$$ \bm{L} = \begin{bmatrix} 2 & -1 \\ -1 & 2 \end{bmatrix}. $$
+Since this is positive definite, we conclude that the solution obtained is a 
+local minimum (it is, in fact, a global minimum).
+:::
+
+:::
+
+::: {.column width="50%"}
+::: {.callout-tip icon=false}
+## Local Duality
+Since $\bm{L}$ is positive definite, we can apply the local duality theory near 
+this solution. 
+$$
+\phi(\lambda) = \operatorname{min}_{x,y} \left\{-xy - \lambda \left[(x-3)^2 + y^2 - 5\right]\right\},
+$$
+which leads to 
+$$
+\phi(\lambda) = \frac{-4\lambda - 4\lambda^3 + 80\lambda^5}{(4\lambda^2 - 1)^2}
+$$
+valid for $\lambda < -\frac{1}{2}$. It can be verified that $\phi$ has a local 
+maximum at $\lambda = -1$.
+Plugging this value back in @eq-unc and maximizing (unconstrained) over $x$ and 
+$y$ yields the same maximizers as before.
+:::
+:::
+
+::::
+
+
+## Inequality Constraints {.smaller}
+
+$$
+\begin{align}
+\operatorname{minimize} & f(\bm{x}), & f \in C^2, \;\; \bm{x}\in \mathbb{R}^n \\ 
+\text{subject to} & \bm{h}(\bm{x}) = \bm{0}, & \bm{h} \in \mathbb{C}^2, \;\; \bm{h}(\bm{x}) \in \mathbb{R}^m, \\\
+& \bm{g}(\bm{x}) \geq \bm{0}, & \bm{g} \in C^2, \;\; \bm{g}(\bm{x}) \in \mathbb{R}^p.
+\end{align}
+$$ {#eq-optineq}
+
+* Suppose $\bm{x}^\ast$ is a local solution of @eq-optineq and is a regular point of the constraints.
+  - Then, there are Lagrange multipliers $\bm{\lambda}^\ast$ and $\bm{\mu}^\ast \geq \bm{0}$ such that
+$$
+\begin{align}
+\nabla f(\bm{x}^\ast) - \left(\bm{\lambda}^\ast \right)^\top \nabla 
+\bm{h}(\bm{x}^\ast) - \left(\bm{\mu}^\ast\right)^\top \nabla \bm{g}(\bm{x}^\ast) &= \bm{0}, \\
+\left(\bm{\mu}^\ast\right)^\top \bm{g}(\bm{x}^\ast) = 0.
+\end{align}
+$$
+* Local convexity assumption: Hessian of the Lagrangian is positive definite on the whole space.
+$$ \bm{L}(\bm{x}^\ast) = \bm{F}(\bm{x}^\ast) - \left(\bm{\lambda}^\ast\right)^\top 
+\bm{H}(\bm{x}^\ast) - \left(\bm{\mu}^\ast\right)\bm{G}(\bm{x}^\ast) \succ \bm{0}.
+$$
+* For $\bm{\lambda}$ and $\bm{\mu} \geq \bm{0}$ near $\bm{\lambda}^\ast$ and $\bm{\mu}^\ast$
+we can define the dual function
+$$
+\phi(\bm{\lambda}, \bm{\mu}) \triangleq \operatorname{min}_{\bm{x} \in \mathcal{N}(\bm{x}^\ast)} 
+\left[ \ell(\bm{x}, \bm{\lambda}, \bm{\mu}) = f(\bm{x}) - \bm{\lambda}^\top 
+\bm{h}(\bm{x}) - \bm{\mu}^\top \bm{g}(\bm{x}) \right],
+$$
+where the minimum is taken locally near $\bm{x}^\ast$.
+* Then it is easy to show, paralleling the devlopment above for equality 
+constraints, that $\phi$ achieves a local maximum with respect to $\bm{\lambda}$, 
+$\bm{\mu} \geq \bm{0}$ at $\bm{\lambda}^\ast$, $\bm{\mu}^\ast$.
+
+
+## Partial Duality {.smaller}
+
+<br>
+
+* It is not necessary to include the lagrange multipliers of all the cosntraints 
+of a problem in the definition of the dual function.
+* In general, if the local convexity assumption holds, local duality can be
+defined with respect to any subset of function constraints.
+  - For example, in problem @eq-optineq we might define the dual with respect 
+  to only the equality constraints
+$$ \phi(\bm{\lambda}) = \operatorname{min}_{\bm{g}(\bm{x}) \geq \bm{0}} 
+\left\{f(\bm{x}) - \bm{\lambda}^\top \bm{h}(\bm{x}) \right\}, $$
+where the minimum is taken locally near the solution $\bm{x}^\ast$ but 
+constrained by the remaining constraints $\bm{g}(\bm{x}) \geq \bm{0}$.
+
+* Again, the dual function defined in this way will achieve a local maximum at
+the optimal Lagrange multiplier $\bm{\lambda}^\ast$.
+* The partial dual is especially useful when constraints $\bm{g}(\bm{x}) \geq \bm{0}$ 
+are simple such as $\bm{x} \geq \bm{0}$ or in a box where many efficient algorithms are available.
+  - Steepest descent projection, interior ellipsoidal-trust region methods, etc.
+
+
+## The Lagrangian Method: Dual Steepest Ascent {.smaller}
+
+* According to Lemma 1, the gradient of $\phi$ is available almost without cost 
+once $\phi$ is evaluated.
+  - Any of the standard algorithms discussed for unconstrained optimization can 
+  be used for solving the unconstrained Lagrangian problem to evaluate the dual 
+  gradient vector.
+  - The iterative scheme is simply, starting from any initial pairs 
+  $\left(\bm{x}_0, \bm{\lambda}_0, \bm{\mu}_0(\geq \bm{0})\right)$,
+
+$$
+\begin{align}
+\bm{x}_{k+1} &:= \operatorname{arg}\,\operatorname{min}_\bm{x} \ell(\bm{x}, \bm{\lambda}_k, \bm{\mu_k}), \\
+\bm{\lambda}_{k+1} &:= \bm{\lambda}_k - \frac{1}{c}\bm{h}(\bm{x}_{k+1}), \\
+\bm{\mu}_{k+1} &:= \operatorname{max} \left\{\bm{0}, \, \bm{\mu}_k - \frac{1}{c}\bm{g}(\bm{x}_{k+1}) \right\}.
+\end{align}
+$$
+
+Here, $c$ is the first-order Lipschitz constant of the dual function $\phi(\bm{\lambda}, \bm{\mu})$.
+
+* Without some special properties, however, the method as a whole can be costly 
+to execute.
+  - Every evaluation of $\phi$ requires the solution of an unconstrained problem
+  in the unknown $\bm{x}$.
+* Convergence speed: identical to those discussed for solving unconstrained problems.
+  - If the dual objective is strongly concave, the convergence rate is governed by
+  the eigenvalue structure of the Hessian of the dual function $\phi$: 
+  $\bm{\Phi} = -\nabla \bm{h}(\bm{x}^\ast)\left(\bm{L}^\ast\right)^{-1}\nabla \bm{h}(\bm{x}^\ast)^\top$.
+  - The rate of convergence is $\frac{(B-b)^2}{(B+b)^2}$, where $B$ and $b$ are 
+  the largest and smallest eigenvalues of $\bm{\Phi}$.
