@@ -1,0 +1,156 @@
+# Local Duality and the Lagrangian Method
+
+## Local Duality {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-tip  icon=false}
+## Nonlinear Programming Problem 
+
+$$
+\begin{align}
+\operatorname{minimize} & f(\bm{x}), & f, \bm{h} \in C^2, \\
+\text{subject to} & \bm{h}(\bm{x}) = \bm{0}, & \bm{x} \in \mathbb{R}^n, 
+\bm{h}(\bm{x}) \in \mathbb{R}^m.
+\end{align}
+$$ {#eq-nlp}
+
+Everything we do can be easily extended to problems having inequality as well 
+as equality constraints for the price of a somewhat more involved notation.
+:::
+
+
+
+* Assume that $\bm{x}^\ast$ is a regular point of the constraints.
+  - There is then a Lagrange multiplier vector $\bm{\lambda}^\ast$ such that 
+
+$$
+\nabla f(\bm{x}^\ast) - \left(\bm{\lambda}^\ast\right)^\top \nabla \bm{h}
+(\bm{x}^\ast) = \bm{0},
+$$ {#eq-fonc}
+
+and the Hessian of the Lagrangian $\ell(\bm{x}, \bm{\lambda}^\ast) = f(\bm{x}) - \left(\bm{\lambda}^\ast\right)^\top \bm{h}(\bm{x})$
+
+$$
+\bm{L}(\bm{x}^\ast) = \bm{F}(\bm{x}^\ast) - \left(\bm{\lambda}^\ast\right)^\top \bm{H}(\bm{x}^\ast)
+$$ {#eq-hessian}
+
+must be positive semidefinite on the tangent subspace 
+
+$$ M = \{\bm{x}: \nabla \bm{h}(\bm{x}^\ast) = \bm{0}\}. $$
+
+:::
+
+
+::: {.column width="50%"}
+
+::: {.callout-note icon=false}
+## Local Convexity Assumption
+We assume that the Hessian $\bm{L(\bm{x}^\ast)}$ is positive definite.
+(We mean that $\bm{L(\bm{x}^\ast)}$ on the whole space $\mathbb{R}^n$, not just on the subspace $M$.)
+
+This assumption guarantees that the Lagrangian $\ell(\bm{x}, \bm{\lambda}^\ast)$ 
+is locally convex at $\bm{x}^\ast$.
+:::
+
+* With this assumption, the point $\bm{x}^\ast$ is not only a local solution to 
+the constrained problem @eq-nlp; it is also a local solution to the unconstrained problem
+
+$$
+\begin{align}
+\operatorname{minimize} & \ell(\bm{x}, \bm{\lambda}^\ast) = f(\bm{x}) - 
+\left( \bm{\lambda}^\ast \right)^\top \bm{h}(\bm{x})
+\end{align}
+$$ {#eq-unc}
+
+* For any $\bm{\lambda}$ sufficiently close to $\bm{\lambda}^\ast$, the function
+$\ell(\bm{x}, \bm{\lambda})$ will have a local minimum point at a point $\bm{x}$ 
+near $\bm{x}^\ast$.
+  - This follows by noting that by the implicit function theorem, the eqn.
+$$
+\nabla f(\bm{x}) - \bm{\lambda}^\top \nabla \bm{h}
+(\bm{x}) = \bm{0}
+$$
+
+has a solution $\bm{x}$ near $\bm{x}^\ast$ when $\bm{\lambda}$ is near 
+$\bm{\lambda}^\ast$ because $\bm{L}^\ast$ is positive definite.
+:::
+
+::::
+
+
+## Local Duality {.smaller}
+
+:::: {.columns}
+
+::: {.callout-note appearance="minimal"}
+* Thus, locally there is a unique correspondence between $\bm{\lambda}$ and $\bm{x}$
+through the solution of the unconstrained problem @eq-unc.
+$$
+\begin{align}
+\operatorname{minimize} & \ell(\bm{x}, \bm{\lambda}) = f(\bm{x}) - \bm{\lambda}^\top \bm{h}(\bm{x}).
+\end{align}
+$$ {#eq-uncprob}
+  - This correspondence is continuously differentiable.
+* Near $\bm{\lambda}^\ast$ we define the _dual function_ $\phi$ by the equation
+$$
+\phi(\bm{\lambda}) \triangleq \operatorname{min}_{\bm{x} \in \mathcal{N}(\bm{x}^\ast)} 
+\left[ \ell(\bm{x}, \bm{\lambda}) = f(\bm{x}) - \bm{\lambda}^\top \bm{h}(\bm{x}) \right]
+$$ {#eq-dualfcn}
+
+* We are then able to show that locally the original constrained problem @eq-unc 
+is equivalent to unconstrained local maximization of of the dual function $\phi$
+with respect to $\bm{\lambda}$.
+  - Denote by $\bm{x}(\bm{\lambda})$ the unique solution to @eq-uncprob in the neighborhood of $\bm{x}^\ast$.
+:::
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon="false"}
+## Lemma 1
+The dual function $\phi$ has gradient $$ \nabla \phi(\bm{\lambda}) = -\bm{h}(\bm{x}(\bm{\lambda}))^\top. $$ {#eq-grad}
+:::
+
+::: {.callout-note icon=false}
+## Proof
+We have explicitly from @eq-dualfcn
+$$ \phi(\bm{\lambda}) = f(\bm{x}(\bm{\lambda})) - \bm{\lambda}^\top \bm{h}(\bm{x}(\bm{\lambda})). $$
+Thus
+$$ 
+\nabla \phi(\bm{\lambda}) = \left[ \nabla f(\bm{x}(\bm{\lambda})) - \bm{\lambda}^\top \nabla \bm{h}(\bm{x}(\bm{\lambda})) \right] \nabla \bm{x}(\bm{\lambda}) - \bm{h}(\bm{x}(\bm{\lambda}))^\top. 
+$$
+Since the first term on the right vanishes by the defition of $\bm{x}(\bm{\lambda})$ (the unique solution to @eq-uncprob), we obtain @eq-grad.
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon="false"}
+## Lemma 2
+The Hessian of the dual function is
+$$
+\bm{\Phi}(\bm{\lambda}) = -\nabla \bm{h}(\bm{x}(\bm{\lambda}))\bm{L}^{-1}(\bm{x}(\bm{\lambda}), \bm{\lambda}) \nabla \bm{h}(\bm{x}(\bm{\lambda}))^\top.
+$$ {#eq-dualhessian}
+:::
+
+::: {.callout-note icon="false"}
+## Proof
+By Lemma 1, $\bm{\Phi}(\bm{\lambda}) = -\nabla \bm{h}(\bm{x}(\bm{\lambda})) \nabla \bm{x}(\bm{\lambda})$. 
+
+Differentiating $\nabla f(\bm{x}(\bm{\lambda})) - \bm{\lambda}^\top \nabla \bm{h}(\bm{x}(\bm{\lambda})) = \bm{0}$ with respect to $\bm{\lambda}$, we obtain
+
+$$ 
+\bm{L}(\bm{x}(\bm{\lambda}), \bm{\lambda})\nabla \bm{x}(\bm{\lambda}) - \nabla \bm{h}(\bm{x}(\bm{\lambda}))^\top = \bm{0}.
+$$
+
+Solving for $\nabla \bm{x}(\bm{\lambda})$ and substituting back to the first eqn., we are through.
+
+:::
+
+
+:::
+
+::::
