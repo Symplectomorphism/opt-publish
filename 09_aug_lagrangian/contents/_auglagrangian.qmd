@@ -155,3 +155,55 @@ $$
 
 
 ## Geometric Interpretation {.smaller}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+* The minimum of the augmented Lagrangian at step $k$ can be expressed in terms 
+of the primal function  as follows:
+
+$$
+\begin{align}
+\operatorname{min} \ell_c(\bm{x}, \bm{\lambda}_k) &= \operatorname{min}_\bm{x} 
+\left\{ f(\bm{x}) - \bm{\lambda}_k^\top \bm{h}(\bm{x}) + \frac{1}{2}c\left|\bm{h}(\bm{x})\right|^2 \right\} \\
+&= \operatorname{min}_{\bm{x}, \bm{y}} \left\{ f(\bm{x}) - \bm{\lambda}_k^\top \bm{y} + \frac{1}{2}c|\bm{y}|^2: \, \bm{h}(\bm{x}) = \bm{y} \right\} \\
+&= \operatorname{min}_\bm{y} \left\{ \omega(\bm{y}) - \bm{\lambda}_k^\top \bm{y} + \frac{1}{2}c|\bm{y}|^2 \right\},
+\end{align}
+$$
+
+where the minimization w.r.t. $\bm{y}$ is taken to be locally near $\bm{y} = \bm{0}$.
+
+* In general, if $\bm{x}(\bm{\lambda_k})$ minimizes $\ell_c(\bm{x}, \bm{\lambda}_k)$,
+then $\bm{y}_k = \bm{h}(\bm{x}(\bm{\lambda_k}))$ is the minimum of 
+$\omega(\bm{y}) - \bm{\lambda}_k^\top \bm{y} + \frac{1}{2}c|\bm{y}|^2$.
+  - At that point we have 
+  $$ 
+  \begin{align} 
+    &\nabla \omega (\bm{y}_k)^\top + c\bm{y}_k = \bm{\lambda}_k  \\
+    &\nabla \omega(\bm{y}_k)^\top = \bm{\lambda}_k - c \bm{y}_k = \bm{\lambda}_k - c \bm{h}(\bm{x}(\bm{y}_k)). 
+  \end{align}
+  $$
+* It follows that for the next multiplier we have
+$$
+\bm{\lambda}_{k+1} = \bm{\lambda}_k - c\bm{h}(\bm{x}(\bm{\lambda}_k)) = \nabla \omega (\bm{y}_k)^\top.
+$$
+:::
+
+::: {.column width="40%"}
+<center>
+<img src="./contents/assets/primal_and_augmented.png" width="95%" /img>
+</center>
+
+::: {.callout-note icon=false}
+## Primal function
+$$ \omega(\bm{y}) \triangleq \operatorname{min}\left\{ f(\bm{x}): \bm{h}(\bm{x}) = \bm{y} \right\}, $$
+where the minimum is understood to be taken locally near $\bm{x}^\ast$.
+
+* $\omega(\bm{0}) = f(\bm{x}^\ast)$.
+* $\nabla \omega(\bm{0})^\top = \bm{\lambda}^\ast$.
+:::
+
+:::
+
+
+::::
