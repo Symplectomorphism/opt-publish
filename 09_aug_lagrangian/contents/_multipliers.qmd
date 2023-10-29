@@ -1,1 +1,77 @@
 # The Augmented Lagrangian Method of Multipliers
+
+## Dual Method {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## The original constrained problem
+$$
+\begin{align}
+\operatorname{minimize} & f(\bm{x}), \\
+\text{subject to} & \bm{h}(\bm{x}) = \bm{0}, \quad \bm{x} \in \Omega
+\end{align}
+$$ {#eq-original}
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.callout-tip icon=false}
+## Equivalent problem
+$$
+\begin{align}
+\operatorname{minimize} & f(\bm{x}) + \frac{1}{2}c|\bm{h}(\bm{x})|^2, \\
+\text{subject to} & \bm{h}(\bm{x}) = \bm{0}, \quad \bm{x} \in \Omega
+\end{align}
+$$ {#eq-equiv}
+:::
+
+:::
+
+::::
+
+* The solution points, the optimal values, and the Lagrange multipliers are the 
+same for both problems.
+  - Whereas problem @eq-original may not be locally convex, the problem @eq-equiv
+  is locally convex for sufficiently large $c$; specifically the Hessian of the 
+  Lagrangian is p.d. at the solution pair $\bm{x}^\ast$, $\bm{\lambda}^\ast$.
+
+* To apply the dual method to @eq-equiv, we define the dual function in a region 
+near $\bm{x}^\ast$, $\bm{\lambda}^\ast$.
+$$
+\phi(\bm{\lambda}) = \operatorname{min}\left\{ f(\bm{x}) - 
+\bm{\lambda}^\top\bm{h}(\bm{x}) + \frac{1}{2}c|\bm{h}(\bm{x})|^2 \right\}
+$$ {#eq-dual}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.callout-important appearance="minimal"}
+* Suppose $\bm{x}(\bm{\lambda})$ is the vector minimizing the rhs of @eq-dual.
+  - $-\bm{h}(\bm{x}(\bm{\lambda}))$ is the gradient,
+  - $\frac{1}{c}$ is the Lipschitz constant of $\phi$.
+* Thus the iterative process 
+$$ \bm{\lambda}_{k+1} = \bm{\lambda}_k - c\bm{h}(\bm{x}(\bm{\lambda}_k)) $$
+can be seen as a _steepest ascent iteration for maximizing the dual function_ $\phi$.
+* It is a simple form of steepest ascent, using a constant stepsize $c$.
+:::
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+::: {.callout-important appearance="minimal"}
+* Although the stepsize $c$ is a good choice, it is clearly advantageous to apply 
+the algorithmic principles of optimization.
+  - Select the stepsize so that the new value of the dual function satisfies
+  an ascent criterion.
+  - This can extend the range of convergence of the algorithm.
+:::
+:::
+
+::::
