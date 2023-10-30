@@ -1,1 +1,74 @@
 # Separable Problems and Their Duals
+
+## Separable Problems {.smaller}
+
+* A structure that arises frequently in mathematical programming applications is 
+that of the separable problem:
+
+$$
+\begin{align}
+\operatorname{minimize} & \sum_{i=1}^q f_i(\bm{x}_i), \\
+\text{subject to} & \sum_{i=1}^q \bm{h}_i(\bm{x}_i) = \bm{0}, \\
+& \sum_{i=1}^q \bm{g}_i(\bm{x}_i) \geq \bm{0}.
+\end{align}
+$$ {#eq-separable}
+
+* In this formulation, the components of the $n$-vector $\bm{x}$ are partitioned 
+into $q$ disjoint groups, $\bm{x} = \left(\bm{x}_1, \bm{x}_2, \ldots, \bm{x}_q \right)$.
+  - Each group may or may not have the same number of components.
+
+::: {.callout-note icon=false}
+## Example
+Problems involving a series of decision made at distinct times are often separable.
+$$
+\begin{align}
+\operatorname{maximize}_{y(t), u(t)} & \sum_{t=1}^T f(y(t), u(t)), & \\
+\text{subject to} & y(t) = y(t-1) - u(t) + s(t), & t = 1, \ldots, T, \\
+& c \leq y(t) \leq d, & t = 1, \ldots, T, \\
+& 0 \leq u(t), & t = 1, \ldots, T.
+\end{align}
+$$
+Here, the state variable $y(t)$ represents the water volume behind the dam at the end of period $t$,
+control variable $u(t)$ represents the volume flow through the dam during period $t$, 
+and data $s(t)$ is the volume flowing into the lake behind the dam during period $t$ from upper streams.
+The function $f$ gives the power generation, and $c$ and $d$ are bounds on lake volume.
+
+Partition into pairs: $\bm{x}_t = (y(t), u(t))$, $t = 1, \ldots, T$.
+:::
+
+
+## Decomposition {.smaller}
+
+* Separable problems are ideally suited to dual methods, because the required 
+unconstrained minimization decomposes into small subproblems.
+  - Generally, the most difficult aspect of a dual method is the evaluation of 
+  the dual function.
+  - For a separable problem, if we associate $\bm{\lambda}$ with the equality constraints
+  and $\bm{\mu} \geq \bm{0}$ with the inequality constraints of @eq-separable, 
+  the required dual function is
+$$
+\phi(\bm{\lambda}, \bm{\mu}) = \operatorname{min} \sum_{i=1}^q \left(
+f_i(\bm{x}_i) - \bm{\lambda}^\top \bm{h}_i(\bm{x}_i) - \bm{\mu}^\top \bm{g}_i(\bm{x}_i)
+\right).
+$$
+* This minimization decomposes into the $q$ separate problems
+$$
+\operatorname{min}_{\bm{x}_i} f_i(\bm{x}_i) - \bm{\lambda}^\top \bm{h}_i(\bm{x}_i) - \bm{\mu}^\top \bm{g}_i(\bm{x}_i).
+$$
+* The solution of these subproblems can usually be accomplished relatively 
+efficiently, since they are of smaller dimension than the original problem.
+
+::: {.callout-note icon=false}
+## Example
+using duality with respect to the equality constraints, we denote the dual variables
+by $\lambda(t)$, $t = 1, \ldots, T$. The $t^{\text{th}}$ subproblem becomes
+$$
+\operatorname{max}_{c \leq y(t) \leq d, 0 \leq u(t)} \left\{ 
+f(y(t), u(t)) + \left[ \lambda(t+1) - \lambda(t) \right]y(t) - \lambda(t) \left[u(t) - s(t) \right]
+\right\}
+$$
+which is a two-dimensional optimization problem.
+
+* The selection of $\lambda \in \mathbb{R}^N$ decomposes the problem into separate
+problems for each time period.
+:::

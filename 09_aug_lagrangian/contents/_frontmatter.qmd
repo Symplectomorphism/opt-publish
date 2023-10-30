@@ -15,8 +15,8 @@ Electrical and Computer Engineering <br>
 Boise State University, Boise, ID, USA
 
 __Topics__: <br>
-<br>
 Local Duality and the Lagrangian Method <br>
 The Augmented Lagrangian (M. of Multipliers) <br>
+Separable Problems and Their Duals <br>
 The Alternating Direction M. of Multipliers <br>
 :::

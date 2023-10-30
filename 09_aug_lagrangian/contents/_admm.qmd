@@ -1,1 +1,38 @@
 # Alternating Direction Method of Multipliers
+
+## Problem Set-Up {.smaller}
+
+* Consider the convex minimization model with linear/affine constraints and an 
+objective function that is the sum of two seaparable functions with two blocks of variables:
+
+$$
+\begin{align}
+\operatorname{minimize} & f_1(\bm{x}^1) + f_2(\bm{x}^2), &  f_i: \mathbb{R}^{n_i} \rightarrow \mathbb{R}, \\
+\text{subject to} & \bm{A}_1 \bm{x}^1 + \bm{A}_2 \bm{x}^2 = \bm{b}, & \bm{b} \in \mathbb{R}^m \\
+& \bm{x}^1 \in \Omega_1, \; \bm{x}^2 \in \Omega_2 & \Omega_i \subseteq \mathbb{R}^{n_i}
+\end{align} 
+$$ {#eq-septwo}
+
+* Then, the augmented Lagrangian function for @eq-septwo would be 
+$$
+\ell_c(\bm{x}^1, \bm{x}^2, \bm{\lambda}) = f_1(\bm{x}^1) + f_2(\bm{x}^2) - \bm{\lambda}^\top
+\left(\bm{A}_1\bm{x}^1 + \bm{A}_2\bm{x}^2 - \bm{b} \right) + \frac{c}{2}
+\left| \bm{A}_1\bm{x}^1 + \bm{A}_2\bm{x}^2 - \bm{b} \right|^2.
+$$
+
+* In contrast to the method of multipliers that we previously covered, the alternating
+direction method of multipliers (ADMM) is to (approximately) minimize $\ell_c(\bm{x}^1, \bm{x}^2, \bm{\lambda})$
+in an alternative order:
+
+$$
+\begin{align}
+\bm{x}_{k+1}^1 &:= \operatorname{arg}\operatorname{min}_{\bm{x}^1 \in \Omega_1} 
+\ell_c(\bm{x}^1, \bm{x}_k^2, \bm{\lambda}_k), \\
+\bm{x}_{k+1}^2 &:= \operatorname{arg}\operatorname{min}_{\bm{x}^2 \in \Omega_2} 
+\ell_c(\bm{x}_{k+1}^1, \bm{x}^2, \bm{\lambda}_k), \\
+\bm{\lambda}_{k+1} &:= \bm{\lambda}_k - c\left( \bm{A}_1\bm{x}_{k+1}^1 + \bm{A}_2\bm{x}_{k+1}^2 - \bm{b} \right).
+\end{align}
+$$
+
+* The idea is that each of the smaller-block minimization problems can be solved 
+more efficiently or even in closed-forms for certain cases.

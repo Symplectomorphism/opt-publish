@@ -29,7 +29,7 @@ revealjs-plugins:
 
 {{< include contents/_frontmatter.qmd >}}
 {{< include contents/_local_duality.qmd >}}
-<!-- {{< include contents/_separable.qmd >}} -->
 {{< include contents/_auglagrangian.qmd >}}
+{{< include contents/_separable.qmd >}}
 <!-- {{< include contents/_multipliers.qmd >}} -->
 {{< include contents/_admm.qmd >}}

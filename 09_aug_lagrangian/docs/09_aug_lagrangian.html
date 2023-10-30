@@ -341,7 +341,7 @@
 <p><strong>Instructor</strong>: Aykut Satici, Ph.D.&nbsp;<br> <br> Mechanical and Biomedical Engineering <br> Electrical and Computer Engineering <br> Boise State University, Boise, ID, USA</p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><strong>Topics</strong>: <br> <br> Local Duality and the Lagrangian Method <br> The Augmented Lagrangian (M. of Multipliers) <br> The Alternating Direction M. of Multipliers <br></p>
+<p><strong>Topics</strong>: <br> Local Duality and the Lagrangian Method <br> The Augmented Lagrangian (M. of Multipliers) <br> Separable Problems and Their Duals <br> The Alternating Direction M. of Multipliers <br></p>
 </div>
 </div>
 </div>
@@ -658,7 +658,6 @@ x = 4, \quad y = 2, \quad \lambda = -1.
 <li>The rate of convergence is <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>B</mi><mo>−</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>B</mi><mo>+</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>2</mn></msup></mfrac><annotation encoding="application/x-tex">\frac{(B-b)^2}{(B+b)^2}</annotation></semantics></math>, where <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math> are the largest and smallest eigenvalues of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝚽</mi><annotation encoding="application/x-tex">\bm{\Phi}</annotation></semantics></math>.</li>
 </ul></li>
 </ul>
-<!-- {{< include contents/_separable.qmd >}} -->
 </section></section>
 <section>
 <section id="the-augmented-lagrangian-and-interpretations" class="title-slide slide level1 center">
@@ -874,15 +873,127 @@ x = \frac{-(2-\lambda)}{2+c}, \quad y = \frac{4+c-\lambda}{2+c}.
 </div>
 </div>
 </div>
+</section></section>
+<section>
+<section id="separable-problems-and-their-duals" class="title-slide slide level1 center">
+<h1>Separable Problems and Their Duals</h1>
+
+</section>
+<section id="separable-problems" class="slide level2 smaller">
+<h2>Separable Problems</h2>
+<ul>
+<li>A structure that arises frequently in mathematical programming applications is that of the separable problem:</li>
+</ul>
+<p><span id="eq-separable"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>q</mi></munderover><msub><mi>f</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>q</mi></munderover><msub><mi>𝐡</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>𝟎</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>q</mi></munderover><msub><mi>𝐠</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>≥</mo><mn>𝟎</mn><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>10</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize} &amp; \sum_{i=1}^q f_i(\bm{x}_i), \\
+\text{subject to} &amp; \sum_{i=1}^q \bm{h}_i(\bm{x}_i) = \bm{0}, \\
+&amp; \sum_{i=1}^q \bm{g}_i(\bm{x}_i) \geq \bm{0}.
+\end{align}
+ \qquad(10)</annotation></semantics></math></span></p>
+<ul>
+<li>In this formulation, the components of the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-vector <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐱</mi><annotation encoding="application/x-tex">\bm{x}</annotation></semantics></math> are partitioned into <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math> disjoint groups, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐱</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mn>1</mn></msub><mo>,</mo><msub><mi>𝐱</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>𝐱</mi><mi>q</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x} = \left(\bm{x}_1, \bm{x}_2, \ldots, \bm{x}_q \right)</annotation></semantics></math>.
+<ul>
+<li>Each group may or may not have the same number of components.</li>
+</ul></li>
+</ul>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<p>Problems involving a series of decision made at distinct times are often separable. <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mo>maximize</mo><mrow><mi>y</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mi>u</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub></mtd><mtd columnalign="left" style="text-align: left"><munderover><mo>∑</mo><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><mi>T</mi></munderover><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mi>u</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><mi>y</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>y</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>u</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>s</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"><mi>t</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>T</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mi>c</mi><mo>≤</mo><mi>y</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>d</mi><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"><mi>t</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>T</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>≤</mo><mi>u</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"><mi>t</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>T</mi><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{maximize}_{y(t), u(t)} &amp; \sum_{t=1}^T f(y(t), u(t)), &amp; \\
+\text{subject to} &amp; y(t) = y(t-1) - u(t) + s(t), &amp; t = 1, \ldots, T, \\
+&amp; c \leq y(t) \leq d, &amp; t = 1, \ldots, T, \\
+&amp; 0 \leq u(t), &amp; t = 1, \ldots, T.
+\end{align}
+</annotation></semantics></math> Here, the state variable <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">y(t)</annotation></semantics></math> represents the water volume behind the dam at the end of period <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>, control variable <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">u(t)</annotation></semantics></math> represents the volume flow through the dam during period <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>, and data <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">s(t)</annotation></semantics></math> is the volume flowing into the lake behind the dam during period <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math> from upper streams. The function <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> gives the power generation, and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math> and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math> are bounds on lake volume.</p>
+<p>Partition into pairs: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>𝐱</mi><mi>t</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mi>u</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\bm{x}_t = (y(t), u(t))</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">t = 1, \ldots, T</annotation></semantics></math>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="decomposition" class="slide level2 smaller">
+<h2>Decomposition</h2>
+<ul>
+<li>Separable problems are ideally suited to dual methods, because the required unconstrained minimization decomposes into small subproblems.
+<ul>
+<li>Generally, the most difficult aspect of a dual method is the evaluation of the dual function.</li>
+<li>For a separable problem, if we associate <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝛌</mi><annotation encoding="application/x-tex">\bm{\lambda}</annotation></semantics></math> with the equality constraints and <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝛍</mi><mo>≥</mo><mn>𝟎</mn></mrow><annotation encoding="application/x-tex">\bm{\mu} \geq \bm{0}</annotation></semantics></math> with the inequality constraints of <a href="#/separable-problems">Equation&nbsp;10</a>, the required dual function is <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>𝛌</mi><mo>,</mo><mi>𝛍</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>min</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>q</mi></munderover><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>f</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>𝛌</mi><mi>⊤</mi></msup><msub><mi>𝐡</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>𝛍</mi><mi>⊤</mi></msup><msub><mi>𝐠</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\phi(\bm{\lambda}, \bm{\mu}) = \operatorname{min} \sum_{i=1}^q \left(
+f_i(\bm{x}_i) - \bm{\lambda}^\top \bm{h}_i(\bm{x}_i) - \bm{\mu}^\top \bm{g}_i(\bm{x}_i)
+\right).
+</annotation></semantics></math></li>
+</ul></li>
+<li>This minimization decomposes into the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math> separate problems <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>min</mo><msub><mi>𝐱</mi><mi>i</mi></msub></munder><msub><mi>f</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>𝛌</mi><mi>⊤</mi></msup><msub><mi>𝐡</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>𝛍</mi><mi>⊤</mi></msup><msub><mi>𝐠</mi><mi>i</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐱</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\operatorname{min}_{\bm{x}_i} f_i(\bm{x}_i) - \bm{\lambda}^\top \bm{h}_i(\bm{x}_i) - \bm{\mu}^\top \bm{g}_i(\bm{x}_i).
+</annotation></semantics></math></li>
+<li>The solution of these subproblems can usually be accomplished relatively efficiently, since they are of smaller dimension than the original problem.</li>
+</ul>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<p>using duality with respect to the equality constraints, we denote the dual variables by <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\lambda(t)</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>T</mi></mrow><annotation encoding="application/x-tex">t = 1, \ldots, T</annotation></semantics></math>. The <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>t</mi><mtext mathvariant="normal">th</mtext></msup><annotation encoding="application/x-tex">t^{\text{th}}</annotation></semantics></math> subproblem becomes <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>max</mo><mrow><mi>c</mi><mo>≤</mo><mi>y</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mi>d</mi><mo>,</mo><mn>0</mn><mo>≤</mo><mi>u</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></munder><mrow><mo stretchy="true" form="prefix">{</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mi>u</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">[</mo><mi>λ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>λ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mi>y</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>λ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mi>u</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>s</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow><mo stretchy="true" form="postfix">}</mo></mrow></mrow><annotation encoding="application/x-tex">
+\operatorname{max}_{c \leq y(t) \leq d, 0 \leq u(t)} \left\{ 
+f(y(t), u(t)) + \left[ \lambda(t+1) - \lambda(t) \right]y(t) - \lambda(t) \left[u(t) - s(t) \right]
+\right\}
+</annotation></semantics></math> which is a two-dimensional optimization problem.</p>
+<ul>
+<li>The selection of <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>∈</mo><msup><mi>ℝ</mi><mi>N</mi></msup></mrow><annotation encoding="application/x-tex">\lambda \in \mathbb{R}^N</annotation></semantics></math> decomposes the problem into separate problems for each time period.</li>
+</ul>
+</div>
+</div>
+</div>
 <!-- {{< include contents/_multipliers.qmd >}} -->
 </section></section>
+<section>
 <section id="alternating-direction-method-of-multipliers" class="title-slide slide level1 center">
 <h1>Alternating Direction Method of Multipliers</h1>
+
+</section>
+<section id="problem-set-up" class="slide level2 smaller">
+<h2>Problem Set-Up</h2>
+<ul>
+<li>Consider the convex minimization model with linear/affine constraints and an objective function that is the sum of two seaparable functions with two blocks of variables:</li>
+</ul>
+<p><span id="eq-septwo"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>minimize</mo></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>f</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mn>1</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>f</mi><mn>2</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"><msub><mi>f</mi><mi>i</mi></msub><mo>:</mo><msup><mi>ℝ</mi><msub><mi>n</mi><mi>i</mi></msub></msup><mo>→</mo><mi>ℝ</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mtext mathvariant="normal">subject to</mtext></mtd><mtd columnalign="left" style="text-align: left"><msub><mi>𝐀</mi><mn>1</mn></msub><msup><mi>𝐱</mi><mn>1</mn></msup><mo>+</mo><msub><mi>𝐀</mi><mn>2</mn></msub><msup><mi>𝐱</mi><mn>2</mn></msup><mo>=</mo><mi>𝐛</mi><mo>,</mo></mtd><mtd columnalign="right" style="text-align: right"><mi>𝐛</mi><mo>∈</mo><msup><mi>ℝ</mi><mi>m</mi></msup></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="left" style="text-align: left"><msup><mi>𝐱</mi><mn>1</mn></msup><mo>∈</mo><msub><mi>Ω</mi><mn>1</mn></msub><mo>,</mo><mspace width="0.278em"></mspace><msup><mi>𝐱</mi><mn>2</mn></msup><mo>∈</mo><msub><mi>Ω</mi><mn>2</mn></msub></mtd><mtd columnalign="right" style="text-align: right"><msub><mi>Ω</mi><mi>i</mi></msub><mo>⊆</mo><msup><mi>ℝ</mi><msub><mi>n</mi><mi>i</mi></msub></msup></mtd></mtr></mtable><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>11</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+\begin{align}
+\operatorname{minimize} &amp; f_1(\bm{x}^1) + f_2(\bm{x}^2), &amp;  f_i: \mathbb{R}^{n_i} \rightarrow \mathbb{R}, \\
+\text{subject to} &amp; \bm{A}_1 \bm{x}^1 + \bm{A}_2 \bm{x}^2 = \bm{b}, &amp; \bm{b} \in \mathbb{R}^m \\
+&amp; \bm{x}^1 \in \Omega_1, \; \bm{x}^2 \in \Omega_2 &amp; \Omega_i \subseteq \mathbb{R}^{n_i}
+\end{align} 
+ \qquad(11)</annotation></semantics></math></span></p>
+<ul>
+<li><p>Then, the augmented Lagrangian function for <a href="#/problem-set-up">Equation&nbsp;11</a> would be <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>ℓ</mo><mi>c</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mn>1</mn></msup><mo>,</mo><msup><mi>𝐱</mi><mn>2</mn></msup><mo>,</mo><mi>𝛌</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>f</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mn>1</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>f</mi><mn>2</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mn>2</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msup><mi>𝛌</mi><mi>⊤</mi></msup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐀</mi><mn>1</mn></msub><msup><mi>𝐱</mi><mn>1</mn></msup><mo>+</mo><msub><mi>𝐀</mi><mn>2</mn></msub><msup><mi>𝐱</mi><mn>2</mn></msup><mo>−</mo><mi>𝐛</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mfrac><mi>c</mi><mn>2</mn></mfrac><msup><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>𝐀</mi><mn>1</mn></msub><msup><mi>𝐱</mi><mn>1</mn></msup><mo>+</mo><msub><mi>𝐀</mi><mn>2</mn></msub><msup><mi>𝐱</mi><mn>2</mn></msup><mo>−</mo><mi>𝐛</mi><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\ell_c(\bm{x}^1, \bm{x}^2, \bm{\lambda}) = f_1(\bm{x}^1) + f_2(\bm{x}^2) - \bm{\lambda}^\top
+\left(\bm{A}_1\bm{x}^1 + \bm{A}_2\bm{x}^2 - \bm{b} \right) + \frac{c}{2}
+\left| \bm{A}_1\bm{x}^1 + \bm{A}_2\bm{x}^2 - \bm{b} \right|^2.
+</annotation></semantics></math></p></li>
+<li><p>In contrast to the method of multipliers that we previously covered, the alternating direction method of multipliers (ADMM) is to (approximately) minimize <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>ℓ</mo><mi>c</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mn>1</mn></msup><mo>,</mo><msup><mi>𝐱</mi><mn>2</mn></msup><mo>,</mo><mi>𝛌</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\ell_c(\bm{x}^1, \bm{x}^2, \bm{\lambda})</annotation></semantics></math> in an alternative order:</p></li>
+</ul>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mn>1</mn></msubsup></mtd><mtd columnalign="left" style="text-align: left"><mo>:=</mo><mo>arg</mo><munder><mo>min</mo><mrow><msup><mi>𝐱</mi><mn>1</mn></msup><mo>∈</mo><msub><mi>Ω</mi><mn>1</mn></msub></mrow></munder><msub><mo>ℓ</mo><mi>c</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>𝐱</mi><mn>1</mn></msup><mo>,</mo><msubsup><mi>𝐱</mi><mi>k</mi><mn>2</mn></msubsup><mo>,</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mn>2</mn></msubsup></mtd><mtd columnalign="left" style="text-align: left"><mo>:=</mo><mo>arg</mo><munder><mo>min</mo><mrow><msup><mi>𝐱</mi><mn>2</mn></msup><mo>∈</mo><msub><mi>Ω</mi><mn>2</mn></msub></mrow></munder><msub><mo>ℓ</mo><mi>c</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mn>1</mn></msubsup><mo>,</mo><msup><mi>𝐱</mi><mn>2</mn></msup><mo>,</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>𝛌</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub></mtd><mtd columnalign="left" style="text-align: left"><mo>:=</mo><msub><mi>𝛌</mi><mi>k</mi></msub><mo>−</mo><mi>c</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝐀</mi><mn>1</mn></msub><msubsup><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mn>1</mn></msubsup><mo>+</mo><msub><mi>𝐀</mi><mn>2</mn></msub><msubsup><mi>𝐱</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mn>2</mn></msubsup><mo>−</mo><mi>𝐛</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{align}
+\bm{x}_{k+1}^1 &amp;:= \operatorname{arg}\operatorname{min}_{\bm{x}^1 \in \Omega_1} 
+\ell_c(\bm{x}^1, \bm{x}_k^2, \bm{\lambda}_k), \\
+\bm{x}_{k+1}^2 &amp;:= \operatorname{arg}\operatorname{min}_{\bm{x}^2 \in \Omega_2} 
+\ell_c(\bm{x}_{k+1}^1, \bm{x}^2, \bm{\lambda}_k), \\
+\bm{\lambda}_{k+1} &amp;:= \bm{\lambda}_k - c\left( \bm{A}_1\bm{x}_{k+1}^1 + \bm{A}_2\bm{x}_{k+1}^2 - \bm{b} \right).
+\end{align}
+</annotation></semantics></math></p>
+<ul>
+<li>The idea is that each of the smaller-block minimization problems can be solved more efficiently or even in closed-forms for certain cases.</li>
+</ul>
 
 <div class="footer footer-default">
 <p>Optimization Theory and Practice • Aykut C. Satici</p>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
