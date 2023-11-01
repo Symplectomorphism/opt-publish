@@ -91,7 +91,7 @@ Introduce the _Lagrangian_ associated with the problem, defined as
 $$ \ell(\bm{x}, \bm{\lambda}, \bm{\mu}) = f(\bm{x}) - \bm{\lambda}^\top
 \bm{h}(\bm{x}) - \bm{\mu}^\top \bm{g}(\bm{x}). $$ {#eq-lagrangian-inq}
 
-* The Lagrangian can again be viewed as an uncsontrained objective function
+* The Lagrangian can again be viewed as an unconstrained objective function
 combined with the original objective with two penalized terms on constraint
 violations.
   - $\lambda_i$ is the penalty weight on the equality $h_i(\bm{x}) = 0$ 
@@ -165,7 +165,7 @@ $$ ( x_1 = x_2 = \frac{1}{\sqrt{2}} ) \;\; \text{and} \;\; (x_1 = x_2 = \frac{-1
 ## Convex Problems {.smaller}
 
 If $f$ is convex and $\bm{h}(\bm{x})$ is affine $\bm{Ax} - \bm{b}$, and
-$\bm{g}(\bm{x}) are concave functions, then $\ell(\cdot)$ is convex in $\bm{x}$
+$\bm{g}(\bm{x})$ are concave functions, then $\ell(\cdot)$ is convex in $\bm{x}$
 for every fixed $\bm{\lambda}$ and $\bm{\mu} (\geq \bm{0})$.
 
 Therefore if $\bm{x}^\ast$ meets the first of @eq-kkt, then $\bm{x}^\ast$ is the

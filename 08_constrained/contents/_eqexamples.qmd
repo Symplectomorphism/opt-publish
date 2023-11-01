@@ -48,7 +48,7 @@ $$x = y = z = \sqrt{\frac{c}{6}} \quad \text{and} \quad \lambda =
 $$ \frac{c}{2} - 2\lambda(x+y+z) = 0. $$
   - From this it is clear that $\lambda \neq 0$.
 * Next, we see that none of $x$, $y$, and $z$ are zero.
-  - This is because if, say, $x=0$, then $z$ becomes zero (second eq.), which
+  - This is because if, say, $x=0$, then $z$ becomes zero (second equation), which
     implies $y=0$ from the first equation.
 * Multiply the first by $x$, second by $y$ and subtract to obtain 
 $$ \lambda(x-y)z = 0. $$

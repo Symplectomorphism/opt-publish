@@ -52,7 +52,7 @@ From the lemma, we may conclude that the linear system
 $$ \nabla f(\bm{x}^\ast) \bm{d} \neq 0, \;\; \text{and} \;\; \nabla
 \bm{h}(\bm{x}^\ast)\bm{d} = \bm{0} $$ 
 
-Has no feasible solution $\bm{d}$. Then, by Farkas's lemma, its alternative
+has no feasible solution $\bm{d}$. Then, by Farkas's lemma, its alternative
 system must have a solution. Specifically, there is a $\bm{\lambda} \in
 \mathbb{R}^m$ such that $\nabla f(\bm{x}^\ast) - \bm{\lambda}^\top \nabla
 \bm{h}(\bm{x}^\ast) = \bm{0}$.
@@ -85,7 +85,7 @@ $$
 $$ {#eq-fonc-lagrangian}
 
 * The Lagrangian can be viewed as a combined objective function with a penalized
-term on the cosntraint violations.
+term on the constraint violations.
   - Each $\lambda_i$ is the penalty weight on equality constraint $h_i(\bm{x}) =
     0$.
   - With appropriate $\lambda_i$'s, a constrained problem could then be solved
