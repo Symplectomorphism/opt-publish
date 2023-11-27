@@ -68,7 +68,7 @@ $$ {#eq-unc}
 * For any $\bm{\lambda}$ sufficiently close to $\bm{\lambda}^\ast$, the function
 $\ell(\bm{x}, \bm{\lambda})$ will have a local minimum point at a point $\bm{x}$ 
 near $\bm{x}^\ast$.
-  - This follows by noting that by the implicit function theorem, the eqn.
+  - This follows by noting that by the implicit function theorem, the equation
 $$
 \nabla f(\bm{x}) - \bm{\lambda}^\top \nabla \bm{h}
 (\bm{x}) = \bm{0}
@@ -101,7 +101,7 @@ $$
 $$ {#eq-dualfcn}
 
 * We are then able to show that locally the original constrained problem @eq-unc 
-is equivalent to unconstrained local maximization of of the dual function $\phi$
+is equivalent to unconstrained local maximization of the dual function $\phi$
 with respect to $\bm{\lambda}$.
   - Denote by $\bm{x}(\bm{\lambda})$ the unique solution to @eq-uncprob in the neighborhood of $\bm{x}^\ast$.
 :::
@@ -146,7 +146,7 @@ $$
 \bm{L}(\bm{x}(\bm{\lambda}), \bm{\lambda})\nabla \bm{x}(\bm{\lambda}) - \nabla \bm{h}(\bm{x}(\bm{\lambda}))^\top = \bm{0}.
 $$
 
-Solving for $\nabla \bm{x}(\bm{\lambda})$ and substituting back to the first eqn., we are through.
+Solving for $\nabla \bm{x}(\bm{\lambda})$ and substituting back to the first equation, we are through.
 :::
 
 :::
@@ -291,7 +291,7 @@ $\bm{\mu} \geq \bm{0}$ at $\bm{\lambda}^\ast$, $\bm{\mu}^\ast$.
 
 <br>
 
-* It is not necessary to include the lagrange multipliers of all the cosntraints 
+* It is not necessary to include the Lagrange multipliers of all the constraints 
 of a problem in the definition of the dual function.
 * In general, if the local convexity assumption holds, local duality can be
 defined with respect to any subset of function constraints.

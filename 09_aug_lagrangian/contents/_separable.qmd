@@ -60,7 +60,7 @@ efficiently, since they are of smaller dimension than the original problem.
 
 ::: {.callout-note icon=false}
 ## Example
-using duality with respect to the equality constraints, we denote the dual variables
+Using duality with respect to the equality constraints, we denote the dual variables
 by $\lambda(t)$, $t = 1, \ldots, T$. The $t^{\text{th}}$ subproblem becomes
 $$
 \operatorname{max}_{c \leq y(t) \leq d, 0 \leq u(t)} \left\{ 

@@ -22,7 +22,7 @@ $$
 \text{subject to} & \bm{h}(\bm{x}) = \bm{0}, \quad \bm{x} \in \Omega
 \end{align}
 $$
-* This problem is clearly equivalent to the original equality cosntrained problem 
+* This problem is clearly equivalent to the original equality constrained problem 
 since the combinations of the constraints adjoined to $f(\bm{x})$ do not affect 
 the minimum point or the minimum value.
 * A typical step of an augmented Lagrangian method starts with a vector $\bm{\lambda}_k$.
@@ -171,7 +171,7 @@ $$
 \end{align}
 $$
 
-where the minimization w.r.t. $\bm{y}$ is taken to be locally near $\bm{y} = \bm{0}$.
+where the minimization with respect to $\bm{y}$ is taken to be locally near $\bm{y} = \bm{0}$.
 
 * In general, if $\bm{x}(\bm{\lambda_k})$ minimizes $\ell_c(\bm{x}, \bm{\lambda}_k)$,
 then $\bm{y}_k = \bm{h}(\bm{x}(\bm{\lambda_k}))$ is the minimum of 
